@@ -1,0 +1,222 @@
+$nomention
+$c[⬇️ Paste the codes given by the bot after emoji upload below this comment]
+
+
+
+$c[⬆️ Paste the codes given by the bot after emoji upload above this comment]
+
+
+$onlyIf[$checkContains[$customID;tbljack]==true;]
+$if[$checkContains[$customID;$authorID]==true]
+
+$removeButtons
+
+
+$async[0] $textSplit[$customID;@]
+$var[deck_id;$splitText[2]] $var[userscore;$splitText[3]] $var[botscore;$splitText[4]] $endasync
+$async[1] $var[useroldhand;$replaceText[$getEmbedData[$channelID;$messageID;1;description];$var[?];]] $endasync
+$async[2] $var[botoldhand;$replaceText[$getEmbedData[$channelID;$messageID;2;description];$var[?];]] $endasync
+$async[3] $var[useroldhandfoot;$getEmbedData[$channelID;$messageID;1;footer]] $endasync
+$async[4] $var[botoldhandfoot;$getEmbedData[$channelID;$messageID;2;footer]] $endasync
+$await[0] $await[1] $await[2] $await[3] $await[4] 
+
+$c[HIT]
+$if[$checkContains[$customID;htbljack]==true]
+$httpGet[https://deckofcardsapi.com/api/deck/$var[deck_id]/draw/?count=1]
+$var[drawncard;$httpResult[cards;0;code]]
+$var[cardpoints;$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;0;value];KING;10];JACK;10];QUEEN;10];ACE;1]]
+
+$if[$sum[$var[userscore];$var[cardpoints]]>=22]
+$optOff[$httpGet[https://deckofcardsapi.com/api/deck/$var[deck_id]/draw/?count=1]]
+$var[drawncard2;$optOff[$httpResult[cards;0;code]]]
+$var[cardpoints2;$replaceText[$replaceText[$replaceText[$replaceText[$optOff[$httpResult[cards;0;value]];KING;10];JACK;10];QUEEN;10];ACE;1]]
+
+$var[part;🟥 0]
+$var[userscore;$sum[$var[userscore];$var[cardpoints]] ` BUST `]
+$var[usercards;$var[useroldhand]$var[$var[drawncard]]]
+$var[usercardfoot;$var[useroldhandfoot], $var[drawncard]]
+
+$var[botscore;$sum[$var[botscore];$var[cardpoints2]]]
+$var[botcards;$var[botoldhand]$var[$var[drawncard2]]]
+$var[botcardfoot;$var[botoldhandfoot], $var[drawncard2]]
+$else
+$var[part;🟫 0]
+$var[userscore;$sum[$var[userscore];$var[cardpoints]] $var[turn]]
+$var[usercards;$var[useroldhand]$var[$var[drawncard]]$var[?]]
+$var[usercardfoot;$var[useroldhandfoot], $var[drawncard]]
+
+$var[botscore;$var[botscore]]
+$var[botcards;$var[botoldhand]$var[?]]
+$var[botcardfoot;$var[botoldhandfoot]]
+
+$endif $endif
+
+$c[STAND or DD]
+$if[$checkContains[$customID;stbljack;dtbljack]==true]
+$httpGet[https://deckofcardsapi.com/api/deck/$var[deck_id]/draw/?count=5]
+
+$var[botdraw2;$sum[$var[botscore];$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;0;value];KING;10];JACK;10];QUEEN;10];ACE;1]]]
+$var[botdeck2;$var[botoldhand]$var[$httpResult[cards;0;code]]]
+$var[botdeckfoot2;$var[botoldhandfoot], $httpResult[cards;0;code]]
+
+
+$var[botdraw3;$sum[$var[botdraw2];$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;1;value];KING;10];JACK;10];QUEEN;10];ACE;1]]]
+$var[botdeck3;$var[botdeck2]$var[$httpResult[cards;1;code]]]
+$var[botdeckfoot3;$var[botdeckfoot2], $httpResult[cards;1;code]]
+
+$var[botdraw4;$sum[$var[botdraw3];$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;2;value];KING;10];JACK;10];QUEEN;10];ACE;1]]]
+$var[botdeck4;$var[botdeck3]$var[$httpResult[cards;2;code]]]
+$var[botdeckfoot4;$var[botdeckfoot3], $httpResult[cards;2;code]]
+
+$var[botdraw5;$sum[$var[botdraw4];$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;3;value];KING;10];JACK;10];QUEEN;10];ACE;1]]]
+$var[botdeck5;$var[botdeck4]$var[$httpResult[cards;3;code]]]
+$var[botdeckfoot5;$var[botdeckfoot4], $httpResult[cards;3;code]]
+
+$var[usercards;$var[useroldhand]]
+$var[userscore;$var[userscore]]
+$var[usercardfoot;$var[useroldhandfoot]]
+
+$if[$checkContains[$customID;dtbljack]==true]
+$var[usercards;$var[useroldhand]$var[$httpResult[cards;4;code]]]
+$var[userscore;$sum[$var[userscore];$replaceText[$replaceText[$replaceText[$replaceText[$httpResult[cards;4;value];KING;10];JACK;10];QUEEN;10];ACE;1]]]
+$var[usercardfoot;$var[useroldhandfoot] $httpResult[cards;4;code]]
+
+$endif
+
+
+
+$if[$var[botdraw2]>=22]
+$var[part;🟩 1]
+$var[botscore;$var[botdraw2] ` BUST `]
+$var[botcards;$var[botdeck2]]
+$var[botcardfoot;$var[botdeckfoot2]]
+
+$elseif[$and[$var[userscore]==$var[botdraw2];$var[botdraw2]>15]]
+$var[part;🟨 1]
+$var[botscore;$var[botdraw2] ` TIED `]
+$var[botcards;$var[botdeck2]]
+$var[botcardfoot;$var[botdeckfoot2]]
+
+$elseif[$var[userscore]<$var[botdraw2]]
+$var[part;🟥 1]
+$var[botscore;$var[botdraw2]]
+$var[botcards;$var[botdeck2]]
+$var[botcardfoot;$var[botdeckfoot2]]
+
+$elseif[$var[botdraw3]>=22]
+$var[part;🟩 2]
+$var[botscore;$var[botdraw3] ` BUST `]
+$var[botcards;$var[botdeck3]]
+$var[botcardfoot;$var[botdeckfoot3]]
+
+$elseif[$and[$var[userscore]==$var[botdraw3];$var[botdraw3]>15]]
+$var[part;🟨 2]
+$var[botscore;$var[botdraw3] ` TIED `]
+$var[botcards;$var[botdeck3]]
+$var[botcardfoot;$var[botdeckfoot3]]
+
+$elseif[$var[userscore]<$var[botdraw3]]
+$var[part;🟥 2]
+$var[botscore;$var[botdraw3]]
+$var[botcards;$var[botdeck3]]
+$var[botcardfoot;$var[botdeckfoot3]]
+
+$elseif[$var[botdraw4]>=22]
+$var[part;🟩 3]
+$var[botscore;$var[botdraw4] ` BUST `]
+$var[botcards;$var[botdeck4]]
+$var[botcardfoot;$var[botdeckfoot4]]
+
+$elseif[$and[$var[userscore]==$var[botdraw4];$var[botdraw4]>15]]
+$var[part;🟨 3]
+$var[botscore;$var[botdraw4] ` TIED `]
+$var[botcards;$var[botdeck4]]
+$var[botcardfoot;$var[botdeckfoot4]]
+
+$elseif[$var[userscore]<$var[botdraw4]]
+$var[part;🟥 3]
+$var[botscore;$var[botdraw4]]
+$var[botcards;$var[botdeck4]]
+$var[botcardfoot;$var[botdeckfoot4]]
+
+$elseif[$var[botdraw5]>=22]
+$var[part;🟩 4]
+$var[botscore;$var[botdraw5] ` BUST `]
+$var[botcards;$var[botdeck5]]
+$var[botcardfoot;$var[botdeckfoot5]]
+
+$elseif[$and[$var[userscore]==$var[botdraw5];$var[botdraw5]>15]]
+$var[part;🟨 4]
+$var[botscore;$var[botdraw5] ` TIED `]
+$var[botcards;$var[botdeck5]]
+$var[botcardfoot;$var[botdeckfoot5]]
+
+$elseif[$var[userscore]<$var[botdraw5]]
+$var[part;🟥 4]
+$var[botscore;$var[botdraw5]]
+$var[botcards;$var[botdeck5]]
+$var[botcardfoot;$var[botdeckfoot5]]
+
+$else
+$var[part;🟩 5]
+$var[botscore;$var[botdraw5]]
+$var[botcards;$var[botdeck5]]
+$var[botcardfoot;$var[botdeckfoot5]]
+
+$endif
+
+$if[$var[userscore]>=22]
+$var[part;🟥 10]
+$var[botscore;$var[botdraw2]]
+$var[botcards;$var[botdeck2]]
+$var[botcardfoot;$var[botdeckfoot2]]
+
+$endif $endif
+
+$var[data;$var[deck_id]@$var[userscore]@$var[botscore]]
+
+
+$if[$checkContains[$var[part];🟩]]
+$var[color;BFF4A0]
+$addButton[yes;htbjack;HIT;success;yes;👊]
+$addButton[no;stbjack;STAND;success;yes;✋]
+$addButton[no;ddbjack$authorID@$var[data];DOUBLE DOWN;success;yes;]
+$elseif[$checkContains[$var[part];🟥]]
+$var[color;F45353]
+$addButton[yes;htbjack;HIT;danger;yes;👊]
+$addButton[no;stbjack;STAND;danger;yes;✋]
+$addButton[no;ddbjack$authorID@$var[data];DOUBLE DOWN;danger;yes;]
+$elseif[$checkContains[$var[part];🟨]]
+$var[color;efff0d]
+$addButton[yes;htbjack;HIT;secondary;yes;👊]
+$addButton[no;stbjack;STAND;secondary;yes;✋]
+$addButton[no;ddbjack$authorID@$var[data];DOUBLE DOWN;secondary;yes;]
+$else
+$var[color;D5AE9C]
+$addButton[yes;htbljack$authorID@$var[data];HIT;primary;no;👊]
+$addButton[no;stbljack$authorID@$var[data];STAND;secondary;no;✋]
+$addButton[no;ddbljack$authorID@$var[data];DOUBLE DOWN;secondary;yes;]
+$endif
+
+
+
+
+
+
+🃏 **BlackJack   •   Botuu Casino**
+
+$title[$nickname[$authorID] (You) : **$var[userscore]**;1]
+$description[$var[usercards];1]
+$color[$var[color];1]
+$footer[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$var[usercardfoot];S;♠️];H;♥️];C;♣️];D;♦️];0;10];110;10];1]
+
+$title[Botuu (Dealer) : **$var[botscore]**;2]
+$description[$var[botcards];2]
+$color[#303136;2]
+$footer[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$replaceText[$var[botcardfoot];S;♠️];H;♥️];C;♣️];D;♦️];0;10];110;10];2]
+
+$else
+‼️ Hey, you are not the one who is playing this game rn!
+$ephemeral
+$endif
+
