@@ -340,10 +340,11 @@ html {
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.5s;
+    border-radius: 5px;
 }
 
 .ig-button a:hover {
-    background-color: #a43f49;
+    background-color: #c04a5680;
     color: #fff;
 }
 
@@ -368,7 +369,7 @@ html {
     display: inline-block;
     padding: 12px 20px;
     background-color: #a43f49;
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -381,9 +382,13 @@ html {
     color: #a43f49;
 }
 
+
+
 button {
     display: inline-block;
     padding: 10px 20px;
+    top: 10px;
+    left: 10px;
     background-color: #fff;
     color: #a43f49;
     font-size: 12px;
