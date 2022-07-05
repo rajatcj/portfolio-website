@@ -13,7 +13,8 @@
       href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
       rel="stylesheet"
     />
-
+    <link rel="icon" type="image/x-icon" href="assets/images/author-image.png">
+    <link rel="stylesheet" media="screen" href="css/style.css">
     <title>Rajat Home Page</title>
 <!--
 Reflux Template
@@ -27,24 +28,35 @@ https://templatemo.com/tm-531-reflux
     <link rel="stylesheet" href="assets/css/templatemo-style.css" />
     <link rel="stylesheet" href="assets/css/owl.css" />
     <link rel="stylesheet" href="assets/css/lightbox.css" />
+    
   </head>
 
   <body>
+
     <div id="page-wraper">
-      <!-- Sidebar Menu -->
+      <!-- Sidebar Menu -->  
       <div class="responsive-nav">
+        
         <i class="fa fa-bars" id="menu-toggle"></i>
         <div id="menu" class="menu">
-          <i class="fa fa-times" id="menu-close"></i>
-          <div class="container">
-            <div class="image">
-              <a href="#"><img src="assets/images/author-image.png" alt="" /></a>
-            </div>
-            <div class="author-content">
-              <h4>Rajat CJ</h4>
-              <span>Internet User</span>
-              <p>Mood : <i class="fa-solid fa-face-frown"></i>    Reason : <i class="fa-solid fa-heart-crack"></i></p>
-            </div>
+          
+          
+          <div id="particles-js">
+          
+          <div id="particles-js" class="container">
+            <i class="fa fa-times" id="menu-close"></i>
+              <div class="image">
+                <a href="#"><img src="https://api.popcat.xyz/instagram/pfp/rajat_cj" alt="" /></a>
+              </div>
+              <div class="author-content">
+                <h4>Rajat CJ</h4>
+                <span>Internet User</span>
+                <p>Mood : <i class="fa-solid fa-face-frown"></i>    Reason : <i class="fa-solid fa-heart-crack"></i></p>
+                <div class="ig-button">
+                  <a href="https://www.instagram.com/rajat_cj"><i class="fa fa-instagram"></i> Follow</a>
+                </div>
+              </div>
+            
             <nav class="main-nav" role="navigation">
               <ul class="main-menu">
                 <li><a href="#section1"><i class="fa-regular fa-address-card"></i> About Me</a></li>
@@ -77,11 +89,23 @@ https://templatemo.com/tm-531-reflux
             </div>
           </div>
         </div>
+        </div>
       </div>
-        
+    
       <section class="section about-me" data-section="section1">
         <div class="container">
           <div class="section-heading">
+            <script>
+              $.getJSON('http://time.jsontest.com', function(data) {
+        
+                var text = `Date: ${data.date}<br>
+                            Time: ${data.time}<br>
+                            Unix time: ${data.milliseconds_since_epoch}`
+        
+        
+                $(".mypanel").html(text);
+              });
+            </script>
             <h2>About Me</h2>
             <div class="line-dec"></div>
             <span
@@ -91,17 +115,17 @@ https://templatemo.com/tm-531-reflux
             <div class="row">
               <div class="col-md-6">
                 <div class="left-image">
-                  <img src="assets/images/left-image.jpg" alt="" />
+                  <img src="assets/images/left-image.jfif" alt="" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="right-text">
-                  <h4>Idk what to write now.</h4>
+                  <h4>Botuu, From Discord</h4>
                   <p>
-                    yk genius ppl dont have much to say. Here a meme instead. Anyways suggest me sth here on instagram.
+                    A multipourpose non functional Discord Bot Created About 2 years ago as a joke but ended up being a Discord Verified Bot. Well definately Non-Functional part was a joke and it actually has some coolest features you can ever imagine! Add this bot or join my Discord Server to talk to me about it. Cuz Im too lazy to create a docs. for this stupid little bot.
                   </p>
                   <div class="white-button">
-                    <a href="https://www.instagram.com/rajat_cj"><i class="fa fa-instagram"></i> Instagram</a>
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=776030473562095626&permissions=8&scope=applications.commands+bot"><i class="fa fa-bot"></i> Invite Botuu</a> <a class="red-button" href="https://discord.gg/XTRYDsbg9E"><i class="fa fa-discord"></i> Server</a>
                   </div>
                 </div>
               </div>
@@ -147,14 +171,14 @@ https://templatemo.com/tm-531-reflux
                 <div class="first-service-icon service-icon"></div> 
                 <h4>HTML5 &amp; CSS3</h4>
                 <p>
-                  Trust me, I didnt make this website.
+                  Trust me, I didnt make this website. Literally EVERYTHING is copied from stackoflow, w3school and bootstrap.
                 </p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="service-item">
                 <div class="second-service-icon service-icon"></div>
-                <h4>Creative Ideas</h4>
+                <h4>Py, node.js, Javascript</h4>
                 <p>
                   Okayy, I cant deny that. I need perfection in User Interface and Looks.
                   Wonder why my Discord Bots look better than those commercial bots.
@@ -429,6 +453,11 @@ https://templatemo.com/tm-531-reflux
     </div>
 
     <!-- Scripts -->
+    <script src="css/js/particles.js"></script>
+      <script src="css/js/app.js"></script>
+
+      
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

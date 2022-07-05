@@ -256,7 +256,7 @@ html {
     left: 0;
     color: #ffffff;
     background-color: #a43f49;
-    width: 20px;
+    width: 4%;
     height: 100%;
     text-align: center;
     display: inline-block;
@@ -318,8 +318,34 @@ html {
     letter-spacing: 0.5px;
 }
 
+/* Home */
+#particles-js{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    background: #a43f4900;
+
+}
 
 /* Buttons */
+
+.ig-button a {
+    display: inline-block;
+    padding: 5px 16px;
+    background-color: #fff;
+    color: #a43f49;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.ig-button a:hover {
+    background-color: #a43f49;
+    color: #fff;
+}
 
 .white-button a {
     display: inline-block;
@@ -336,6 +362,23 @@ html {
 .white-button a:hover {
     background-color: #a43f49;
     color: #fff;
+}
+
+.red-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #a43f49;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.red-button a:hover {
+    background-color: #fff;
+    color: #a43f49;
 }
 
 button {
@@ -772,8 +815,8 @@ section.contact-me {
     }
 
     .menu .container {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .menu.open {
@@ -788,7 +831,7 @@ section.contact-me {
     .section {
         width: 94%;
         right: 3%;
-        left: 3%;
+        left: 5%;
     }
     .isotope-item {
         width: 94%;
