@@ -43,7 +43,7 @@ a:hover {
 p {
     font-size: 16px;
     line-height: 24px;
-    color: #fff;
+    color: #e4e297;
 }
 
 h4 {
@@ -127,7 +127,7 @@ html {
 .main-nav li:hover a,
 .main-nav li.active a {
     background: #fff;
-    color: #8c363e;
+    color: #8c8b36;
 }
 
 /* Sidebar Menu */
@@ -345,7 +345,7 @@ html {
 }
 
 .ig-button a:hover {
-    background-color: #c04a5680;
+    background-color: #ccd36c80;
     color: #fff;
 }
 
