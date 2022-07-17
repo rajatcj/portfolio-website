@@ -6,6 +6,64 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+
+
+.botuu-section {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.botucircle {
+    background-image: url('../images/botublank.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    width: 50%;
+    aspect-ratio : 1 / 1;
+    padding-top: 16%;
+    
+}
+.eye-white{
+    width: 27%;
+    aspect-ratio : 1 / 1.2;
+    margin: 1%;
+    border-radius: 50%;
+    position: static;
+    display: inline-block;
+    overflow: hidden;
+    background: #fff;
+}
+.eye-ball{
+    width: 70%;
+    aspect-ratio : 1.1 / 1;
+    border-radius: 50%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background:#7f9ef8;    
+}
+.botucircle:hover {
+    background-image: url('../images/botuhappy.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    width: 50%;
+}
+.botucircle:hover .eye-white {
+    background: rgba(255, 255, 255, 0);
+}
+.botucircle:hover .eye-ball {
+    background: rgba(255, 255, 255, 0);
+}
+
+
+
+
+
+
+
+
 #page-wraper {
     background: url(../images/page-bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
