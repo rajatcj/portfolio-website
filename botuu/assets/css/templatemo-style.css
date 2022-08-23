@@ -65,9 +65,17 @@ body {
 
 
 
+.sitelist {
+    height : 100%;
+    width : 10%;
+    left : 0px;
+}
 
-
-
+.linklist {
+    height : 100%;
+    width : 90%;
+    left : 40px;
+}
 
 
 
