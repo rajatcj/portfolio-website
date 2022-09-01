@@ -31,7 +31,7 @@ body {
     height: 12px;
   }
 ::-webkit-scrollbar-track {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #a43f49;
   }
 ::-webkit-scrollbar-thumb {
@@ -365,6 +365,25 @@ html {
     background-color: #c04a5680;
     color: #fff;
 }
+
+.igred-button a {
+    display: inline-block;
+    padding: 5px 16px;
+    background-color: #a43f49;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border-radius: 5px;
+}
+
+.igred-button a:hover {
+    background-color: #ffffff;
+    color: #a43f49;
+}
+
 
 .white-button a {
     display: inline-block;
@@ -785,6 +804,8 @@ section.contact-me {
     .menu .image {
         margin-top: 60px;
     }
+
+   
 }
 
 @media screen and (max-width: 1280px) {
@@ -900,5 +921,9 @@ section.contact-me {
 
     .isotope-toolbar {
         margin-bottom: 20px;
+    }
+
+    .service-item {
+        padding: 15px; 
     }
 }
