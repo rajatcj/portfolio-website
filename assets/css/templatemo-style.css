@@ -31,14 +31,15 @@ body {
     height: 12px;
   }
 ::-webkit-scrollbar-track {
-    border-radius: 10px;
     background-color: #a43f49;
   }
 ::-webkit-scrollbar-thumb {
+    height: 200px;
     background-color: #b6b6b6;
     background-image:-webkit-linear-gradient(rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
     border-radius: 10px;
   }
+
 
 /* Basic */
 
