@@ -1,6 +1,6 @@
 .app {
   
-  height: 100vh;
+  height: 100%;
   width: 100%;
   
   position: absolute;
@@ -11,11 +11,7 @@
   overflow: hidden;
 }
 
-@media screen and (min-width: 845px) {    
-  .app {
-    max-width: 600px;
-  } 
-}
+
 
 .nav {
   width: 100%;
