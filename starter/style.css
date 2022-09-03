@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.wrp {
+  height: 100vh;
+  width: 100%;
+}
+.wrp svg {
+  height: 100%;
+  width: 100%;
+}
+.wrp svg * {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.wrp svg .swet,
+.wrp svg .debre,
+.wrp svg .flash,
+.wrp svg #paper1 {
+  opacity: 0;
+}
