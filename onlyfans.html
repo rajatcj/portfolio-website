@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <title>OnlyFans</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="onlyfans/rajat">
   <meta property="og:title" content="Onlyfans">
-  <meta property="og:description" content="Subscribe to Rajat on OnlyFans Today @ only 69.420">
+  <meta property="og:description" content="Subscribe to Rajat on OnlyFans Today @ only 420.69">
   <meta property="og:image" content="https://static.onlyfans.com/theme/onlyfans/images/og-logo.jpg?rev=202209021756-c0b88c854c">
   <meta content="https://www.jharajat.com.np/" property="og:url" />
   <meta content="#ADD8E6" data-react-helmet="true" name="theme-color" />
@@ -171,15 +171,56 @@ padding:15px;
         <p>
           Hello there, :)
           <div class="ofsub">
-            Subscription $69.420 per month
+            Subscription Rs 420.69 per month
             <p>
-            <div class="ofbutton">
-              SUBSCRIBE FOR $69.420
-            </div>
+            <button class="ofbutton" id="payment-button">
+              SUBSCRIBE FOR Rs 420.69
+            </button>
+            
         </div>
         <p>
       </div>
 </div>
+
+<!-- Place this where you need payment button -->
+<!-- Place this where you need payment button -->
+<!-- Paste this code anywhere in you body tag -->
+<script>
+    var config = {
+        // replace the publicKey with yours
+        "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
+        "productIdentity": "1234567890",
+        "productName": "Dragon",
+        "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+        "paymentPreference": [
+            "KHALTI",
+            "EBANKING",
+            "MOBILE_BANKING",
+            "CONNECT_IPS",
+            "SCT",
+            ],
+        "eventHandler": {
+            onSuccess (payload) {
+                // hit merchant api for initiating verfication
+                console.log(payload);
+            },
+            onError (error) {
+                console.log(error);
+            },
+            onClose () {
+                console.log('widget is closing');
+            }
+        }
+    };
+
+    var checkout = new KhaltiCheckout(config);
+    var btn = document.getElementById("payment-button");
+    btn.onclick = function () {
+        // minimum transaction amount must be 10, i.e 1000 in paisa.
+        checkout.show({amount: 42069});
+    }
+</script>
+<!-- Paste this code anywhere in you body tag -->
 <!-- partial -->
   
 </body>
