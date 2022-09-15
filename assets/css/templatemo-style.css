@@ -309,7 +309,7 @@ html {
     position: relative;
     min-height: 100vh;
     padding-bottom: 80px;
-    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+    border-bottom: 3px solid #a43f49;
 }
 
 .section-heading {
