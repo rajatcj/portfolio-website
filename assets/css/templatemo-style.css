@@ -967,4 +967,11 @@ section.contact-me {
     .service-item {
         padding: 15px; 
     }
+    .service-item h4 {
+        font-size : 18px;
+    }
+    .service-item p {
+        font-size : 12px;
+        line-height : 15px
+    }
 }
