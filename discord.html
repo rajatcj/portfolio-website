@@ -82,9 +82,9 @@
                </div>
                <nav class="main-nav" role="navigation">
                   <ul class="main-menu">
-                     <li><a href="http://jharajat.com.np/discord/opn" target="myframe">One Piece Nepal</a></li>
-                     <li><a href="http://jharajat.com.np/discord/fs" target="myframe">Freak Street</a></li>
-                     <li><a href="http://jharajat.com.np/discord/botuu" target="myframe">Botuu's Crewmates</a></li>
+                     <li><a onclick="discordOPN()">One Piece Nepal</a></li>
+                     <li><a onclick="discordFS()">Freak Street</a></li>
+                     <li><a onclick="discordBOTUU()">Botuu's Crewmates</a></li>
                   </ul>
                </nav>
                <div class="social-network">
@@ -182,6 +182,19 @@
       $(window).scroll(function() {
         checkSection();
       });
+
+
+
+function discordOPN() {
+  document.getElementById("myframe").src = "https://jharajat.com.np/discord/opn";
+}
+function discordFS() {
+  document.getElementById("myframe").src = "https://jharajat.com.np/discord/fs";
+}
+function discordBOTUU() {
+  document.getElementById("myframe").src = "https://jharajat.com.np/discord/botuu";
+}
+
    </script>
    </body>
 </html>
