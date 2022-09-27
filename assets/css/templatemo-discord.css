@@ -137,20 +137,43 @@ html {
     display: block;
 }
 
-.main-nav li a {
+.main-nav .open {
     height: 50px;
     line-height: 50px;
     display: inline-block;
     font-size: 16px;
     font-weight: 700;
-    color: #fff;
-    width: 100%;
+    color: #a43f49;
+    width: 90%;
     transition: all 0.5s;
     border-top: 1px solid #fff;
 }
 
-.main-nav li:hover a,
-.main-nav li.active a {
+.main-nav .openfull {
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #a43f49;
+    width: 10%;
+    border-left: 1px solid #a43f49;
+    transition: all 0.5s;
+    border-top: 1px solid #fff;
+}
+
+
+
+.main-nav a:hover {
+    border-left: 1px solid #fff;
+    border-top: 1px solid #a43f49;
+    background: #a43f49;
+    border-bottom: 1px solid #8c363e;
+    color: #fff;
+}
+
+
+.main-nav a {
     background: #fff;
     border-bottom: 1px solid #8c363e;
     color: #8c363e;
