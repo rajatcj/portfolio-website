@@ -149,6 +149,7 @@ html {
     border-top: 1px solid #fff;
 }
 
+
 .main-nav .openfull {
     height: 50px;
     line-height: 50px;
@@ -159,7 +160,7 @@ html {
     width: 10%;
     border-left: 1px solid #a43f49;
     transition: all 0.5s;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #ffffff;
 }
 
 
