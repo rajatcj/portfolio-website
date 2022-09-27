@@ -152,6 +152,7 @@ html {
 .main-nav li:hover a,
 .main-nav li.active a {
     background: #fff;
+    border-bottom: 1px solid #8c363e;
     color: #8c363e;
 }
 
