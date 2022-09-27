@@ -15,7 +15,7 @@
          />
       <link rel="icon" type="image/x-icon" href="assets/images/author-image.png">
       <link rel="stylesheet" media="screen" href="css/style.css">
-      <title>Rajat Home Page</title>
+      <title>Rajat's Communities</title>
       <!--
          Reflux Template ko bau ko link is this  https://templatemo.com/tm-531-reflux
          -->
@@ -34,9 +34,9 @@
       <meta name="MobileOptimized" content="320">
       <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
       <meta property="og:type" content="website">
-      <meta property="og:site_name" content="jharajat.com.np">
-      <meta property="og:title" content="Oh hello, How are you?">
-      <meta property="og:description" content="This is my place. Visit me to contact me or see what im upto with my realtime status.">
+      <meta property="og:site_name" content="jharajat.com.np/discord">
+      <meta property="og:title" content="Find me here..">
+      <meta property="og:description" content="Click to visit my communities.">
       <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
       <meta content="https://www.jharajat.com.np/" property="og:url" />
       <meta content="#a43f49" data-react-helmet="true" name="theme-color" />
@@ -76,13 +76,10 @@
                <div class="author-content">
                   <h4>Discord Communities</h4>
                   <span>Imagine a place</span>
-                  <div class="ig-button">
-                     <a href="https://www.instagram.com/rajat_cj" target=”_blank”><i class="fa fa-instagram"></i> Follow</a>
                   </div>
-               </div>
                <nav class="main-nav" role="navigation">
                   <ul class="main-menu">
-                     <li><a onclick="discordOPN()">One Piece Nepal</a></li>
+                     <li><a onclick="discordOPN()">One Piece Nepal </a></li>
                      <li><a onclick="discordFS()">Freak Street</a></li>
                      <li><a onclick="discordBOTUU()">Botuu's Crewmates</a></li>
                   </ul>
@@ -105,9 +102,7 @@
                         <a href="https://twitter.com/rajat_cj"><i class="fa-brands fa-twitter"></i></a>
                      </li>
                   </ul>
-               </div><br><br>
-               <a href="https://discord.com/users/754033245972201612"><img src="https://discord.c99.nl/widget/theme-4/754033245972201612.png" style="width: 100%;" alt="Discord Status" ></a>
-               
+               </div>
                
                 <div class="copyright-text">
                   <p><i class="fa-regular fa-copyright"></i> Copyright 2022, Rajat CJ</p>
@@ -135,53 +130,7 @@
    <script src="assets/js/lightbox.js"></script>
    <script src="assets/js/custom.js"></script>
    <script>
-      $(".main-menu li:first").addClass("active");
       
-      var showSection = function showSection(section, isAnimate) {
-        var direction = section.replace(/#/, ""),
-          reqSection = $(".section").filter(
-            '[data-section="' + direction + '"]'
-          ),
-          reqSectionPos = reqSection.offset().top - 0;
-      
-        if (isAnimate) {
-          $("body, html").animate(
-            {
-              scrollTop: reqSectionPos
-            },
-            800
-          );
-        } else {
-          $("body, html").scrollTop(reqSectionPos);
-        }
-      };
-      
-      var checkSection = function checkSection() {
-        $(".section").each(function() {
-          var $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var currentId = $this.data("section"),
-              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-            reqLink
-              .closest("li")
-              .addClass("active")
-              .siblings()
-              .removeClass("active");
-          }
-        });
-      };
-      
-      $(".main-menu").on("click", "a", function(e) {
-        e.preventDefault();
-        showSection($(this).attr("href"), true);
-      });
-      
-      $(window).scroll(function() {
-        checkSection();
-      });
 
 
 
