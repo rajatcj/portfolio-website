@@ -47,17 +47,16 @@
                 <img src="./assets/img/badges/nitro.webp" alt="" />
                 <div class="tooltip tooltip-up">Nitro Subscriber</div>
               </div>
-              <div class="badge-item">
-                <img src="./assets/img/badges/boost.webp" alt="" />
-                <div class="tooltip tooltip-up">Booster</div>
-              </div>
+              
             </div>
-            <div class="username" id="discorduser.name">Rajat<span id="discorduser.discrim">#1004</span></div>  
-
+            
+            <div class="username" id="discorduser.name">Rajat<span>#1004</span></div>
+            
               
             
             <hr />
           </div>
+          <div class="status"><div id="discorduser.statemoji"></div><span id="discorduser.stattext">asdsaas</span></div>
         </div>
         <div class="card-content">
           <div class="about-me">
@@ -104,9 +103,9 @@
         fetch("https://api.lanyard.rest/v1/users/754033245972201612")
             .then(response => response.json())
             .then(data => {
-                document.getElementById("discorduser.discrim").innerHTML=`#${data.data.discord_user.discriminator}`;
+                document.getElementById("discorduser.name").innerHTML=`${data.data.discord_user.username}<span>#${data.data.discord_user.discriminator}</span>`;
                 
-
+                if (data.data.discord_status === `idle`) {
                 if (data.data.active_on_discord_desktop) {
                   document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-display"></i>
                 <div class="tooltip tooltip-up">Idle on Desktop</div>`;
@@ -121,8 +120,49 @@
                   document.getElementById("discorduser.web").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-globe"></i>
                 <div class="tooltip tooltip-up">Idle on Browser</div>`;
                 }
-                
+              }
+
+              if (data.data.discord_status === `online`) {
+                if (data.data.active_on_discord_desktop) {
+                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">Online on Desktop</div>`;
+                }
+
+                if (data.data.active_on_discord_mobile) {
+                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">Online on Mobile</div>`;
+                }
+
+                if (data.data.active_on_discord_web) {
+                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">Online on Browser</div>`;
+                }
+              }
+              if (data.data.discord_status === `dnd`) {
+                if (data.data.active_on_discord_desktop) {
+                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">DND on Desktop</div>`;
+                }
+
+                if (data.data.active_on_discord_mobile) {
+                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">DND on Mobile</div>`;
+                }
+
+                if (data.data.active_on_discord_web) {
+                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">DND on Browser</div>`;
+                }
+              }
+              if (data.data.discord_status === `offline`) {
+                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#747f8d;" class="fa-solid fa-circle"></i>
+                <div class="tooltip tooltip-up">Offline</div>`;
+              }
+
                 })
-    </script>
+
+
+     </script>
+     
   </body>
 </html>
