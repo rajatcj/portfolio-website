@@ -167,6 +167,37 @@ html {
   display: block;
 }
 
+
+.card-header .infos .status-container {
+  position: absolute;
+  top: -120%;
+  left: 0;
+  padding: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 150px;
+}
+
+
+.card-header .infos .status-container .status-item {
+  position: relative;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-header .infos .status-container .status-item i {
+  height: 60%;
+}
+
+.card-header .infos .status-container .status-item:hover > .tooltip {
+  display: block;
+}
+
 .card-header .infos .username {
   color: #eeeeee;
   margin-top: 55px;

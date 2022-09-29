@@ -7,6 +7,8 @@
     <!-- <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet" /> -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Discord Profile Card</title>
+    <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+  
   </head>
   <body>
     <div class="card-container">
@@ -20,10 +22,15 @@
             <div class="profil-logo">
               <img src="https://api.lanyard.rest/754033245972201612.jpg" />
             </div>
+
+            <div class="status-container">
+
+              <div class="status-item" id="discorduser.desktop"></div>
+              <div class="status-item" id="discorduser.mobile"></div>
+              <div class="status-item" id="discorduser.web"></div>
+            </div>
+
             <div class="badges-container">
-              
-              
-              
               <div class="badge-item">
                 <img src="./assets/img/badges/brilliance.png" alt="" />
                 <div class="tooltip tooltip-up">HypeSquad Brilliance</div>
@@ -45,7 +52,10 @@
                 <div class="tooltip tooltip-up">Booster</div>
               </div>
             </div>
-            <div class="username" id="discorduser.name">Rajat<span id="discorduser.discrim">#1004</span></div>
+            <div class="username" id="discorduser.name">Rajat<span id="discorduser.discrim">#1004</span></div>  
+
+              
+            
             <hr />
           </div>
         </div>
@@ -95,8 +105,24 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("discorduser.discrim").innerHTML=`#${data.data.discord_user.discriminator}`;
-                })
+                
 
+                if (data.data.active_on_discord_desktop) {
+                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">Idle on Desktop</div>`;
+                }
+
+                if (data.data.active_on_discord_mobile) {
+                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">Idle on Mobile</div>`;
+                }
+
+                if (data.data.active_on_discord_web) {
+                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">Idle on Browser</div>`;
+                }
+                
+                })
     </script>
   </body>
 </html>
