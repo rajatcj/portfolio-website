@@ -45,14 +45,14 @@
                 <div class="tooltip tooltip-up">Booster</div>
               </div>
             </div>
-            <div class="username">Rajat<span>#1004</span></div>
+            <div class="username" id="discorduser.name">Rajat<span id="discorduser.discrim">#1004</span></div>
             <hr />
           </div>
         </div>
         <div class="card-content">
           <div class="about-me">
             <div class="category-title">About Me</div>
-            <p>Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo</p>
+            <p id="discorduser.bio">Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo</p>
             
           </div>
           <div class="roles">
@@ -85,5 +85,19 @@
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="https://sybraxdesign.fr/api/github/main.js"></script>
+
+    <script>
+      
+
+        
+        // JSON - JavaScript Object Notation
+        fetch("https://api.lanyard.rest/v1/users/754033245972201612")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("discorduser.discrim").innerHTML=`#${data.data.discord_user.discriminator}`;
+                document.getElementById("discorduser.bio").innerHTML=`#${data.data.discord_user.avatar}`;
+              })
+
+    </script>
   </body>
 </html>
