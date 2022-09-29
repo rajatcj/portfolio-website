@@ -51,11 +51,19 @@
             </div>
             
             <div class="username" id="discorduser.name">Rajat<span>#1004</span></div>
-            <hr />
+            <hr>
+            
           </div>
-          
+            
         </div>
+        
         <div class="card-content">
+          
+          <div class="card-status">
+            <span id="discorduser.emoji"></span><span id="discorduser.status"></span>
+            <br><br>
+          <hr>
+          </div>
           <div class="about-me">
             <div class="category-title">About Me</div>
             <p>Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo</p>
@@ -81,7 +89,7 @@
           </div>
           <div class="note">
             <div class="category-title">Note</div>
-            <textarea placeholder="Click for add a note"></textarea>
+            <textarea placeholder="Click to add a note"></textarea>
           </div>
         </div>
       </div>
@@ -158,6 +166,16 @@
               if (data.data.listening_to_spotify) {
                   document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
+              }
+              if (data.data.activities[0].id === `custom`) {
+                  document.getElementById("discorduser.status").innerHTML=data.data.activities[0].state;
+                  if (data.data.activities[0].emoji.animated === false) {
+                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.data.activities[0].emoji.id}.webp" width="15"> `;
+                  } else if (data.data.activities[0].emoji.animated === true) {
+                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.data.activities[0].emoji.id}.gif?size=40" width="15"> `;
+                  } else {
+                      document.getElementById("discorduser.emoji").innerHTML=`${data.data.activities[0].emoji.name} `;
+                  }
               }
 
                 })

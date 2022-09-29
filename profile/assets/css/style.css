@@ -223,12 +223,21 @@ html {
 }
 
 .card-header .infos .username span {
-  font-weight: 500;
+  font-weight: 1000;
   color: #8f8f8f;
 }
 
 .card-header .infos hr {
-  border: 1px solid #212121;
+  border: 1px solid #21212100;
+}
+
+.card-status span {
+  font-weight: 300;
+  color: #8f8f8f;
+}
+
+.card-status hr {
+  border: 1px solid rgb(39, 39, 39);
 }
 
 .card-content {
