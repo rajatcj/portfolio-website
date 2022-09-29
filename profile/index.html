@@ -24,9 +24,10 @@
             </div></a>
 
             <div class="status-container">
-              <div class="status-item" id="discorduser.desktop"></div>
-              <div class="status-item" id="discorduser.mobile"></div>
-              <div class="status-item" id="discorduser.web"></div>
+              <div id="discorduser.desktop"></div>
+              <div id="discorduser.mobile"></div>
+              <div id="discorduser.web"></div>
+              <div id="discorduser.spotify"></div>
             </div>
 
             <div class="badges-container">
@@ -73,15 +74,15 @@
               </div>
             </div>
           </div>
+          <div class="roles">
+            <div class="category-title">Activity</div>
+            <img src="https://lanyard.cnrad.dev/api/754033245972201612?animated=true&hideBadges=true&hideDiscrim=true&hideStatus=true&idleMessage=NO+CURRENT+ACTIVITY&bg=00000000&theme=dark" width="99%" alt="Discord Live Activity Presence" />
+                        
+          </div>
           <div class="note">
             <div class="category-title">Note</div>
             <textarea placeholder="Click for add a note"></textarea>
           </div>
-        </div>
-        <div class="card-footer">
-          <form id="contact" action="mailto:mail@jharajat.com.np" method="get" enctype="text/plain">
-            <input type="text" name="Message" placeholder="Send a email to Rajat" />
-          </form>
         </div>
       </div>
       
@@ -103,56 +104,60 @@
                 
                 if (data.data.discord_status === `idle`) {
                 if (data.data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-display"></i>
-                <div class="tooltip tooltip-up">Idle on Desktop</div>`;
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#faa81a;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">Idle on Desktop</div></div>`;
                 }
 
                 if (data.data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-mobile"></i>
-                <div class="tooltip tooltip-up">Idle on Mobile</div>`;
+                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:#faa81a;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">Idle on Mobile</div></div>`;
                 }
 
                 if (data.data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#faa81a;" class="fa-solid fa-globe"></i>
-                <div class="tooltip tooltip-up">Idle on Browser</div>`;
+                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:#faa81a;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">Idle on Browser</div></div>`;
                 }
               }
 
               if (data.data.discord_status === `online`) {
                 if (data.data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-display"></i>
-                <div class="tooltip tooltip-up">Online on Desktop</div>`;
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#3ba55d;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">Online on Desktop</div></div>`;
                 }
 
                 if (data.data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-mobile"></i>
-                <div class="tooltip tooltip-up">Online on Mobile</div>`;
+                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:#3ba55d;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">Online on Mobile</div></div>`;
                 }
 
                 if (data.data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#3ba55d;" class="fa-solid fa-globe"></i>
-                <div class="tooltip tooltip-up">Online on Browser</div>`;
+                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:#3ba55d;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">Online on Browser</div></div>`;
                 }
               }
               if (data.data.discord_status === `dnd`) {
                 if (data.data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-display"></i>
-                <div class="tooltip tooltip-up">DND on Desktop</div>`;
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#ed4245;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">DND on Desktop</div></div>`;
                 }
 
                 if (data.data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-mobile"></i>
-                <div class="tooltip tooltip-up">DND on Mobile</div>`;
+                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:#ed4245;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">DND on Mobile</div></div>`;
                 }
 
                 if (data.data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<i style="color:#ed4245;" class="fa-solid fa-globe"></i>
-                <div class="tooltip tooltip-up">DND on Browser</div>`;
+                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:#ed4245;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">DND on Browser</div></div>`;
                 }
               }
               if (data.data.discord_status === `offline`) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<i style="color:#747f8d;" class="fa-solid fa-circle"></i>
-                <div class="tooltip tooltip-up">Offline</div>`;
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#747f8d;" class="fa-solid fa-circle"></i>
+                <div class="tooltip tooltip-up">Offline</div></div>`;
+              }
+              if (data.data.listening_to_spotify) {
+                  document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="color:#1ed760;" class="fa-brands fa-spotify"></i>
+                <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
               }
 
                 })

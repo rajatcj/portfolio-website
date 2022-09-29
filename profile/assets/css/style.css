@@ -176,24 +176,25 @@ html {
 
 .card-header .infos .status-container {
   position: absolute;
-  top: -120%;
-  left: 0;
+  top: -115%;
+  left: 95px;
   padding: inherit;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: left;
   width: 150px;
 }
 
 
 .card-header .infos .status-container .status-item {
   position: relative;
-  margin-right: 10px;
+  margin-right: 0px;
   margin-bottom: 5px;
-  width: 10px;
+  width: 20px;
   height: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  
 }
 
 .card-header .infos .status-container .status-item i {
