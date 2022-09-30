@@ -61,7 +61,7 @@
           
           <div class="card-status">
             <span id="discorduser.emoji"></span><span id="discorduser.status"></span>
-            <br><br>
+            
           <hr>
           </div>
           <div class="about-me">
@@ -173,7 +173,7 @@
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
               }
               if (data.data.activities[0].id === `custom`) {
-                  document.getElementById("discorduser.status").innerHTML=data.data.activities[0].state;
+                  document.getElementById("discorduser.status").innerHTML=`${data.data.activities[0].state}<br><br>`;
                   if (data.data.activities[0].emoji.animated === false) {
                       document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.data.activities[0].emoji.id}.webp" width="15"> `;
                   } else if (data.data.activities[0].emoji.animated === true) {
