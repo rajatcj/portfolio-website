@@ -9,6 +9,10 @@
     <title>Discord Profile Card</title>
     <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
   
+    <link rel="stylesheet" href="style.css">
+        <script src="lanyard.js"></script>
+        <!-- everything important in here -->
+        <script src="init.js"></script>
   </head>
   <body>
     <div class="card-container">
@@ -84,8 +88,8 @@
           </div>
           <div class="roles">
             <div class="category-title">Activity</div>
-            <img src="https://lanyard.cnrad.dev/api/754033245972201612?animated=true&hideBadges=true&hideDiscrim=true&hideStatus=true&idleMessage=NO+CURRENT+ACTIVITY&bg=00000000&theme=dark" width="99%" alt="Discord Live Activity Presence" />
-                        
+            <div id="activitycard">
+            </div>
           </div>
           <div class="note">
             <div class="category-title">Note</div>
@@ -172,6 +176,13 @@
                   document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
               }
+
+              if (data.data.listening_to_spotify) {
+                  document.getElementById("activitycard").innerHTML=`<div id="activities" width="100%"></div>`;
+              } else {
+                document.getElementById("activitycard").innerHTML=`<img src="https://lanyard.cnrad.dev/api/754033245972201612?animated=true&hideBadges=true&hideDiscrim=true&hideStatus=true&idleMessage=NO+CURRENT+ACTIVITY&bg=00000000&theme=dark" width="99%" alt="Discord Live Activity Presence" />`;
+              }
+
               if (data.data.activities[0].id === `custom`) {
                   document.getElementById("discorduser.status").innerHTML=`${data.data.activities[0].state}<br><br>`;
                   if (data.data.activities[0].emoji.animated === false) {
@@ -187,6 +198,22 @@
 
 
      </script>
-     
+     <script>
+      // loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
+      var i = 1;
+
+      function loop() {
+          setTimeout(function() {
+              updatepresence();
+              
+              i++;
+              if (i < 10) {
+                  loop();
+              }
+          }, 4000)
+      }
+
+      loop();
+  </script>
   </body>
 </html>
