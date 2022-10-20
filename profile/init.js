@@ -63,8 +63,8 @@ async function updatepresence() {
             
             // if the activity is spotify try to get all of the song info instead of the activity details
             if(element['name'] === "Spotify") {
-                var songinfo = [json.spotify['song'], "By " + json.spotify['artist'].split('; ').join(', '), json.spotify['album']]
-                div.innerHTML = '<img draggable="false" alt="" width="128" height="128" src="' +
+                var songinfo = [json.spotify['song'], "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
+                div.innerHTML = '<img draggable="false" alt="" width="96" height="96" src="' +
                     json.spotify['album_art_url'] + '"> ' +"<ul><li><strong>" + 'LISTENING TO SPOTIFY...' + "</strong></li>"  + "<li>" +
                     songinfo.join("</li><li>") + '</li></ul>';
             } 

@@ -21,30 +21,35 @@
     margin-top: 0;
 }
 
-
+strong {
+    padding-top: 10px;
+    font-size: 12px;
+    color: #1cb853;
+}
 
 #spotify li:nth-child(1) {
-    font-size: 30px;
+    font-size: 10px;
     color: rgb(153, 45, 45);
     font-weight: bold;
 }
 
 #spotify li:nth-child(2) {
-    font-size: 30px;
+    padding-top: 10px;
+    font-size: 20px;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
 
 
 #spotify li:nth-child(3) {
-    font-size: 20px;
+    font-size: 12px;
     color: rgba(255, 127, 80, 0.781);
     font-weight: lighter;
 }
 
 
 #spotify li:nth-child(4) {
-    font-size: 15px;
+    font-size: 12px;
     color: #cccccc;
     font-weight: lighter;
 }
@@ -61,10 +66,7 @@
 
 
 
-strong {
-    font-size: 15px;
-    color: #1cb853;
-}
+
 
 .activity img {
     border-radius: 10px;
