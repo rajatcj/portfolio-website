@@ -22,10 +22,11 @@ async function init(data) {
             div.className = "activity";
             // if the activity is spotify try to get all of the song info instead of the activity details
             if(element['name'] === "Spotify") {
-                var songinfo = [json.spotify['song'], json.spotify['artist'].split('; ').join(', '), json.spotify['album']]
-                div.innerHTML = ('<img draggable="false" alt="" width="80" height="80" src="' + json.spotify['album_art_url'] + '"> ' +
-                "<ul><li><strong>" + 'LISTENING TO SPOTIFY...' + "</strong></li>" + "<li>" + songinfo.join("</li><li>") + "</li></ul>");
-            } 
+                var songinfo = [json.spotify['song'], "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
+                div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
+                    json.spotify['album_art_url'] + '"> ' +"<ul><li><strong>" + 'LIlSTENING TO SPOTIFY...' + "</strong></li>"  + "<li>" +
+                    songinfo.join("</li><li>") + '</li></ul>';
+            };
 
             
 

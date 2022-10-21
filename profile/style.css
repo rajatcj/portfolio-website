@@ -70,3 +70,42 @@ strong {
 .activity img {
     border-radius: 10px;
 }
+
+
+
+.spotifyemb {
+    position: absolute;
+    color: #eeeeee;
+    background: #202020;
+    padding: 5px 4px;
+    border-radius: 3px;
+    max-width: 150px;
+    width: max-content;
+    font-size: 0.83rem;
+    animation: popAnim 0.03s linear;
+  }
+  
+ 
+
+
+  .spotifyemb-up {
+    top: -40px;
+    right: -10px;
+  }
+  
+  .spotifyemb-up::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #202020;
+  }
+
+  .activity:hover > .spotifyemb {
+    display: block;
+  }
+
