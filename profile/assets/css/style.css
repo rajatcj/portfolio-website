@@ -232,7 +232,8 @@ html {
 }
 
 .card-status span {
-  font-weight: 300;
+  font-size: 12px;
+  font-weight:bold;
   color: #8f8f8f;
 }
 
