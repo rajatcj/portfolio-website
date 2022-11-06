@@ -40,10 +40,28 @@ html {
   animation: popAnim 0.03s linear;
 }
 
+
+.msgtip {
+  display: none;
+  position: relative;
+  color: #eeeeee;
+  background: #202020;
+  padding: 5px 4px;
+  border-radius: 3px;
+  width: max-content;
+  font-size: 0.83rem;
+  animation: popAnim 0.03s linear;
+  top: -70px;
+  right: 0px;
+  
+}
+
+
 .tooltip-up {
   top: -40px;
   right: -10px;
 }
+
 
 .tooltip-up::before {
   content: "";
@@ -207,6 +225,7 @@ html {
 }
 
 
+
 .status span {
   font-weight: 500;
   color: #8f8f8f;
@@ -329,6 +348,8 @@ html {
   padding: 0 15px 15px 15px;
 }
 
+
+
 .card-footer input {
   background: #353535;
   outline: none;
@@ -344,7 +365,9 @@ html {
 .card-footer input:focus {
   border-color: orange;
 }
-
+.card-footer input:hover + .msgtip {
+  display: block;
+}
 
 
 

@@ -73,6 +73,7 @@
             <p>Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo</p>
             
           </div>
+          
           <div class="roles">
             <div class="category-title">Roles</div>
             <div class="roles-list">
@@ -98,13 +99,13 @@
         </div>
         <div class="card-footer">
           <form class="send-message" action="https://discord.com/api/webhooks/1038824056763465988/KSJn0jAh7vK8rFvZ016TxGGF9_J61QeK3IqygTJ1KIKfdGOYF4XnlTJrcsdWeQMNFeES" method="post">
+            
             <input type="text" name="content" id="content" placeholder="Send a secret message to Rajat" />
+            <div class="msgtip">Type and Enter to send.
+              Include (optionally) name/contact for replies.</div>
+        
           </form>
-          <div id="thank_you" style="display: none;">
-            <p>Thanks for filling up the form!</p>
-            <button type="submit">Close</button>
           </div>
-        </div>
       </div>
       
       
@@ -116,7 +117,7 @@
     <script>
       document.querySelector('#content').addEventListener('keypress', function (e) {
         setTimeout(function() { if (e.key === 'Enter') {
-             alert("Your message was sent to Rajat anonymously. Would you also write your name and contact info if you want him to reply back?!");
+             alert("Your message was sent to Rajat. He'll contact you if you have included your information (name/contact).");
           }}, 1000);
       });
     </script>
