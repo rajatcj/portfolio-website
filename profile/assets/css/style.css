@@ -41,20 +41,7 @@ html {
 }
 
 
-.msgtip {
-  display: none;
-  position: relative;
-  color: #eeeeee;
-  background: #202020;
-  padding: 5px 4px;
-  border-radius: 3px;
-  width: max-content;
-  font-size: 0.83rem;
-  animation: popAnim 0.03s linear;
-  top: -70px;
-  right: 0px;
-  
-}
+
 
 
 .tooltip-up {
@@ -350,7 +337,25 @@ html {
 
 
 
-.card-footer input {
+
+
+
+
+.msgtip {
+  display: none;
+  position: sticky;
+  color: #eeeeee;
+  background: #202020;
+  padding: 5px 4px;
+  border-radius: 3px;
+  width: fit-content;
+  font-size: 0.73rem;
+  animation: popAnim 0.01s linear;
+  top:-70px;
+  right: 0px;
+}
+
+.card-footer #content {
   background: #353535;
   outline: none;
   border: 1.2px solid #333333;
@@ -362,13 +367,31 @@ html {
   transition-duration: 0.3s;
 }
 
-.card-footer input:focus {
+
+.card-footer #username {
+  background: #353535;
+  outline: none;
+  border: 1.2px solid #333333;
+  padding: 10px;
+  width: 20%;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: #eeeeee;
+  transition-duration: 0.3s;
+}
+
+
+.card-footer #content:focus {
   border-color: orange;
 }
-.card-footer input:hover + .msgtip {
+
+.card-footer input:focus + .msgtip {
   display: block;
 }
 
+.card-footer input:hover + .msgtip {
+  display: block;
+}
 
 
 
