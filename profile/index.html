@@ -23,7 +23,7 @@
             class="banner-image"
           ></div>
           <div class="infos">
-            <a href="https://discord.com/users/754033245972201612" target="_blank"><div class="profil-logo">
+            <a href="https://discord.com/users/754033245972201612" target="_blank"><div id="discorduser.avatar" class="profil-logo">
               <img src="https://api.lanyard.rest/754033245972201612.jpg" />
             </div></a>
 
@@ -40,6 +40,10 @@
                 <div class="tooltip tooltip-up">HypeSquad Brilliance</div>
               </div>
               <div class="badge-item">
+                <img src="./assets/img/badges/activedev.png" alt="" />
+                <div class="tooltip tooltip-up">Active Developer</div>
+              </div>
+              <div class="badge-item">
                 <img src="./assets/img/badges/devbot.webp" alt="" />
                 <div class="tooltip tooltip-up">Verified Bot Developer</div>
               </div>
@@ -50,6 +54,10 @@
               <div class="badge-item">
                 <img src="./assets/img/badges/nitro.webp" alt="" />
                 <div class="tooltip tooltip-up">Nitro Subscriber</div>
+              </div>
+              <div class="badge-item">
+                <img src="./assets/img/badges/boost.webp" alt="" />
+                <div class="tooltip tooltip-up">Boosting OPN</div>
               </div>
               
             </div>
@@ -130,6 +138,7 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("discorduser.name").innerHTML=`${data.data.discord_user.username}<span>#${data.data.discord_user.discriminator}</span>`;
+                
                 
                 if (data.data.discord_status === `idle`) {
                 if (data.data.active_on_discord_desktop) {
