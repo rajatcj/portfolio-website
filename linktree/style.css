@@ -14,6 +14,14 @@
   box-sizing: inherit;
 }
 
+
+
+
+
+
+
+
+
 input[type=text] {
     width: 30rem;
     padding: 12px 20px;
@@ -272,8 +280,34 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   padding: 2rem 0 2rem 0;
+  flex:1;
 }
 
+
+.pulse {
+	background: rgba(255, 82, 82, 1);
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	transform: scale(1);
+	box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+	}
+	
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+	}
+}
 
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
