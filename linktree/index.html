@@ -71,7 +71,6 @@
   <script>
     document.querySelector('#content').addEventListener('keypress', function (e) {
       setTimeout(function() { if (e.key === 'Enter') {
-           alert("Your message was sent to Rajat. He'll contact you if you have included your information (name/contact).");
            document.getElementById('content').value = "";
            document.getElementById('content').placeholder = "Message was sent";
         }}, 1000);
