@@ -68,12 +68,14 @@
     </div>
     </div>
   </body>
+  
   <script>
     document.querySelector('#content').addEventListener('keypress', function (e) {
       setTimeout(function() { if (e.key === 'Enter') {
            document.getElementById('content').value = "";
-           document.getElementById('content').placeholder = "Message was sent";
+           document.getElementById('content').placeholder = "✅ Message was sent";
         }}, 1000);
     });
   </script>
+  <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 </html>
