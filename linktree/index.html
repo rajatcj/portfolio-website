@@ -40,12 +40,12 @@
         <div class='header__chat-box'>
           <div class='header__chat-box--behind'>
           <div class='header__chat-box--front'>
-            <h1>Hi.</h1>
+            <h1 id="avatartext">Hi.</h1>
           </div>
           </div>
         </div>
 
-        <div class='header__icon-box'>
+        <div class='header__icon-box' id="avatar">
           <img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'
           class='header__icon'/>
         </div>
@@ -97,11 +97,17 @@
       GFG.volume = 1.0;
 			GFG.play();
       document.getElementById('rickroll').innerHTML = "Hehe";
+      document.getElementById('avatartext').innerHTML = "Hi.";
+      document.getElementById('avatar').innerHTML = "<img src='https://media.tenor.com/x8v1oNUOmg4AAAAS/rickroll-roll.gif' alt='Discord Avatar' class='header__icon'/>";
 		}
 
 		function pause_Audio() {
 			GFG.pause();
+      document.getElementById('rickroll').innerHTML = "OnlyFans";
+      document.getElementById('avatartext').innerHTML = "Hi.";
+      document.getElementById('avatar').innerHTML = "<img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar' class='header__icon'/>";
 		}
+
 	</script>
 
   <script>
