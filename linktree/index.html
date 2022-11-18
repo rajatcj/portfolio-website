@@ -18,9 +18,20 @@
       <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
       <meta content="https://www.jharajat.com.np/linktree" property="og:url" />
       <meta content="#684d46" data-react-helmet="true" name="theme-color" />
+
+      <link rel="stylesheet" href="../profile/style.css">
+      <script src="../profile/init.js"></script>
+        <!-- everything important in here -->
+        <script src="../profile/lanyard.js"></script>
   </head>
 
   <body>
+
+    <audio id="idAudio">
+      <source src="./rick.mp3" type="audio/ogg">
+    </audio>
+
+
     <div class='triangle'></div>
     <div class='container'>
       <div class='space'></div>
@@ -50,7 +61,7 @@
         </li>
       <li class='left'><a class='link'href='https://discord.gg/UAaRzNz87W'>Support Server</a>
         </li>
-      <li class='right'><a class='link' href='#'>Just Click</a>
+      <li class='right'><a onclick="play_Audio()" class='link' id="rickroll" href='#'>OnlyFans</a>
         </li>
     </div>
 
@@ -64,7 +75,7 @@
                 <input type="text" style="font-family: 'Fredoka one', sans-serif;" autocomplete="off" name="content" id="content" placeholder="Send msg anonymously." />
                 
               </form>
-        
+              
     </div>
     </div>
   </body>
@@ -78,4 +89,36 @@
     });
   </script>
   <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+  <script>
+		var GFG = document.getElementById("idAudio");
+
+		function play_Audio() {
+			GFG.play();
+      document.getElementById('rickroll').innerHTML = "Hehe";
+		}
+
+		function pause_Audio() {
+			GFG.pause();
+		}
+	</script>
+
+  <script>
+    // loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
+    var i = 1;
+
+    function loop() {
+        setTimeout(function() {
+            updatepresence();
+            
+            i++;
+            if (i < 500) {
+                loop();
+            }
+        }, 5000)
+    }
+
+    loop();
+</script>
+
 </html>
