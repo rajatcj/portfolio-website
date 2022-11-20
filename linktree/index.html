@@ -95,14 +95,10 @@
   </body>
   
   
-
+<!-- webhook message -->
   <script>
     document.querySelector('#content').addEventListener('keypress', function (e) {
-      
       setTimeout(function() { if (e.key === 'Enter') {
-           
-           
-
            fetch('https://discord.com/api/webhooks/1043914673625518171/XAvBfs9pxexKNkwSaxpsD2UWOtuY31575MSlQ-4TFv27aBzBsbTLCBZzu4Up4FIl9fma', {
               method: 'POST',
               headers: {
@@ -118,10 +114,8 @@
                   },
               })
           })
-
           document.getElementById('content').value = "";
-           document.getElementById('content').placeholder = "✅ Message was sent";
-
+          document.getElementById('content').placeholder = "✅ Message was sent";
         }}, 1000);
     });
   </script>
@@ -146,10 +140,10 @@ except.addEventListener("click", function (ev) {
     ev.stopPropagation();
 }, false);
 </script>
-<!--For profile end-->
 
-  <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
+  
+<!--rickroll-->
   <script>
 		var GFG = document.getElementById("idAudio");
 
@@ -170,31 +164,11 @@ except.addEventListener("click", function (ev) {
 
 	</script>
 
-  <script>
-    // loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
-    var i = 1;
-
-    function loop() {
-        setTimeout(function() {
-            updatepresence();
-            
-            i++;
-            if (i < 500) {
-                loop();
-            }
-        }, 5000)
-    }
-
-    loop();
-</script>
 
 
-
-<!-- Browser ID -->
+<!-- Browser ID for chats -->
 <script>
-  // Check browser support
   if (typeof(Storage) !== "undefined") {
-    // Check if old data
     if (localStorage.getItem("chatid") === null) {
       localStorage.setItem("chatid", Math.floor((Math.random()*1000000)+1));
       var chatid = localStorage.getItem("chatid");
@@ -205,11 +179,15 @@ except.addEventListener("click", function (ev) {
     var chatid = "NA";
   }
   document.getElementById('username').value = "From Linktree (" + chatid +")";
-  </script>
-
-
-<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script  src="./script.js">
-  //particle.js this is
 </script>
+
+
+<!-- Particle.js -->
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script  src="./script.js"></script>
+
+
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
 </html>
