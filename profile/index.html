@@ -112,8 +112,7 @@
             
             <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to Rajat" />
             
-            <div class="msgtip">Type and Enter to send. Include (optionally) name/contact for replies.</div>
-          
+            
           </form>
           </div>
       </div>
@@ -127,10 +126,12 @@
     <script>
       document.querySelector('#content').addEventListener('keypress', function (e) {
         setTimeout(function() { if (e.key === 'Enter') {
-             alert("Your message was sent to Rajat. He'll contact you if you have included your information (name/contact).");
-          }}, 1000);
+          document.getElementById('content').value = "";
+          document.getElementById('content').placeholder = "✅ Sent, maybe type ur name and contacts too?";
+             }}, 1000);
       });
     </script>
+
 
     <script>
       // JSON - JavaScript Object Notation
