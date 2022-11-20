@@ -19,10 +19,10 @@
       <meta content="https://www.jharajat.com.np/linktree" property="og:url" />
       <meta content="#684d46" data-react-helmet="true" name="theme-color" />
 
-      <link rel="stylesheet" href="../profile/style.css">
-      <script src="../profile/init.js"></script>
+      
         <!-- everything important in here -->
-        <script src="../profile/lanyard.js"></script>
+
+
   </head>
 
   <body>
@@ -32,7 +32,11 @@
     </audio>
 
 
+
     <div class='triangle'></div>
+
+    
+
     <div class='container'>
       <div class='space'></div>
       <div class='header--box'>
@@ -44,9 +48,10 @@
           </div>
           </div>
         </div>
+        
 
         <div class='header__icon-box' id="avatar">
-          <img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'
+          <img src='https://api.lanyard.rest/754033245972201612.jpg' onclick="openDisc()" alt='Discord Avatar'
           class='header__icon'/>
         </div>
       </header>
@@ -69,25 +74,57 @@
       <div class='user-info'><h2>@rajat_cj</h2></div>
       
             <form class="send-message" action="https://discord.com/api/webhooks/1038824056763465988/KSJn0jAh7vK8rFvZ016TxGGF9_J61QeK3IqygTJ1KIKfdGOYF4XnlTJrcsdWeQMNFeES" method="post">
-                <input name="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp"/>
-                <input name="username" type="hidden" value="From Linktree"/>
+                <input name="avatar_url" id="avatar" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp"/>
+                <input name="username" id="username" type="hidden" value="From Linktree"/>
                 
                 <input type="text" style="font-family: 'Fredoka one', sans-serif;" autocomplete="off" name="content" id="content" placeholder="Send msg anonymously." />
-                
-              </form>
+                </form>
               
     </div>
     </div>
+
+    <div class="discordprofile" id="discordprofile">
+      <iframe id="discordprofileinside" src="../profile/index.html"  style="margin:20vh auto; display:block; width:100%; max-width: 400px; height: 80vh; border:0px;" title="Discord Status"></iframe>
+    </div>
+
   </body>
   
+  
+
   <script>
+
     document.querySelector('#content').addEventListener('keypress', function (e) {
+      
       setTimeout(function() { if (e.key === 'Enter') {
+           
            document.getElementById('content').value = "";
            document.getElementById('content').placeholder = "✅ Message was sent";
         }}, 1000);
     });
   </script>
+
+
+
+<!--For profile start-->
+<script>
+  function openDisc() {
+    document.getElementById("discordprofile").style.height = "100%";
+  }
+  </script>
+
+<script>
+  var body = document.getElementById('discordprofile');
+var except = document.getElementById('discordprofileinside');
+
+body.addEventListener("click", function () {
+  document.getElementById("discordprofile").style.height = "0%";
+}, false);
+except.addEventListener("click", function (ev) {
+    ev.stopPropagation();
+}, false);
+</script>
+<!--For profile end-->
+
   <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
   <script>
