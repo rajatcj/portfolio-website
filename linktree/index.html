@@ -75,7 +75,7 @@
       <div class='user-info'><h2>@rajat_cj</h2></div>
       
             <form class="send-message" action="https://discord.com/api/webhooks/1038824056763465988/KSJn0jAh7vK8rFvZ016TxGGF9_J61QeK3IqygTJ1KIKfdGOYF4XnlTJrcsdWeQMNFeES" method="post">
-                <input name="avatar_url" id="avatar" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp"/>
+                <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp"/>
                 <input name="username" id="username" type="hidden" value="From Linktree"/>
                 
                 <input type="text" style="font-family: 'Fredoka one', sans-serif;" autocomplete="off" name="content" id="content" placeholder="Send msg anonymously." />
@@ -101,8 +101,27 @@
       
       setTimeout(function() { if (e.key === 'Enter') {
            
-           document.getElementById('content').value = "";
+           
+
+           fetch('https://discord.com/api/webhooks/1043914673625518171/XAvBfs9pxexKNkwSaxpsD2UWOtuY31575MSlQ-4TFv27aBzBsbTLCBZzu4Up4FIl9fma', {
+              method: 'POST',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+              "username": "From Linktree",
+              "avatar_url": document.getElementById('avatar_url').value,
+              "content": document.getElementById('content').value,
+              "allowed_mentions": {
+                    "parse": []
+                  },
+              })
+          })
+
+          document.getElementById('content').value = "";
            document.getElementById('content').placeholder = "✅ Message was sent";
+
         }}, 1000);
     });
   </script>
@@ -118,7 +137,7 @@
 
 <script>
   var body = document.getElementById('discordprofile');
-var except = document.getElementById('discordprofileinside');
+  var except = document.getElementById('discordprofileinside');
 
 body.addEventListener("click", function () {
   document.getElementById("discordprofile").style.height = "0%";
@@ -168,6 +187,27 @@ except.addEventListener("click", function (ev) {
 
     loop();
 </script>
+
+
+
+<!-- Browser ID -->
+<script>
+  // Check browser support
+  if (typeof(Storage) !== "undefined") {
+    // Check if old data
+    if (localStorage.getItem("chatid") === null) {
+      localStorage.setItem("chatid", Math.floor((Math.random()*1000000)+1));
+      var chatid = localStorage.getItem("chatid");
+    } else {
+      var chatid = localStorage.getItem("chatid");
+    }
+  } else {
+    var chatid = "NA";
+  }
+  document.getElementById('username').value = "From Linktree (" + chatid +")";
+  </script>
+
+
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script  src="./script.js">
   //particle.js this is
