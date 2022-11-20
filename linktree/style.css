@@ -269,6 +269,68 @@ body {
   color: #fff;
 }
 
+
+
+.mediabuttons {
+  text-align: right;
+}
+
+.mediabtn {
+  text-align: center;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  background: #f1f1f1;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px -5px #00000070;
+  color: #000000;
+  overflow: hidden;
+  position: relative;
+}
+
+.mediabtn i {
+  line-height: 3rem;
+  font-size: 1.5rem;
+  transition: 0.2s linear;
+}
+
+.mediabtn:hover i {
+  transform: scale(1.3);
+  color: #f1f1f1;
+}
+
+.mediabtn::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: #030303;
+  transform: rotate(45deg);
+  left: -110%;
+  top: 90%;
+}
+
+.mediabtn:hover::before {
+  animation: aaa 0.7s 1;
+  top: -10%;
+  left: -10%;
+}
+
+@keyframes aaa {
+  0% {
+    left: -110%;
+    top: 90%;
+  }
+  50% {
+    left: 10%;
+    top: -30%;
+  }
+  100% {
+    top: -10%;
+    left: -10%;
+  }
+}
+
 .user-info h2 {
   font-family: 'Fredoka one', sans-serif;
   color: #43192d;
