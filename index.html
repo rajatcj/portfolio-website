@@ -472,7 +472,7 @@
             <div class="row">
                <div class="right-content">
                   <div class="container">
-                     <form id="contact" action="https://formspree.io/f/xayvgned" method="post">
+                     <form id="contact" action="formSubmit()">
                         <div class="row">
                            <div class="col-md-6">
                               <fieldset>
@@ -482,7 +482,7 @@
                                     class="form-control"
                                     id="name"
                                     placeholder="Your name..."
-                                    required=""
+                                    required="true"
                                     />
                               </fieldset>
                            </div>
@@ -494,7 +494,7 @@
                                     class="form-control"
                                     id="email"
                                     placeholder="Your email..."
-                                    required=""
+                                    required="true"
                                     />
                               </fieldset>
                            </div>
@@ -506,7 +506,7 @@
                                     class="form-control"
                                     id="subject"
                                     placeholder="Subject..."
-                                    required=""
+                                    required="true"
                                     />
                               </fieldset>
                            </div>
@@ -518,7 +518,7 @@
                                     class="form-control"
                                     id="message"
                                     placeholder="Your message..."
-                                    required=""
+                                    required="true"
                                     ></textarea>
                               </fieldset>
                            </div>
@@ -538,7 +538,61 @@
       </section>
    </div>
    <!-- sexy Scripts -->
-   
+   <!-- webhook message -->
+   <script>
+      let btn = document.getElementById("form-submit");
+      btn.addEventListener('click', event => {
+         event.preventDefault();
+         fetch('https://discord.com/api/webhooks/1043950221954142258/UIC5WBFguXPj8C4Ht9BxrhkFTqvTfCWLOnw-PyIU9GNb0_jNkLUoiEWHmIlb082Gia-n', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  "username": "Contact Form",
+                  "content": document.getElementById("name").value,
+                  "embeds": [
+                     {
+                        "title": document.getElementById("subject").value,
+                        "url": "https://jharajat.com.np",
+                        "description": document.getElementById("message").value,
+                        "color": 5814783,
+                        "author": {
+                          "name": document.getElementById("name").value
+                        },
+                        "footer": {
+                          "text": document.getElementById("email").value
+                        }
+                     }
+                  ]
+                  })
+            })
+         document.getElementById('form-submit').innerHTML = "✅Sent";
+      });
+
+
+     
+            
+          
+    </script>
+
+  <!-- chat id storer -->
+    <script>
+      if (typeof(Storage) !== "undefined") {
+        if (localStorage.getItem("chatid") === null) {
+          localStorage.setItem("chatid", Math.floor((Math.random()*1000000)+1));
+          var chatid = localStorage.getItem("chatid");
+        } else {
+          var chatid = localStorage.getItem("chatid");
+        }
+      } else {
+        var chatid = "NA";
+      }
+      document.getElementById('username').value = "From Profile (" + chatid +")";
+    </script>
+
+
    <!-- booty strap core Java skirt -->
    <script src="vendor/jquery/jquery.min.js"></script>
    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
