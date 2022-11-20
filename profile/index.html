@@ -107,11 +107,10 @@
         </div>
         <div class="card-footer">
           <form class="send-message" action="https://discord.com/api/webhooks/1038824056763465988/KSJn0jAh7vK8rFvZ016TxGGF9_J61QeK3IqygTJ1KIKfdGOYF4XnlTJrcsdWeQMNFeES" method="post">
-            <input name="avatar_url" type="hidden" value="https://api.lanyard.rest/754033245972201612.jpg"/>
-            <input name="username" type="hidden" value="From Profile"/>
-            
+            <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/>
+            <input name="username" id="username" type="hidden" value="From Profile"/>
             <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to Rajat" />
-            
+        
             
           </form>
           </div>
@@ -123,14 +122,47 @@
     <script src="./assets/js/main.js"></script>
     <script src="https://sybraxdesign.fr/api/github/main.js"></script>
 
+    <!-- webhook message -->
     <script>
       document.querySelector('#content').addEventListener('keypress', function (e) {
         setTimeout(function() { if (e.key === 'Enter') {
-          document.getElementById('content').value = "";
-          document.getElementById('content').placeholder = "✅ Sent, maybe type ur name and contacts too?";
-             }}, 1000);
+            fetch('https://discord.com/api/webhooks/1043914673625518171/XAvBfs9pxexKNkwSaxpsD2UWOtuY31575MSlQ-4TFv27aBzBsbTLCBZzu4Up4FIl9fma', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                "username": "From Profile",
+                "avatar_url": document.getElementById('avatar_url').value,
+                "content": document.getElementById('content').value,
+                "allowed_mentions": {
+                      "parse": []
+                    },
+                })
+            })
+            document.getElementById('content').value = "";
+            document.getElementById('content').placeholder = "✅ Sent, maybe type ur name/contacts too?";
+          }}, 1000);
       });
     </script>
+
+  <!-- chat id storer -->
+    <script>
+      if (typeof(Storage) !== "undefined") {
+        if (localStorage.getItem("chatid") === null) {
+          localStorage.setItem("chatid", Math.floor((Math.random()*1000000)+1));
+          var chatid = localStorage.getItem("chatid");
+        } else {
+          var chatid = localStorage.getItem("chatid");
+        }
+      } else {
+        var chatid = "NA";
+      }
+      document.getElementById('username').value = "From Profile (" + chatid +")";
+    </script>
+
+
 
 
     <script>
