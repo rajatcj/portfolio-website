@@ -469,7 +469,13 @@ button:hover {
     color: #fff;
 }
 
+.service-item a {
+    color:#fff;
+}
 
+.service-item:hover a {
+    color:#a43f49;
+}
 /* Left & Right Post */
 
 .right-image-post {
