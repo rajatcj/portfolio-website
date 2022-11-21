@@ -103,9 +103,11 @@ async function updatepresence() {
                     const hours = Math.floor((ms / 1000 / 3600) % 60);
                     return [minutes, seconds].map(v => String(v).padStart(2,0)).join(':');
                 }
+
+                percent = (now/end)*100;
                 
                 
-                var songinfo = [json.spotify['song'], playTime(now) + " -------- > -------- " + playTime(end), "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
+                var songinfo = [json.spotify['song'], "<div class='progress-bar'><div class='time'>" + playTime(now) + "/" + playTime(end) + "</div><div class='fill' style='width: " + percent + "%;'></div></div>", "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
                 div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
                     json.spotify['album_art_url'] + '"> ' +"<ul><li>" + 'LISTENING TO SPOTIFY...' + "</li>"  + "<li>" +
                     songinfo.join("</li><li>") + '</li></ul>';

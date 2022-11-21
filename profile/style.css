@@ -23,6 +23,30 @@
 
 
 
+.progress-bar {
+    height: 3px;
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff44;
+    border-radius: 10px;
+  }
+  
+.fill {
+    background-color: #83c47e;
+    height: 3px;
+    border-radius: 2px;
+  }
+  
+.time {
+    right: 15px;
+    color: #ffffff;
+    font-size: 10px;
+    position: absolute;
+    font-weight: bold;
+    margin-top: -2px;
+  }
+  
+
 
 #type {
     font-weight: bold;
