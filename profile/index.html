@@ -98,6 +98,7 @@
           <div class="roles">
             <div class="category-title">Activity</div>
             <div id="activitycard">
+              <div id="activities" width="100%"></div>
             </div>
           </div>
           <div class="note">
@@ -229,9 +230,6 @@
               if (data.data.listening_to_spotify) {
                 document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
-                document.getElementById("activitycard").innerHTML=`<div id="activities" width="100%"></div>`;
-              } else {
-                document.getElementById("activitycard").innerHTML=`<img src="https://lanyard.cnrad.dev/api/754033245972201612?animated=true&hideBadges=true&hideDiscrim=true&hideStatus=true&idleMessage=NO+CURRENT+ACTIVITY&bg=00000000&theme=dark" width="99%" alt="Discord Live Activity Presence" />`;
               }
 
               if (data.data.activities[0].id === `custom`) {
