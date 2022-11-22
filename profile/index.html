@@ -161,8 +161,9 @@
 
 
     <script>
+      const userID = "754033245972201612"
       // JSON - JavaScript Object Notation
-      fetch("https://api.lanyard.rest/v1/users/754033245972201612")
+      fetch("https://api.lanyard.rest/v1/users/" + userID)
             .then(response => response.json())
             .then(data => {
                 document.getElementById("discorduser.name").innerHTML=`${data.data.discord_user.username}<span>#${data.data.discord_user.discriminator}</span>`;
@@ -244,7 +245,6 @@
     
      
      <script>
-      const userID = "754033245972201612"
       updatepresence(userID);
       // loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
       var i = 1;
