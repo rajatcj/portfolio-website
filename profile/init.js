@@ -8,10 +8,8 @@ var addedh = 5;
 var userid = "754033245972201612";
 
 // different from updatepresence, adds the username, pfp, status, original activities
-async function init(data) {
-    let json = data;
-    document.getElementById("name").innerHTML = json.discord_user['username'] + '#' + json.discord_user['discriminator'];
-    document.getElementById("avatar").src = "https://cdn.discordapp.com/avatars/" + userid + "/" + json.discord_user['avatar'];
+async function init() {
+    let json = await lanyard({userId: userid});
     let activities = json.activities;
     let currentdiv = document.getElementById("activities");
     var h = originalh;
@@ -126,7 +124,7 @@ async function updatepresence() {
                 var songinfo = ["<li id='spotify-songname'>" + json.spotify['song'] + "</li>", "<li id='spotify-bar'><div class='progress-bar'><div class='fill' style='width: " + percent + "%;'></div></div></li>", "<li id='spotify-time'>" + playTime(now) + "/" + playTime(end) + "</li>", "<li id='spotify-artist'>" + "by " + json.spotify['artist'].split('; ').join(', ') + "</li>", "<li id='spotify-album'>" + "on " + json.spotify['album'] + "</li>"]
                 
                 div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
-                    json.spotify['album_art_url'] + '"> ' +"<ul><li id='spotify-ing'>" + 'LISTENING TO SPOTIFY...' + "</li>" +
+                    json.spotify['album_art_url'] + '"> ' + '<ul><li id="spotify-ing">' + 'LISTENING TO SPOTIFY...' + "</li>" +
                     songinfo.join("") + '</ul>';
             } else {
                 // time elapsed timer
