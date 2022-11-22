@@ -24,14 +24,31 @@ async function init(data) {
             div.className = "activity";
             // if the activity is spotify try to get all of the song info instead of the activity details
             if(element['name'] === "Spotify") {
-                var songinfo = [json.spotify['song'], "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
+                const start_time = element.timestamps['start']
+                const end_time = element.timestamps['end']
+                cur_time = Math.floor(Date.now() / 1000)
+
+                now = (cur_time * 1000) - start_time,
+                end = end_time - start_time,
+
+                playTime = (ms) => {
+                    const seconds = Math.floor((ms / 1000) % 60);
+                    const minutes = Math.floor((ms / 1000 / 60) % 60);
+                    const hours = Math.floor((ms / 1000 / 3600) % 60);
+                    return [minutes, seconds].map(v => String(v).padStart(2,0)).join(':');
+                }
+
+                percent = (now/end)*100;
+                
+                var songinfo = ["<li id='spotify-songname'>" + json.spotify['song'] + "</li>", "<li id='spotify-bar'><div class='progress-bar'><div class='fill' style='width: " + percent + "%;'></div></div></li>", "<li id='spotify-time'>" + playTime(now) + "/" + playTime(end) + "</li>", "<li id='spotify-artist'>" + "by " + json.spotify['artist'].split('; ').join(', ') + "</li>", "<li id='spotify-album'>" + "on " + json.spotify['album'] + "</li>"]
+                
                 div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
-                    json.spotify['album_art_url'] + '"> ' +"<ul><li><strong>" + 'LIlSTENING TO SPOTIFY...' + "</strong></li>"  + "<li>" +
-                    songinfo.join("</li><li>") + '</li></ul>';
+                    json.spotify['album_art_url'] + '"> ' +"<ul><li id='spotify-ing'>" + 'LISTENING TO SPOTIFY...' + "</li>" +
+                    songinfo.join("") + '</ul>';
             } else {
                 // time elapsed timer
-                const current_time = element.timestamps['start'],
-                exp_time = Math.floor(Date.now() / 1000)
+                current_time = (element.timestamps['start'] === undefined ? element['created_at'] : element.timestamps['start']),
+                exp_time = Math.floor(Date.now() / 1000),
                 diff = (exp_time * 1000) - current_time,
                 formatTime = (ms) => {
                     const seconds = Math.floor((ms / 1000) % 60);
@@ -113,8 +130,8 @@ async function updatepresence() {
                     songinfo.join("") + '</ul>';
             } else {
                 // time elapsed timer
-                const current_time = element.timestamps['start'],
-                exp_time = Math.floor(Date.now() / 1000)
+                current_time = element.timestamps['start'],
+                exp_time = Math.floor(Date.now() / 1000),
                 diff = (exp_time * 1000) - current_time,
                 formatTime = (ms) => {
                     const seconds = Math.floor((ms / 1000) % 60);
