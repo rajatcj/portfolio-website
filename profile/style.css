@@ -76,9 +76,8 @@
 
 
 .progress-bar {
-    margin: 2px;
-    height: 3px;
-    width: 90%;
+    height: 8px;
+    width: 100%;
     max-width: 300px;
     background: #ffffff21;
     border-radius: 10px;
@@ -86,20 +85,21 @@
   
 .fill {
     background-color: #e28a67;
-    height: 3px;
-    border-radius: 2px;
+    height: 8px;
+    border-radius: 10px;
   }
   
 
 
   
 #spotify-time {
+    -webkit-text-stroke: 0.3px black;
     position: relative;
-    left: 305px;
-    margin-top: -11px;
+    left: 5px;
+    margin-top: -10px;
     font-weight: bold;
-    font-size: 10px;
-    color: #cccccc;
+    font-size: 8px;
+    color: #ffffff;
 }
 
 
