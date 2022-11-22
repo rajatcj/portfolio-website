@@ -106,11 +106,11 @@ async function updatepresence() {
 
                 percent = (now/end)*100;
                 
+                var songinfo = ["<li id='spotify-songname'>" + json.spotify['song'] + "</li>", "<li id='spotify-bar'><div class='progress-bar'><div class='fill' style='width: " + percent + "%;'></div></div></li>", "<li id='spotify-time'>" + playTime(now) + "/" + playTime(end) + "</li>", "<li id='spotify-artist'>" + "by " + json.spotify['artist'].split('; ').join(', ') + "</li>", "<li id='spotify-album'>" + "on " + json.spotify['album'] + "</li>"]
                 
-                var songinfo = [json.spotify['song'], "<div class='progress-bar'><div class='time'>" + playTime(now) + "/" + playTime(end) + "</div><div class='fill' style='width: " + percent + "%;'></div></div>", "by " + json.spotify['artist'].split('; ').join(', '), "on " + json.spotify['album']]
                 div.innerHTML = '<img draggable="false" alt="" width="80" height="80" src="' +
-                    json.spotify['album_art_url'] + '"> ' +"<ul><li>" + 'LISTENING TO SPOTIFY...' + "</li>"  + "<li>" +
-                    songinfo.join("</li><li>") + '</li></ul>';
+                    json.spotify['album_art_url'] + '"> ' +"<ul><li id='spotify-ing'>" + 'LISTENING TO SPOTIFY...' + "</li>" +
+                    songinfo.join("") + '</ul>';
             } else {
                 // time elapsed timer
                 const current_time = element.timestamps['start'],
