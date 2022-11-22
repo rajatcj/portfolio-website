@@ -140,7 +140,7 @@ async function updatepresence() {
                     return [hours, minutes, seconds].map(v => String(v).padStart(2,0)).join(':');
                 }
                 
-                var activityinfo = ["<li id='type'>" + (element['type'] === 0 ? "PLAYING..." : (element['type'] === 1 ? "STREAMING..." : (element['type'] === 2 ? "LISTENING..." : (element['type'] === 3 ? "WATCHING..." : "")))) + "</li><li id='name'>" + element['name'] + "</li>", (element['details'] === undefined ? "" : "<li id='details'>" +  element['details'] + "</li>"), (element['state'] === undefined ? "" : "<li id='state'>" + element['state'] + "</li>"), "<li id='time'>" + formatTime(diff) + " elapsed </li>"]
+                var activityinfo = ["<li id='type'>" + (element['application_id'] === "920907514344779827" ? "Online on..." : (element['type'] === 0 ? "PLAYING..." : (element['type'] === 1 ? "STREAMING..." : (element['type'] === 2 ? "LISTENING..." : (element['type'] === 3 ? "WATCHING..." : ""))))) + "</li><li id='name'>" + element['name'] + "</li>", (element['details'] === undefined ? "" : "<li id='details'>" +  element['details'] + "</li>"), (element['state'] === undefined ? "" : "<li id='state'>" + element['state'] + "</li>"), "<li id='time'>" + formatTime(diff) + " elapsed </li>"]
                 if(element.assets !== undefined) {
                     div.innerHTML = ('<img draggable="false" alt="" onerror=this.src="https://cdn.discordapp.com/app-assets/' +
                         element['application_id'] + '/' + element.assets['large_image'] +
