@@ -28,7 +28,7 @@ async function updatepresence(userid) {
             
             // if the activity is spotify try to get all of the song info instead of the activity details
             if(element['name'] === "Spotify") {
-                const start_time = element.timestamps['start']
+                const start_time = (element.timestamps['start'] === undefined ? element['created_at'] : element.timestamps['start'])
                 const end_time = element.timestamps['end']
                 cur_time = Math.floor(Date.now() / 1000)
 
@@ -50,7 +50,6 @@ async function updatepresence(userid) {
                     json.spotify['album_art_url'] + '"> ' + '<ul><li id="spotify-ing">' + 'LISTENING TO SPOTIFY...' + "</li>" +
                     songinfo.join("") + '</ul>';
             } else {
-                // time elapsed timer
                 current_time = element.timestamps['start'],
                 exp_time = Math.floor(Date.now() / 1000),
                 diff = (exp_time * 1000) - current_time,
@@ -63,9 +62,7 @@ async function updatepresence(userid) {
                 
                 var activityinfo = ["<li id='type'>" + (element['application_id'] === "920907514344779827" ? "Online on..." : (element['type'] === 0 ? "PLAYING..." : (element['type'] === 1 ? "STREAMING..." : (element['type'] === 2 ? "LISTENING..." : (element['type'] === 3 ? "WATCHING..." : ""))))) + "</li><li id='name'>" + element['name'] + "</li>", (element['details'] === undefined ? "" : "<li id='details'>" +  element['details'] + "</li>"), (element['state'] === undefined ? "" : "<li id='state'>" + element['state'] + "</li>"), "<li id='time'>" + formatTime(diff) + " elapsed </li>"]
                 if(element.assets !== undefined) {
-                    div.innerHTML = ('<img draggable="false" alt="" onerror=this.src="https://cdn.discordapp.com/app-assets/' +
-                        element['application_id'] + '/' + element.assets['large_image'] +
-                        '.png" width="80" height="80" src="https://cdn.discordapp.com/app-assets/'+ userid + '/' +
+                    div.innerHTML = ('<img draggable="false" alt="" onerror=this.src="unknown.png" width="80" height="80" src="https://cdn.discordapp.com/app-assets/'+ element['application_id'] + '/' +
                         element.assets['large_image'] + '.png"> <div class="other">' +
                         "<ul>" + activityinfo.join("") + "</ul>" + '</div>');
                 } else if(element.assets === undefined) {
