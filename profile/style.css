@@ -31,6 +31,9 @@
 }
 
 
+
+
+
 .assets-images {
     position: relative;
   }
@@ -43,12 +46,10 @@
 .small-image {
     border-radius: 10px;
     position: absolute;
-    top: 48px;
-    right: 5px;
+    top: 56px;
+    right: -3px;
     border: 1px solid #000000;
   }
-
-
 
 #type {
     font-weight: bold;
@@ -68,12 +69,10 @@
     color: #cccccc;
 }
 
-
 #state {
     font-size: 12px;
     color: #cccccc;
 }
-
 
 #time {
     font-size: 10px;
@@ -92,8 +91,8 @@
 .spotifylink-image {
     border-radius: 10px;
     position: absolute;
-    top: 40px;
-    right: -5px;
+    top: 47px;
+    right: -12px;
     cursor:pointer;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
@@ -105,14 +104,11 @@
     color: #1cb853;
 }
 
-
 #spotify-songname {
     font-size: 18px;
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
-
-
 
 .progress-bar {
     height: 8px;
@@ -129,9 +125,6 @@
     border-radius: 10px;
   }
   
-
-
-  
 #spotify-time {
     -webkit-text-stroke: 0.3px black;
     position: relative;
@@ -142,13 +135,11 @@
     color: #ffffff;
 }
 
-
 #spotify-artist {
     font-size: 12px;
     color: rgba(255, 127, 80, 0.781);
     font-weight: lighter;
 }
-
 
 #spotify-album {
     font-size: 12px;
