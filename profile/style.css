@@ -22,6 +22,33 @@
 }
 
 
+#activities {
+    display: inline-block;
+    padding-left: 2%;
+    width: 96%;
+    height: fit-content;
+    background: rgba(77, 31, 146, 0);
+}
+
+
+.assets-images {
+    position: relative;
+  }
+  
+  .large-image {
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .small-image {
+    border-radius: 10px;
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+    border: 1px solid #000000;
+  }
+
+
 
 #type {
     font-weight: bold;
@@ -117,17 +144,7 @@
 
 
 
-#activities {
-    display: inline-block;
-    padding-left: 2%;
-    width: 96%;
-    height: fit-content;
-    background: rgba(77, 31, 146, 0);
-}
 
-.activity img {
-    border-radius: 10px;
-}
 
 
 
