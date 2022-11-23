@@ -35,15 +35,15 @@
     position: relative;
   }
   
-  .large-image {
+.large-image {
     border-radius: 10px;
     position: relative;
   }
   
-  .small-image {
+.small-image {
     border-radius: 10px;
     position: absolute;
-    bottom: 8px;
+    top: 48px;
     right: 5px;
     border: 1px solid #000000;
   }
@@ -81,6 +81,24 @@
 }
 
 
+
+
+
+.spotify-thumbnail {
+    border-radius: 10px;
+    position: relative;
+}
+
+.spotifylink-image {
+    border-radius: 10px;
+    position: absolute;
+    top: 40px;
+    right: -5px;
+    cursor:pointer;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+  }
+
 #spotify-ing {
     font-weight: bold;
     font-size: 10px;
@@ -102,6 +120,7 @@
     max-width: 300px;
     background: #ffffff21;
     border-radius: 10px;
+    vertical-align: middle;
   }
   
 .fill {
@@ -117,7 +136,7 @@
     -webkit-text-stroke: 0.3px black;
     position: relative;
     left: 5px;
-    margin-top: -9px;
+    margin-top: -.65rem;
     font-weight: bold;
     font-size: 8px;
     color: #ffffff;
