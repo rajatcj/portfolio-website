@@ -1,0 +1,53 @@
+
+{   
+    "userid": "754033245972201612",
+    "message_channel_id": "780036165578784808",
+
+
+    "default_username": "Rajat",
+    "default_tag": "1004",
+    "about_me": "Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo",
+    "banner": "./assets/img/banner.gif",
+
+    "badges": [
+        {
+            "src": "./assets/img/badges/brilliance.png",
+            "tooltip": "HypeSquad Brilliance"
+        },
+        {
+            "src": "./assets/img/badges/activedev.png",
+            "tooltip": "Active Developer"
+        },
+        {
+            "src": "./assets/img/badges/devbot.webp",
+            "tooltip": "Verified Bot Developer"
+        },
+        {
+            "src": "./assets/img/badges/moderator.webp",
+            "tooltip": "Discord Moderator"
+        },
+        {
+            "src": "./assets/img/badges/nitro.webp",
+            "tooltip": "Nitro Subscriber"
+        },
+        {
+            "src": "./assets/img/badges/boost.webp",
+            "tooltip": "Boosting OPN"
+        }
+    ], 
+
+    "roles": [
+        {
+            "rolename": "He/Him",
+            "color": "rgb(5, 169, 219)"
+        },
+        {
+            "rolename": "Site Admin",
+            "color": "red"
+        },
+        {
+            "rolename": "Botuu Developer",
+            "color": "rgb(245, 215, 80)"
+        }
+    ]
+ }
