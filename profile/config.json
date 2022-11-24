@@ -19,14 +19,6 @@
             "tooltip": "Active Developer"
         },
         {
-            "src": "./assets/img/badges/devbot.webp",
-            "tooltip": "Verified Bot Developer"
-        },
-        {
-            "src": "./assets/img/badges/moderator.webp",
-            "tooltip": "Discord Moderator"
-        },
-        {
             "src": "./assets/img/badges/nitro.webp",
             "tooltip": "Nitro Subscriber"
         },
@@ -48,6 +40,17 @@
         {
             "rolename": "Botuu Developer",
             "color": "rgb(245, 215, 80)"
+        }
+    ],
+
+    "archieve" : [
+        {
+            "src": "./assets/img/badges/devbot.webp",
+            "tooltip": "Verified Bot Developer"
+        },
+        {
+            "src": "./assets/img/badges/moderator.webp",
+            "tooltip": "Discord Moderator"
         }
     ]
  }
