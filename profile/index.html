@@ -58,10 +58,12 @@
         </div>
 
         <div class="card-footer">
-          <form class="send-message" action="https://discord.com/api/webhooks/1038824052380414073/axsa4Mnpr7ITRLxaOIn2KNhCKTqkheVXb3ezz2Lv6V_LHx84IL-Ph5T5GbVHU3zLtrLD" method="post">
-            <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/>
-            <input name="username" id="username" type="hidden" value="From Profile"/>
+          <form class="send-message" action="https://linktreemessage.secretrajatrepl.repl.co/message" method="get">
             <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
+            <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/>
+            <input name="username" id="username" type="hidden" value="Profile"/>
+            <input name="channel" id="channel" type="hidden" value="1046084695739342888"/>
+            <input name="sessionid" id="sessionid" type="hidden" value=""/>
           </form>
         </div>
       </div>
@@ -83,7 +85,7 @@
     <script>
       if (typeof(Storage) !== "undefined") {
         if (localStorage.getItem("chatid") === null) {
-          localStorage.setItem("chatid", Math.floor((Math.random()*1000000)+1));
+          localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
           var chatid = localStorage.getItem("chatid");
         } else {
           var chatid = localStorage.getItem("chatid");
@@ -91,7 +93,7 @@
       } else {
         var chatid = "NA";
       }
-      document.getElementById('username').value = "From Profile (" + chatid +")";
+      document.getElementById('sessionid').value = chatid;
     </script>
 
 

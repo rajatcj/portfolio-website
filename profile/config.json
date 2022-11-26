@@ -6,8 +6,25 @@
 
     "default_username": "Rajat",
     "default_tag": "1004",
+
+
     "about_me": "Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo",
     "banner": "./assets/img/banner.gif",
+    
+    "roles": [
+        {
+            "rolename": "He/Him",
+            "color": "rgb(5, 169, 219)"
+        },
+        {
+            "rolename": "Site Admin",
+            "color": "red"
+        },
+        {
+            "rolename": "Botuu Developer",
+            "color": "#F8D750"
+        }
+    ],
 
     "badges": [
         {
@@ -28,22 +45,7 @@
         }
     ], 
 
-    "roles": [
-        {
-            "rolename": "He/Him",
-            "color": "rgb(5, 169, 219)"
-        },
-        {
-            "rolename": "Site Admin",
-            "color": "red"
-        },
-        {
-            "rolename": "Botuu Developer",
-            "color": "rgb(245, 215, 80)"
-        }
-    ],
-
-    "archieve" : [
+    "archieved badges, to add these to display, copy the segment into the array above" : [
         {
             "src": "./assets/img/badges/devbot.webp",
             "tooltip": "Verified Bot Developer"
@@ -51,6 +53,30 @@
         {
             "src": "./assets/img/badges/moderator.webp",
             "tooltip": "Discord Moderator"
+        },
+        {
+            "src": "./assets/img/badges/bravery.webp",
+            "tooltip": "HypeSquad Bravery"
+        },
+        {
+            "src": "./assets/img/badges/eventcreator.webp",
+            "tooltip": "HypeSquad Events"
+        },
+        {
+            "src": "./assets/img/badges/firsttimenitro.webp",
+            "tooltip": "Early Supporter"
+        },
+        {
+            "src": "./assets/img/badges/megabughunter.webp",
+            "tooltip": "Bug Hunter"
+        },
+        {
+            "src": "./assets/img/badges/partner.webp",
+            "tooltip": "Partnered Server Owner"
+        },
+        {
+            "src": "./assets/img/badges/team.webp",
+            "tooltip": "Discord Staff"
         }
     ]
  }
