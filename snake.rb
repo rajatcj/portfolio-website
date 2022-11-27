@@ -1,6 +1,4 @@
 $nomention
-$textSplit[$getVar[snakedata;$authorID];-]
-
 
 $var[bg;⬛]
 
@@ -105,7 +103,7 @@ $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
 
 $var[snakepo;$random[1;9]$optOff[$random[1;9]]]
 $var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]]
-
+$var[gameid;$optOff[$random[100000;999999]]]
 
 $var[$var[snakepo];🐍]
 $var[$var[applepo];🍎]
@@ -125,7 +123,7 @@ $var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var
 ]
 
 $setUserVar[snakedata;$var[snakedata]]
-$setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;60];$authorID]
+$setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;60]-$var[gameid];$authorID]
 
 $description[$replaceText[$var[snakedata];-;]]
 
@@ -134,11 +132,11 @@ $title[🐍 Classic Snakes]
 $footer[Move the 🐍 & collct as many 🍎s possible within 1min.]
 
 
-$addButton[no;$authorID-snake-nothing3;;secondary;true;⬛]
-$addButton[no;$authorID-snake-uparrow;;primary;false;⏫]
-$addButton[no;$authorID-snake-nothing4;;secondary;true;⬛]
-$addButton[no;$authorID-snake-nothing2;60;secondary;true;⏰]
-$addButton[yes;$authorID-snake-leftarrow;;primary;false;⏪]
-$addButton[no;$authorID-snake-downarrow;;primary;false;⏬]
-$addButton[no;$authorID-snake-rightarrow;;primary;false;⏩]
-$addButton[no;$authorID-snake-nothing1;0;secondary;true;🍎]
+$addButton[no;$authorID-snake-nothing3-$var[gameid];;secondary;true;⬛]
+$addButton[no;$authorID-snake-uparrow-$var[gameid];;primary;false;⏫]
+$addButton[no;$authorID-snake-nothing4-$var[gameid];;secondary;true;⬛]
+$addButton[no;$authorID-snake-nothing2-$var[gameid];60;secondary;true;⏰]
+$addButton[yes;$authorID-snake-leftarrow-$var[gameid];;primary;false;⏪]
+$addButton[no;$authorID-snake-downarrow-$var[gameid];;primary;false;⏬]
+$addButton[no;$authorID-snake-rightarrow-$var[gameid];;primary;false;⏩]
+$addButton[no;$authorID-snake-nothing1-$var[gameid];0;secondary;true;🍎]
