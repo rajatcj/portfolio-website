@@ -58,11 +58,11 @@
         </div>
 
         <div class="card-footer">
-          <form class="send-message" action="https://linktreemessage.secretrajatrepl.repl.co/message" method="get">
+          <form class="send-message" action="https://sendbotu.rajatcj.com.np/message" method="get">
             <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
             <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/>
             <input name="username" id="username" type="hidden" value="Profile"/>
-            <input name="channel" id="guild" type="hidden" value="819109979046936577"/>
+            <input name="guild" id="guild" type="hidden" value="819109979046936577"/>
             <input name="sessionid" id="sessionid" type="hidden" value=""/>
           </form>
         </div>
@@ -94,6 +94,7 @@
         var chatid = "NA";
       }
       document.getElementById('sessionid').value = chatid;
+      
     </script>
 
 
@@ -128,6 +129,10 @@
           document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"" + data.banner + "\")'></div>";
           document.getElementById("discorduser.avatarlink").innerHTML = '<a href="https://discord.com/users/' + data.userid + '" target="_blank"><div id="discorduser.avatar" class="profil-logo"><img src="https://api.lanyard.rest/' + data.userid + '.jpg" /></div></a>';
              
+          document.getElementById('guild').value = data.message_guild_id;
+          document.getElementById('avatar_url').value = data.message_source_icon;
+          document.getElementById('username').value = data.message_source_name;
+          
           const userID = data.userid;
         
 
