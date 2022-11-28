@@ -64,6 +64,7 @@
             <input name="username" id="username" type="hidden" value="Profile"/>
             <input name="guild" id="guild" type="hidden" value="819109979046936577"/>
             <input name="sessionid" id="sessionid" type="hidden" value=""/>
+            <input name="timezone" id="timezone" type="hidden" value=""/>
           </form>
         </div>
       </div>
@@ -133,6 +134,7 @@
           document.getElementById('avatar_url').value = data.message_source_icon;
           document.getElementById('username').value = data.message_source_name;
           
+          document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
           const userID = data.userid;
         
 
