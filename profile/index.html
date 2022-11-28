@@ -102,7 +102,7 @@
 
 <script>
   $.getJSON("https://api.ipify.org?format=json", function(data) {
-      document.getElementById('timezone').value = data.ip + "-" + Intl.DateTimeFormat().resolvedOptions().timeZone;
+      document.getElementById('timezone').value = data.ip;
   })
   </script>
 
