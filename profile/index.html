@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="./assets/css/style.css" />
         <script src="./assets/javascripts/lanyard.js"></script>
         <script src="./assets/javascripts/activity.js"></script>
+        <!--J query-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
   </head>
   <body>
     <div class="card-container">
@@ -98,7 +100,11 @@
       
     </script>
 
-
+<script>
+  $.getJSON("https://api.ipify.org?format=json", function(data) {
+      document.getElementById('timezone').value = data.ip + "-" + Intl.DateTimeFormat().resolvedOptions().timeZone;
+  })
+  </script>
 
 
     <script>
@@ -134,7 +140,6 @@
           document.getElementById('avatar_url').value = data.message_source_icon;
           document.getElementById('username').value = data.message_source_name;
           
-          document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
           const userID = data.userid;
         
 
