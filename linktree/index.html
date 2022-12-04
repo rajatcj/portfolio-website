@@ -26,6 +26,14 @@
   </head>
 
   <body>
+  
+    <div class="custom-checkbox">
+      <input class="custom-checkbox-input" type="checkbox" id="custom-checkbox-discovery"/>
+      <label class="custom-checkbox-label" for="custom-checkbox-discovery">
+        <label class="custom-checkbox-label-aux" for="custom-checkbox-discovery">
+      </label>
+    </div>
+
 
     <audio id="idAudio">
       <source src="./rick.mp3" type="audio/ogg">
@@ -73,19 +81,21 @@
 
     <div class='user-info-box'>
       <div class='user-info'><h2>@rajat_cj</h2></div>
-      
+            
             <form class="send-message" action="https://discord.com/api/webhooks/1038824052380414073/axsa4Mnpr7ITRLxaOIn2KNhCKTqkheVXb3ezz2Lv6V_LHx84IL-Ph5T5GbVHU3zLtrLD" method="post">
                 <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp"/>
                 <input name="username" id="username" type="hidden" value="From Linktree"/>
                 
                 <input type="text" style="font-family: 'Fredoka one', sans-serif;" autocomplete="off" name="content" id="content" placeholder="Send msg anonymously." />
             </form>
+            
             <div class="mediabuttons">
               <a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
               <a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
               <a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
+              
             </div>
-    </div>
+      </div>
     </div>
 
     <div class="discordprofile" id="discordprofile">
@@ -192,3 +202,31 @@ except.addEventListener("click", function (ev) {
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
 </html>
+
+
+<!-- mode switch -->
+<script>
+  const toggleSwitch = document.querySelector('.custom-checkbox-input');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {        
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+</script>

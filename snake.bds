@@ -1,0 +1,63 @@
+$nomention
+
+$var[bg;⬛]
+
+
+
+$var[r;1] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+$var[r;$sum[$var[r];1]] $var[c;1] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]] $var[$var[r]$var[c];$var[bg]] $var[c;$sum[$var[c];1]]
+
+$var[snakepo;$random[1;9]$optOff[$random[1;9]]]
+$var[applepo;$optOff[$random[1;9]]$optOff[$random[1;9]]]
+$var[gameid;$optOff[$random[100000;999999]]]
+
+$var[$var[snakepo];🐸]
+$var[$var[applepo];🍎]
+
+
+$var[r;0]
+$var[snakedata;
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+$var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
+]
+
+$setUserVar[snakedata;$var[snakedata]]
+$setVar[snakedata;$var[applepo]-$var[snakepo]-0-$sum[$getTimestamp;99]-$var[gameid];$authorID]
+$setUserVar[snakelength;]
+$setVar[snakelength;1;$authorID]
+
+
+$if[$getVar[snakescore;$authorID]==]
+    $setVar[snakescore;0;$authorID]
+$endif
+$if[$getUserVar[snakescore;$authorID]==]
+    $setUserVar[snakescore;0;$authorID]
+$endif
+
+$color[ff8888]
+$title[🐍 Classic Snakes]
+$description[$replaceText[$var[snakedata];-;]]
+$footer[Move the 🐍 & collct as many 🍎s possible within time.]
+
+$addButton[no;$authorID-snake-nothing3-$var[gameid];;secondary;true;⬛]
+$addButton[no;$authorID-snake-uparrow-$var[gameid];;primary;false;⏫]
+$addButton[no;$authorID-snake-nothing4-$var[gameid];;secondary;true;⬛]
+$addButton[no;$authorID-snake-nothing2-$var[gameid];99;secondary;true;⏰]
+$addButton[yes;$authorID-snake-leftarrow-$var[gameid];;primary;false;⏪]
+$addButton[no;$authorID-snake-downarrow-$var[gameid];;primary;false;⏬]
+$addButton[no;$authorID-snake-rightarrow-$var[gameid];;primary;false;⏩]
+$addButton[no;$authorID-snake-nothing1-$var[gameid];0;secondary;true;🍎]
