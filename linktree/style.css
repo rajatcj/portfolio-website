@@ -81,6 +81,20 @@
 
 
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #a43f49;
+}
+::-webkit-scrollbar-thumb {
+  height: 200px;
+  background-color: #b6b6b6;
+  background-image:-webkit-linear-gradient(rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
+  border-radius: 10px;
+}
+
 
 
 
@@ -441,7 +455,7 @@ body {
 
 
 /* Desktop Styles */
-@media only screen and (min-width: 961px) {
+@media only screen and (min-width: 861px) {
   .spotify-np {
     width:400px;
     position:absolute;
@@ -520,7 +534,7 @@ body {
       flex:0;
       min-width: 40rem;
       max-width: 30.5rem;
-      min-height: 400px;
+      min-height: 450px;
       /* border: 1px solid blue; */
       margin-top: 0;
     }
