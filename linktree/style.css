@@ -442,6 +442,13 @@ body {
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
+  .spotify-np {
+    width:400px;
+    position:absolute;
+    bottom:10px; 
+    left:10px;
+  }
+
   html {
     font-size: 78%;
   }
