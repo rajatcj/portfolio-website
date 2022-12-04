@@ -105,13 +105,8 @@ document.querySelector('#content').addEventListener('keypress', function(e) {
 </script>
 <!--spotify-np-->
 <script>
-fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-	method: 'GET',
-	headers: {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'Authorization': 'Bearer BQBQ5RWxeAIpOyK8rsolrAjMSm_UjeXKGP413thGjVlZ7gQuJ1HTPUz07SKqK7D0QprpJice98VaGIgkPNequ-B6SMFTisky5LjzCXAs204WrCWIjbczzgoUG1QUWBvac1pzH-k4k4barU1TS0O-Sv7rZw1Kdv9Sa4KNO7zmJ_AiqwImSAspQ3Ql19PZGHv7esHS'
-	}
+fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
+	method: 'GET'
 }).then(function(response) {
 	return response.json();
 }).then(function(data) {
@@ -121,13 +116,8 @@ fetch('https://api.spotify.com/v1/me/player/currently-playing', {
 });
 (function loopspoti() {
 	setTimeout(function() {
-		fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-			method: 'GET',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer BQBQ5RWxeAIpOyK8rsolrAjMSm_UjeXKGP413thGjVlZ7gQuJ1HTPUz07SKqK7D0QprpJice98VaGIgkPNequ-B6SMFTisky5LjzCXAs204WrCWIjbczzgoUG1QUWBvac1pzH-k4k4barU1TS0O-Sv7rZw1Kdv9Sa4KNO7zmJ_AiqwImSAspQ3Ql19PZGHv7esHS'
-			}
+		fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
+			method: 'GET'
 		}).then(function(response) {
 			return response.json();
 		}).then(function(data) {
@@ -137,16 +127,14 @@ fetch('https://api.spotify.com/v1/me/player/currently-playing', {
 		});
 		// execute script
 		loopspoti()
-	}, 10000);
+	}, 15000);
 }());
 
 function appendSpoti(data) {
-  if (data.item.id === undefined ){
-    document.getElementById('spotify-np').innerHTML = ''
-  } else if (data.is_playing === false ) {
+  if (data.data.listening_to_spotify === false ) {
     document.getElementById('spotify-np').innerHTML = ''
   } else {
-	document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.item.id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+	document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
 }
 }
 </script>
