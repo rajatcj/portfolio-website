@@ -6,8 +6,6 @@
   pink: #e9488a
 */
 
-@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic,700|Sansita+One);
-
 *,
 *::after,
 *::before {
@@ -100,6 +98,7 @@ input[type=text] {
     border-radius: 5px;
     background-color: var(--textbox-bg);
     padding: 20px;
+    color: var(--primary-bgopp);
   }
 
 
