@@ -49,21 +49,21 @@
 }
 
 [data-theme="dark"] {
-  --primary-bg: rgb(105, 105, 105);
+  --primary-bg: #000;
   --secondary-bg: url(./bg2.png);
   
   --avatar-bg: #ff8888;
-  --avatar-bo: #292922;
+  --avatar-bo: #8fcc6c;
   --handle-text : #ff8888;
   
   --textbob-font: rgb(184, 184, 184);
-  --textbob-bo: #292922;
+  --textbob-bo: #6cc6cc;
   --textbob-bg: #424242;
 
   --textbox-bg: rgb(0, 0, 0);
   --textbox-bo: #ff8888;
 
-  --mainlink-bo: #75683d;
+  --mainlink-bo: #d1cf70;
   --mainlink-bg: #292922;
   --mainlink-text: #ad9d99;
   --mainlink-activebg: #e99048;
