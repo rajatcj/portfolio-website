@@ -20,7 +20,7 @@
   --primary-bgopp: #000;
   --secondary-bg: url(./bg.png);
   
-  --avatar-bg: #43192d;
+  --avatar-bg: #43192d00;
   --avatar-bo: #43192d;
   --handle-text : #43192d;
 
@@ -52,7 +52,7 @@
   --primary-bgopp: #fff;
   --secondary-bg: url(./bg2.png);
   
-  --avatar-bg: #ff8888;
+  --avatar-bg: #8fcc6c00;
   --avatar-bo: #8fcc6c;
   --handle-text : #ff8888;
   
@@ -177,7 +177,7 @@ body {
 
 .header__chat-box h1 {
   font-family: 'Fredoka One', sans-serif;
-  font-size: 1.9rem;
+  font-size: 1rem;
   letter-spacing: .3rem;
   padding: 25%;
   color: var(--textbob-font);

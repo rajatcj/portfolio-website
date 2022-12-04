@@ -32,7 +32,7 @@
 				<div class='header__chat-box'>
 					<div class='header__chat-box--behind'>
 						<div class='header__chat-box--front'>
-							<h1 id="avatartext">click</h1>
+							<h1 id="avatartext" style="font-size: 1.5rem;">click</h1>
 						</div>
 					</div>
 				</div>
@@ -69,6 +69,7 @@
 				<a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
 			</div>
 			<div class="spotify-np" id="spotify-np">
+				<p id="spotify-iframe" src="hm"></p>
 			</div>
 		</div>
 	</div>
@@ -133,8 +134,8 @@ fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
 function appendSpoti(data) {
   if (data.data.listening_to_spotify === false ) {
     document.getElementById('spotify-np').innerHTML = ''
-  } else {
-	document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+  } else if (document.getElementById('spotify-iframe').src != "https://open.spotify.com/embed/track/" + data.data.spotify.track_id) {
+	document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe id="spotify-iframe" style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
 }
 }
 </script>
@@ -161,9 +162,9 @@ var GFG = document.getElementById("idAudio");
 function play_Audio() {
 	GFG.volume = 1.0;
 	GFG.play();
-	document.getElementById('rickroll').innerHTML = "Hehe";
-	document.getElementById('avatartext').innerHTML = "Hi.";
-	document.getElementById('avatar').innerHTML = "<img src='https://media.tenor.com/x8v1oNUOmg4AAAAS/rickroll-roll.gif' alt='Discord Avatar' onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
+	document.getElementById('rickroll').innerHTML = "Never Gonna Give You Up";
+	document.getElementById('avatartext').innerHTML = "gotcha";
+	document.getElementById('avatar').innerHTML = "<img src='./rickroll.gif' alt='Discord Avatar' onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
 }
 
 function pause_Audio() {
