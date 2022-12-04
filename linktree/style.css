@@ -19,6 +19,7 @@
 
 :root {
   --primary-bg: #fff;
+  --primary-bgopp: #000;
   --secondary-bg: url(./bg.png);
   
   --avatar-bg: #43192d;
@@ -50,6 +51,7 @@
 
 [data-theme="dark"] {
   --primary-bg: #000;
+  --primary-bgopp: #fff;
   --secondary-bg: url(./bg2.png);
   
   --avatar-bg: #ff8888;
