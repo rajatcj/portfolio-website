@@ -84,15 +84,37 @@
 		<iframe id="discordprofileinside" src="../profile/index.html" style="margin:20vh auto; display:block; width:100%; max-width: 400px; height: 80vh; border:0px;" title="Discord Status"></iframe>
 	</div>
 </body>
-<!-- webhook message -->
+</html>
+
+  <!-- chat id storer -->
+  <script>
+	if (typeof(Storage) !== "undefined") {
+	  if (localStorage.getItem("chatid") === null) {
+		localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
+		var chatid = localStorage.getItem("chatid");
+		$.getJSON("https://api.ipify.org?format=json", function(data) {
+		document.getElementById('timezone').value = data.ip;
+		$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip)
+	})
+	  } else {
+		var chatid = localStorage.getItem("chatid");
+	  }
+	} else {
+	  var chatid = "NA";
+	}
+	document.getElementById('sessionid').value = chatid;
+	
+  </script>
+
+
+
+<!-- chatbox message system -->
 <script>
 	function sendLinkTreePrivMsg() {
 			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
 			document.getElementById('content').value = "";
 			document.getElementById('content').placeholder = "✅ Message was sent";
 	}
-
-
 </script>
 
 <!--spotify-np-->
@@ -130,6 +152,8 @@ function appendSpoti(data) {
 }
 }
 </script>
+
+
 <!--For profile start-->
 <script>
 function openDisc() {
@@ -146,6 +170,8 @@ except.addEventListener("click", function(ev) {
 	ev.stopPropagation();
 }, false);
 </script>
+
+
 <!--rickroll-->
 <script>
 var GFG = document.getElementById("idAudio");
@@ -166,7 +192,7 @@ function pause_Audio() {
 }
 </script>
 
-<!-- Browser ID for chats -->
+<!-- Browser ID for chats 
 <script>
 	document.querySelector('#content').addEventListener('keypress', function (e) {
 	  setTimeout(function() { if (e.key === 'Enter') {
@@ -175,37 +201,11 @@ function pause_Audio() {
 		}}, 1000);
 	});
   </script>
-  <!-- chat id storer -->
-  <script>
-	if (typeof(Storage) !== "undefined") {
-	  if (localStorage.getItem("chatid") === null) {
-		localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
-		var chatid = localStorage.getItem("chatid");
-	  } else {
-		var chatid = localStorage.getItem("chatid");
-	  }
-	} else {
-	  var chatid = "NA";
-	}
-	document.getElementById('sessionid').value = chatid;
-	
-  </script>
+  -->
 
-<script>
-	$.getJSON("https://api.ipify.org?format=json", function(data) {
-		document.getElementById('timezone').value = data.ip;
-		$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip)
-	})
-	</script>
 
-<!-- Particle.js -->
-<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="./particle.js"></script>
-<!-- fontawesome -->
-<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
-</html>
-<!-- mode switch -->
+<!-- theme switch -->
 <script>
 var currentTheme = localStorage.getItem('theme');
 if(currentTheme) {
@@ -227,3 +227,11 @@ function changeTheme() {
 	}
 }
 </script>
+
+
+<!-- Particle.js -->
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="./particle.js"></script>
+<!-- fontawesome -->
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
