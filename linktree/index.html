@@ -2,154 +2,153 @@
 <html lang='en'>
 
 <head>
-	<meta charset='UTF-8'>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap" rel="stylesheet">
-	<link rel='stylesheet' href='style.css'>
-	<title>@rajat_cj Links</title>
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="jharajat.com.np/linktree">
-	<meta property="og:title" content="Linktree">
-	<meta property="og:description" content="Hi, Im Rajat and here are my links.">
-	<meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
-	<meta content="https://www.jharajat.com.np/linktree" property="og:url" />
-	<meta content="#ff8888" data-react-helmet="true" name="theme-color" />
-	<!-- everything important in here -->
-	<link rel="stylesheet" href="../particle/style.css">
-	
-        <!--J query-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='style.css'>
+    <title>@rajat_cj Links</title>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="jharajat.com.np/linktree">
+    <meta property="og:title" content="Linktree">
+    <meta property="og:description" content="Hi, Im Rajat and here are my links.">
+    <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+    <meta content="https://www.jharajat.com.np/linktree" property="og:url" />
+    <meta content="#ff8888" data-react-helmet="true" name="theme-color" />
+    <!-- everything important in here -->
+    <link rel="stylesheet" href="../particle/style.css">
+
+    <!--J query-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 </head>
 
 <body>
-	<a class='mediabtn' style="position:absolute; top:10px; right:10px; background: var(--primary-bgopp); color: var(--primary-bg);" id='themebutton' onclick="changeTheme()" href='#'><i class="fa-solid fa-sun"></i></a>
-	<audio id="idAudio">
-		<source src="./rick.mp3" type="audio/ogg">
-	</audio>
-	<div class='triangle' id="particles-js"></div>
-	<!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-	<div class='container'>
-		<div class='space'></div>
-		<div class='header--box'>
-			<header class='header'>
-				<div class='header__chat-box'>
-					<div class='header__chat-box--behind'>
-						<div class='header__chat-box--front'>
-							<h1 id="avatartext" style="font-size: 1.5rem;">click</h1>
-						</div>
-					</div>
-				</div>
-				<div class='header__icon-box' id="avatar">
-					<img src='https://api.lanyard.rest/754033245972201612.jpg' onclick="openDisc()" style="cursor: pointer;" alt='Discord Avatar' class='header__icon' />
-				</div>
-			</header>
-		</div>
-		<div class='links-container'>
-			<li class='right'><a class='link' href='https://jharajat.com.np/'>Portfolio (Joke)</a>
-			</li>
-			<li class='left'><a class='link' href='https://dsc.gg/botu'>Invite Discord Bot</a>
-			</li>
-			<li class='right'><a class='link' href='https://botuu.jharajat.com.np/'>Bot Website</a>
-			</li>
-			<li class='left'><a class='link' href='https://discord.gg/UAaRzNz87W'>Support Server</a>
-			</li>
-			<li class='right'><a onclick="play_Audio()" class='link' id="rickroll" href='#'>OnlyFans</a>
-			</li>
-			
-		</div>
-		<div class='user-info-box'>
-			<div class='user-info'>
-				<h2>@rajat_cj</h2>
-			</div>
-			<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-				<input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
-				<input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp"/>
-				<input name="username" id="username" type="hidden" value="Linktree"/>
-				<input name="guild" id="guild" type="hidden" value="819109979046936577"/>
-				<input name="sessionid" id="sessionid" type="hidden" value=""/>
-				<input name="timezone" id="timezone" type="hidden" value=""/>
-			  </form>
-			<div class="mediabuttons">
-				<a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
-				<a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
-				<a class='mediabtn' href='https://twitter.com/rajat_cj'><i class="fa-brands fa-twitter"></i></a>
-				<a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
-			</div>
-			<div class="spotify-np" id="spotify-np">
-				<p id="spotify-iframe" src="hm"></p>
-			</div>
-		</div>
-	</div>
-	<div class="discordprofile" id="discordprofile">
-		<iframe id="discordprofileinside" src="../profile/index.html" style="margin:20vh auto; display:block; width:100%; max-width: 400px; height: 80vh; border:0px;" title="Discord Status"></iframe>
-	</div>
+    <a class='mediabtn' style="position:absolute; top:10px; right:10px; background: var(--primary-bgopp); color: var(--primary-bg);" id='themebutton' onclick="changeTheme()" href='#'><i class="fa-solid fa-sun"></i></a>
+    <audio id="idAudio">
+        <source src="./rick.mp3" type="audio/ogg">
+    </audio>
+    <div class='triangle' id="particles-js"></div>
+    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+    <div class='container'>
+        <div class='space'></div>
+        <div class='header--box'>
+            <header class='header'>
+                <div class='header__chat-box'>
+                    <div class='header__chat-box--behind'>
+                        <div class='header__chat-box--front'>
+                            <h1 id="avatartext" style="font-size: 1.5rem;">click</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class='header__icon-box' id="avatar">
+                    <img src='https://api.lanyard.rest/754033245972201612.jpg' onclick="openDisc()" style="cursor: pointer;" alt='Discord Avatar' class='header__icon' />
+                </div>
+            </header>
+        </div>
+        <div class='links-container'>
+            <li class='right'><a class='link' href='https://jharajat.com.np/'>Portfolio (Joke)</a>
+            </li>
+            <li class='left'><a class='link' href='https://dsc.gg/botu'>Invite Discord Bot</a>
+            </li>
+            <li class='right'><a class='link' href='https://botuu.jharajat.com.np/'>Bot Website</a>
+            </li>
+            <li class='left'><a class='link' href='https://discord.gg/UAaRzNz87W'>Support Server</a>
+            </li>
+            <li class='right'><a onclick="play_Audio()" class='link' id="rickroll" href='#'>OnlyFans</a>
+            </li>
+
+        </div>
+        <div class='user-info-box'>
+            <div class='user-info'>
+                <h2>@rajat_cj</h2>
+            </div>
+            <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
+                <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
+                <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
+                <input name="username" id="username" type="hidden" value="Linktree" />
+                <input name="guild" id="guild" type="hidden" value="819109979046936577" />
+                <input name="sessionid" id="sessionid" type="hidden" value="" />
+                <input name="timezone" id="timezone" type="hidden" value="" />
+            </form>
+            <div class="mediabuttons">
+                <a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
+                <a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
+                <a class='mediabtn' href='https://twitter.com/rajat_cj'><i class="fa-brands fa-twitter"></i></a>
+                <a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
+            </div>
+            <div class="spotify-np" id="spotify-np">
+                <p id="spotify-iframe" src="hm"></p>
+            </div>
+        </div>
+    </div>
+    <div class="discordprofile" id="discordprofile">
+        <iframe id="discordprofileinside" src="../profile/index.html" style="margin:20vh auto; display:block; width:100%; max-width: 400px; height: 80vh; border:0px;" title="Discord Status"></iframe>
+    </div>
 </body>
+
 </html>
 
-  <!-- chat id storer -->
-  <script>
-	if (typeof(Storage) !== "undefined") {
-	  if (localStorage.getItem("chatid") === null) {
-		localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
-		var chatid = localStorage.getItem("chatid");
-		$.getJSON("https://api.ipify.org?format=json", function(data) {
-		document.getElementById('timezone').value = data.ip;
-		$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip)
-	})
-	  } else {
-		var chatid = localStorage.getItem("chatid");
-	  }
-	} else {
-	  var chatid = "NA";
-	}
-	document.getElementById('sessionid').value = chatid;
-	
-  </script>
-
+<!-- chat id storer -->
+<script>
+if(typeof(Storage) !== "undefined") {
+    if(localStorage.getItem("chatid") === null) {
+        localStorage.setItem("chatid", Math.floor((Math.random() * 1000000000) + 1));
+        var chatid = localStorage.getItem("chatid");
+        $.getJSON("https://api.ipify.org?format=json", function(data) {
+            document.getElementById('timezone').value = data.ip;
+            $.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip)
+        })
+    } else {
+        var chatid = localStorage.getItem("chatid");
+    }
+} else {
+    var chatid = "NA";
+}
+document.getElementById('sessionid').value = chatid;
+</script>
 
 
 <!-- chatbox message system -->
 <script>
-	function sendLinkTreePrivMsg() {
-			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
-			document.getElementById('content').value = "";
-			document.getElementById('content').placeholder = "✅ Message was sent";
-	}
+function sendLinkTreePrivMsg() {
+    $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
+    document.getElementById('content').value = "";
+    document.getElementById('content').placeholder = "✅ Message was sent";
+}
 </script>
 
 <!--spotify-np-->
 <script>
 fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
-	method: 'GET'
+    method: 'GET'
 }).then(function(response) {
-	return response.json();
+    return response.json();
 }).then(function(data) {
-	appendSpoti(data);
+    appendSpoti(data);
 }).catch(function(err) {
-	console.log('error: ' + err);
+    console.log('error: ' + err);
 });
 (function loopspoti() {
-	setTimeout(function() {
-		fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
-			method: 'GET'
-		}).then(function(response) {
-			return response.json();
-		}).then(function(data) {
-			appendSpoti(data);
-		}).catch(function(err) {
-			console.log('error: ' + err);
-		});
-		// execute script
-		loopspoti()
-	}, 15000);
+    setTimeout(function() {
+        fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
+            method: 'GET'
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            appendSpoti(data);
+        }).catch(function(err) {
+            console.log('error: ' + err);
+        });
+        // execute script
+        loopspoti()
+    }, 15000);
 }());
 
 function appendSpoti(data) {
-  if (data.data.listening_to_spotify === false ) {
-    document.getElementById('spotify-np').innerHTML = '<p id="spotify-iframe" src="hm"></p>'
-  } else if (document.getElementById('spotify-iframe').src != "https://open.spotify.com/embed/track/" + data.data.spotify.track_id) {
-	document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe id="spotify-iframe" style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
-}
+    if(data.data.listening_to_spotify === false) {
+        document.getElementById('spotify-np').innerHTML = '<p id="spotify-iframe" src="hm"></p>'
+    } else if(document.getElementById('spotify-iframe').src != "https://open.spotify.com/embed/track/" + data.data.spotify.track_id) {
+        document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe id="spotify-iframe" style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
+    }
 }
 </script>
 
@@ -157,17 +156,17 @@ function appendSpoti(data) {
 <!--For profile start-->
 <script>
 function openDisc() {
-	document.getElementById("discordprofile").style.height = "100%";
+    document.getElementById("discordprofile").style.height = "100%";
 }
 </script>
 <script>
 var body = document.getElementById('discordprofile');
 var except = document.getElementById('discordprofileinside');
 body.addEventListener("click", function() {
-	document.getElementById("discordprofile").style.height = "0%";
+    document.getElementById("discordprofile").style.height = "0%";
 }, false);
 except.addEventListener("click", function(ev) {
-	ev.stopPropagation();
+    ev.stopPropagation();
 }, false);
 </script>
 
@@ -177,18 +176,18 @@ except.addEventListener("click", function(ev) {
 var GFG = document.getElementById("idAudio");
 
 function play_Audio() {
-	GFG.volume = 1.0;
-	GFG.play();
-	document.getElementById('rickroll').innerHTML = "Never Gonna Give You Up";
-	document.getElementById('avatartext').innerHTML = "gotcha";
-	document.getElementById('avatar').innerHTML = "<img src='./rickroll.gif' alt='Discord Avatar' onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
+    GFG.volume = 1.0;
+    GFG.play();
+    document.getElementById('rickroll').innerHTML = "Never Gonna Give You Up";
+    document.getElementById('avatartext').innerHTML = "gotcha";
+    document.getElementById('avatar').innerHTML = "<img src='./rickroll.gif' alt='Discord Avatar' onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
 }
 
 function pause_Audio() {
-	GFG.pause();
-	document.getElementById('rickroll').innerHTML = "OnlyFans";
-	document.getElementById('avatartext').innerHTML = "Hi.";
-	document.getElementById('avatar').innerHTML = "<img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'  onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
+    GFG.pause();
+    document.getElementById('rickroll').innerHTML = "OnlyFans";
+    document.getElementById('avatartext').innerHTML = "Hi.";
+    document.getElementById('avatar').innerHTML = "<img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'  onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
 }
 </script>
 
@@ -204,27 +203,26 @@ function pause_Audio() {
   -->
 
 
-
 <!-- theme switch -->
 <script>
 var currentTheme = localStorage.getItem('theme');
 if(currentTheme) {
-	document.documentElement.setAttribute('data-theme', currentTheme);
-	if(currentTheme === 'dark') {
-		document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
-	}
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if(currentTheme === 'dark') {
+        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
+    }
 };
 
 function changeTheme() {
-	if(localStorage.getItem('theme') === 'light') {
-		document.documentElement.setAttribute('data-theme', 'dark');
-		localStorage.setItem('theme', 'dark');
-		document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
-	} else {
-		document.documentElement.setAttribute('data-theme', 'light');
-		localStorage.setItem('theme', 'light');
-		document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-sun'></i>";
-	}
+    if(localStorage.getItem('theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-sun'></i>";
+    }
 }
 </script>
 
@@ -234,4 +232,3 @@ function changeTheme() {
 <script src="./particle.js"></script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-
