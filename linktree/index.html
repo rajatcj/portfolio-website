@@ -16,6 +16,9 @@
 	<meta content="#ff8888" data-react-helmet="true" name="theme-color" />
 	<!-- everything important in here -->
 	<link rel="stylesheet" href="../particle/style.css">
+	
+        <!--J query-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 </head>
 
 <body>
@@ -58,11 +61,14 @@
 			<div class='user-info'>
 				<h2>@rajat_cj</h2>
 			</div>
-			<form class="send-message" action="https://discord.com/api/webhooks/1038824052380414073/axsa4Mnpr7ITRLxaOIn2KNhCKTqkheVXb3ezz2Lv6V_LHx84IL-Ph5T5GbVHU3zLtrLD" method="post">
-				<input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/859388126875484180.webp" />
-				<input name="username" id="username" type="hidden" value="From Linktree" />
-				<input type="text" style="font-family: 'Fredoka one', sans-serif;" autocomplete="off" name="content" id="content" placeholder="Send msg anonymously." />
-			</form>
+			<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
+				<input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
+				<input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp"/>
+				<input name="username" id="username" type="hidden" value="Linktree"/>
+				<input name="guild" id="guild" type="hidden" value="819109979046936577"/>
+				<input name="sessionid" id="sessionid" type="hidden" value=""/>
+				<input name="timezone" id="timezone" type="hidden" value=""/>
+			  </form>
 			<div class="mediabuttons">
 				<a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
 				<a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
@@ -80,31 +86,15 @@
 </body>
 <!-- webhook message -->
 <script>
-document.querySelector('#content').addEventListener('keypress', function(e) {
-	setTimeout(function() {
-		if(e.key === 'Enter') {
-			e.preventDefault();
-			fetch('https://discord.com/api/webhooks/1044192010426384467/lwMcpZ8znZuZxQaUyH6Ew1hmjY36UrGSbT_gnyZmujpw85FclllD5Mi0Lxx-awo4h64h', {
-				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					"username": "From Linktree",
-					"avatar_url": document.getElementById('avatar_url').value,
-					"content": document.getElementById('content').value,
-					"allowed_mentions": {
-						"parse": []
-					},
-				})
-			})
+	function sendLinkTreePrivMsg() {
+			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
 			document.getElementById('content').value = "";
 			document.getElementById('content').placeholder = "✅ Message was sent";
-		}
-	}, 1000);
-});
+	}
+
+
 </script>
+
 <!--spotify-np-->
 <script>
 fetch('https://api.lanyard.rest/v1/users/754033245972201612', {
@@ -175,20 +165,39 @@ function pause_Audio() {
 	document.getElementById('avatar').innerHTML = "<img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'  onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
 }
 </script>
+
 <!-- Browser ID for chats -->
 <script>
-if(typeof(Storage) !== "undefined") {
-	if(localStorage.getItem("chatid") === null) {
-		localStorage.setItem("chatid", Math.floor((Math.random() * 1000000) + 1));
+	document.querySelector('#content').addEventListener('keypress', function (e) {
+	  setTimeout(function() { if (e.key === 'Enter') {
+		  document.getElementById('content').value = "";
+		  document.getElementById('content').placeholder = "✅ Message was sent";
+		}}, 1000);
+	});
+  </script>
+  <!-- chat id storer -->
+  <script>
+	if (typeof(Storage) !== "undefined") {
+	  if (localStorage.getItem("chatid") === null) {
+		localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
 		var chatid = localStorage.getItem("chatid");
+	  } else {
+		var chatid = localStorage.getItem("chatid");
+	  }
 	} else {
-		var chatid = localStorage.getItem("chatid");
+	  var chatid = "NA";
 	}
-} else {
-	var chatid = "NA";
-}
-document.getElementById('username').value = "From Linktree (" + chatid + ")";
-</script>
+	document.getElementById('sessionid').value = chatid;
+	
+  </script>
+
+<script>
+	$.getJSON("https://api.ipify.org?format=json", function(data) {
+		document.getElementById('timezone').value = data.ip;
+		$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip)
+	})
+	</script>
+
 <!-- Particle.js -->
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="./particle.js"></script>
