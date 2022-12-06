@@ -4,19 +4,34 @@
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap" rel="stylesheet">
-    <link rel='stylesheet' href='style.css'>
+    <meta name="theme-color" content="#ff8888" data-react-helmet="true" />
+    <meta name="author" content="Rajat Jha">
+    <meta name="description" content="A portal to all my links, handles and projects.">
+    <meta name="keywords" content="Rajat, Rajat Jha, Rajat Chandra Jha, rajat_cj, Rajat Died Today">
+
     <title>@rajat_cj Links</title>
+
+    
+    <!-- Media Meta Tags -->
+    <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="jharajat.com.np/linktree">
-    <meta property="og:title" content="Linktree">
-    <meta property="og:description" content="Hi, Im Rajat and here are my links.">
+    <meta property="og:title" content="Rajat • Linktree">
+    <meta property="og:description" content="Hi, Im Rajat. And here's the portal to all my links, handles and projects.">
     <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
-    <meta content="https://www.jharajat.com.np/linktree" property="og:url" />
-    <meta content="#ff8888" data-react-helmet="true" name="theme-color" />
+    <meta property="og:url" content="https://www.jharajat.com.np/linktree"/>
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rajat • Linktree">
+    <meta name="twitter:description" content="A portal to all my links, handles and projects.">
+    <meta name="twitter:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+
     <!-- everything important in here -->
     <link rel="stylesheet" href="../particle/style.css">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap">
+    <link rel='stylesheet' href='style.css'>
+    
     <!--J query-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 </head>
@@ -62,7 +77,8 @@
                 <h2>@rajat_cj</h2>
             </div>
             <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-                <input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
+                <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
+                <br> --><input type="text" autocomplete="off" name="content" id="content" placeholder="Send a secret message to me" />
                 <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
                 <input name="username" id="username" type="hidden" value="Linktree" />
                 <input name="guild" id="guild" type="hidden" value="819109979046936577" />

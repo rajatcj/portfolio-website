@@ -21,7 +21,6 @@ $var[gameid;$optOff[$random[100000;999999]]]
 $var[$var[snakepo];🐸]
 $var[$var[applepo];🍎]
 
-
 $var[r;0]
 $var[snakedata;
 $var[c;1]$var[r;$sum[$var[r];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]$var[$var[r]$var[c]]-$var[c;$sum[$var[c];1]]
@@ -61,3 +60,5 @@ $addButton[yes;$authorID-snake-leftarrow-$var[gameid];;primary;false;⏪]
 $addButton[no;$authorID-snake-downarrow-$var[gameid];;primary;false;⏬]
 $addButton[no;$authorID-snake-rightarrow-$var[gameid];;primary;false;⏩]
 $addButton[no;$authorID-snake-nothing1-$var[gameid];0;secondary;true;🍎]
+
+
