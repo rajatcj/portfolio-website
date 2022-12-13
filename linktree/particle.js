@@ -72,14 +72,14 @@ particlesJS("particles-js", {
           "detect_on": "window",
           "events": {
             "onhover": {
-              "enable": true,
+              "enable": false,
               "mode": "repulse"
             },
             "onclick": {
               "enable": false,
               "mode": "push"
             },
-            "resize": true
+            "resize": false
           },
           "modes": {
             "grab": {

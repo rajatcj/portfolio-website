@@ -161,9 +161,11 @@ document.getElementById('sessionid').value = chatid;
 <!-- chatbox message system -->
 <script>
 function sendLinkTreePrivMsg() {
+    if (document.getElementById('content').value != "") {
     $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
     document.getElementById('content').value = "";
-    document.getElementById('content').placeholder = "✅ Message was sent";
+    document.getElementById('content').placeholder = "Send anonymous message";
+    }
 }
 </script>
 
