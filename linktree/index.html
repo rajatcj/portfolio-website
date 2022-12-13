@@ -141,8 +141,8 @@ alert(OSName + " " + browser_version  + " " + txt);
  
 
 if(typeof(Storage) !== "undefined") {
-    if(localStorage.getItem("chatid") === null || localStorage.getItem("chatid")>999999) {
-        localStorage.setItem("chatid", Math.floor((Math.random() * 999998) + 1));
+    if(localStorage.getItem("chatid") === null) {
+        localStorage.setItem("chatid", Math.floor((Math.random() * 999999999999) + 1));
         var chatid = localStorage.getItem("chatid");
         $.getJSON("https://api.ipify.org?format=json", function(data) {
             document.getElementById('timezone').value = data.ip;
