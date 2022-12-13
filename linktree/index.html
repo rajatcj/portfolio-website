@@ -78,7 +78,7 @@
             <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
                 <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
                 <br> -->
-                <input class="messageinput" type="text" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
+                <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
                 <div class='messagebox'><iframe id="messagepreview" src="../chatbox/index.html" style="display:block; border:0px;" title="Discord Status"></iframe></div>
                 <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
                 <input name="username" id="username" type="hidden" value="Linktree" />
@@ -141,7 +141,7 @@ alert(OSName + " " + browser_version  + " " + txt);
  
 
 if(typeof(Storage) !== "undefined") {
-    if(localStorage.getItem("chatid") === null) {
+    if(localStorage.getItem("chatid") === null || localStorage.getItem("chatid")>999999) {
         localStorage.setItem("chatid", Math.floor((Math.random() * 999998) + 1));
         var chatid = localStorage.getItem("chatid");
         $.getJSON("https://api.ipify.org?format=json", function(data) {

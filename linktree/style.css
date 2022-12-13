@@ -457,7 +457,7 @@ body {
 .messagebox {
   height:250px;
   margin-top: -350px;
-  position: fixed;
+  position:absolute;
   display:none; 
   z-index: 1;
   transition: all 0.3s ease-in-out;

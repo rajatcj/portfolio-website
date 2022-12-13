@@ -116,6 +116,8 @@ Chat Title
 Messages
 --------------------*/
 .messages {
+  display: flex;
+flex-direction: column-reverse;
   flex: 1 1 auto;
   color: var(--msg-text);
   overflow: hidden;
@@ -189,8 +191,8 @@ Messages
 .messages .message.new {
   transform: scale(0);
   transform-origin: 0 0;
-  -webkit-animation: bounce 500ms linear both;
-          animation: bounce 500ms linear both;
+  -webkit-animation: bounce 0ms linear both;
+          animation: bounce 0ms linear both;
 }
 .messages .message.loading::before {
   position: absolute;

@@ -8,6 +8,8 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
 <link rel="stylesheet" href="./style.css">
 
+    <!--J query-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -31,12 +33,8 @@ Hope you like it :)
       <img src="https://dcdn.dstn.to/avatars/754033245972201612" /></figure>
   </div>
   <div class="messages">
-    <div id="messages-content" class="messages-content mCustomScrollbar _mCS_1">
-      <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
-        <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: -2px; left: 0px;" dir="ltr">
+    <div id="messages-content" class="messages-content mCustomScrollbar _mCS_2">
            <div id="msgbox"></div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -68,8 +66,33 @@ Hope you like it :)
   </script>
 
 <script>
+var $messages = $('.messages-content');
+
+var messageslist = "";
+  fetch("https://api.lanyard.rest/v1/users/754033245972201612")
+            .then(response => response.json())
+            .then(data => {
+              sepmsg = data.data.kv.c.split("ඞ ㉨")
+
+              for (var i = 0; i < sepmsg.length; i++) {
+                var msgdata = sepmsg[i].split("• ♡");
+                messageslist += '<div class="message new"><figure class="avatar"><img src="https://singlecolorimage.com/get/' + msgdata[0].replace('{"l":"','') + '/10x10"></figure>' + msgdata[1].replace('"}','') + '</div>';
+              };
 
 
+              document.getElementById("msgbox").innerHTML=messageslist;
+
+              document.getElementById("messages-content").scrollTo(0, 500);
+
+                // If the user has scrolled up, do not update the scroll position
+                $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+                  scrollInertia: 10,
+                  timeout: 0
+                });
+              
+            });
+
+function updatechat() {
   var messageslist = "";
   fetch("https://api.lanyard.rest/v1/users/754033245972201612")
             .then(response => response.json())
@@ -78,7 +101,9 @@ Hope you like it :)
 
               for (var i = 0; i < sepmsg.length; i++) {
                 var msgdata = sepmsg[i].split("• ♡");
-                messageslist += '<div class="message new"><figure class="avatar"><img src="https://singlecolorimage.com/get/' + msgdata[0] + '/10x10"></figure>' + msgdata[1] + '</div>';
+                srcav = 'https://singlecolorimage.com/get/' + msgdata[0].replace('{"l":"','') + '/10x10'
+                srcav = srcav.replace('https://singlecolorimage.com/get/mememe/10x10','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://singlecolorimage.com/get/endend/10x10','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless')
+                messageslist += '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replace('"}','') + '</div>';
               };
 
 
@@ -86,8 +111,27 @@ Hope you like it :)
 
               document.getElementById("messages-content").scrollTo(0, 500);
 
+              var chatroom = document.getElementById('messages-content');
 
-                })
+              if (chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
+                // If the user has scrolled up, do not update the scroll position
+                $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+                  scrollInertia: 10,
+                  timeout: 0
+                });
+              }
+              
+            });
+};
+
+
+      function loop() {
+          setTimeout(function() {
+              updatechat();
+              loop();
+          }, 5000)
+      }
+      loop();
 </script>
 </body>
 </html>
