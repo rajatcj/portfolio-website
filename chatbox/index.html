@@ -101,8 +101,8 @@ function updatechat() {
 
               for (var i = 0; i < sepmsg.length; i++) {
                 var msgdata = sepmsg[i].split("• ♡");
-                srcav = 'https://avatars.dicebear.com/api/avataaars/' + msgdata[0].replace('{"l":"','') + '.png?b=%23ff8888'
-                srcav = srcav.replace('https://avatars.dicebear.com/api/avataaars/mememe.png','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://avatars.dicebear.com/api/avataaars/endend.png','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless')
+                srcav = 'https://avatars.dicebear.com/api/avataaars/' + msgdata[0].replace('{"l":"','') + '.png?b=%2343192d'
+                srcav = srcav.replace('https://avatars.dicebear.com/api/avataaars/mememe.png?b=%2343192d','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://avatars.dicebear.com/api/avataaars/endend.png?b=%2343192d','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless')
                 messageslist += '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replace('"}','') + '</div>';
               };
 
