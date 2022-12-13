@@ -79,7 +79,7 @@
                 <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
                 <br> -->
                 <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
-                <div class='messagebox'><iframe id="messagepreview" src="../chatbox/index.html" style="display:block; border:0px;" title="Discord Status"></iframe></div>
+                <div id='messagebox' class='messagebox'></div>
                 <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
                 <input name="username" id="username" type="hidden" value="Linktree" />
                 <input name="guild" id="guild" type="hidden" value="819109979046936577" />
@@ -276,6 +276,20 @@ function changeTheme() {
 }
 </script>
 
+<script>
+    // get the text field and div elements
+    var textField = document.getElementById('content');
+  
+    // when the text field is focused, show the div
+    textField.addEventListener('focus', function() {
+        document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html" style="display:block; border:0px;" title="Discord Status" ></iframe>';
+    });
+  
+    // when the text field is blurred, hide the div
+    textField.addEventListener('blur', function() {
+        document.getElementById("messagebox").innerHTML='';
+    });
+  </script>
 
 <!-- Particle.js -->
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
