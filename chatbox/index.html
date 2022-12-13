@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Daily UI #013: Direct Messaging</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--
+
+Follow me on
+Dribbble: https://dribbble.com/supahfunk
+Twitter: https://twitter.com/supahfunk
+Codepen: https://codepen.io/supah/
+
+It's just a concept, a fake chat to design a new daily UI for direct messaging.
+Hope you like it :)
+
+-->
+
+<div class="chat">
+  <div class="chat-title">
+    <h1>Rajat Jha</h1>
+    <h2>#Website-messages</h2>
+    <figure class="avatar">
+      <img src="https://dcdn.dstn.to/avatars/754033245972201612" /></figure>
+  </div>
+  <div class="messages">
+    <div id="messages-content" class="messages-content mCustomScrollbar _mCS_1">
+      <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+        <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: -2px; left: 0px;" dir="ltr">
+           <div id="msgbox"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg"></div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+
+<!----<script  src="./script.js"></script>-->
+
+<script>
+  var currentTheme = localStorage.getItem('theme');
+  if(currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if(currentTheme === 'dark') {
+          
+      }
+  };
+  
+  function changeTheme() {
+      if(localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+      } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+      }
+  }
+  </script>
+
+<script>
+
+
+  var messageslist = "";
+  fetch("https://api.lanyard.rest/v1/users/754033245972201612")
+            .then(response => response.json())
+            .then(data => {
+              sepmsg = data.data.kv.c.split("ඞ ㉨")
+
+              for (var i = 0; i < sepmsg.length; i++) {
+                var msgdata = sepmsg[i].split("• ♡");
+                messageslist += '<div class="message new"><figure class="avatar"><img src="https://singlecolorimage.com/get/' + msgdata[0] + '/10x10"></figure>' + msgdata[1] + '</div>';
+              };
+
+
+              document.getElementById("msgbox").innerHTML=messageslist;
+
+              document.getElementById("messages-content").scrollTo(0, 500);
+
+
+                })
+</script>
+</body>
+</html>

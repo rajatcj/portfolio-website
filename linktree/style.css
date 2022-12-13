@@ -454,6 +454,18 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+.messagebox {
+  height:250px;
+  margin-top: -350px;
+  position: fixed;
+  display:none; 
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.messageinput:focus + .messagebox {
+  display: flex;
+}
 
 /* Desktop Styles */
 @media only screen and (min-width: 861px) {

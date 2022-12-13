@@ -133,8 +133,9 @@
           document.getElementById('badge-containor').innerHTML = badgelist;
           document.getElementById("discorduser.name").innerHTML= data.default_username + "<span>#" + data.default_tag + "</span>";
           document.getElementById("discorduser.aboutme").innerHTML= data.about_me;
-          document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"" + data.banner + "\")'></div>";
-          document.getElementById("discorduser.avatarlink").innerHTML = '<a href="https://discord.com/users/' + data.userid + '" target="_blank"><div id="discorduser.avatar" class="profil-logo"><img src="https://api.lanyard.rest/' + data.userid + '.jpg" /></div></a>';
+          /** document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"" + data.banner + "\")'></div>";**/
+          document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"https://dcdn.dstn.to/banners/" + data.userid + "\")'></div>";
+          document.getElementById("discorduser.avatarlink").innerHTML = '<a href="https://discord.com/users/' + data.userid + '" target="_blank"><div id="discorduser.avatar" class="profil-logo"><img src="https://dcdn.dstn.to/avatars/' + data.userid + '" /></div></a>';
              
           document.getElementById('guild').value = data.message_guild_id;
           document.getElementById('avatar_url').value = data.message_source_icon;
