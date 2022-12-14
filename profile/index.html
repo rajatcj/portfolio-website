@@ -14,6 +14,9 @@
         <script src="./assets/javascripts/activity.js"></script>
         <!--J query-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+        
+    <!--lanyard-->
+    <script src="https://cdn.jsdelivr.net/gh/xaronnn/js-lanyard/lanyard.js"></script>
   </head>
   <body>
     <div class="card-container">
@@ -97,32 +100,22 @@
         var chatid = "NA";
       }
       document.getElementById('sessionid').value = chatid;
-      
-    </script>
-
-<script>
-  $.getJSON("https://api.ipify.org?format=json", function(data) {
+      $.getJSON("https://api.ipify.org?format=json", function(data) {
       document.getElementById('timezone').value = data.ip;
   })
-  </script>
+    </script>
 
 
     <script>
-    var rolelist = "";//holds the html so far
-    var badgelist = "";
 
-     fetch('config.json')
+
+fetch('config.json')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
-            appendJson(data);
-        })
-        .catch(function (err) {
-            console.log('error: ' + err);
-        });
-
-     function appendJson(data) {
+            var rolelist = "";//holds the html so far
+      var badgelist = "";
         for (var i = 0; i < data.roles.length; i++) {
           rolelist += '<div class="role"><div class="color" style="background:' + data.roles[i].color + '"></div>' + data.roles[i].rolename + '</div>';
           };
@@ -142,8 +135,21 @@
           document.getElementById('username').value = data.message_source_name;
           
           const userID = data.userid;
-        
+        })
 
+
+        const userID = "754033245972201612";
+
+updateprofile;
+  
+lanyard({
+    userId: userID,
+    socket: true,
+    onPresenceUpdate: updateprofile
+})
+
+
+     function updateprofile(data) {
       // JSON - JavaScript Object Notation
       fetch("https://api.lanyard.rest/v1/users/" + userID)
             .then(response => response.json())
@@ -193,22 +199,19 @@
 
 
                 updatepresence(userID);
-      // loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
-      var i = 1;
+  
+}
+
+// loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
       function loop() {
           setTimeout(function() {
               updatepresence(userID);
-              
-              i++;
-              if (i < 500) {
-                  loop();
-              }
-          }, 1000 * document.getElementById('update_frequency').value)
+              loop();
+          }, 5000)
       }
-
       loop();
-}
-    </script>
+
+ </script>
 
   </body>
 </html>
