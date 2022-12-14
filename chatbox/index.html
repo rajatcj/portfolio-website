@@ -63,6 +63,7 @@
 </script>
 
 <script>
+var chatid = localStorage.getItem("chatid");
 // loadchatonupdate
 updatechat("true");
   
@@ -75,7 +76,7 @@ lanyard({
 
 function updatechat(scrolldown) {
   var $messages = $('.messages-content');
-  var messageslist = "";
+  var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server. Click the "Support Server" button in this linktree.</div>';
   fetch("https://api.lanyard.rest/v1/users/754033245972201612")
             .then(response => response.json())
             .then(data => {
@@ -85,9 +86,16 @@ function updatechat(scrolldown) {
                 var msgdata = sepmsg[i].split("• ♡");
                 srcav = 'https://avatars.dicebear.com/api/avataaars/' + msgdata[0].replace('{"l":"','') + '.png?b=%2343192d'
                 srcav = srcav.replace('https://avatars.dicebear.com/api/avataaars/mememe.png?b=%2343192d','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://avatars.dicebear.com/api/avataaars/endend.png?b=%2343192d','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless')
-                messageslist += '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replace('"}','') + '</div>';
+                newchatbubble = '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replaceAll('"}','').replaceAll('"','\'').replaceAll('#COMMA#',',').replaceAll('#LEFT_CLICK#','<').replaceAll('#RIGHT_CLICK#','>').replaceAll('#COLON#',':').replaceAll(/(<a?)?:\w+:(\d{18,19}>)?/g,":emoji:") + '</div>';
+                if (msgdata[0] === chatid) {
+                  newchatbubble = newchatbubble.replace('<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>','<div class="message message-personal">')
+                } else if (msgdata[0] === "mememe") {
+                  newchatbubble = newchatbubble.replace('<div class="message new">','<div class="message new" style="background: var(--my-message);">')
+                }
+                messageslist += newchatbubble
               };
-
+              
+              messageslist += '<div class="message message-personal"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>'
 
               document.getElementById("msgbox").innerHTML=messageslist;
 
