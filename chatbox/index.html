@@ -64,15 +64,16 @@
 
 <script>
 // loadchatonupdate
-updatechat();
-    
+updatechat("true");
+  
 lanyard({
     userId: "754033245972201612",
     socket: true,
     onPresenceUpdate: updatechat
 })
 
-function updatechat() {
+
+function updatechat(scrolldown) {
   var $messages = $('.messages-content');
   var messageslist = "";
   fetch("https://api.lanyard.rest/v1/users/754033245972201612")
@@ -90,10 +91,15 @@ function updatechat() {
 
               document.getElementById("msgbox").innerHTML=messageslist;
 
-              document.getElementById("messages-content").scrollTo(0, 500);
 
               var chatroom = document.getElementById('messages-content');
 
+              if (scrolldown === "true") {
+                $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+                  scrollInertia: 10,
+                  timeout: 0
+                });
+              } else {
               if (chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
                 // If the user has scrolled up, do not update the scroll position
                 $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
@@ -101,7 +107,7 @@ function updatechat() {
                   timeout: 0
                 });
               }
-              
+            }
             });
 };
 
