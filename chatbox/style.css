@@ -159,7 +159,7 @@ Messages
 .messages .message .avatar {
   position: absolute;
   z-index: 1;
-  bottom: -5px;
+  bottom: -10px;
   left: -35px;
   border-radius: 30px;
   width: 30px;
