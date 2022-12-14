@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
   
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -17,6 +18,7 @@
 
 <div class="chat">
   <div class="chat-title">
+    <div id="status"></div>
     <h1>Rajat Jha</h1>
     <h2>#Website-messages</h2>
     <figure class="avatar">
@@ -118,6 +120,9 @@ function updatechat(scrolldown) {
                 });
               }
             }
+            document.getElementById("status").innerHTML=`<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d` )) ) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline ` )) ) + `<i class="fa-solid fa-circle-dot"></i></span>`;
+            
+                
             });
 };
 

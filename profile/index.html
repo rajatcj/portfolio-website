@@ -158,17 +158,17 @@ lanyard({
                 
               
                 if (data.data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#3ba55d` )) + `;" class="fa-solid fa-display"></i>
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-display"></i>
                 <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Desktop</div></div>`;
                 }
 
                 if (data.data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#3ba55d` )) + `;" class="fa-solid fa-mobile"></i>
+                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-mobile"></i>
                 <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Mobile</div></div>`;
                 }
 
                 if (data.data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#3ba55d` )) + `;" class="fa-solid fa-globe"></i>
+                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-globe"></i>
                 <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Browser</div></div>`;
                 }
 

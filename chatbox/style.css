@@ -88,7 +88,7 @@ Chat Title
 }
 .chat-title h1, .chat-title h2 {
   font-weight: normal;
-  font-size: 10px;
+  font-size: 12px;
   margin: 0;
   padding: 0;
 }
@@ -96,6 +96,12 @@ Chat Title
   color: rgba(255, 255, 255, 0.5);
   font-size: 8px;
   letter-spacing: 1px;
+}
+.chat-title #status {
+  font-weight:bolder;
+  font-size: 10px;
+  height: 50%;
+  float:right;
 }
 .chat-title .avatar {
   position: absolute;
