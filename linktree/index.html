@@ -85,6 +85,7 @@
                 <input name="guild" id="guild" type="hidden" value="819109979046936577" />
                 <input name="sessionid" id="sessionid" type="hidden" value="" />
                 <input name="timezone" id="timezone" type="hidden" value="" />
+                <input name="url" id="url" type="hidden" value="" />
                 
             </form>
             <div class="mediabuttons">
@@ -155,6 +156,7 @@ if(typeof(Storage) !== "undefined") {
     var chatid = "NA";
 }
 document.getElementById('sessionid').value = chatid;
+document.getElementById('url').value = document.URL;
 </script>
 
 
@@ -164,7 +166,12 @@ function sendLinkTreePrivMsg() {
     if (document.getElementById('content').value != "") {
     $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
     document.getElementById('content').value = "";
-    document.getElementById('content').placeholder = "Send anonymous message";
+    document.getElementById('content').readOnly = true;
+    document.getElementById('content').placeholder = "Wait 5 sec to send again";
+    setTimeout(function() {
+        document.getElementById('content').readOnly = false;
+        document.getElementById('content').placeholder = "Send anonymous message";
+        }, 5000);
     }
 }
 </script>
