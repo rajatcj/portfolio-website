@@ -254,7 +254,7 @@ body {
   align-items: center;
   margin-top: 2rem;
   width: 70%;
-  max-width: 30rem;
+  max-width: 40rem;
 }
 
 .links-container li {
@@ -440,7 +440,7 @@ body {
   padding: 2rem 0 2rem 0;
   flex:1;
   width: 70%;
-  max-width: 30rem;
+  max-width: 40rem;
 }
 
 .discordprofile {
