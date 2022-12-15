@@ -140,6 +140,11 @@ fetch('config.json')
 
         const userID = "754033245972201612";
         
+
+        var firstjson = lanyard({userId: userID});
+
+        sessionStorage.setItem("activityData", JSON.stringify(firstjson));
+        updatepresenceLoop();
         
 lanyard({
     userId: userID,
@@ -152,7 +157,6 @@ lanyard({
 
       sessionStorage.setItem("activityData", JSON.stringify(data));
 
-                updatepresenceLoop();
                 document.getElementById("discorduser.name").innerHTML=`${data.discord_user.username}<span>#${data.discord_user.discriminator}</span>`;
                 
               
