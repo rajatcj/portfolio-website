@@ -3,8 +3,10 @@ var originalh = -0.2;
 var addedh = 5;
 
 
-async function updatepresence(userid) {
-    var json = await lanyard({userId: userid});
+
+function updatepresenceLoop() {
+  theTimeLooper = setInterval(() => {
+    var json = JSON.parse(sessionStorage.getItem("activityData"));
     let activities = json.activities;
     let currentdiv = document.getElementById("activities");
     var h = originalh;
@@ -93,21 +95,16 @@ async function updatepresence(userid) {
 
     // set height of activities rect
     currentdiv.style.height = h + "rem";
+
+
+  }, 1000);
+
+
 }
 
-const onload = async () => {
-    // init all of the original divs and main user details
-    const start = async () => {
-        var json = await lanyard({userId: userid});
-        init(json);
-    }
 
-    start();
-    
-    // start the websocket to automatically fetch the new details on presence update
-    lanyard({
-        userId: userid,
-        socket: true,
-        onPresenceUpdate: updatepresence
-    })
-}
+
+
+
+
+

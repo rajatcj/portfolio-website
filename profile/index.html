@@ -139,9 +139,8 @@ fetch('config.json')
 
 
         const userID = "754033245972201612";
-
-updateprofile;
-  
+        
+        
 lanyard({
     userId: userID,
     socket: true,
@@ -150,66 +149,64 @@ lanyard({
 
 
      function updateprofile(data) {
-      // JSON - JavaScript Object Notation
-      fetch("https://api.lanyard.rest/v1/users/" + userID)
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("discorduser.name").innerHTML=`${data.data.discord_user.username}<span>#${data.data.discord_user.discriminator}</span>`;
+
+      sessionStorage.setItem("activityData", JSON.stringify(data));
+
+                updatepresenceLoop();
+                document.getElementById("discorduser.name").innerHTML=`${data.discord_user.username}<span>#${data.discord_user.discriminator}</span>`;
                 
               
-                if (data.data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-display"></i>
-                <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Desktop</div></div>`;
+                if (data.active_on_discord_desktop) {
+                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Desktop</div></div>`;
                 }
 
-                if (data.data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-mobile"></i>
-                <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Mobile</div></div>`;
+                if (data.active_on_discord_mobile) {
+                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Mobile</div></div>`;
                 }
 
-                if (data.data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-globe"></i>
-                <div class="tooltip tooltip-up">` + (data.data.discord_status === `online` ? `Online` : (data.data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Browser</div></div>`;
+                if (data.active_on_discord_web) {
+                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Browser</div></div>`;
                 }
 
 
-              if (data.data.discord_status === `offline`) {
+              if (data.discord_status === `offline`) {
                   document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#747f8d;" class="fa-solid fa-circle"></i>
                 <div class="tooltip tooltip-up">Offline</div></div>`;
               }
               
 
-              if (data.data.listening_to_spotify) {
+              if (data.listening_to_spotify) {
                 document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
               }
 
-              if (data.data.activities[0].id === `custom`) {
-                  document.getElementById("discorduser.status").innerHTML=(data.data.activities[0].state == undefined ? `` : data.data.activities[0].state ) + `<br><br>`;
-                  if (data.data.activities[0].emoji.animated === false) {
-                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.data.activities[0].emoji.id}.webp" width="15"> `;
-                  } else if (data.data.activities[0].emoji.animated === true) {
-                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.data.activities[0].emoji.id}.gif?size=40" width="15"> `;
+              if (data.activities[0].id === `custom`) {
+                  document.getElementById("discorduser.status").innerHTML=(data.activities[0].state == undefined ? `` : data.activities[0].state ) + `<br><br>`;
+                  if (data.activities[0].emoji.animated === false) {
+                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.webp" width="15"> `;
+                  } else if (data.activities[0].emoji.animated === true) {
+                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.gif?size=40" width="15"> `;
                   } else {
-                      document.getElementById("discorduser.emoji").innerHTML=`${data.data.activities[0].emoji.name} `;
+                      document.getElementById("discorduser.emoji").innerHTML=`${data.activities[0].emoji.name} `;
                   }
               }
 
-                })
-
-
-                updatepresence(userID);
-  
 }
 
-// loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
+
+
+
+/* / loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
       function loop() {
           setTimeout(function() {
               updatepresence(userID);
               loop();
           }, 5000)
       }
-      loop();
+      loop(); */
 
  </script>
 
