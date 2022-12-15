@@ -457,6 +457,14 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+.copyrighttext {
+  position: fixed; 
+  bottom:1px;
+  right: 1px; 
+  font-size: 9px; 
+  color: var(--primary-bgopp);
+}
+
 .messagebox {
   height:250px;
   margin-top: -350px;
@@ -471,6 +479,14 @@ body {
 
 /* Desktop Styles */
 @media only screen and (min-width: 861px) {
+  .copyrighttext {
+    position: fixed; 
+    bottom: 1px; 
+    right: 1px; 
+    font-size: 12px; 
+    color: var(--primary-bgopp);
+  }
+  
   .spotify-np {
     width:400px;
     position:absolute;
