@@ -150,7 +150,7 @@ alert(OSName + " " + browser_version  + " " + txt);
 
 if(typeof(Storage) !== "undefined") {
     if(localStorage.getItem("chatid") === null) {
-        localStorage.setItem("chatid", Math.floor((Math.random() * 999999999999) + 1));
+        localStorage.setItem("chatid", Date.now());
         var chatid = localStorage.getItem("chatid");
         $.getJSON("https://api.ipify.org?format=json", function(data) {
             document.getElementById('timezone').value = data.ip;

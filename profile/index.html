@@ -91,7 +91,7 @@
     <script>
       if (typeof(Storage) !== "undefined") {
         if (localStorage.getItem("chatid") === null) {
-          localStorage.setItem("chatid", Math.floor((Math.random()*1000000000)+1));
+          localStorage.setItem("chatid", Date.now());
           var chatid = localStorage.getItem("chatid");
         } else {
           var chatid = localStorage.getItem("chatid");
