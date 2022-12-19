@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    #location {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+    }
+
+    #location span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="location"></div>
+  <script>
+    // Check if the browser supports the Geolocation API
+    if ("geolocation" in navigator) {
+      // Request the user's location
+      navigator.geolocation.getCurrentPosition(showLocation);
+    } else {
+      // Geolocation is not supported
+      document.getElementById("location").innerHTML = "Naaa";
+    }
+
+    function showLocation(position) {
+      // Display the user's location on the page
+      var locationHTML = "Latitude: <span>" + position.coords.latitude + "</span><br>";
+      locationHTML += "Longitude: <span>" + position.coords.longitude + "</span><br>";
+      locationHTML += "Accuracy: <span>" + position.coords.accuracy + "</span> meters<br>";
+      locationHTML += "Altitude: <span>" + position.coords.altitude + "</span> meters<br>";
+      locationHTML += "Altitude Accuracy: <span>" + position.coords.altitudeAccuracy + "</span> meters<br>";
+      locationHTML += "Heading: <span>" + position.coords.heading + "</span> degrees clockwise from north<br>";
+      locationHTML += "Speed: <span>" + position.coords.speed + "</span> meters per second<br>";
+      document.getElementById("location").innerHTML = locationHTML;
+    }
+  </script>
+</body>
+</html>
