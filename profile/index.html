@@ -15,8 +15,6 @@
         <!--J query-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
         
-    <!--lanyard-->
-    <script src="https://cdn.jsdelivr.net/gh/xaronnn/js-lanyard/lanyard.js"></script>
   </head>
   <body>
     <div class="card-container">
@@ -160,16 +158,22 @@ lanyard({
                 if (data.active_on_discord_desktop) {
                   document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-display"></i>
                 <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Desktop</div></div>`;
+                } else {
+                  document.getElementById("discorduser.desktop").innerHTML=``;
                 }
 
                 if (data.active_on_discord_mobile) {
                   document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-mobile"></i>
                 <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Mobile</div></div>`;
+                } else {
+                  document.getElementById("discorduser.mobile").innerHTML=``;
                 }
 
                 if (data.active_on_discord_web) {
                   document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-globe"></i>
                 <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Browser</div></div>`;
+                } else {
+                  document.getElementById("discorduser.web").innerHTML=``;
                 }
 
 
@@ -182,6 +186,8 @@ lanyard({
               if (data.listening_to_spotify) {
                 document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
+              } else {
+                  document.getElementById("discorduser.spotify").innerHTML=``;
               }
 
               if (data.activities[0].id === `custom`) {
