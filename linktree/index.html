@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="../particle/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap">
     <link rel='stylesheet' href='style.css'>
-    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
     <!--J query-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 </head>
@@ -97,6 +98,11 @@
             <div class="spotify-np" id="spotify-np">
                 <p id="spotify-iframe" src="hm"></p>
             </div>
+            <div id="timedate">
+                <div id="my-time-label">My Time:</div>
+                <div id="my-time" title=""></div>
+                <div id="my-date"></div>
+            </div>
             
         </div>
     </div>
@@ -145,6 +151,19 @@ alert(OSName + " " + browser_version  + " " + txt);
 </script> -->
 
 <!-- chat id storer -->
+<script>
+    function updateTime() {
+// Update the time displays
+document.getElementById('my-time').innerHTML = new Date().toLocaleTimeString('en-US', {timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true});
+
+document.getElementById('my-date').innerHTML = new Date().toLocaleDateString('en-US', {timeZone: 'Asia/Kathmandu', day: '2-digit', month: 'long', year: 'numeric'});
+}
+// Update the time every second
+setInterval(updateTime, 1000);
+// Update the time when the page loads
+updateTime();
+  </script>
+
 <script>
  
 

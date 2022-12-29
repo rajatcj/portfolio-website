@@ -96,6 +96,25 @@
 }
 
 
+#my-time {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#timedate {
+  position: absolute; 
+  top:5px;
+  left:5px;
+  border-left-color: 1px;
+  font: small-caps lighter 10px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  text-align:left;
+  color:var(--primary-bgopp);
+  border-left: 4px solid var(--textbox-bo);
+  padding: 10px;
+}
+
+
 
 
 
@@ -479,6 +498,14 @@ body {
 
 /* Desktop Styles */
 @media only screen and (min-width: 861px) {
+  #my-time {
+    font-size: 20px;
+  }
+  
+  #timedate {
+    font: small-caps lighter 15px/150% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
   .copyrighttext {
     position: fixed; 
     bottom: 1px; 
