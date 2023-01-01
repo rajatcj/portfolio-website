@@ -539,13 +539,13 @@ body {
   display: inline;
   position: absolute;
   background-color: #ffffff;
-  color: #000000;
+  color: #43192d;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  -webkit-box-shadow: 0 0 60px 4px #000088;
-  -moz-box-shadow: 0 0 60px 4px #000088;
-  box-shadow: 0 0 60px 4px #000088;
+  -webkit-box-shadow: 0 0 60px 4px #43192d;
+  -moz-box-shadow: 0 0 60px 4px #43192d;
+  box-shadow: 0 0 60px 4px #43192d;
   -webkit-animation: animate-rotate-x 1s ease infinite;
   -moz-animation: animate-rotate-x 1s ease infinite;
   animation: animate-rotate-x 1s ease infinite;
