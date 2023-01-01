@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Link Preview</title>
+    <meta property="og:title" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta name="theme-color" content="#000000">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * {
+	margin: 0;
+	padding: 0;
+	font-family: "Whitney Light", sans-serif;
+}
+
+body {
+	background-color: #36393f;
+}
+
+.screen-size-error-container,
+.screen-size-error {
+	display: none;
+}
+
+.link {
+	color: #00b0f4;
+	cursor: pointer;
+	font-family: "Whitney";
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.message {
+	width: fit-content;
+	height: fit-content;
+}
+
+.name-box {
+	display: flex;
+}
+
+.profile-picture {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.name {
+	color: #ffffff;
+	font-weight: normal;
+	margin-top: 1px;
+	margin-left: 1rem;
+	font-size: 1.1rem;
+	font-family: "Whitney";
+}
+
+.bot-tag {
+	position: relative;
+	background-color: #7289da;
+	height: min-content;
+	padding: 0.17rem;
+	border-radius: 4px;
+	font-size: 0.7rem;
+	color: white;
+	top: 4px;
+	left: 4px;
+}
+
+.date {
+	color: hsla(0, 0%, 100%, 0.6);
+	font-size: 0.8rem;
+	margin-top: 6px;
+	margin-left: 13px;
+	font-weight: 500;
+	font-family: "Whitney";
+}
+
+.content-box {
+	position: relative;
+	top: -25px;
+	left: 66.5px;
+}
+
+.content {
+	color: #dcddde;
+}
+
+.embed-box {
+	background-color: #2f3136;
+	margin-top: 10px;
+	min-width: 500px;
+	height: 627px;
+	border-left: 5px solid #46d0e6;
+	border-radius: 4px;
+}
+
+.author {
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 6px;
+	color: #ffffff;
+}
+
+.author-picture {
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+}
+
+.author-name {
+	color: #ffffff;
+	font-weight: normal;
+	top: -26px;
+	left: 35px;
+	font-size: 1rem;
+	position: relative;
+	width: min-content;
+	margin-right: 0;
+}
+
+.thumbnail-picture {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	position: absolute;
+	left: 390px;
+	top: 40px;
+}
+
+.title {
+	position: relative;
+	font-weight: lighter;
+	top: 40px;
+	left: 10px;
+}
+
+.description {
+	position: relative;
+	top: 45px;
+	left: 10px;
+	color: hsla(0, 0%, 100%, 0.6);
+	font-size: 14px;
+	font-weight: 500;
+	max-width: 360px;
+}
+
+.code {
+	font-style: normal;
+	background-color: #2e3136;
+	border: solid 2px #202225;
+	padding: 10px;
+	border-radius: 5px;
+	top: 55px;
+	position: relative;
+	width: 360px;
+	color: #dcddde;
+	font-size: 14px;
+	left: 10px;
+	font-family: Consolas, monaco, monospace;
+}
+
+.fields {
+	position: relative;
+	top: 65px;
+	display: block;
+}
+
+.field {
+	left: 10px;
+	position: relative;
+	width: 360px;
+	margin-bottom: 15px;
+}
+
+.field.inline {
+	width: 200px;
+}
+
+.inline-box {
+	display: flex;
+}
+
+.field-title {
+	color: #ffffff;
+	font-size: 1rem;
+	position: relative;
+	font-family: "Whitney";
+}
+
+.field-content {
+	color: hsla(0, 0%, 100%, 0.6);
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.image-picture {
+	position: relative;
+	top: 60px;
+	left: 10px;
+	border-radius: 7px;
+}
+
+.footer {
+	width: 360px;
+	position: relative;
+	top: 67px;
+	left: 10px;
+	height: 34px;
+	display: block;
+}
+
+.footer-picture {
+	border-radius: 3px;
+	width: 25px;
+}
+
+.footer-text {
+	position: relative;
+	width: 323px;
+	left: 30px;
+	top: -24px;
+	font-size: 14px;
+	color: hsla(0, 0%, 100%, 0.6);
+}
+
+@media only screen and (max-width: 700px) {
+	.message {
+		display: none;
+	}
+
+	.screen-size-error-container {
+		position: absolute;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.screen-size-error {
+		background-color: #36393f;
+		width: 50vw;
+		height: 50vh;
+		display: block;
+		box-shadow: #000000 0px 0px 30px 3px;
+		border-radius: 5px;
+		text-align: center;
+		color: #ffffff;
+		overflow-y: auto;
+		overflow-x: hidden;
+		max-height: 320px;
+	}
+
+	.screen-size-error h1 {
+		margin-top: 20px;
+		font-size: 4rem;
+	}
+
+	.screen-size-error .explanation {
+		margin-top: 40px;
+		width: 45vw;
+		margin: 20px auto;
+		font-size: 1.3rem;
+	}
+
+	.screen-size-error .come-back-later {
+		margin-bottom: 80px;
+		font-size: 1.3rem;
+		width: 45vw;
+		margin: 20px auto;
+	}
+}
+
+@font-face {
+	font-family: "Whitney";
+	src: url("https://github.com/DoeHetGewoon/discord-embed/blob/discord-embed/whitneymedium.woff?raw=true") format("woff");
+}
+
+@font-face {
+	font-family: "Whitney Light";
+	src: url("https://github.com/DoeHetGewoon/discord-embed/blob/discord-embed/whitney-light.tff?raw=true") format("tff");
+}
+
+@font-face {
+	font-family: "Consola";
+	src: url("https://github.com/DoeHetGewoon/discord-embed/blob/discord-embed/consola.tff?raw=true") format("tff");
+}
+
+      </style>
+    
+    <body>
+        <h1>Link Preview API</h1>
+        <p>
+          This API allows you to create a link preview by setting the values of the following meta tags:
+        </p>
+        <ul>
+          <li><code>og:title</code></li>
+          <li><code>og:site_name</code></li>
+          <li><code>og:description</code></li>
+          <li><code>og:image</code></li>
+          <li><code>theme-color</code></li>
+          <li><code>twitter:card</code></li>
+        </ul>
+        <p>
+          To use the API, simply link to this page with the desired values as query parameters in the URL. For example, to create a link preview with a title of "Welcome to Cookie and Rock" and a site name of "Cookie and Rock", you can use the following URL:
+        </p>
+        <pre>https://example.com/link-preview.html?title=Welcome%20to%20Cookie%20and%20Rock&site_name=Cookie%20and%20Rock</pre>
+        <p>
+          The following is a preview of how the link preview will appear in Discord:
+        </p>
+        
+        
+        <div class="container">
+          <div class="message">
+            <div class="name-box">
+              <img src="https://cdn.discordapp.com/emojis/1004778486050852964.webp" alt="" class="profile-picture" />
+              <h2 class="name">A random Guy</h2>
+              <p class="date">25/1/2021</p>
+            </div>
+            <div class="content-box">
+              <div class="embed-box">
+                <div class="author">
+                  <img src="https://cdn.discordapp.com/avatars/438573367461806092/b91731bbd631d9b5abc0e9a4b88b7092.webp?size=128" alt="" class="author-picture" />
+                  <h3 class="author-name link" onclick="window.open('https:\/\/github.com/doehetgewoon/')">DoeHetGewoon</h3>
+                </div>
+                <img src="https://cdn.discordapp.com/avatars/438573367461806092/b91731bbd631d9b5abc0e9a4b88b7092.webp?size=128" alt="" class="thumbnail-picture" />
+                <p class="title link" onclick="window.open('https:\/\/www.example.com/')">Example Domain</p>
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in pulvinar velit, eget vestibulum metus. Vestibulum
+                  tincidunt sagittis sapien id efficitur.
+                </p>
+                <p class="code">Morbi mauris elit, facilisis id nulla vel, rutrum consequat velit.</p>
+                <div class="fields">
+                  <div class="field">
+                    <p class="field-title">Field 1</p>
+                    <p class="field-content">This is a field!</p>
+                  </div>
+                  <div class="field">
+                    <p class="field-title">Field 2</p>
+                    <p class="field-content">This is another field!</p>
+                  </div>
+                  <div class="inline-box">
+                    <div class="field inline">
+                      <p class="field-title">Field 3</p>
+                      <p class="field-content">This is an inline field!</p>
+                    </div>
+                    <div class="field inline">
+                      <p class="field-title">Field 4</p>
+                      <p class="field-content">This is another inline field!</p>
+                    </div>
+                  </div>
+                </div>
+                <img src="https://cdn.discordapp.com/avatars/438573367461806092/b91731bbd631d9b5abc0e9a4b88b7092.webp?size=256" alt="" class="image-picture" />
+                <div class="footer">
+                  <img src="https://cdn.discordapp.com/avatars/438573367461806092/b91731bbd631d9b5abc0e9a4b88b7092.webp?size=128" alt="" class="footer-picture" />
+                  <p class="footer-text">This is a footer.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-size-error-container">
+          <div class="screen-size-error">
+            <h1>Oh no!</h1>
+            <p class="explanation">It looks like your screen/browser window is too small to view this website.</p>
+            <p class="come-back-later">Please return at a later time, when you have access to a larger device.</p>
+          </div>
+        </div>
+
+                
+
+    <script>
+      // Get the query parameters from the URL
+      const params = new URLSearchParams(window.location.search);
+
+      // Set the meta tag values to the query parameter values
+      document.querySelector('meta[property="og:title"]').content = params.get('title') || '';
+      document.querySelector('meta[property="og:site_name"]').content = params.get('site') || '';
+      document.querySelector('meta[property="og:description"]').content = params.get('body') || '';
+      document.querySelector('meta[property="og:image"]').content = params.get('image') || '';
+      document.querySelector('meta[name="theme-color"]').content = params.get('color') || '#000000';
+
+      // Remove the twitter:card meta tag if the thumbnail query parameter is set to true
+      if (params.get('thumbnail') === 'true') {
+        const twitterMetaTag = document.querySelector('meta[name="twitter:card"]');
+        twitterMetaTag.parentNode.removeChild(twitterMetaTag);
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
