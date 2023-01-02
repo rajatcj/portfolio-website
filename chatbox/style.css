@@ -12,6 +12,7 @@ Mixins
   --avatar-border : #43192d;
   --my-message : linear-gradient(60deg, #43192d, #ff2424);
   --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --linkcolor : #99c8ff;
 }
 
 [data-theme="dark"] {
@@ -25,6 +26,7 @@ Mixins
   --avatar-border : rgba(255, 255, 255, 0.24);
   --my-message : linear-gradient(60deg, #77584cbe, #ff2424);
   --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --linkcolor : #c6a7f8;
 }
 
 [data-theme="discord"] {
@@ -38,6 +40,7 @@ Mixins
   --avatar-border : #2f3136;
   --my-message : linear-gradient(60deg, #2f3136, #bf8622);
   --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --linkcolor : #99c8ff;
 }
 
 
@@ -48,6 +51,10 @@ Body
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+a {
+  color: var(--linkcolor);
 }
 
 html,
@@ -94,7 +101,7 @@ Chat
   float: left;
   margin:-6px -10px 5px;
   padding: 3px 25px 4px;
-  width:101%;
+  width:105%;
   border-radius: 10px 10px 0px 0;
   background: var(--repliedtomsg);
   font-size: 11px;
@@ -188,8 +195,12 @@ Messages
   height: 101%;
   width: 100%;
 }
+
+
+
 .messages .message {
   clear: both;
+  word-break: break-all;
   float: left;
   padding: 6px 10px 7px;
   border-radius: 10px 10px 10px 0;
@@ -225,6 +236,9 @@ Messages
 .messages .message .avatar img {
   width: 100%;
   height: auto;
+  
+  word-break: break-all;
+  overflow-wrap: break-word; 
 }
 .messages .message.message-personal {
   float: right;
@@ -323,6 +337,7 @@ Message Box
   padding: 10px;
   position: relative;
 }
+
 .message-box .message-input {
   background: none;
   border: none;
