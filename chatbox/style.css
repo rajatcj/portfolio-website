@@ -11,6 +11,7 @@ Mixins
   --scrollbar : #43192d;
   --avatar-border : #43192d;
   --my-message : linear-gradient(60deg, #43192d, #ff2424);
+  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
 }
 
 [data-theme="dark"] {
@@ -23,6 +24,7 @@ Mixins
   --scrollbar : #ffad7d;
   --avatar-border : rgba(255, 255, 255, 0.24);
   --my-message : linear-gradient(60deg, #77584cbe, #ff2424);
+  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
 }
 
 [data-theme="discord"] {
@@ -34,7 +36,9 @@ Mixins
   --chatbubble : #2f3136;
   --scrollbar : #202225;
   --avatar-border : #2f3136;
-  --my-message : linear-gradient(60deg, #2f3136, #bf8622);}
+  --my-message : linear-gradient(60deg, #2f3136, #bf8622);
+  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+}
 
 
 /*--------------------
@@ -83,6 +87,33 @@ Chat
   background: var(--bg);
   justify-content: space-between;
   flex-direction: column;
+}
+
+.repliedtomsg {
+  clear: both;
+  float: left;
+  margin:-6px -10px 5px;
+  padding: 3px 25px 4px;
+  width:101%;
+  border-radius: 10px 10px 0px 0;
+  background: var(--repliedtomsg);
+  font-size: 11px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.repliedtoavatar {
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  left: 6px;
+  border-radius: 30px;
+  width: 15px;
+  height: 15px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
 }
 
 /*--------------------

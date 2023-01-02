@@ -92,7 +92,7 @@ function updatechat(scrolldown) {
                 var msgdata = sepmsg[i].split("• ♡");
                 srcav = 'https://avatars.dicebear.com/api/avataaars/' + msgdata[0].replace('{"l":"','') + '.png?b=%2343192d'
                 srcav = srcav.replace('https://avatars.dicebear.com/api/avataaars/mememe.png?b=%2343192d','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://avatars.dicebear.com/api/avataaars/endend.png?b=%2343192d','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless')
-                newchatbubble = '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replaceAll('"}','').replaceAll('"','\'').replaceAll('#COMMA#',',').replaceAll('#LEFT_CLICK#','<').replaceAll('#RIGHT_CLICK#','>').replaceAll('#COLON#',':').replaceAll(/(<a?)?:\w+:(\d{18,19}>)?/g,":emoji:") + '</div>';
+                newchatbubble = '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replaceAll('"}','').replaceAll('"','\'').replaceAll('#COMMA#',',').replaceAll('replyst-','<div class="repliedtomsg"><img src="https://avatars.dicebear.com/api/avataaars/').replaceAll('-replyen','...</div>').replaceAll('-replymid','.png?b=%2343192d" class="repliedtoavatar">').replaceAll('#COLON#',':').replaceAll(/(<a?)?:\w+:(\d{18,19}>)?/g,":emoji:") + '</div>';
                 if (msgdata[0] === chatid) {
                   newchatbubble = newchatbubble.replace('<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>','<div class="message message-personal">')
                 } else if (msgdata[0] === "mememe") {
