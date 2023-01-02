@@ -45,6 +45,7 @@
 <!----<script  src="./script.js"></script>-->
 
 <script>
+
   // theme
 // parse the query string
 let params = new URLSearchParams(window.location.search);
@@ -88,27 +89,31 @@ function updatechat(scrolldown) {
             .then(data => {
               sepmsg = data.data.kv.c.split("ඞ ㉨")
 
-              const regex = /https?#COLON#\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+              const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
 
-              for (var i = 0; i < sepmsg.length; i++) {
-                var msgdata = sepmsg[i].split("• ♡");
+for (var i = 0; i < sepmsg.length; i++) {
+  var msgdata = sepmsg[i].replace("#EQUAL#", "=").replace('#COLON#', ':').split("• ♡");
 
-
-
-
-
-                let links = [];
+  let links = [];
   let matches = msgdata[1].match(regex);
   if (matches) {
     for (let link of matches) {
-      links.push('<br><br><img src="' + link + '" class="attachment" onerror="this.style.display=\'none\'">');
-      msgdata[1] = msgdata[1].replace(link, '<a href="' + link + '" target="_blank">' + link + '</a>');
+      if (link.match(/\.(mp3|wav|ogg)$/)) {
+        // Audio link
+        links.push('<br><audio src="' + link + '" class="attachment" controls></audio>');
+      } else if (link.match(/\.(mp4|webm|ogv)$/)) {
+        // Video link
+        links.push('<br><video src="' + link + '" class="attachment" controls></video>');
+} else {
+  // Other link
+  links.push('<br><img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
+}
+msgdata[1] = msgdata[1].replace(link, '<a href="' + link + '" target="_blank">' + link + '</a>');
     }
   }
 
   msgdata[1] += links.join('');
 
-  console.log(msgdata[1]);
 
 
 
@@ -149,6 +154,8 @@ function updatechat(scrolldown) {
                 
             });
 };
+
+
 
 </script>
 </body>
