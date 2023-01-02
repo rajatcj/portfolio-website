@@ -25,6 +25,18 @@ Mixins
   --my-message : linear-gradient(60deg, #77584cbe, #ff2424);
 }
 
+[data-theme="discord"] {
+  --border: #202225;
+  --title : #2f3136;
+  --title-text : #fff;
+  --bg : #40444b;
+  --msg-text : #fff;
+  --chatbubble : #2f3136;
+  --scrollbar : #202225;
+  --avatar-border : #2f3136;
+  --my-message : linear-gradient(60deg, #2f3136, #bf8622);}
+
+
 /*--------------------
 Body
 --------------------*/

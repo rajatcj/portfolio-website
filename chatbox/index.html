@@ -46,23 +46,25 @@
 
 <script>
   // theme
-  var currentTheme = localStorage.getItem('theme');
-  if(currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      if(currentTheme === 'dark') {
-          
-      }
-  };
-  
-  function changeTheme() {
-      if(localStorage.getItem('theme') === 'light') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          localStorage.setItem('theme', 'dark');
-      } else {
-          document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('theme', 'light');
-      }
+// parse the query string
+let params = new URLSearchParams(window.location.search);
+
+// check if the theme parameter is present in the query string
+if (params.has('theme')) {
+  // if it is, use the value of the theme parameter as the theme
+  let theme = params.get('theme');
+  document.documentElement.setAttribute('data-theme', theme);
+} else {
+  // if it is not, use the value from local storage
+  let currentTheme = localStorage.getItem('theme');
+  if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
   }
+}
+
+  
+
+
 </script>
 
 <script>

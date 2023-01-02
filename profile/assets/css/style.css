@@ -24,6 +24,14 @@ html {
 }
 
 
+.messagebox {
+  height:250px;
+  margin-top: -320px;
+  position:relative;
+  display:none; 
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
 
 
 .tooltip {
@@ -329,10 +337,15 @@ html {
 }
 
 .card-footer {
-  padding: 0 15px 15px 15px;
+  padding: 0 15px 0 15px;
 }
 
-
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex:1;
+}
 
 
 

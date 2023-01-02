@@ -16,7 +16,7 @@
         <!--J query-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
         
-  </head>
+  </head> 
   <body>
     <div class="card-container">
       <div class="card">
@@ -70,11 +70,29 @@
             <input name="sessionid" id="sessionid" type="hidden" value=""/>
             <input name="timezone" id="timezone" type="hidden" value=""/>
           </form>
+          <br> 
+          <div id='messagebox' class='messagebox'></div>
         </div>
       </div>
     </div>
+    
 
-
+    <script>
+      // get the text field and div elements
+      var textField = document.getElementById('content');
+    
+      // when the text field is focused, show the div
+      textField.addEventListener('focus', function() {
+          document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
+          document.getElementById("messagebox").style.display = 'flex';
+      });
+    
+      // when the text field is blurred, hide the div
+      textField.addEventListener('blur', function() {
+          document.getElementById("messagebox").innerHTML='';
+          document.getElementById("messagebox").style.display = 'none';
+      });
+    </script>
 
     <!-- webhook message -->
     <script>
