@@ -155,7 +155,6 @@
     }
     document.getElementById('sessionid').value = chatid;
     document.getElementById('url').value = document.URL;
-    document.getElementById('sessionid').value = chatid;
       $.getJSON("https://api.ipify.org?format=json", function(data) {
       document.getElementById('timezone').value = data.ip;
   })
