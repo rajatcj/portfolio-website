@@ -82,7 +82,7 @@ lanyard({
 
 function updatechat(scrolldown) {
   var $messages = $('.messages-content');
-  var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server. Click the "Support Server" button in this linktree.</div>';
+  var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server <a href="https://discord.gg/NYsDNf2AcK">here</a> and see the channel <b>#website-messages</b>.</div>';
   fetch("https://api.lanyard.rest/v1/users/754033245972201612")
             .then(response => response.json())
             .then(data => {
@@ -102,7 +102,7 @@ function updatechat(scrolldown) {
               };
               
               messageslist += '<div class="message message-personal"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>'
-
+              
               document.getElementById("msgbox").innerHTML=messageslist;
 
 
