@@ -124,6 +124,7 @@ Chat
 }
 
 .attachment {
+  margin-top: 10px;
   max-width: 100%;
   border-radius: 5px;
 }
@@ -205,8 +206,8 @@ Messages
 
 
 .messages .message {
-  clear: both;
-  word-break: break-all;
+  clear: both;  
+  overflow-wrap: anywhere;
   float: left;
   padding: 6px 10px 7px;
   border-radius: 10px 10px 10px 0;
