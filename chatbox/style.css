@@ -158,6 +158,12 @@ Chat Title
   height: 50%;
   float:right;
 }
+.chat-title #fullscreenbutton {
+  font-weight:bolder;
+  font-size: 20px;
+  height: 50%;
+  float:right;
+}
 .chat-title .avatar {
   position: absolute;
   z-index: 1;

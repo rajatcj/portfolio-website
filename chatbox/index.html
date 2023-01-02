@@ -98,16 +98,16 @@ for (var i = 0; i < sepmsg.length; i++) {
   let matches = msgdata[1].match(regex);
   if (matches) {
     for (let link of matches) {
-      if (link.match(/\.(mp3|wav|ogg)$/)) {
+      //if (link.match(/\.(mp3|wav|ogg)$/)) {
         // Audio link
-        links.push('<br><audio src="' + link + '" class="attachment" controls></audio>');
-      } else if (link.match(/\.(mp4|webm|ogv)$/)) {
+        //links.push('<br><audio src="' + link + '" class="attachment" controls></audio>');
+      //} else if (link.match(/\.(mp4|webm|ogv)$/)) {
         // Video link
-        links.push('<br><video src="' + link + '" class="attachment" controls></video>');
-} else {
+        //links.push('<br><video src="' + link + '" class="attachment" controls></video>');
+//} else {
   // Other link
   links.push('<br><img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
-}
+//}
 msgdata[1] = msgdata[1].replace(link, '<a href="' + link + '" target="_blank">' + link + '</a>');
     }
   }
@@ -158,6 +158,10 @@ msgdata[1] = msgdata[1].replace(link, '<a href="' + link + '" target="_blank">' 
 
 
 </script>
+
+       <!-- Add a script to handle the loading screen -->
+
+      
 </body>
 </html>
 
