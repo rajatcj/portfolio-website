@@ -16,6 +16,9 @@ Mixins
   --loadingrotatebg: #43192d;
   --loadingtext: #fff;
   --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
+  --textbox-bg: #c7c7c7;
+  --textbox-bo: #43192d;
+  --textbox-text: rgb(0, 0, 0);
 }
 
 [data-theme="dark"] {
@@ -33,6 +36,9 @@ Mixins
   --loadingrotatebg: #000000;
   --loadingtext: #ffad7d;
   --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
+  --textbox-bg: #313131;
+  --textbox-bo: #ffad7d;
+  --textbox-text: rgb(255, 255, 255);
 }
 
 [data-theme="discord"] {
@@ -50,6 +56,9 @@ Mixins
   --loadingrotatebg: #202225;
   --loadingtext: #fff;
   --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
+  --textbox-bg: #202225;
+  --textbox-bo: #40444b;
+  --textbox-text: #fff;
 }
 
 
@@ -78,6 +87,18 @@ body {
   overflow: hidden;
 }
 
+input[type=text] {
+  width: 98%;
+  padding: 12px 20px;
+  margin: 1% 1%;
+  border: 1px solid var(--textbox-bo);
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: var(--textbox-bg);
+  padding: 20px;
+  color: var(--textbox-text);
+}
 
 @import url("https://fonts.googleapis.com/css?family=Telex");
       /* Add some styling to the loading screen */
