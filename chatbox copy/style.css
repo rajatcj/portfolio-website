@@ -317,7 +317,6 @@ Messages
 
 .messages .message {
   clear: both;  
-  overflow-wrap: anywhere;
   float: left;
   padding: 6px 10px 7px;
   border-radius: 10px 10px 10px 0;
