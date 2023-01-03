@@ -202,7 +202,7 @@ for (var i = 0; i < dataArray.length; i++) {
     repliedToImg.classList.add('repliedtoavatar');
     repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%2343192d`;
     repliedToElement.appendChild(repliedToImg);
-    repliedToElement.innerHTML += dataArray[i].reco;
+    repliedToElement.innerHTML += dataArray[i].reco + "...";
     messageElement.appendChild(repliedToElement);
   }
 
