@@ -85,8 +85,14 @@ var textField = document.getElementById('content');
 
 // when the text field is focused, show the div
 textField.addEventListener('focusin', function() {
+  if (document.getElementById('messagepreview')) {
+  // iframe with id "messagepreview" exists
+} else {
+  // iframe with id "messagepreview" does not exist
   document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
-          document.getElementById("messagebox").style.display = 'flex';
+  document.getElementById("messagebox").style.display = 'flex';
+}
+
       });
 
 // when the user clicks outside of the text field and iframe, hide the div
@@ -104,10 +110,12 @@ document.addEventListener('mousedown', function(event) {
     <script>
       function sendLinkTreePrivMsg() {
           if (document.getElementById('content').value != "") {
-          $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value)
+          $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
           document.getElementById('content').value = "";
           document.getElementById('content').readOnly = true;
           document.getElementById('content').placeholder = "Wait 5 sec to send again";
+          sessionStorage.removeItem('data-id');
+          sessionStorage.removeItem('data-co');
           setTimeout(function() {
               document.getElementById('content').readOnly = false;
               document.getElementById('content').placeholder = "Send a secret message to me";
@@ -150,7 +158,6 @@ document.addEventListener('mousedown', function(event) {
     })();
     
     var browser_version = navigator.sayswho;
-    
                 $.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version  + "thisisabreak" + txt)
             })
         } else {

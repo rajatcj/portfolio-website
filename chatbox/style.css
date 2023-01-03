@@ -15,6 +15,7 @@ Mixins
   --linkcolor : #99c8ff;
   --loadingrotatebg: #43192d;
   --loadingtext: #fff;
+  --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
 }
 
 [data-theme="dark"] {
@@ -31,6 +32,7 @@ Mixins
   --linkcolor : #c6a7f8;
   --loadingrotatebg: #000000;
   --loadingtext: #ffad7d;
+  --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
 }
 
 [data-theme="discord"] {
@@ -47,6 +49,7 @@ Mixins
   --linkcolor : #99c8ff;
   --loadingrotatebg: #202225;
   --loadingtext: #fff;
+  --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
 }
 
 
@@ -211,7 +214,7 @@ Chat
   float: left;
   margin:-6px -10px 5px;
   padding: 3px 25px 4px;
-  width:105%;
+  width:110%;
   border-radius: 10px 10px 0px 0;
   background: var(--repliedtomsg);
   font-size: 11px;
@@ -328,6 +331,7 @@ Messages
   position: relative;
 }
 
+
 .messages .message::before {
   content: "";
   position: absolute;
@@ -379,6 +383,11 @@ Messages
   -webkit-animation: bounce 0ms linear both;
           animation: bounce 0ms linear both;
 }
+
+.message:hover {
+  cursor: pointer;
+}
+
 .messages .message.loading::before {
   position: absolute;
   top: 50%;

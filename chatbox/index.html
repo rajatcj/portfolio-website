@@ -31,6 +31,7 @@
   <div class="messages">
     <div id="messages-content" class="messages-content mCustomScrollbar _mCS_2">
            <div id="msgbox"></div>
+           <div id="mebox"></div>
     </div>
   </div>
 </div>
@@ -109,6 +110,9 @@ for (var i = 0; i < dataArray.length; i++) {
       messageElement.style.background = 'var(--my-message)';
     }
   }
+  
+  messageElement.setAttribute('data-id', dataArray[i].id);
+  messageElement.setAttribute('data-co', dataArray[i].co.substring(0, 50));
 
   if (dataArray[i].id !== chatid) {
     const avatarElement = document.createElement('figure');
@@ -131,17 +135,39 @@ for (var i = 0; i < dataArray.length; i++) {
   }
 
   messageElement.innerHTML += `${dataArray[i].co}`;
+
+
+
+
   msgbox.appendChild(messageElement);
+
+  const divElements = document.querySelectorAll('.message');
+
+divElements.forEach(div => {
+  div.addEventListener('click', event => {
+    const value1 = div.getAttribute('data-id');
+    const value2 = div.getAttribute('data-co');
+    sessionStorage.setItem('data-id', value1);
+    sessionStorage.setItem('data-co', value2);
+
+    // Set inner HTML of new div element
+    document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg);"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure><div class="repliedtomsg"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div></div>';
+    var chatroom = document.getElementById('messages-content');
+
+  $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+    scrollInertia: 10,
+    timeout: 0
+  });
+  
+  });
+});
 };
 
-
-
-
-
-
-
-
-
+if (sessionStorage.getItem('data-id') != null) {
+  document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg);"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure><div class="repliedtomsg"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div></div>';
+} else {
+  document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg);"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
+}
 
               var chatroom = document.getElementById('messages-content');
 
@@ -169,8 +195,6 @@ for (var i = 0; i < dataArray.length; i++) {
                 
             });
 };
-
-
 
 </script>
 
