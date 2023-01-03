@@ -237,7 +237,9 @@ divElements.forEach(div => {
 
 if (sessionStorage.getItem('data-id') != null) {
   document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
-} 
+} else {
+  document.querySelector("#mebox2").innerHTML = '';
+}
 document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg);"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
 
 
