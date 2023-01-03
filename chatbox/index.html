@@ -84,57 +84,63 @@ lanyard({
 })
 
 
-
 function updatechat(scrolldown) {
+
   var $messages = $('.messages-content');
   var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server <a href="https://discord.gg/NYsDNf2AcK">here</a> and see the channel <b>#website-messages</b>.</div>';
   fetch("https://api.lanyard.rest/v1/users/754033245972201612")
             .then(response => response.json())
             .then(data => {
-              sepmsg = data.data.kv.c.split("ඞ ㉨")
+              const dataArray = JSON.parse(data.data.kv.chatdata)
 
-              const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
 
-for (var i = 0; i < sepmsg.length; i++) {
-  var msgdata = sepmsg[i].replace("#EQUAL#", "=").replace('#COLON#', ':').split("• ♡");
+console.log[dataArray[0]]
 
-  let links = [];
-  let matches = msgdata[1].match(regex);
-  if (matches) {
-    for (let link of matches) {
-      //if (link.match(/\.(mp3|wav|ogg)$/)) {
-        // Audio link
-        //links.push('<br><audio src="' + link + '" class="attachment" controls></audio>');
-      //} else if (link.match(/\.(mp4|webm|ogv)$/)) {
-        // Video link
-        //links.push('<br><video src="' + link + '" class="attachment" controls></video>');
-//} else {
-  // Other link
-  links.push('<br><img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
-//}
-msgdata[1] = msgdata[1].replace(link, '<a href="' + link + '" target="_blank">' + link + '</a>');
+msgbox.innerHTML="";
+for (var i = 0; i < dataArray.length; i++) {
+  let messageElement;
+  if (dataArray[i].id === chatid) {
+    messageElement = document.createElement('div');
+    messageElement.classList.add('message', 'message-personal');
+  } else {
+    messageElement = document.createElement('div');
+    messageElement.classList.add('message', 'new');
+    if (dataArray[i].id === 'mememe') {
+      messageElement.style.background = 'var(--my-message)';
     }
   }
 
-  msgdata[1] += links.join('');
+  if (dataArray[i].id !== chatid) {
+    const avatarElement = document.createElement('figure');
+    avatarElement.classList.add('avatar');
+    const avatarImg = document.createElement('img');
+    avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%2343192d`;
+    avatarElement.appendChild(avatarImg);
+    messageElement.appendChild(avatarElement);
+  }
+
+  if (dataArray[i].reid) {
+    const repliedToElement = document.createElement('div');
+    repliedToElement.classList.add('repliedtomsg');
+    const repliedToImg = document.createElement('img');
+    repliedToImg.classList.add('repliedtoavatar');
+    repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%2343192d`;
+    repliedToElement.appendChild(repliedToImg);
+    repliedToElement.innerHTML += dataArray[i].reco;
+    messageElement.appendChild(repliedToElement);
+  }
+
+  messageElement.innerHTML += `${dataArray[i].co}`;
+  msgbox.appendChild(messageElement);
+};
 
 
 
 
-                srcav = 'https://avatars.dicebear.com/api/avataaars/' + msgdata[0].replace('{"l":"','') + '.png?b=%2343192d'
-                srcav = srcav.replace('https://avatars.dicebear.com/api/avataaars/mememe.png?b=%2343192d','https://dcdn.dstn.to/avatars/754033245972201612').replace('https://avatars.dicebear.com/api/avataaars/endend.png?b=%2343192d','https://cdn.discordapp.com/emojis/1013934458916839504.png?size=96&quality=lossless') 
-                newchatbubble = '<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>' + msgdata[1].replaceAll('"}','').replaceAll('"','\'').replaceAll('#COMMA#',',').replaceAll('ㅤ↪','<div class="repliedtomsg"><img src="https://avatars.dicebear.com/api/avataaars/').replaceAll('↩ㅤ','...</div>').replaceAll('ㅤ🔄ㅤ','.png?b=%2343192d" class="repliedtoavatar">').replaceAll('#COLON#',':').replaceAll('ㅤ🖼','<img src="').replaceAll('🖼ㅤ','" class="attachment" style="display:none;">').replaceAll(/(<a?)?:\w+:(\d{18,19}>)?/g,":emoji:") + '</div>';
-                if (msgdata[0] === chatid) {
-                  newchatbubble = newchatbubble.replace('<div class="message new"><figure class="avatar"><img src="' + srcav + '"></figure>','<div class="message message-personal">')
-                } else if (msgdata[0] === "mememe") {
-                  newchatbubble = newchatbubble.replace('<div class="message new">','<div class="message new" style="background: var(--my-message);">')
-                }
-                messageslist += newchatbubble
-              };
-              
-              messageslist += '<div class="message message-personal"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>'
-              
-              document.getElementById("msgbox").innerHTML=messageslist;
+
+
+
+
 
 
               var chatroom = document.getElementById('messages-content');

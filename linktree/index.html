@@ -308,18 +308,22 @@ function changeTheme() {
 
 
 <script>
-    // get the text field and div elements
-    var textField = document.getElementById('content');
-  
-    // when the text field is focused, show the div
-    textField.addEventListener('focus', function() {
-        document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html" style="display:block; border:0px;" title="Discord Status" ></iframe>';
-    });
-  
-    // when the text field is blurred, hide the div
-    textField.addEventListener('blur', function() {
-        document.getElementById("messagebox").innerHTML='';
-    });
+// get the text field and div elements
+var textField = document.getElementById('content');
+
+// when the text field is focused, show the div
+textField.addEventListener('focusin', function() {
+  document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="../chatbox/index.html" style="display:block; border:0px;" title="Discord Status"></iframe>';
+});
+
+// when the user clicks outside of the text field and iframe, hide the div
+document.addEventListener('mousedown', function(event) {
+  var iframe = document.getElementById('messagepreview');
+  if (!textField.contains(event.target) && !iframe.contains(event.target)) {
+    document.getElementById("messagebox").innerHTML = '';
+  }
+});
+
   </script>
   
        <!-- Add a script to handle the loading screen -->

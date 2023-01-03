@@ -352,6 +352,8 @@ Messages
 .messages .message .avatar img {
   width: 100%;
   height: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word; 
 }
 .messages .message.message-personal {
   float: right;

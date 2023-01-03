@@ -79,20 +79,25 @@
     
 
     <script>
+
       // get the text field and div elements
-      var textField = document.getElementById('content');
-    
-      // when the text field is focused, show the div
-      textField.addEventListener('focus', function() {
-          document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
+var textField = document.getElementById('content');
+
+// when the text field is focused, show the div
+textField.addEventListener('focusin', function() {
+  document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
           document.getElementById("messagebox").style.display = 'flex';
       });
-    
-      // when the text field is blurred, hide the div
-      textField.addEventListener('blur', function() {
-          document.getElementById("messagebox").innerHTML='';
+
+// when the user clicks outside of the text field and iframe, hide the div
+document.addEventListener('mousedown', function(event) {
+  var iframe = document.getElementById('messagepreview');
+  if (!textField.contains(event.target) && !iframe.contains(event.target)) {
+    document.getElementById("messagebox").innerHTML='';
           document.getElementById("messagebox").style.display = 'none';
-      });
+      }
+});
+
     </script>
 
     <!-- webhook message -->
