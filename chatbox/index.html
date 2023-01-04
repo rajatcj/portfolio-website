@@ -205,12 +205,16 @@
 						const value2 = div.getAttribute('data-co');
 						sessionStorage.setItem('data-id', value1);
 						sessionStorage.setItem('data-co', value2);
-						document.getElementById('content').focus();
+            try {
+						   document.getElementById('content').focus();
+            } catch {
+
+            }
 						// Set inner HTML of new div element
 						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
 						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-							scrollInertia: 10,
+							scrollInertia: 1000,
 							timeout: 0
 						});
 					});
@@ -235,7 +239,7 @@
 			if(scrolldown === "true") {
 				setTimeout(() => {
 					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-						scrollInertia: 10,
+						scrollInertia: 500,
 						timeout: 0
 					});
 					document.querySelector(".loading-screen").style.display = "none";
@@ -244,7 +248,7 @@
 				if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
 					// If the user has scrolled up, do not update the scroll position
 					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-						scrollInertia: 10,
+						scrollInertia: 1,
 						timeout: 0
 					});
 				}
