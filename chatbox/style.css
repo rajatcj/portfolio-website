@@ -245,6 +245,10 @@ Chat
   position: relative;
 }
 
+.repliedtomme {
+  background: linear-gradient(120deg, #248A52, #257287);
+}
+
 .repliedtoavatar {
   position: absolute;
   z-index: 1;
