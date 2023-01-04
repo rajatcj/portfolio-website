@@ -179,7 +179,7 @@ for (var i = 0; i < dataArray.length; i++) {
   } else {
     messageElement = document.createElement('div');
     messageElement.classList.add('message', 'new');
-    if (dataArray[i].id === 'mememe') {
+    if (dataArray[i].id === 'Rajat') {
       messageElement.style.background = 'var(--my-message)';
     }
   }
@@ -239,7 +239,7 @@ divElements.forEach(div => {
     const value2 = div.getAttribute('data-co');
     sessionStorage.setItem('data-id', value1);
     sessionStorage.setItem('data-co', value2);
-
+    document.getElementById('content').focus();
     // Set inner HTML of new div element
     document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
     var chatroom = document.getElementById('messages-content');
