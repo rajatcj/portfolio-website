@@ -177,10 +177,30 @@
 					repliedToImg.classList.add('repliedtoavatar');
 					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%2343192d`;
 					repliedToElement.appendChild(repliedToImg);
-					repliedToElement.innerHTML += dataArray[i].reco + "...";
+          let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
+          switch (char) {
+            case '<':
+              return '{';
+            case '>':
+              return '}';
+            default:
+              return char;
+          }
+        });
+					repliedToElement.innerHTML += clickablebutreply + "...";
 					messageElement.appendChild(repliedToElement);
 				}
-				let clickable = dataArray[i].co;
+				
+        let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
+          switch (char) {
+            case '<':
+              return '{';
+            case '>':
+              return '}';
+            default:
+              return char;
+          }
+        });
 				let links = [];
 				let matches = dataArray[i].co.match(regex);
 				if(matches) {
@@ -204,7 +224,16 @@
 				divElements.forEach(div => {
 					div.addEventListener('click', event => {
 						const value1 = div.getAttribute('data-id');
-						const value2 = div.getAttribute('data-co');
+						const value2 = div.getAttribute('data-co').replace(/[<>&'"/\\]/g, function(char) {
+              switch (char) {
+                case '<':
+                  return '{';
+                case '>':
+                  return '}';
+                default:
+                  return char;
+              }
+            });
 						sessionStorage.setItem('data-id', value1);
 						sessionStorage.setItem('data-co', value2);
             if (window.self !== window.top) {
@@ -225,7 +254,16 @@
 				});
 			};
 			if(sessionStorage.getItem('data-id') != null) {
-				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
+				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
+              switch (char) {
+                case '<':
+                  return '{';
+                case '>':
+                  return '}';
+                default:
+                  return char;
+              }
+            }) + '</div>';
 				document.querySelector('.repliedtomsg').addEventListener('click', function() {
 					document.querySelector('#mebox2').innerHTML = '';
 					sessionStorage.removeItem('data-id');
