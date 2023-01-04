@@ -11,7 +11,7 @@ Mixins
   --scrollbar : #43192d;
   --avatar-border : #43192d;
   --my-message : linear-gradient(60deg, #43192d, #ff2424);
-  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --repliedtomsg : rgb(112, 112, 112);
   --linkcolor : #99c8ff;
   --loadingrotatebg: #43192d;
   --loadingtext: #fff;
@@ -31,7 +31,7 @@ Mixins
   --scrollbar : #ffad7d;
   --avatar-border : rgba(255, 255, 255, 0.24);
   --my-message : linear-gradient(60deg, #77584cbe, #ff2424);
-  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --repliedtomsg : rgb(112, 112, 112);
   --linkcolor : #c6a7f8;
   --loadingrotatebg: #000000;
   --loadingtext: #ffad7d;
@@ -51,7 +51,7 @@ Mixins
   --scrollbar : #202225;
   --avatar-border : #2f3136;
   --my-message : linear-gradient(60deg, #2f3136, #bf8622);
-  --repliedtomsg : linear-gradient(60deg, rgb(112, 112, 112), rgba(112, 112, 112, 0));
+  --repliedtomsg : rgb(112, 112, 112);
   --linkcolor : #99c8ff;
   --loadingrotatebg: #202225;
   --loadingtext: #fff;
@@ -232,11 +232,12 @@ Chat
 }
 
 .repliedtomsg {
+  cursor:pointer;
   clear: both;
   float: left;
-  margin:-6px -10px 5px;
+  margin:-6px 0px 5px;
   padding: 3px 25px 4px;
-  width:110%;
+  width:100%;
   border-radius: 10px 10px 0px 0;
   background: var(--repliedtomsg);
   font-size: 11px;
@@ -259,9 +260,18 @@ Chat
 }
 
 .attachment {
+  margin-left:2%;
+  margin-right:2%;
+  margin-bottom:0%;
   margin-top: 10px;
-  max-width: 100%;
+  max-width: 96%;
+  max-height:300px;
   border-radius: 5px;
+}
+
+.messagecontent {
+  padding-right:10px;
+  padding-left:10px;
 }
 
 /*--------------------
@@ -343,7 +353,7 @@ Messages
 .messages .message {
   clear: both;  
   float: left;
-  padding: 6px 10px 7px;
+  padding: 6px 0px 7px 0px;
   border-radius: 10px 10px 10px 0;
   background: var(--chatbubble);
   margin: 8px 0;
@@ -384,7 +394,7 @@ Messages
 .messages .message.message-personal {
   float: right;
   color: #fff;
-  text-align: right;
+  text-align: left;
   background: linear-gradient(120deg, #248A52, #257287);
   border-radius: 10px 10px 0 10px;
 }

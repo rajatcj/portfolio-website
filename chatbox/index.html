@@ -156,6 +156,7 @@ lanyard({
     onPresenceUpdate: updatechat
 })
 
+const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
 
 function updatechat(scrolldown) {
 
@@ -206,11 +207,28 @@ for (var i = 0; i < dataArray.length; i++) {
     messageElement.appendChild(repliedToElement);
   }
 
-  messageElement.innerHTML += `${dataArray[i].co}`;
 
+  let clickable = dataArray[i].co;
+  let links = [];
+  let matches = dataArray[i].co.match(regex);
+  if (matches) {
+    for (let link of matches) {
+      if (link.match(/\.(mp3|wav|ogg)$/)) {
+        // Audio link
+        links.push('<audio src="' + link + '" class="attachment" controls></audio>');
+      } else if (link.match(/\.(mp4|webm|ogv)$/)) {
+        // Video link
+        links.push('<video src="' + link + '" class="attachment" controls></video>');
+} else {
+  // Other link
+  links.push('<img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
+}
+clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 
+    }
+  }
 
-
+  messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
   msgbox.appendChild(messageElement);
 
   const divElements = document.querySelectorAll('.message');
@@ -223,7 +241,7 @@ divElements.forEach(div => {
     sessionStorage.setItem('data-co', value2);
 
     // Set inner HTML of new div element
-    document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
+    document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
     var chatroom = document.getElementById('messages-content');
 
   $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
@@ -236,11 +254,16 @@ divElements.forEach(div => {
 };
 
 if (sessionStorage.getItem('data-id') != null) {
-  document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
+  document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
+  document.querySelector('.repliedtomsg').addEventListener('click', function() {
+  document.querySelector('#mebox2').innerHTML = '';
+  sessionStorage.removeItem('data-id');
+  sessionStorage.removeItem('data-co');
+});
 } else {
   document.querySelector("#mebox2").innerHTML = '';
 }
-document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg);"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
+document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
 
 
 
@@ -271,6 +294,14 @@ document.querySelector("#mebox").innerHTML = '<div class="message message-person
             });
 };
 
+
+</script>
+<script>
+  function clearBoxAndSessionStorage() {
+    document.querySelector('#mebox2').innerHTML = '';
+    sessionStorage.removeItem('data-id');
+    sessionStorage.removeItem('data-co');
+  }
 </script>
 
        <!-- Add a script to handle the loading screen -->
