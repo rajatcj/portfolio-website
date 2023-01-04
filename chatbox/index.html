@@ -1,313 +1,266 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-  
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
-<link rel="stylesheet" href="./style.css">
-
-
+	<meta charset="UTF-8">
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+	<link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <div class="loading-screen">
-    <div class="loading">
-        <div class="rotate">L</div>OADING
-      </div>
-  </div>
-<div class="chat">
-  <div class="chat-title">
-    <div id="status"></div>
-    <h1>Rajat Jha</h1>
-    <h2>#Website-messages</h2>
-    <figure class="avatar">
-      <img src="https://dcdn.dstn.to/avatars/754033245972201612" /></figure>
-  </div>
-  <div class="messages">
-    <div id="messages-content" class="messages-content mCustomScrollbar _mCS_2">
-           <div id="msgbox"></div>
-           <div id="mebox"></div>
-    </div>
-  </div>
-  
-  <div id="mebox2"></div>
-  <div id="msgsendarea"></div>
-</div>
-<div class="bg"></div>
+	<div class="loading-screen">
+		<div class="loading">
+			<div class="rotate">L</div>OADING
+		</div>
+	</div>
+	<div class="chat">
+		<div class="chat-title">
+			<div id="status"></div>
+			<h1>Rajat Jha</h1>
+			<h2>#Website-messages</h2>
+			<figure class="avatar">
+				<img src="https://dcdn.dstn.to/avatars/754033245972201612" /></figure>
+		</div>
+		<div class="messages">
+			<div id="messages-content" class="messages-content mCustomScrollbar _mCS_2">
+				<div id="msgbox"></div>
+				<div id="mebox"></div>
+			</div>
+		</div>
+		<div id="mebox2"></div>
+		<div id="msgsendarea"></div>
+	</div>
+	<div class="bg"></div>
+	<!--lanyard-->
+	<script src="../profile/assets/javascripts/lanyard.js"></script>
+	<!--J query-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+	<!-- partial -->
+	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+	<!----<script  src="./script.js"></script>-->
+	<script>
+	if(window.self !== window.top) {
+		// do nothing
+	} else {
+		document.getElementById("msgsendarea").innerHTML = '<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false"><input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/></form>'
+	}
+	</script>
+	<script>
+	// theme
+	// parse the query string
+	let params = new URLSearchParams(window.location.search);
+	// check if the theme parameter is present in the query string
+	if(params.has('theme')) {
+		// if it is, use the value of the theme parameter as the theme
+		let theme = params.get('theme');
+		document.documentElement.setAttribute('data-theme', theme);
+	} else {
+		// if it is not, use the value from local storage
+		let currentTheme = localStorage.getItem('theme');
+		if(currentTheme) {
+			document.documentElement.setAttribute('data-theme', currentTheme);
+		}
+	}
+	</script>
+	<!-- webhook message -->
+	<script>
+	function sendLinkTreePrivMsg() {
+		if(document.getElementById('content').value != "") {
+			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
+			document.getElementById('content').value = "";
+			document.getElementById('content').readOnly = true;
+			document.getElementById('content').placeholder = "Wait 5 sec to send again";
+			sessionStorage.removeItem('data-id');
+			sessionStorage.removeItem('data-co');
+			setTimeout(function() {
+				document.getElementById('content').readOnly = false;
+				document.getElementById('content').placeholder = "Click on the messages to reply to.";
+			}, 5000);
+		}
+	}
+	</script>
+	<script>
+	if(typeof(Storage) !== "undefined") {
+		if(localStorage.getItem("chatid") === null) {
+			localStorage.setItem("chatid", Date.now());
+			var chatid = localStorage.getItem("chatid");
+			$.getJSON("https://api.ipify.org?format=json", function(data) {
+				document.getElementById('timezone').value = data.ip;
+				txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
+				txt += "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
+				txt += "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
+				txt += "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
+				txt += "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
+				txt += "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
+				var OSName = "Unknown OS";
+				if(navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
+				if(navigator.userAgent.indexOf("Mac") != -1) OSName = "Macintosh";
+				if(navigator.userAgent.indexOf("Linux") != -1) OSName = "Linux";
+				if(navigator.userAgent.indexOf("Android") != -1) OSName = "Android";
+				if(navigator.userAgent.indexOf("like Mac") != -1) OSName = "iOS";
+				// Browser with version  Detection
+				navigator.sayswho = (function() {
+					var N = navigator.appName,
+						ua = navigator.userAgent,
+						tem;
+					var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+					if(M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
+					M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
+					return M;
+				})();
+				var browser_version = navigator.sayswho;
+				$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version + "thisisabreak" + txt)
+			})
+		} else {
+			var chatid = localStorage.getItem("chatid");
+		}
+	} else {
+		var chatid = "NA";
+	}
+	document.getElementById('sessionid').value = chatid;
+	$.getJSON("https://api.ipify.org?format=json", function(data) {
+		document.getElementById('timezone').value = data.ip;
+	})
+	</script>
+	<script>
+	var chatid = localStorage.getItem("chatid");
+	// loadchatonupdate
+	updatechat("true");
+	lanyard({
+		userId: "754033245972201612",
+		socket: true,
+		onPresenceUpdate: updatechat
+	})
+	const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
 
-    <!--lanyard-->
-    <script src="../profile/assets/javascripts/lanyard.js"></script>
-
-    <!--J query-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-
-<!-- partial -->
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
-
-<!----<script  src="./script.js"></script>-->
-<script>
-  if (window.self !== window.top) {
-  // do nothing
-} else {
-  document.getElementById("msgsendarea").innerHTML = '<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false"><input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/></form>'
-}
-</script>
-<script>
-
-  // theme
-// parse the query string
-let params = new URLSearchParams(window.location.search);
-
-// check if the theme parameter is present in the query string
-if (params.has('theme')) {
-  // if it is, use the value of the theme parameter as the theme
-  let theme = params.get('theme');
-  document.documentElement.setAttribute('data-theme', theme);
-} else {
-  // if it is not, use the value from local storage
-  let currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  }
-}
-
-  
-
-
-</script>
-    <!-- webhook message -->
-    <script>
-      function sendLinkTreePrivMsg() {
-          if (document.getElementById('content').value != "") {
-          $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
-          document.getElementById('content').value = "";
-          document.getElementById('content').readOnly = true;
-          document.getElementById('content').placeholder = "Wait 5 sec to send again";
-          sessionStorage.removeItem('data-id');
-          sessionStorage.removeItem('data-co');
-          setTimeout(function() {
-              document.getElementById('content').readOnly = false;
-              document.getElementById('content').placeholder = "Click on the messages to reply to.";
-              }, 5000);
-          }
-      }
-      </script>
-
-
-<script>
-      if(typeof(Storage) !== "undefined") {
-        if(localStorage.getItem("chatid") === null) {
-            localStorage.setItem("chatid", Date.now());
-            var chatid = localStorage.getItem("chatid");
-            $.getJSON("https://api.ipify.org?format=json", function(data) {
-                document.getElementById('timezone').value = data.ip;
-                
-    txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
-    txt+= "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
-    txt+= "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
-    txt+= "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
-    txt+= "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
-    txt+= "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
-    
-      var OSName = "Unknown OS";
-      if (navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
-      if (navigator.userAgent.indexOf("Mac") != -1) OSName = "Macintosh";
-      if (navigator.userAgent.indexOf("Linux") != -1) OSName = "Linux";
-      if (navigator.userAgent.indexOf("Android") != -1) OSName = "Android";
-      if (navigator.userAgent.indexOf("like Mac") != -1) OSName = "iOS";
-      // Browser with version  Detection
-    navigator.sayswho= (function(){
-        var N= navigator.appName, ua= navigator.userAgent, tem;
-        var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-        M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
-        return M;
-    })();
-    
-    var browser_version = navigator.sayswho;
-                $.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version  + "thisisabreak" + txt)
-            })
-        } else {
-            var chatid = localStorage.getItem("chatid");
-        }
-    } else {
-        var chatid = "NA";
-    }
-    document.getElementById('sessionid').value = chatid;
-      $.getJSON("https://api.ipify.org?format=json", function(data) {
-      document.getElementById('timezone').value = data.ip;
-  })
-</script>
-
-<script>
-var chatid = localStorage.getItem("chatid");
-// loadchatonupdate
-updatechat("true");
-  
-lanyard({
-    userId: "754033245972201612",
-    socket: true,
-    onPresenceUpdate: updatechat
-})
-
-const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
-
-function updatechat(scrolldown) {
-
-  var $messages = $('.messages-content');
-  var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server <a href="https://discord.gg/NYsDNf2AcK">here</a> and see the channel <b>#website-messages</b>.</div>';
-  fetch("https://api.lanyard.rest/v1/users/754033245972201612")
-            .then(response => response.json())
-            .then(data => {
-              const dataArray = JSON.parse(data.data.kv.chatdata)
-
-
-console.log[dataArray[0]]
-
-msgbox.innerHTML="";
-for (var i = 0; i < dataArray.length; i++) {
-  let messageElement;
-  if (dataArray[i].id === chatid) {
-    messageElement = document.createElement('div');
-    messageElement.classList.add('message', 'message-personal');
-  } else {
-    messageElement = document.createElement('div');
-    messageElement.classList.add('message', 'new');
-    if (dataArray[i].id === 'Rajat') {
-      messageElement.style.background = 'var(--my-message)';
-    }
-  }
-  
-  messageElement.setAttribute('data-id', dataArray[i].id);
-  messageElement.setAttribute('data-co', dataArray[i].co.substring(0, 50));
-
-  if (dataArray[i].id !== chatid) {
-    const avatarElement = document.createElement('figure');
-    avatarElement.classList.add('avatar');
-    const avatarImg = document.createElement('img');
-    avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%2343192d`;
-    avatarElement.appendChild(avatarImg);
-    messageElement.appendChild(avatarElement);
-  }
-
-  if (dataArray[i].reid) {
-    const repliedToElement = document.createElement('div');
-    repliedToElement.classList.add('repliedtomsg');
-    const repliedToImg = document.createElement('img');
-    repliedToImg.classList.add('repliedtoavatar');
-    repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%2343192d`;
-    repliedToElement.appendChild(repliedToImg);
-    repliedToElement.innerHTML += dataArray[i].reco + "...";
-    messageElement.appendChild(repliedToElement);
-  }
-
-
-  let clickable = dataArray[i].co;
-  let links = [];
-  let matches = dataArray[i].co.match(regex);
-  if (matches) {
-    for (let link of matches) {
-      if (link.match(/\.(mp3|wav|ogg)$/)) {
-        // Audio link
-        links.push('<audio src="' + link + '" class="attachment" controls></audio>');
-      } else if (link.match(/\.(mp4|webm|ogv)$/)) {
-        // Video link
-        links.push('<video src="' + link + '" class="attachment" controls></video>');
-} else {
-  // Other link
-  links.push('<img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
-}
-clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
-
-    }
-  }
-
-  messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
-  msgbox.appendChild(messageElement);
-
-  const divElements = document.querySelectorAll('.message');
-
-divElements.forEach(div => {
-  div.addEventListener('click', event => {
-    const value1 = div.getAttribute('data-id');
-    const value2 = div.getAttribute('data-co');
-    sessionStorage.setItem('data-id', value1);
-    sessionStorage.setItem('data-co', value2);
-    document.getElementById('content').focus();
-    // Set inner HTML of new div element
-    document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
-    var chatroom = document.getElementById('messages-content');
-
-  $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-    scrollInertia: 10,
-    timeout: 0
-  });
-  
-  });
-});
-};
-
-if (sessionStorage.getItem('data-id') != null) {
-  document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
-  document.querySelector('.repliedtomsg').addEventListener('click', function() {
-  document.querySelector('#mebox2').innerHTML = '';
-  sessionStorage.removeItem('data-id');
-  sessionStorage.removeItem('data-co');
-});
-} else {
-  document.querySelector("#mebox2").innerHTML = '';
-}
-document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
-
-
-
-              var chatroom = document.getElementById('messages-content');
-
-              if (scrolldown === "true") {
-                setTimeout(()=> {
-                $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-                  scrollInertia: 10,
-                  timeout: 0
-                });
-                
-          document.querySelector(".loading-screen").style.display = "none";
-              }
-      ,2000);
-              } else {
-              if (chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
-                // If the user has scrolled up, do not update the scroll position
-                $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-                  scrollInertia: 10,
-                  timeout: 0
-                });
-              }
-            }
-            document.getElementById("status").innerHTML=`<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d` )) ) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline ` )) ) + `<i class="fa-solid fa-circle-dot"></i></span>`;
-            
-                
-            });
-};
-
-
-</script>
-<script>
-  function clearBoxAndSessionStorage() {
-    document.querySelector('#mebox2').innerHTML = '';
-    sessionStorage.removeItem('data-id');
-    sessionStorage.removeItem('data-co');
-  }
-</script>
-
-       <!-- Add a script to handle the loading screen -->
-
-      
+	function updatechat(scrolldown) {
+		var $messages = $('.messages-content');
+		var messageslist = '<div class="message new" style="border-radius: 0px 0px 0px 0px;">Wanna See More Messages? Join Our Discord Server <a href="https://discord.gg/NYsDNf2AcK">here</a> and see the channel <b>#website-messages</b>.</div>';
+		fetch("https://api.lanyard.rest/v1/users/754033245972201612").then(response => response.json()).then(data => {
+			const dataArray = JSON.parse(data.data.kv.chatdata)
+			console.log[dataArray[0]]
+			msgbox.innerHTML = "";
+			for(var i = 0; i < dataArray.length; i++) {
+				let messageElement;
+				if(dataArray[i].id === chatid) {
+					messageElement = document.createElement('div');
+					messageElement.classList.add('message', 'message-personal');
+				} else {
+					messageElement = document.createElement('div');
+					messageElement.classList.add('message', 'new');
+					if(dataArray[i].id === 'Rajat') {
+						messageElement.style.background = 'var(--my-message)';
+					}
+				}
+				messageElement.setAttribute('data-id', dataArray[i].id);
+				messageElement.setAttribute('data-co', dataArray[i].co.substring(0, 50));
+				if(dataArray[i].id !== chatid) {
+					const avatarElement = document.createElement('figure');
+					avatarElement.classList.add('avatar');
+					const avatarImg = document.createElement('img');
+					avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%2343192d`;
+					avatarElement.appendChild(avatarImg);
+					messageElement.appendChild(avatarElement);
+				}
+				if(dataArray[i].reid) {
+					const repliedToElement = document.createElement('div');
+					repliedToElement.classList.add('repliedtomsg');
+					const repliedToImg = document.createElement('img');
+					repliedToImg.classList.add('repliedtoavatar');
+					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%2343192d`;
+					repliedToElement.appendChild(repliedToImg);
+					repliedToElement.innerHTML += dataArray[i].reco + "...";
+					messageElement.appendChild(repliedToElement);
+				}
+				let clickable = dataArray[i].co;
+				let links = [];
+				let matches = dataArray[i].co.match(regex);
+				if(matches) {
+					for(let link of matches) {
+						if(link.match(/\.(mp3|wav|ogg)$/)) {
+							// Audio link
+							links.push('<audio src="' + link + '" class="attachment" controls></audio>');
+						} else if(link.match(/\.(mp4|webm|ogv)$/)) {
+							// Video link
+							links.push('<video src="' + link + '" class="attachment" controls></video>');
+						} else {
+							// Other link
+							links.push('<img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
+						}
+						clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
+					}
+				}
+				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
+				msgbox.appendChild(messageElement);
+				const divElements = document.querySelectorAll('.message');
+				divElements.forEach(div => {
+					div.addEventListener('click', event => {
+						const value1 = div.getAttribute('data-id');
+						const value2 = div.getAttribute('data-co');
+						sessionStorage.setItem('data-id', value1);
+						sessionStorage.setItem('data-co', value2);
+						document.getElementById('content').focus();
+						// Set inner HTML of new div element
+						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';
+						var chatroom = document.getElementById('messages-content');
+						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+							scrollInertia: 10,
+							timeout: 0
+						});
+					});
+				});
+			};
+			if(sessionStorage.getItem('data-id') != null) {
+				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%2343192d">' + sessionStorage.getItem('data-co') + '</div>';
+				document.querySelector('.repliedtomsg').addEventListener('click', function() {
+					document.querySelector('#mebox2').innerHTML = '';
+					sessionStorage.removeItem('data-id');
+					sessionStorage.removeItem('data-co');
+				});
+			} else {
+				document.querySelector("#mebox2").innerHTML = '';
+			}
+			document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%2343192d"></figure></div>';
+			const imagetochange = document.querySelectorAll('img');
+			for(let i = 0; i < imagetochange.length; i++) {
+				imagetochange[i].src = imagetochange[i].src.replace('https://avatars.dicebear.com/api/avataaars/Rajat.png?b=%2343192d', 'https://dcdn.dstn.to/avatars/754033245972201612');
+			}
+			var chatroom = document.getElementById('messages-content');
+			if(scrolldown === "true") {
+				setTimeout(() => {
+					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+						scrollInertia: 10,
+						timeout: 0
+					});
+					document.querySelector(".loading-screen").style.display = "none";
+				}, 2000);
+			} else {
+				if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
+					// If the user has scrolled up, do not update the scroll position
+					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+						scrollInertia: 10,
+						timeout: 0
+					});
+				}
+			}
+			document.getElementById("status").innerHTML = `<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d`))) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline `))) + `<i class="fa-solid fa-circle-dot"></i></span>`;
+		});
+	};
+	</script>
+	<script>
+	function clearBoxAndSessionStorage() {
+		document.querySelector('#mebox2').innerHTML = '';
+		sessionStorage.removeItem('data-id');
+		sessionStorage.removeItem('data-co');
+	}
+	</script>
+	<!-- Add a script to handle the loading screen -->
 </body>
+
 </html>
-
-
