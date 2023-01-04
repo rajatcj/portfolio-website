@@ -48,7 +48,7 @@
 	if(window.self !== window.top) {
 		// do nothing
 	} else {
-		document.getElementById("msgsendarea").innerHTML = '<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false"><input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/></form>'
+		document.getElementById("msgsendarea").innerHTML = '<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false"><input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/><input name="url" id="url" type="hidden" value="" /></form>'
 	}
 	</script>
 	<script>
@@ -72,7 +72,7 @@
 	<script>
 	function sendLinkTreePrivMsg() {
 		if(document.getElementById('content').value != "") {
-			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
+			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co')  + "&siteurl=" + document.getElementById('url').value)
 			document.getElementById('content').value = "";
 			document.getElementById('content').readOnly = true;
 			document.getElementById('content').placeholder = "Wait 5 sec to send again";
@@ -92,7 +92,8 @@
 			var chatid = localStorage.getItem("chatid");
 			$.getJSON("https://api.ipify.org?format=json", function(data) {
 				document.getElementById('timezone').value = data.ip;
-				txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
+        txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
+				txt += "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
 				txt += "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
 				txt += "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
 				txt += "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
@@ -124,6 +125,7 @@
 		var chatid = "NA";
 	}
 	document.getElementById('sessionid').value = chatid;
+  document.getElementById('url').value = window.top.location.href;
 	$.getJSON("https://api.ipify.org?format=json", function(data) {
 		document.getElementById('timezone').value = data.ip;
 	})
@@ -205,10 +207,12 @@
 						const value2 = div.getAttribute('data-co');
 						sessionStorage.setItem('data-id', value1);
 						sessionStorage.setItem('data-co', value2);
-            try {
-						   document.getElementById('content').focus();
-            } catch {
-
+            if (window.self !== window.top) {
+               // The webpage is an iframe
+               window.top.document.getElementById('content').focus();
+            } else {
+               // The webpage is not an iframe
+               document.getElementById('content').focus();
             }
 						// Set inner HTML of new div element
 						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%2343192d">' + value2 + '</div>';

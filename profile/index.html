@@ -1,293 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="robots" content="noindex">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet" /> -->
-    <title>Discord Profile Card</title>
-        <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-  
-        <link rel="stylesheet" href="./assets/css/activity.css">
-        <link rel="stylesheet" href="./assets/css/style.css" />
-        <script src="./assets/javascripts/lanyard.js"></script>
-        <script src="./assets/javascripts/activity.js"></script>
-        <!--J query-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-        
-  </head> 
-  <body>
-    <div class="card-container">
-      <div class="card">
-        <div class="card-header">
-          <div id="discorduser.banner"></div>
-          <div class="infos">
-            <div id="discorduser.avatarlink"></div>
-            <div class="status-container">
-              <div id="discorduser.desktop"></div>
-              <div id="discorduser.mobile"></div>
-              <div id="discorduser.web"></div>
-              <div id="discorduser.spotify"></div>
-            </div>
-            <div class="badges-container" id="badge-containor"></div>
-            <div class="username" id="discorduser.name"></div>
-            <hr>
-          </div>
-        </div>
-        
-        <div class="card-content">
-          <div class="card-status">
-            <span id="discorduser.emoji"></span><span id="discorduser.status"></span>
-          <hr>
-          </div>
-          <div class="about-me">
-            <div class="category-title">About Me <input type="hidden" id="update_frequency" type="range" min="1" max="10" value="5"></div>
-            <p id="discorduser.aboutme"></p>
-          </div>
-          <div class="roles">
-            <div class="category-title">Roles</div>
-            <div class="roles-list" id="role-list"></div>
-          </div>
-          <div class="roles">
-            <div class="category-title">Activity</div>
-            <div id="activitycard">
-              <div id="activities" width="100%"></div>
-            </div>
-          </div>
-          <div class="note">
-            <div class="category-title">Note</div>
-            <textarea placeholder="Tap to add a note"></textarea>
-          </div>
-        </div>
 
-        <div class="card-footer">
-          
-          
-          <div id='messagebox' class='messagebox'></div>
-          <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-            <input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Send a secret message to me" />
-            <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/>
-            <input name="username" id="username" type="hidden" value="Profile"/>
-            <input name="guild" id="guild" type="hidden" value="819109979046936577"/>
-            <input name="sessionid" id="sessionid" type="hidden" value=""/>
-            <input name="timezone" id="timezone" type="hidden" value=""/>
-          </form><br>
-        </div>
-      </div>
-    </div>
-    
+<head>
+	<meta name="robots" content="noindex">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet" /> -->
+	<title>Discord Profile Card</title>
+	<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./assets/css/activity.css">
+	<link rel="stylesheet" href="./assets/css/style.css" />
+	<script src="./assets/javascripts/lanyard.js"></script>
+	<script src="./assets/javascripts/activity.js"></script>
+	<!--J query-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+</head>
 
-    <script>
+<body>
+	<div class="card-container">
+		<div class="card">
+			<div class="card-header">
+				<div id="discorduser.banner"></div>
+				<div class="infos">
+					<div id="discorduser.avatarlink"></div>
+					<div class="status-container">
+						<div id="discorduser.desktop"></div>
+						<div id="discorduser.mobile"></div>
+						<div id="discorduser.web"></div>
+						<div id="discorduser.spotify"></div>
+					</div>
+					<div class="badges-container" id="badge-containor"></div>
+					<div class="username" id="discorduser.name"></div>
+					<hr>
+				</div>
+			</div>
+			<div class="card-content">
+				<div class="card-status">
+					<span id="discorduser.emoji"></span><span id="discorduser.status"></span>
+					<hr>
+				</div>
+				<div class="about-me">
+					<div class="category-title">About Me <input type="hidden" id="update_frequency" type="range" min="1" max="10" value="5"></div>
+					<p id="discorduser.aboutme"></p>
+				</div>
+				<div class="roles">
+					<div class="category-title">Roles</div>
+					<div class="roles-list" id="role-list"></div>
+				</div>
+				<div class="roles">
+					<div class="category-title">Activity</div>
+					<div id="activitycard">
+						<div id="activities" width="100%"></div>
+					</div>
+				</div>
+				<div class="note">
+					<div class="category-title">Note</div>
+					<textarea placeholder="Tap to add a note"></textarea>
+				</div>
+			</div>
+			<div class="card-footer">
+				<div id='messagebox' class='messagebox'></div>
+				<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
+					<input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Send a secret message to me" />
+					<input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp" />
+					<input name="username" id="username" type="hidden" value="Profile" />
+					<input name="guild" id="guild" type="hidden" value="819109979046936577" />
+					<input name="sessionid" id="sessionid" type="hidden" value="" />
+					<input name="timezone" id="timezone" type="hidden" value="" />
+					<input name="url" id="url" type="hidden" value="" />
+				</form><br>
+			</div>
+		</div>
+	</div>
+	<script>
+	// get the text field and div elements
+	var textField = document.getElementById('content');
+	// when the text field is focused, show the div
+	textField.addEventListener('focusin', function() {
+		if (document.getElementById('messagepreview')) {
+			// iframe with id "messagepreview" exists
+		} else {
+			// iframe with id "messagepreview" does not exist
+			document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
+			document.getElementById("messagebox").style.display = 'flex';
+		}
+	});
+	// when the user clicks outside of the text field and iframe, hide the div
+	document.addEventListener('mousedown', function(event) {
+		var iframe = document.getElementById('messagepreview');
+		if (!textField.contains(event.target) && !iframe.contains(event.target)) {
+			document.getElementById("messagebox").innerHTML = '';
+			document.getElementById("messagebox").style.display = 'none';
+		}
+	});
+	</script>
+	<!-- webhook message -->
+	<script>
+	function sendLinkTreePrivMsg() {
+		if (document.getElementById('content').value != "") {
+			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co')  + "&siteurl=" + document.getElementById('url').value)
+			document.getElementById('content').value = "";
+			document.getElementById('content').readOnly = true;
+			document.getElementById('content').placeholder = "Wait 5 sec to send again";
+			sessionStorage.removeItem('data-id');
+			sessionStorage.removeItem('data-co');
+			setTimeout(function() {
+				document.getElementById('content').readOnly = false;
+				document.getElementById('content').placeholder = "Send a secret message to me";
+			}, 5000);
+		}
+	}
+	</script>
+	<!-- chat id storer -->
+	<script>
+	if (typeof(Storage) !== "undefined") {
+		if (localStorage.getItem("chatid") === null) {
+			localStorage.setItem("chatid", Date.now());
+			var chatid = localStorage.getItem("chatid");
+			$.getJSON("https://api.ipify.org?format=json", function(data) {
+				document.getElementById('timezone').value = data.ip;
+				txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
+				txt += "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
+				txt += "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
+				txt += "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
+				txt += "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
+				txt += "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
+				txt += "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
+				var OSName = "Unknown OS";
+				if (navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
+				if (navigator.userAgent.indexOf("Mac") != -1) OSName = "Macintosh";
+				if (navigator.userAgent.indexOf("Linux") != -1) OSName = "Linux";
+				if (navigator.userAgent.indexOf("Android") != -1) OSName = "Android";
+				if (navigator.userAgent.indexOf("like Mac") != -1) OSName = "iOS";
+				// Browser with version  Detection
+				navigator.sayswho = (function() {
+					var N = navigator.appName,
+						ua = navigator.userAgent,
+						tem;
+					var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+					if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null) M[2] = tem[1];
+					M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
+					return M;
+				})();
+				var browser_version = navigator.sayswho;
+				$.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version + "thisisabreak" + txt)
+			})
+		} else {
+			var chatid = localStorage.getItem("chatid");
+		}
+	} else {
+		var chatid = "NA";
+	}
+	document.getElementById('sessionid').value = chatid;
+  document.getElementById('url').value = window.top.location.href;
+	$.getJSON("https://api.ipify.org?format=json", function(data) {
+		document.getElementById('timezone').value = data.ip;
+	})
+	</script>
+	<script>
+	fetch('config.json').then(function(response) {
+		return response.json();
+	}).then(function(data) {
+		var rolelist = ""; //holds the html so far
+		var badgelist = "";
+		for (var i = 0; i < data.roles.length; i++) {
+			rolelist += '<div class="role"><div class="color" style="background:' + data.roles[i].color + '"></div>' + data.roles[i].rolename + '</div>';
+		};
+		for (var i = 0; i < data.badges.length; i++) {
+			badgelist += '<div class="badge-item"><img src="' + data.badges[i].src + '" alt="" /><div class="tooltip tooltip-up">' + data.badges[i].tooltip + '</div></div>';
+		};
+		document.getElementById('role-list').innerHTML = rolelist;
+		document.getElementById('badge-containor').innerHTML = badgelist;
+		document.getElementById("discorduser.name").innerHTML = data.default_username + "<span>#" + data.default_tag + "</span>";
+		document.getElementById("discorduser.aboutme").innerHTML = data.about_me;
+		/** document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"" + data.banner + "\")'></div>";**/
+		document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"https://dcdn.dstn.to/banners/" + data.userid + "\")'></div>";
+		document.getElementById("discorduser.avatarlink").innerHTML = '<a href="https://discord.com/users/' + data.userid + '" target="_blank"><div id="discorduser.avatar" class="profil-logo"><img src="https://dcdn.dstn.to/avatars/' + data.userid + '" /></div></a>';
+		document.getElementById('guild').value = data.message_guild_id;
+		document.getElementById('avatar_url').value = data.message_source_icon;
+		document.getElementById('username').value = data.message_source_name;
+		const userID = data.userid;
+	})
+	const userID = "754033245972201612";
+	updatepresenceLoop();
+	lanyard({
+		userId: userID,
+		socket: true,
+		onPresenceUpdate: updateprofile
+	})
 
-      // get the text field and div elements
-var textField = document.getElementById('content');
-
-// when the text field is focused, show the div
-textField.addEventListener('focusin', function() {
-  if (document.getElementById('messagepreview')) {
-  // iframe with id "messagepreview" exists
-} else {
-  // iframe with id "messagepreview" does not exist
-  document.getElementById("messagebox").innerHTML='<iframe id="messagepreview" src="../chatbox/index.html?theme=discord" style="display:block; border:10px;" title="Discord Status" ></iframe>';
-  document.getElementById("messagebox").style.display = 'flex';
-}
-
-      });
-
-// when the user clicks outside of the text field and iframe, hide the div
-document.addEventListener('mousedown', function(event) {
-  var iframe = document.getElementById('messagepreview');
-  if (!textField.contains(event.target) && !iframe.contains(event.target)) {
-    document.getElementById("messagebox").innerHTML='';
-          document.getElementById("messagebox").style.display = 'none';
-      }
-});
-
-    </script>
-
-    <!-- webhook message -->
-    <script>
-      function sendLinkTreePrivMsg() {
-          if (document.getElementById('content').value != "") {
-          $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
-          document.getElementById('content').value = "";
-          document.getElementById('content').readOnly = true;
-          document.getElementById('content').placeholder = "Wait 5 sec to send again";
-          sessionStorage.removeItem('data-id');
-          sessionStorage.removeItem('data-co');
-          setTimeout(function() {
-              document.getElementById('content').readOnly = false;
-              document.getElementById('content').placeholder = "Send a secret message to me";
-              }, 5000);
-          }
-      }
-      </script>
-
-  <!-- chat id storer -->
-  <script>
-    
-
-    if(typeof(Storage) !== "undefined") {
-        if(localStorage.getItem("chatid") === null) {
-            localStorage.setItem("chatid", Date.now());
-            var chatid = localStorage.getItem("chatid");
-            $.getJSON("https://api.ipify.org?format=json", function(data) {
-                document.getElementById('timezone').value = data.ip;
-                
-    txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
-    txt+= "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
-    txt+= "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
-    txt+= "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
-    txt+= "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
-    txt+= "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
-    
-      var OSName = "Unknown OS";
-      if (navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
-      if (navigator.userAgent.indexOf("Mac") != -1) OSName = "Macintosh";
-      if (navigator.userAgent.indexOf("Linux") != -1) OSName = "Linux";
-      if (navigator.userAgent.indexOf("Android") != -1) OSName = "Android";
-      if (navigator.userAgent.indexOf("like Mac") != -1) OSName = "iOS";
-      // Browser with version  Detection
-    navigator.sayswho= (function(){
-        var N= navigator.appName, ua= navigator.userAgent, tem;
-        var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-        M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
-        return M;
-    })();
-    
-    var browser_version = navigator.sayswho;
-                $.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version  + "thisisabreak" + txt)
-            })
-        } else {
-            var chatid = localStorage.getItem("chatid");
-        }
-    } else {
-        var chatid = "NA";
-    }
-    document.getElementById('sessionid').value = chatid;
-      $.getJSON("https://api.ipify.org?format=json", function(data) {
-      document.getElementById('timezone').value = data.ip;
-  })
-    </script>
-
-    
-
-
-
-    <script>
-
-
-fetch('config.json')
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var rolelist = "";//holds the html so far
-      var badgelist = "";
-        for (var i = 0; i < data.roles.length; i++) {
-          rolelist += '<div class="role"><div class="color" style="background:' + data.roles[i].color + '"></div>' + data.roles[i].rolename + '</div>';
-          };
-        for (var i = 0; i < data.badges.length; i++) {
-          badgelist += '<div class="badge-item"><img src="' + data.badges[i].src + '" alt="" /><div class="tooltip tooltip-up">' + data.badges[i].tooltip + '</div></div>';
-          };
-          document.getElementById('role-list').innerHTML = rolelist;
-          document.getElementById('badge-containor').innerHTML = badgelist;
-          document.getElementById("discorduser.name").innerHTML= data.default_username + "<span>#" + data.default_tag + "</span>";
-          document.getElementById("discorduser.aboutme").innerHTML= data.about_me;
-          /** document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"" + data.banner + "\")'></div>";**/
-          document.getElementById("discorduser.banner").innerHTML = "<div class='banner-image' style='background: url(\"https://dcdn.dstn.to/banners/" + data.userid + "\")'></div>";
-          document.getElementById("discorduser.avatarlink").innerHTML = '<a href="https://discord.com/users/' + data.userid + '" target="_blank"><div id="discorduser.avatar" class="profil-logo"><img src="https://dcdn.dstn.to/avatars/' + data.userid + '" /></div></a>';
-             
-          document.getElementById('guild').value = data.message_guild_id;
-          document.getElementById('avatar_url').value = data.message_source_icon;
-          document.getElementById('username').value = data.message_source_name;
-          
-          const userID = data.userid;
-        })
-
-
-        const userID = "754033245972201612";
-        
-
-        updatepresenceLoop();
-        
-lanyard({
-    userId: userID,
-    socket: true,
-    onPresenceUpdate: updateprofile
-})
-
-
-     function updateprofile(data) {
-
-      sessionStorage.setItem("activityData", JSON.stringify(data));
-
-                document.getElementById("discorduser.name").innerHTML=`${data.discord_user.username}<span>#${data.discord_user.discriminator}</span>`;
-                
-              
-                if (data.active_on_discord_desktop) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-display"></i>
-                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Desktop</div></div>`;
-                } else {
-                  document.getElementById("discorduser.desktop").innerHTML=``;
-                }
-
-                if (data.active_on_discord_mobile) {
-                  document.getElementById("discorduser.mobile").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-mobile"></i>
-                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Mobile</div></div>`;
-                } else {
-                  document.getElementById("discorduser.mobile").innerHTML=``;
-                }
-
-                if (data.active_on_discord_web) {
-                  document.getElementById("discorduser.web").innerHTML=`<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245` )) + `;" class="fa-solid fa-globe"></i>
-                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND` )) + ` on Browser</div></div>`;
-                } else {
-                  document.getElementById("discorduser.web").innerHTML=``;
-                }
-
-
-              if (data.discord_status === `offline`) {
-                  document.getElementById("discorduser.desktop").innerHTML=`<div class="status-item"><i style="color:#747f8d;" class="fa-solid fa-circle"></i>
+	function updateprofile(data) {
+		sessionStorage.setItem("activityData", JSON.stringify(data));
+		document.getElementById("discorduser.name").innerHTML = `${data.discord_user.username}<span>#${data.discord_user.discriminator}</span>`;
+		if (data.active_on_discord_desktop) {
+			document.getElementById("discorduser.desktop").innerHTML = `<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245`)) + `;" class="fa-solid fa-display"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND`)) + ` on Desktop</div></div>`;
+		} else {
+			document.getElementById("discorduser.desktop").innerHTML = ``;
+		}
+		if (data.active_on_discord_mobile) {
+			document.getElementById("discorduser.mobile").innerHTML = `<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245`)) + `;" class="fa-solid fa-mobile"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND`)) + ` on Mobile</div></div>`;
+		} else {
+			document.getElementById("discorduser.mobile").innerHTML = ``;
+		}
+		if (data.active_on_discord_web) {
+			document.getElementById("discorduser.web").innerHTML = `<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245`)) + `;" class="fa-solid fa-globe"></i>
+                <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND`)) + ` on Browser</div></div>`;
+		} else {
+			document.getElementById("discorduser.web").innerHTML = ``;
+		}
+		if (data.discord_status === `offline`) {
+			document.getElementById("discorduser.desktop").innerHTML = `<div class="status-item"><i style="color:#747f8d;" class="fa-solid fa-circle"></i>
                 <div class="tooltip tooltip-up">Offline</div></div>`;
-              }
-              
-
-              if (data.listening_to_spotify) {
-                document.getElementById("discorduser.spotify").innerHTML=`<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
+		}
+		if (data.listening_to_spotify) {
+			document.getElementById("discorduser.spotify").innerHTML = `<div class="status-item"><i style="font-size: 13px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
-              } else {
-                  document.getElementById("discorduser.spotify").innerHTML=``;
-              }
+		} else {
+			document.getElementById("discorduser.spotify").innerHTML = ``;
+		}
+		if (data.activities[0].id === `custom`) {
+			document.getElementById("discorduser.status").innerHTML = (data.activities[0].state == undefined ? `` : data.activities[0].state) + `<br><br>`;
+			if (data.activities[0].emoji.animated === false) {
+				document.getElementById("discorduser.emoji").innerHTML = `<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.webp" width="15"> `;
+			} else if (data.activities[0].emoji.animated === true) {
+				document.getElementById("discorduser.emoji").innerHTML = `<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.gif?size=40" width="15"> `;
+			} else {
+				document.getElementById("discorduser.emoji").innerHTML = `${data.activities[0].emoji.name} `;
+			}
+		}
+	}
+	/* / loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
+	      function loop() {
+	          setTimeout(function() {
+	              updatepresence(userID);
+	              loop();
+	          }, 5000)
+	      }
+	      loop(); */
+	</script>
+</body>
 
-              if (data.activities[0].id === `custom`) {
-                  document.getElementById("discorduser.status").innerHTML=(data.activities[0].state == undefined ? `` : data.activities[0].state ) + `<br><br>`;
-                  if (data.activities[0].emoji.animated === false) {
-                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.webp" width="15"> `;
-                  } else if (data.activities[0].emoji.animated === true) {
-                      document.getElementById("discorduser.emoji").innerHTML=`<img src="https://cdn.discordapp.com/emojis/${data.activities[0].emoji.id}.gif?size=40" width="15"> `;
-                  } else {
-                      document.getElementById("discorduser.emoji").innerHTML=`${data.activities[0].emoji.name} `;
-                  }
-              }
-
-}
-
-
-
-
-/* / loop to constantly update the details of the activities even if no change was made (for example, time elapsed)
-      function loop() {
-          setTimeout(function() {
-              updatepresence(userID);
-              loop();
-          }, 5000)
-      }
-      loop(); */
-
- </script>
-
-  </body>
 </html>

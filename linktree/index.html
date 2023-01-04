@@ -155,7 +155,8 @@ updateTime();
             $.getJSON("https://api.ipify.org?format=json", function(data) {
                 document.getElementById('timezone').value = data.ip;
                 
-    txt = "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
+        txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
+	txt += "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
     txt+= "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
     txt+= "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
     txt+= "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
@@ -188,7 +189,7 @@ updateTime();
         var chatid = "NA";
     }
     document.getElementById('sessionid').value = chatid;
-    document.getElementById('url').value = document.URL;
+	document.getElementById('url').value = window.top.location.href;
     </script>
 
 
@@ -196,7 +197,7 @@ updateTime();
 <script>
 function sendLinkTreePrivMsg() {
     if (document.getElementById('content').value != "") {
-    $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co'))
+    $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co')  + "&siteurl=" + document.getElementById('url').value)
     document.getElementById('content').value = "";
     document.getElementById('content').readOnly = true;
     document.getElementById('content').placeholder = "Wait 5 sec to send again";
