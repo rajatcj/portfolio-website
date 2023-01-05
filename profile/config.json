@@ -9,7 +9,7 @@
     "default_username": "Rajat",
     "default_tag": "1004",
 
-    "about_me": "Life is like a hurricane, here in duckburg.. Racecars Lasers Airplanes, its a, duckblur... Might solve a mystery.. or rewrite history? DuckTales, Woo wo",
+    "about_me": "Hi my friend 👋🏻, Im a 20 years old self-taught programmer from Nepal. I'm a part time Discord Bot and Website freelancer experienced in frontend development/designing and discord bot development.",
     
     "roles": [
         {
@@ -17,8 +17,12 @@
             "color": "rgb(5, 169, 219)"
         },
         {
-            "rolename": "Site Admin",
+            "rolename": "FrontEnd Dev",
             "color": "red"
+        },
+        {
+            "rolename": "Discord Bot Dev",
+            "color": "green"
         },
         {
             "rolename": "Botuu Developer",
