@@ -74,134 +74,133 @@
 	function sendLinkTreePrivMsg() {
 		if(document.getElementById('content').value != "") {
 			const snowflake = (chatid + Date.now());
-			const dataArray = [
-				{
-					id: document.getElementById('sessionid').value,
-					sf: snowflake,
-					co: document.getElementById('content').value,
-					reid: sessionStorage.getItem('data-id'),
-					reco: sessionStorage.getItem('data-co')
-				}
-				];
+			const dataArray = [{
+				id: document.getElementById('sessionid').value,
+				sf: snowflake,
+				co: document.getElementById('content').value,
+				reid: sessionStorage.getItem('data-id'),
+				reco: sessionStorage.getItem('data-co')
+			}];
 			$.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co') + "&siteurl=" + document.getElementById('url').value + "&sf=" + snowflake)
 			document.getElementById('content').value = "";
-			document.getElementById('content').readOnly = true;
-			document.getElementById('content').placeholder = "Wait 5 sec to send again";
 			sessionStorage.removeItem('data-id');
 			sessionStorage.removeItem('data-co');
+			document.querySelector("#mebox2").innerHTML = '';
 			let i = 0;
 			let messageElement;
-				if(dataArray[i].id === chatid) {
-					messageElement = document.createElement('div');
-					messageElement.classList.add('message', 'message-personal');
-				} else {
-					messageElement = document.createElement('div');
-					messageElement.classList.add('message', 'new');
-					if(dataArray[i].id === 'Rajat') {
-						messageElement.style.background = 'var(--my-message)';
+			if(dataArray[i].id === chatid) {
+				messageElement = document.createElement('div');
+				messageElement.classList.add('message', 'message-personal');
+			} else {
+				messageElement = document.createElement('div');
+				messageElement.classList.add('message', 'new');
+				if(dataArray[i].id === 'Rajat') {
+					messageElement.style.background = 'var(--my-message)';
+				}
+			}
+			messageElement.setAttribute('data-sf', dataArray[i].sf);
+			messageElement.setAttribute('data-id', dataArray[i].id);
+			messageElement.setAttribute('data-co', dataArray[i].co.substring(0, 50));
+			if(dataArray[i].id !== chatid) {
+				const avatarElement = document.createElement('figure');
+				avatarElement.classList.add('avatar');
+				const avatarImg = document.createElement('img');
+				avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%23` + dataArray[i].id.toString().slice(-6);
+				avatarElement.appendChild(avatarImg);
+				messageElement.appendChild(avatarElement);
+			}
+			if(dataArray[i].reid) {
+				const repliedToElement = document.createElement('div');
+				repliedToElement.classList.add('repliedtomsg');
+				if(dataArray[i].reid == chatid) {
+					repliedToElement.classList.add('repliedtomme');
+				}
+				const repliedToImg = document.createElement('img');
+				repliedToImg.classList.add('repliedtoavatar');
+				repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
+				repliedToElement.appendChild(repliedToImg);
+				let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
+					switch (char) {
+						case '<':
+							return '{';
+						case '>':
+							return '}';
+						default:
+							return char;
 					}
+				});
+				repliedToElement.innerHTML += clickablebutreply + "...";
+				messageElement.appendChild(repliedToElement);
+			}
+			let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
+				switch (char) {
+					case '<':
+						return '{';
+					case '>':
+						return '}';
+					default:
+						return char;
 				}
-				messageElement.setAttribute('data-sf', dataArray[i].sf);
-				messageElement.setAttribute('data-id', dataArray[i].id);
-				messageElement.setAttribute('data-co', dataArray[i].co.substring(0, 50));
-				if(dataArray[i].id !== chatid) {
-					const avatarElement = document.createElement('figure');
-					avatarElement.classList.add('avatar');
-					const avatarImg = document.createElement('img');
-					avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%23` + dataArray[i].id.toString().slice(-6);
-					avatarElement.appendChild(avatarImg);
-					messageElement.appendChild(avatarElement);
-				}
-				if(dataArray[i].reid) {
-					const repliedToElement = document.createElement('div');
-					repliedToElement.classList.add('repliedtomsg');
-					if(dataArray[i].reid == chatid) {
-						repliedToElement.classList.add('repliedtomme');
+			});
+			let links = [];
+			let matches = dataArray[i].co.match(regex);
+			if(matches) {
+				for(let link of matches) {
+					if(link.match(/\.(mp3|wav|ogg)$/)) {
+						// Audio link
+						links.push('<audio src="' + link + '" class="attachment" controls></audio>');
+					} else if(link.match(/\.(mp4|webm|ogv)$/)) {
+						// Video link
+						links.push('<video src="' + link + '" class="attachment" controls></video>');
+					} else {
+						// Other link
+						links.push('<img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
 					}
-					const repliedToImg = document.createElement('img');
-					repliedToImg.classList.add('repliedtoavatar');
-					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
-					repliedToElement.appendChild(repliedToImg);
-          let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
-					repliedToElement.innerHTML += clickablebutreply + "...";
-					messageElement.appendChild(repliedToElement);
+					clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 				}
-				
-        let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
-				let links = [];
-				let matches = dataArray[i].co.match(regex);
-				if(matches) {
-					for(let link of matches) {
-						if(link.match(/\.(mp3|wav|ogg)$/)) {
-							// Audio link
-							links.push('<audio src="' + link + '" class="attachment" controls></audio>');
-						} else if(link.match(/\.(mp4|webm|ogv)$/)) {
-							// Video link
-							links.push('<video src="' + link + '" class="attachment" controls></video>');
-						} else {
-							// Other link
-							links.push('<img src="' + link + '" class="attachment" onerror="this.style.display=`none`">');
+			}
+			messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
+			msgbox.appendChild(messageElement);
+			const divElements = document.querySelectorAll('.message');
+			divElements.forEach(div => {
+				div.addEventListener('click', event => {
+					const value1 = div.getAttribute('data-id');
+					const value2 = div.getAttribute('data-co').replace(/[<>&'"/\\]/g, function(char) {
+						switch (char) {
+							case '<':
+								return '{';
+							case '>':
+								return '}';
+							default:
+								return char;
 						}
-						clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
+					});
+					sessionStorage.setItem('data-id', value1);
+					sessionStorage.setItem('data-co', value2);
+					if(window.self !== window.top) {
+						// The webpage is an iframe
+						window.top.document.getElementById('content').focus();
+					} else {
+						// The webpage is not an iframe
+						document.getElementById('content').focus();
 					}
-				}
-				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
-				msgbox.appendChild(messageElement);
-				const divElements = document.querySelectorAll('.message');
-				divElements.forEach(div => {
-					div.addEventListener('click', event => {
-						const value1 = div.getAttribute('data-id');
-						const value2 = div.getAttribute('data-co').replace(/[<>&'"/\\]/g, function(char) {
-              switch (char) {
-                case '<':
-                  return '{';
-                case '>':
-                  return '}';
-                default:
-                  return char;
-              }
-            });
-						sessionStorage.setItem('data-id', value1);
-						sessionStorage.setItem('data-co', value2);
-            if (window.self !== window.top) {
-               // The webpage is an iframe
-               window.top.document.getElementById('content').focus();
-            } else {
-               // The webpage is not an iframe
-               document.getElementById('content').focus();
-            }
-						// Set inner HTML of new div element
-						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
-						var chatroom = document.getElementById('messages-content');
-						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-							scrollInertia: 1000,
-							timeout: 0
-						});
+					// Set inner HTML of new div element
+					document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
+					var chatroom = document.getElementById('messages-content');
+					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+						scrollInertia: 1000,
+						timeout: 0
 					});
 				});
-			setTimeout(function() {
-				document.getElementById('content').readOnly = false;
-				document.getElementById('content').placeholder = "Click on the messages to reply to.";
-			}, 5000);
+			});
 		}
+		
+			
+		var $messages = $('.messages-content');
+			$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+						scrollInertia: 1000,
+						timeout: 0
+					});
 	}
 	</script>
 	<script>
@@ -211,7 +210,7 @@
 			var chatid = localStorage.getItem("chatid");
 			$.getJSON("https://api.ipify.org?format=json", function(data) {
 				document.getElementById('timezone').value = data.ip;
-        txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
+				txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
 				txt += "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
 				txt += "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
 				txt += "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
@@ -244,7 +243,7 @@
 		var chatid = "NA";
 	}
 	document.getElementById('sessionid').value = chatid;
-  	document.getElementById('url').value = window.top.location.href;
+	document.getElementById('url').value = window.top.location.href;
 	$.getJSON("https://api.ipify.org?format=json", function(data) {
 		document.getElementById('timezone').value = data.ip;
 	})
@@ -267,10 +266,8 @@
 			const dataArray = JSON.parse(data.data.kv.chatdata)
 			console.log[dataArray[0]]
 			const i = 49;
-
 			const msgsnowflake = document.getElementById('msgbox').lastChild.dataset.sf;
-			console.log(msgsnowflake + " is gay " + dataArray[i].sf)
-			if (msgsnowflake != dataArray[i].sf) {
+			if(msgsnowflake != dataArray[i].sf) {
 				let messageElement;
 				if(dataArray[i].id === chatid) {
 					messageElement = document.createElement('div');
@@ -303,30 +300,29 @@
 					repliedToImg.classList.add('repliedtoavatar');
 					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
 					repliedToElement.appendChild(repliedToImg);
-          let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
+					let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
+						switch (char) {
+							case '<':
+								return '{';
+							case '>':
+								return '}';
+							default:
+								return char;
+						}
+					});
 					repliedToElement.innerHTML += clickablebutreply + "...";
 					messageElement.appendChild(repliedToElement);
 				}
-				
-        let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
+				let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
+					switch (char) {
+						case '<':
+							return '{';
+						case '>':
+							return '}';
+						default:
+							return char;
+					}
+				});
 				let links = [];
 				let matches = dataArray[i].co.match(regex);
 				if(matches) {
@@ -351,24 +347,24 @@
 					div.addEventListener('click', event => {
 						const value1 = div.getAttribute('data-id');
 						const value2 = div.getAttribute('data-co').replace(/[<>&'"/\\]/g, function(char) {
-              switch (char) {
-                case '<':
-                  return '{';
-                case '>':
-                  return '}';
-                default:
-                  return char;
-              }
-            });
+							switch (char) {
+								case '<':
+									return '{';
+								case '>':
+									return '}';
+								default:
+									return char;
+							}
+						});
 						sessionStorage.setItem('data-id', value1);
 						sessionStorage.setItem('data-co', value2);
-            if (window.self !== window.top) {
-               // The webpage is an iframe
-               window.top.document.getElementById('content').focus();
-            } else {
-               // The webpage is not an iframe
-               document.getElementById('content').focus();
-            }
+						if(window.self !== window.top) {
+							// The webpage is an iframe
+							window.top.document.getElementById('content').focus();
+						} else {
+							// The webpage is not an iframe
+							document.getElementById('content').focus();
+						}
 						// Set inner HTML of new div element
 						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
@@ -381,15 +377,15 @@
 			}
 			if(sessionStorage.getItem('data-id') != null) {
 				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
-              switch (char) {
-                case '<':
-                  return '{';
-                case '>':
-                  return '}';
-                default:
-                  return char;
-              }
-            }) + '</div>';
+					switch (char) {
+						case '<':
+							return '{';
+						case '>':
+							return '}';
+						default:
+							return char;
+					}
+				}) + '</div>';
 				document.querySelector('.repliedtomsg').addEventListener('click', function() {
 					document.querySelector('#mebox2').innerHTML = '';
 					sessionStorage.removeItem('data-id');
@@ -404,24 +400,16 @@
 				imagetochange[i].src = imagetochange[i].src.replace('https://avatars.dicebear.com/api/avataaars/Rajat.png?b=%23Rajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
 			}
 			var chatroom = document.getElementById('messages-content');
-			
-				if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
-					// If the user has scrolled up, do not update the scroll position
-					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-						scrollInertia: 1,
-						timeout: 0
-					});
-				}
-			
+			if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
+				// If the user has scrolled up, do not update the scroll position
+				$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+					scrollInertia: 1,
+					timeout: 0
+				});
+			}
 			document.getElementById("status").innerHTML = `<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d`))) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline `))) + `<i class="fa-solid fa-circle-dot"></i></span>`;
 		});
 	};
-
-
-
-
-
-
 
 	function updatechat() {
 		var $messages = $('.messages-content');
@@ -463,30 +451,29 @@
 					repliedToImg.classList.add('repliedtoavatar');
 					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
 					repliedToElement.appendChild(repliedToImg);
-          let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
+					let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
+						switch (char) {
+							case '<':
+								return '{';
+							case '>':
+								return '}';
+							default:
+								return char;
+						}
+					});
 					repliedToElement.innerHTML += clickablebutreply + "...";
 					messageElement.appendChild(repliedToElement);
 				}
-				
-        let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
-          switch (char) {
-            case '<':
-              return '{';
-            case '>':
-              return '}';
-            default:
-              return char;
-          }
-        });
+				let clickable = dataArray[i].co.replace(/[<>&'"/\\]/g, function(char) {
+					switch (char) {
+						case '<':
+							return '{';
+						case '>':
+							return '}';
+						default:
+							return char;
+					}
+				});
 				let links = [];
 				let matches = dataArray[i].co.match(regex);
 				if(matches) {
@@ -511,24 +498,24 @@
 					div.addEventListener('click', event => {
 						const value1 = div.getAttribute('data-id');
 						const value2 = div.getAttribute('data-co').replace(/[<>&'"/\\]/g, function(char) {
-              switch (char) {
-                case '<':
-                  return '{';
-                case '>':
-                  return '}';
-                default:
-                  return char;
-              }
-            });
+							switch (char) {
+								case '<':
+									return '{';
+								case '>':
+									return '}';
+								default:
+									return char;
+							}
+						});
 						sessionStorage.setItem('data-id', value1);
 						sessionStorage.setItem('data-co', value2);
-            if (window.self !== window.top) {
-               // The webpage is an iframe
-               window.top.document.getElementById('content').focus();
-            } else {
-               // The webpage is not an iframe
-               document.getElementById('content').focus();
-            }
+						if(window.self !== window.top) {
+							// The webpage is an iframe
+							window.top.document.getElementById('content').focus();
+						} else {
+							// The webpage is not an iframe
+							document.getElementById('content').focus();
+						}
 						// Set inner HTML of new div element
 						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
@@ -541,15 +528,15 @@
 			};
 			if(sessionStorage.getItem('data-id') != null) {
 				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
-              switch (char) {
-                case '<':
-                  return '{';
-                case '>':
-                  return '}';
-                default:
-                  return char;
-              }
-            }) + '</div>';
+					switch (char) {
+						case '<':
+							return '{';
+						case '>':
+							return '}';
+						default:
+							return char;
+					}
+				}) + '</div>';
 				document.querySelector('.repliedtomsg').addEventListener('click', function() {
 					document.querySelector('#mebox2').innerHTML = '';
 					sessionStorage.removeItem('data-id');
@@ -564,14 +551,13 @@
 				imagetochange[i].src = imagetochange[i].src.replace('https://avatars.dicebear.com/api/avataaars/Rajat.png?b=%23Rajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
 			}
 			var chatroom = document.getElementById('messages-content');
-				setTimeout(() => {
-					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-						scrollInertia: 500,
-						timeout: 0
-					});
-					document.querySelector(".loading-screen").style.display = "none";
-				}, 2000);
-			
+			setTimeout(() => {
+				$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+					scrollInertia: 500,
+					timeout: 0
+				});
+				document.querySelector(".loading-screen").style.display = "none";
+			}, 2000);
 			document.getElementById("status").innerHTML = `<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d`))) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline `))) + `<i class="fa-solid fa-circle-dot"></i></span>`;
 		});
 	};
