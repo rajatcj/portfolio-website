@@ -87,18 +87,7 @@ body {
   overflow: hidden;
 }
 
-input[type=text] {
-  width: 98%;
-  padding: 12px 20px;
-  margin: 1% 1%;
-  border: 1px solid var(--textbox-bo);
-  border-radius: 4px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  background-color: var(--textbox-bg);
-  padding: 20px;
-  color: var(--textbox-text);
-}
+
 
 
 @import url("https://fonts.googleapis.com/css?family=Telex");
@@ -493,7 +482,7 @@ Message Box
 .message-box {
   flex: 0 1 40px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--title);
   padding: 10px;
   position: relative;
 }
@@ -504,11 +493,11 @@ Message Box
   outline: none !important;
   resize: none;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 11px;
+  font-size: 15px;
   height: 17px;
   margin: 0;
   padding-right: 20px;
-  width: 265px;
+  width: calc(100% - 35px);
 }
 .message-box textarea:focus:-webkit-placeholder {
   color: transparent;

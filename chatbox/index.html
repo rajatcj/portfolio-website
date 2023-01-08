@@ -48,7 +48,7 @@
 	if(window.self !== window.top) {
 		// do nothing
 	} else {
-		document.getElementById("msgsendarea").innerHTML = '<form class="send-message" onsubmit="sendLinkTreePrivMsg();return false"><input type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/><input name="url" id="url" type="hidden" value="" /></form>'
+		document.getElementById("msgsendarea").innerHTML = '<form class="message-box" onsubmit="sendLinkTreePrivMsg();return false"><input class="message-input" type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><button type="submit" class="message-submit">Send</button><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/><input name="url" id="url" type="hidden" value="" /></form>'
 	}
 	</script>
 	<script>
@@ -247,7 +247,7 @@
                document.getElementById('content').focus();
             }
 						// Set inner HTML of new div element
-						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
+						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
 						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
 							scrollInertia: 1000,
@@ -257,7 +257,7 @@
 				});
 			};
 			if(sessionStorage.getItem('data-id') != null) {
-				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:1%; margin-bottom:-1%; width:98%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
+				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
               switch (char) {
                 case '<':
                   return '{';
