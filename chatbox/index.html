@@ -48,6 +48,7 @@
 	if(window.self !== window.top) {
 		// do nothing
 	} else {
+		document.querySelector('.chat').style.borderRadius = '0px';
 		document.getElementById("msgsendarea").innerHTML = '<form class="message-box" onsubmit="sendLinkTreePrivMsg();return false"><input class="message-input" type="text" autocomplete="off" name="content" id="content" maxlength="269" placeholder="Click on the messages to reply to." /><button type="submit" class="message-submit">Send</button><input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/892004694120103946.webp"/><input name="username" id="username" type="hidden" value="Profile"/><input name="guild" id="guild" type="hidden" value="819109979046936577"/><input name="sessionid" id="sessionid" type="hidden" value=""/><input name="timezone" id="timezone" type="hidden" value=""/><input name="url" id="url" type="hidden" value="" /></form>'
 	}
 	</script>
