@@ -198,8 +198,8 @@
 			
 		var $messages = $('.messages-content');
 			$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-						scrollInertia: 1000,
-						timeout: 0
+						scrollInertia: 500,
+						timeout: 100
 					});
 	}
 	</script>
@@ -401,11 +401,14 @@
 			}
 			var chatroom = document.getElementById('messages-content');
 			if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
+			} else {
 				// If the user has scrolled up, do not update the scroll position
+				var $messages = $('.messages-content');
 				$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-					scrollInertia: 1,
-					timeout: 0
-				});
+						scrollInertia: 500,
+						timeout: 100
+					});
+	
 			}
 			document.getElementById("status").innerHTML = `<span style="color:` + (data.data.discord_status === `online` ? `#3ba55d` : (data.data.discord_status === `idle` ? `#faa81a` : (data.data.discord_status === `dnd` ? `#ED4245` : `#747f8d`))) + `;">` + (data.data.discord_status === `online` ? `Online ` : (data.data.discord_status === `idle` ? `Idle ` : (data.data.discord_status === `dnd` ? `DND ` : `Offline `))) + `<i class="fa-solid fa-circle-dot"></i></span>`;
 		});
