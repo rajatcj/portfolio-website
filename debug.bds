@@ -1,0 +1,1286 @@
+const aoijs = require("aoi.js")
+
+//Upt----------------------------UPTIMER----------------------------
+const express = require('express');
+const app = express();
+const port = 3000;
+app.listen(port, () => console.log(`Bot running on http://localhost:${port}`)); 
+
+//----------------------------MAINS----------------------------
+const bot = new aoijs.Bot({
+token: "MTA1MTc1NzU1ODM1ODA5Nzk2MQ.Gxn9jF._afO-qmDyqT92tBVXRRHherMWj8Efq5S7G452g",
+prefix: [".hp", "-"], 
+intents: ["GUILDS", "GUILD_MESSAGES", "MESSAGE_CONTENT", "DIRECT_MESSAGES", "GUILD_VOICE_STATES"]
+})
+
+//----------------------------HERO-ENTRY----------------------------
+bot.readyCommand({
+    channel: "1051757872872177664",
+    code: `$log[Ready on $userTag[$clientID]]
+💥 Ready on $userTag[$clientID]`
+})
+
+//----------------------------EVENTS----------------------------
+
+bot.onMessage({
+guildOnly: false
+});
+bot.onInteractionCreate();
+bot.onVoiceStateUpdate()
+
+
+//----------------------------STATUS----------------------------
+bot.status({
+  text: "modmails in my DM.",
+  type: "LISTENING",
+  status: "online",
+  time: 12
+})
+
+//----------------------------VARIABLES----------------------------
+bot.variables({
+applied: "false",
+vsfarmstart: "0",
+vcXP: "0",
+bday: "",
+name: "",
+rep: "0",
+totalcash: "0",
+cash: "0",
+chatXP: "0",
+warncount: "0",
+bounty: "0",
+attendance: "0",
+lastmsgtime: "0",
+attendancedate: "0",
+serverlog: "0@0@0@0@0@0@0@0@0@0",
+sevendaylog: "0@0@0@0@0@0@0@0@0@0@0@0@0@0"
+  })
+
+
+
+
+
+
+
+
+bot.voiceStateUpdateCommand({ 
+channel: "1051757872872177664",
+$if: "v4",
+code: `
+$if[$checkCondition[($getUserVar[vsfarmstart;$newState[id]]==0)&&($newState[mute]==false)]==true]
+	📼 **$userTag[$newState[id]]**'s' VC activity farm started at \` $dateStamp \`
+	$setUserVar[vsfarmstart;$dateStamp;$newState[id]]
+$else
+$if[$checkCondition[($getUserVar[vsfarmstart;$newState[id]]!=0)&&($newState[mute]==true)]==true]
+	$setUserVar[vsfarmstart;0;$newState[id]]
+	📼 **$userTag[$newState[id]]**'s' VC activity farm ended with **🎙 $round[$divide[$sub[$dateStamp;$getUserVar[vsfarmstart;$newState[id]]];1000]] vcXP** for MUTE
+	$setUserVar[vcXP;$sum[$getUserVar[vcXP;$newState[id]];$round[$divide[$sub[$dateStamp;$getUserVar[vsfarmstart;$newState[id]]];1000]]];$newState[id]]
+$else
+$if[$checkCondition[($getUserVar[vsfarmstart;$newState[id]]!=0)&&($newState[channelID]==)]==true]
+	$setUserVar[vsfarmstart;0;$newState[id]]
+	📼 **$userTag[$newState[id]]**'s' VC activity farm ended with **🎙 $round[$divide[$sub[$dateStamp;$getUserVar[vsfarmstart;$newState[id]]];1000]] vcXP** for VC LEAVE
+	$setUserVar[vcXP;$sum[$getUserVar[vcXP;$newState[id]];$round[$divide[$sub[$dateStamp;$getUserVar[vsfarmstart;$newState[id]]];1000]]];$newState[id]]
+$endif
+$endif
+$endif
+
+$onlyIf[$isBot[$newState[id]]==false;]
+` 
+})
+
+
+bot.interactionCommand({
+  name: "esewaaftermodal",
+  prototype: 'modal',
+  code: `
+	$interactionReply[Confirm the Form Inputs.;;;;users;yes]
+
+$color[1;ff8888]
+$title[1;<:HP_esewa:1055919496868663437> Cashing Out]
+$addField[1;**Esewa ID : **\` 98####$cropText[$textInputValue[id];10;6] \`;**Amount You Will Get : **\` $roundTenth[$getUserVar[cash;$findUser[$message;yes]];3] \`]
+$footer[1;NOTE : Cash Once Transfered To The Esewa-ID Will Not Be Taken Back, Check The ID You Have Given Properly Before Confirming.]
+<@$authorID>
+$thumbnail[1;https://cdn.discordapp.com/emojis/1055919496868663437.webp]
+$addButton[1;Confirm;success;confirmcashout_$authorID_$textInputValue[id];no;<:HP_esewa:1055919496868663437>]
+
+  `
+});
+
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+
+  $interactionModal[Cashout NPR $roundTenth[$getUserVar[cash;$findUser[$message;yes]];3];esewaaftermodal;
+    {actionRow:
+      {textInput:ESewa ID:1:id:yes:9800000000:10:10:}
+    }
+  ]
+
+$onlyIf[$getUserVar[applied;$get[authorID]]==false;{
+"content" : "💢 One of your old requests (Cashout or Item Purchase) are still pending approval.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+	
+$onlyIf[$roundTenth[$getUserVar[cash;$findUser[$message;yes]];3]>20;{
+"content" : "💢 You can not cashout less than NPR 20!",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyif[$get[authorID]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$get[customId]==cashout;]
+
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+
+  `
+});
+
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+
+$interactionReply[✅ Confirmation DM sent and cash deducted.]
+$setUserVar[applied;false;$get[authorID]]
+$setUserVar[cash;$sub[$getUserVar[cash;$get[authorID]];$get[sum]];$get[authorID]]
+
+$dm[$get[authorID]]
+✅ Hey, we have successfully completed your Request and \` NPR $getUserVar[cash;$get[authorID]] \` has been deducted from your balance for **$splitText[4]**. GG
+
+$onlyIf[$get[customId]==moneydeduct;]
+
+$let[sum;$splitText[3]]
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+  `
+});
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+
+$interactionReply[❌ Declination DM sent.]
+$setUserVar[applied;false;$get[authorID]]
+
+$dm[$get[authorID]]
+❌ Hey, your Request for **$splitText[4]** for \` NPR $getUserVar[cash;$get[authorID]] \` has been declined. For More Info, contact \` $userTag[$authorID] \`
+
+$onlyIf[$get[customId]==moneydecline;]
+
+$let[sum;$splitText[3]]
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+  `
+});
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+$deleteCommand
+$channelSendMessage[$channelID;✅ <@$authorID> • **Cashout Request Sent to the admins.**;no]
+$setUserVar[applied;true;$get[authorID]]
+
+$useChannel[1055968939248721970]
+$thumbnail[$userAvatar[$authorID]]
+$title[1;ESewa Cashout Request.]
+$description[**User : **$userTag[$authorID]]
+$addField[1;ID : $get[id];**AMOUNT TO SEND : [$roundTenth[$getUserVar[cash;$get[authorID]];3]\](https://discord.com/channels/$guildID/$channelID/$messageID)**]
+$image[1;https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={%22eSewa_id%22:%22$get[id]%22,%22name%22:%22$replaceText[$username[$get[authorID]]; ;%20]%22,%22amount%22:%22200%22}]
+$color[ff8888]
+$addButton[1;Confirm (Click To Deduct Their Cash) • $roundTenth[$getUserVar[cash;$get[authorID]];3];success;moneydeduct_$authorID_$roundTenth[$getUserVar[cash;$get[authorID]];3]_Esewa Cashout;no;]
+$addButton[1;Decline;danger;moneydecline_$authorID_$splitText[2]_Esewa Cashout;no;]
+
+$onlyif[$get[authorID]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$get[customId]==confirmcashout;]
+
+$let[id;$splitText[3]]
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+  `
+});
+
+
+
+bot.interactionCommand({
+  name: "buyitems",
+  prototype: 'selectMenu',
+  code: `
+$interactionReply[✅ **Item "$splitText[1]" Purchase Request sent to the admins, once confirmed you will be charged \` NPR $splitText[2] \`**]
+$setUserVar[applied;true;$authorID]
+
+$useChannel[1055968939248721970]
+$thumbnail[$userAvatar[$authorID]]
+$title[1;$splitText[1] Purchase Request.]
+$description[**User : **$userTag[$authorID]
+**Cost : **NPR $splitText[2]]
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$addButton[1;Confirm (Click To Deduct Their Cash) • $splitText[2];success;moneydeduct_$authorID_$splitText[2]_$splitText[1];no;]
+$addButton[1;Decline;danger;moneydecline_$authorID_$splitText[2]_$splitText[1];no;]
+
+
+$onlyIf[$getUserVar[cash;$authorID]>=$splitText[2];{
+"content" : "💢 You dont have enouch cash! It costs \` NPR $splitText[2] \` and you only have \` NPR $getUserVar[cash;$authorID] \`",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$getUserVar[applied;$authorID]==false;{
+"content" : "💢 One of your old requests (Cashout or Item Purchase) are still pending approval.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyif[$splitText[3]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$textSplit[$interactionData[values[0]];-]
+  `
+});
+
+
+bot.interactionCommand({
+  name: "buyroles",
+  prototype: 'selectMenu',
+  code: `
+
+$interactionReply[✅ You successfully bought the role **$roleName[$splitText[1]]** and was charged \` NPR $splitText[2] \`;no]
+$giveRole[$guildID;$authorID;$splitText[1]]
+
+$setUserVar[cash;$sub[$getUserVar[cash;$authorID];$splitText[2]];$authorID]
+
+$onlyIf[$getUserVar[cash;$authorID]>=$splitText[2];{
+"content" : "💢 You dont have enouch cash! It costs \` NPR $splitText[2] \` and you only have \` NPR $getUserVar[cash;$authorID] \`",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyif[$hasRoles[$guildID;$authorID;$splitText[1]]==false;{
+"content" : "💢 Hmm looks like you have already bought this role!",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyif[$splitText[3]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$textSplit[$interactionData[values[0]];-]
+  `
+});
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+
+
+$deleteCommand
+🛍 <@$authorID> • Server Shop
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$title[1;🏬 Hangout's Shop]
+
+$description[1;💵 **Your Cash : [NPR $roundTenth[$getUserVar[cash;$findUser[$message;yes]];3]\](https://discord.gg/hgp)**]
+
+$thumbnail[1;$userAvatar[$findUser[$message;yes]]]
+
+$footer[1;Items Once Bought Will Not Be Refunded]
+
+$addSelectMenu[1;buyitems;Buy Items;1;1;no;Nitro:NPR 1200:Nitro $10-1200-$authorID:no:💎;Nitro Basic:NPR 400:Nitro Basic-400-$authorID:no:💎;Spotify 1 Month:NPR 500:Spotify-500-$authorID:no:🎶]
+$addSelectMenu[2;buyroles;Buy Roles;1;1;no;$roleName[$get[1]]:NPR $get[1p]:$get[1]-$get[1p]-$authorID:no:📁;$roleName[$get[2]]:NPR $get[2p]:$get[2]-$get[2p]-$authorID:no:⭐;$roleName[$get[3]]:NPR $get[3p]:$get[3]-$get[3p]-$authorID:no:🏷]
+
+$let[1;1058334796851466250]
+$let[2;1058334966158741564]
+$let[3;1058334975088398356]
+
+$let[1p;100]
+$let[2p;30]
+$let[3p;75]
+
+$onlyif[$get[authorID]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$get[customId]==shop;]
+
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+
+  `
+});
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+$deleteCommand
+
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$title[1;$userTag[$findUser[$message;yes]]'s Profile]
+💮 <@$authorID> • **$get[points]** points of yours were redeemed and added to your cash. You can Cashout them or use them in Shop.
+$description[1;> **$getUserVar[name;$findUser[$message;yes]]** ($if[$hasRoles[$guildID;$findUser[$message;yes];1051339817532788786]==true]♂️ He/Him$if[$hasRoles[$guildID;$findUser[$message;yes];1051339857462579312]==true]♀️ She/Her$if[$hasRoles[$guildID;$findUser[$message;yes];1051339926374985788]==true]⚧️ They/Them$endif$endif$endif)
+> 🎂 **DOB :** \` $getUserVar[bday;$findUser[$message;yes]] \`
+**Account Created** <t:$round[$divide[$creationDate[$findUser[$message;yes];ms];1000]]:R> (<t:$round[$divide[$creationDate[$findUser[$message;yes];ms];1000]]:d>)
+**Joined Hangouts** <t:$round[$divide[$memberJoinedDate[$findUser[$message;yes];$guildID;ms];1000]]:R> (<t:$round[$divide[$memberJoinedDate[$findUser[$message;yes];$guildID;ms];1000]]:d>)]
+$thumbnail[1;$userAvatar[$findUser[$message;yes]]]
+$addField[1;🔥 **$getUserVar[attendance;$findUser[$message;yes]]** day(s) streak • ⭐ **$getUserVar[chatXP;$findUser[$message;yes]]** chatXPs • 🎙 **$round[$divide[$getUserVar[vcXP;$findUser[$message;yes]];60]]** min vcXPs • 💮 **$getUserVar[rep;$findUser[$message;yes]]** Reps;
+>>> 🏵 **Hangout Points : [$getUserVar[bounty;$findUser[$message;yes]] HPs\](https://discord.gg/hgp) **[$replaceText[$replaceText[$checkContains[$day;friday;saturday];true;:small_orange_diamond: +10% Weekend];false;$replaceText[$replaceText[$hasRoles[$guildID;$authorID;1050690197668511794];true;:small_orange_diamond: +10% Booster];false;No Boosts]]\]
+💵 **Cash : [NPR $roundTenth[$getUserVar[cash;$findUser[$message;yes]];3]\](https://discord.gg/hgp)** [Rate : NPR 1/2K HPs\]]
+$footer[1;You can earn cash by redeeming the Hangout Points (HPs). Which can be either cashed out through ESewa or used in the shop to purchase items. HPs are earned by chatting and through events.]
+$addButton[1;Cashout;success;cashout_$authorID;no;<:HP_esewa:1055919496868663437>]
+$addButton[1;Shop;danger;shop_$authorID;no;🛒]
+$addButton[1;Redeem Points;primary;redeempointstocash_$authorID;no;💳]
+
+    $setUserVar[bounty;0;$authorID]
+    $setUserVar[cash;$sum[$getUserVar[cash;$authorID];$divide[$getUserVar[bounty;$authorID];2000]];$authorID]
+
+    $let[points;$getUserVar[bounty;$authorID]]
+
+$onlyif[$get[authorID]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$get[customId]==redeempointstocash;]
+
+$let[authorID;$splitText[2]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+
+  `
+});
+
+
+bot.command({
+name: "profile",
+$if: "v4",
+code: `
+
+$if[$getUserVar[name;$authorID]!=]
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$title[1;$userTag[$findUser[$message;yes]]'s Profile]
+$replaceText[$replaceText[$hasRoles[$guildID;$authorID;1057935756334735371];true;⛔ **Your HP Farm Has Been Blocked!**];false;]
+$description[1;> **$getUserVar[name;$findUser[$message;yes]]** ($if[$hasRoles[$guildID;$findUser[$message;yes];1051339817532788786]==true]♂️ He/Him$if[$hasRoles[$guildID;$findUser[$message;yes];1051339857462579312]==true]♀️ She/Her$if[$hasRoles[$guildID;$findUser[$message;yes];1051339926374985788]==true]⚧️ They/Them$endif$endif$endif)
+> 🎂 **DOB :** \` $getUserVar[bday;$findUser[$message;yes]] \`
+**Account Created** <t:$round[$divide[$creationDate[$findUser[$message;yes];ms];1000]]:R> (<t:$round[$divide[$creationDate[$findUser[$message;yes];ms];1000]]:d>)
+**Joined Hangouts** <t:$round[$divide[$memberJoinedDate[$findUser[$message;yes];$guildID;ms];1000]]:R> (<t:$round[$divide[$memberJoinedDate[$findUser[$message;yes];$guildID;ms];1000]]:d>)]
+$thumbnail[1;$userAvatar[$findUser[$message;yes]]]
+$addField[1;🔥 **$getUserVar[attendance;$findUser[$message;yes]]** day(s) streak • ⭐ **$getUserVar[chatXP;$findUser[$message;yes]]** chatXPs • 🎙 **$round[$divide[$getUserVar[vcXP;$findUser[$message;yes]];60]]** min vcXPs • 💮 **$getUserVar[rep;$findUser[$message;yes]]** Reps;
+>>> 🏵 **Hangout Points : [$getUserVar[bounty;$findUser[$message;yes]] HPs\](https://discord.gg/hgp) **[$replaceText[$replaceText[$checkContains[$day;friday;saturday];true;:small_orange_diamond: +10% Weekend];false;$replaceText[$replaceText[$hasRoles[$guildID;$findUser[$message;yes];1050690197668511794];true;:small_orange_diamond: +10% Booster];false;No Boosts]]\]
+💵 **Cash : [NPR $roundTenth[$getUserVar[cash;$findUser[$message;yes]];3]\](https://discord.gg/hgp)** [Rate : NPR 1/2K HPs\]]
+$footer[1;You can earn cash by redeeming the Hangout Points (HPs). Which can be either cashed out through ESewa or used in the shop to purchase items. HPs are earned by chatting and through events.]
+
+$if[$authorID==$findUser[$message;yes]]
+$addButton[1;Cashout;success;cashout_$authorID;no;<:HP_esewa:1055919496868663437>]
+$addButton[1;Shop;danger;shop_$authorID;no;🛒]
+$addButton[1;Redeem Points;primary;redeempointstocash_$authorID;no;💳]
+$endif
+
+$else
+
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$title[1;Welcome To Hangout Place]
+
+$description[1;[Wssap **$username[$authorID]**, wha~ they said you could earn cash by just texting?\](https://discord.com/channels/1049979398977241118/1049979400101298267/1058346617620676670)
+> Yes, they didnt lie [See Terms & Policies 0\], lemme guide you through how it works. Ah but~ thats boring, and ik you dont have time. In short, we reward you **10 to 20** hangout Points for messages every minute in this server which through \` -profile \` you can use to buy roles, items or __simply cashout in <:HP_esewa:1055919496868663437> ESewa__. Details at \` -help \`]
+
+$addField[1;**Terms And Policies**;
+\` 0 \` These Activity Reward are not a strategy for us to increase engagement. You can engage in this server as much as you like as a normal discord user. We just decided to reward members with small gifts for their presence. This is nothing different than the other activity reward and role systems other than having an ability to also get real cash instead of just roles and levels.
+\` 1 \` Your Balance, Warns and all metrics are public to anybody that runs this command.
+\` 2 \` Esewa cash/Items once bought will not be refunded.
+\` 3 \` By entring DOB (which is optional) you opt in for yearly automated Birthday wish ping in this server.
+\` 4 \` You may get terminated from earning HPs if found abusing this to farm cash or not making an effort into the actual conversation.]
+
+$footer[1;By these being said, lets start our journey in this server shall we? First lets know a bit about you. Whats your prefered gender Pronoun? (Click the buttons to answer)]
+
+$addButton[1;They/Them;primary;sex_1051339926374985788_$authorID;no;]
+$addButton[1;He/Him;success;sex_1051339817532788786_$authorID;no;]
+$addButton[1;She/Her;danger;sex_1051339857462579312_$authorID;no;]
+
+$endif
+
+
+$let[nametrend;quarantined]
+$let[totalboost;9]
+$botTyping
+$reply[$messageID;yes]
+$onlyIf[$authorID==754033245972201612;Stfu cutie]
+$onlyIf[$guildID!=;]
+  `
+}) //profile
+
+bot.interactionCommand({
+  prototype: 'button',
+  code: `
+
+
+$giveRole[$guildID;$authorID;$splitText[2]]
+$wait[3s]
+$takeRoles[$guildID;$authorID;1051339857462579312;1051339817532788786;1051339926374985788]
+
+  $interactionModal[About Me;profileedit;
+    {actionRow:
+      {textInput:What's Your Name?:1:name:yes::1:30}
+    }
+    {actionRow:
+      {textInput:What's your DOB? (In AD):1:id:no:YYYY-MM-DD (English Date):10:10}
+    }
+  ]
+
+
+$onlyif[$get[authorID]==$interactionData[author.id];{
+"content" : "💢 You aren't the author of this interaction.",
+"ephemeral" : true,
+"options" : { "interaction" : true }
+}]
+
+$onlyIf[$get[customId]==sex;]
+
+$let[authorID;$splitText[3]]
+$let[customId;$splitText[1]] 
+$textSplit[$interactionData[customId];_] 
+
+  `
+});
+
+
+bot.interactionCommand({
+  name: "profileedit",
+  prototype: 'modal',
+  code: `
+	$interactionReply[<@$authorID> 💥 Awesome **$textInputValue[name]**, works done, run \` -profile \` to continue.;;;;users;yes]
+
+
+$setUserVar[bday;$textInputValue[id]]
+$setUserVar[name;$textInputValue[name]]
+
+$onlyIf[$splitText[2]<=12;<@$authorID> ⚠ Month in \` YYYY-MM-DD \` must be from 1 to 12, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$splitText[2]>=1;<@$authorID> ⚠ Month in \` YYYY-MM-DD \` must be from 1 to 12, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+
+$onlyIf[$splitText[3]<=31;<@$authorID> ⚠ Day in \` YYYY-MM-DD \` must be from 1 to 31, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$splitText[3]>=1;<@$authorID> ⚠ Day in \` YYYY-MM-DD \` must be from 1 to 31, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+
+$onlyIf[$isNumber[$splitText[1]]==true;<@$authorID> ⚠ Year, Month and Days in \` YYYY-MM-DD \` must be a number, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$isNumber[$splitText[3]]==true;<@$authorID> ⚠ Year, Month and Days in \` YYYY-MM-DD \` must be a number, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$isNumber[$splitText[2]]==true;<@$authorID> ⚠ Year, Month and Days in \` YYYY-MM-DD \` must be a number, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+
+$onlyIf[$charCount[$splitText[3]]==2;<@$authorID> ⚠ The correct format for DOB is \` YYYY-MM-DD \`, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$charCount[$splitText[2]]==2;<@$authorID> ⚠ The correct format for DOB is \` YYYY-MM-DD \`, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+$onlyIf[$charCount[$splitText[1]]==4;<@$authorID> ⚠ The correct format for DOB is \` YYYY-MM-DD \`, \` $textInputValue[id] \` didnt match that, run \` -profile \` again to set.]
+
+$textSplit[$textInputValue[dob];-]
+  `
+});
+
+//streak ======================================================
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+$reply
+$httpRequest[http://api.brainshop.ai/get?bid=161863&key=emrrTPwQNCjdoCfK&uid=$authorID&msg=$replaceText[$uri[$message;encode]; ;+;-1];GET;;cnt]
+
+$if[$referenceMessageID!=]
+$onlyIf[$getMessage[$channelID;$referenceMessageID;userID]==1051757558358097961;]
+$endif
+$onlyIf[$channelID==1061009159664975974;]
+`
+})
+
+//streak ======================================================
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+
+$if[$getUserVar[attendancedate;$authorID]>=$dateStamp]
+$setUserVar[attendance;$sum[$getUserVar[attendance;$authorID];1];$authorID]
+$channelSendMessage[1051757872872177664;$username#$discriminator[$authorID] **|** Streak : $sum[$getUserVar[attendance;$authorID];1]. 🔥 Next Date : <t:$cropText[$get[nextday];10]>]
+
+    $setServerVar[serverlog;$splitText[1]@$splitText[2]@$splitText[3]@$splitText[4]@$splitText[5]@$sum[$splitText[6];1]@$splitText[7]@$splitText[8]@$splitText[9]@$splitText[10];$guildID]
+    $textSplit[$getServerVar[serverlog;$guildID];@]
+
+$else
+$setUserVar[attendance;1;$authorID]
+$channelSendMessage[1051757872872177664;$username#$discriminator[$authorID] **|** Streak : 1 Old : $getUserVar[attendance;$authorID]. :red_circle: Next Date : <t:$cropText[$get[nextday];10]>]
+
+    $setServerVar[serverlog;$splitText[1]@$splitText[2]@$splitText[3]@$splitText[4]@$splitText[5]@$splitText[6]@$sum[$splitText[7];1]@$splitText[8]@$splitText[9]@$splitText[10];$guildID]
+    $textSplit[$getServerVar[serverlog;$guildID];@]
+
+$reply
+$endif
+
+
+$setUserVar[attendancedate;$sum[$get[nextday];86400000];$authorID]
+
+$let[nextday;$sum[$dateStamp;86400000;-$multi[$hour;3600000];-$multi[$minute;60000];-$multi[$second;1000]]]
+
+$onlyIf[$dateStamp>=$sub[$getUserVar[attendancedate;$authorID];86400000];]
+`
+}) //always
+bot.command({
+name: "leaderboard",
+aliases: ['lb', 'top'],
+$if: "v4",
+code: `
+$if[$message[1]==streaks]
+$title[1;Daily Activity Streak]
+$color[1;#ff8888]
+$footer[1;Streak Broke? Create Ticket and appeal. Acceptance is not guaranteed.]
+$description[1;$userLeaderboard[$guildID;attendance;asc;> {top}. **{username} :  [{value}\](https://discord.gg/hgp)** day(s) 🔥;10;1]
+> ** **
+> $getLeaderboardInfo[attendance;$authorID;user;top]. **$getLeaderboardInfo[attendance;$authorID;user;name] : [$getLeaderboardInfo[attendance;$authorID;user;value]\](https://instagram.com/_rajat.cj/)** day(s) 🔥 **(YOU)**]
+$else
+
+$if[$message[1]==points]
+$title[1;🏵 Hangout Points Leaderboards]
+$description[1;$userLeaderboard[$guildID;bounty;asc;> {top}. **{username} :  [{value}\](https://discord.gg/hgp)** HPs;10;1]
+> ** **
+> $getLeaderboardInfo[bounty;$authorID;user;top]. **$getLeaderboardInfo[bounty;$authorID;user;name] : [$getLeaderboardInfo[bounty;$authorID;user;value]\](https://discord.gg/hgp)** HPs **(YOU)**]
+$color[1;#fcb8fd]
+$else
+
+$if[$message[1]==cash]
+$title[1;💵 Cash Leaderboards]
+$description[1;$userLeaderboard[$guildID;cash;asc;> {top}. **{username} :  NPR [{value}\](https://discord.gg/hgp)**;10;1]
+> ** **
+> $getLeaderboardInfo[cash;$authorID;user;top]. **$getLeaderboardInfo[cash;$authorID;user;name] : NPR [$getLeaderboardInfo[cash;$authorID;user;value]\](https://discord.gg/hgp)** **(YOU)**]
+$color[1;#fcb8fd]
+$else
+
+$if[$message[1]==chatxp]
+$title[1;⭐ ChatXPs Leaderboards]
+$description[1;$userLeaderboard[$guildID;chatXP;asc;> {top}. **{username} :  [{value}\](https://discord.gg/hgp)** XPs;10;1]
+> ** **
+> $getLeaderboardInfo[chatXP;$authorID;user;top]. **$getLeaderboardInfo[chatXP;$authorID;user;name] : [$getLeaderboardInfo[chatXP;$authorID;user;value]\](https://discord.gg/hgp)** XPs **(YOU)**]
+$color[1;#fcb8fd]
+$else
+
+$if[$message[1]==reps]
+$title[1;💮 Reps Leaderboards]
+$description[1;$userLeaderboard[$guildID;rep;asc;> {top}. **{username} :  [{value}\](https://discord.gg/hgp) Reps**;10;1]
+> ** **
+> $getLeaderboardInfo[rep;$authorID;user;top]. **$getLeaderboardInfo[rep;$authorID;user;name] : [$getLeaderboardInfo[rep;$authorID;user;value]\](https://discord.gg/hgp)** Reps **(YOU)**]
+$color[1;#fcb8fd]
+$else
+
+$if[$message[1]==vcxp]
+$title[1;🎙 VcXPs Leaderboards]
+$description[1;$userLeaderboard[$guildID;vcXP;asc;> {top}. **{username} :  [{value}\](https://discord.gg/hgp)** sec;10;1]
+> ** **
+> $getLeaderboardInfo[vcXP;$authorID;user;top]. **$getLeaderboardInfo[vcXP;$authorID;user;name] : [$getLeaderboardInfo[vcXP;$authorID;user;value]\](https://discord.gg/hgp)** sec **(YOU)**]
+$footer[1;These XPs here are in seconds and in the "-profile", they are in minutes. ie. time in sec/min spent unmute in the VC.]
+$color[1;#fcb8fd]
+$endif
+$endif
+$endif
+$endif
+$endif
+$endif
+
+$reply
+$botTyping
+
+$onlyIf[$checkContains[$message[1];vcxp;reps;chatxp;cash;points;streaks]==true;❓ <@$authorID>**, also mention the leaderboards type.** Available Types : \` points, cash, chatxp, vcxp, streaks, reps \`]
+$onlyIf[$guildID!=;]
+  `
+}) //streak
+bot.command({
+name: "streak90",
+code: `
+
+$title[1;Daily Activity Streak (Beta)]
+$addField[1;80-90;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;9]\`\`\`;yes]
+$addField[1;70-80;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;8]\`\`\`;yes]
+$addField[1;60-70;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;7]\`\`\`;yes]
+$addField[1;50-60;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;6]\`\`\`;yes]
+$addField[1;40-50;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;5]\`\`\`;yes]
+$addField[1;30-40;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;4]\`\`\`;yes]
+$addField[1;20-30;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;3]\`\`\`;yes]
+$addField[1;10-20;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;2]\`\`\`;yes]
+$addField[1;1-10;\`\`\`kt
+$userLeaderboard[$guildID;attendance;asc;{top}. {username} : {value};10;1]\`\`\`;yes]
+$color[1;#ff8888]
+$botTyping
+$onlyIf[$guildID!=;]
+  `
+}) //streak90
+
+//autoreply ======================================================
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+
+$if[$checkContains[$toLowercase[$message];sick]==true]
+$reply
+Tato Pani Khau <:seduce:1051317734551584838>
+$else
+$if[$checkContains[$toLowercase[$message];1051757558358097961]==true]
+$reply
+<a:confuse:1051317305067458580>
+
+$endif
+
+$endif
+`
+}) //always
+
+//levelling ======================================================
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+
+$setUserVar[bounty;$sum[$getUserVar[bounty;$authorID];$get[bounty]];$authorID]
+
+$if[$hasRoles[$guildID;$authorID;1057935756334735371]==true]
+	$let[bounty;0]
+$endif
+
+$if[$checkContains[$day;friday;saturday]==true]
+	$let[bounty;$round[$multi[$get[bounty];1.1]]]
+$else
+    $if[$hasRoles[$guildID;$authorID;1050690197668511794]==true]
+        $let[bounty;$round[$multi[$get[bounty];1.1]]]
+    $endif
+$endif
+
+
+$if[$channelID==1049979400332001336]
+	$let[bounty;$random[10;20;no]]
+$else
+	$let[bounty;$random[5;10;no]]
+$endif
+
+
+$setUserVar[chatXP;$sum[$getUserVar[chatXP;$authorID];1];$authorID]
+
+$cooldown[1m;]
+$onlyIf[$guildID!=;]
+`
+}) //always
+
+
+bot.command({
+name: "rankasd",
+aliases: ['levelsd'],
+code: `
+
+>>> ***Applied Multipliers***
+👄 **Booster :** \` $replaceText[$replaceText[$hasRoles[$guildID;$findUser[$message;yes];1050690197668511794];true;🟩 +2% applied;1];false;Boost For 2% boost;1] \`
+🔥 **Streak :** $getUserVar[attendance;$findUser[$message;yes]] day(s) \` $replaceText[$replaceText[$checkCondition[$getUserVar[attendance;$findUser[$message;yes]]>=10];true;🟩 +5% applied;1];false;Get the streak of 10+ for 5% boost;1] \`
+🏷️ **.gg/hgp :** \` $replaceText[$replaceText[$checkContains[$getCustomStatus[$findUser[$message;yes];$guildID;state];.gg/hgp];true;🟩 +2% applied;1];false;Have ".gg/hgp" on status for +2%;1] \`
+
+$attachment[$get[link];rank.png]
+$let[link;https://vacefron.nl/api/rankcard?username=++++++$getUserVar[bounty;$findUser[$message;yes]]&avatar=$userAvatar[$findUser[$message;yes]]&rank=$getLeaderboardInfo[bounty;$findUser[$message;yes];user;top]&currentxp=$get[boosts]&nextlevelxp=$get[totalboost]&previouslevelxp=0&custombg=https://cdn.discordapp.com/attachments/837219640874631197/929793906743324672/PicsArt_01-09-11.33.33.jpg&xpcolor=dad38f&isboosting=true&circleavatar=true]
+
+$let[boosts;$sum[$replaceText[$replaceText[$hasRoles[$guildID;$findUser[$message;yes];1050690197668511794];true;2;1];false;0;1];$replaceText[$replaceText[$checkContains[$getCustomStatus[$findUser[$message;yes];$guildID;state];.gg/hgp];true;2;1];false;0;1];$replaceText[$replaceText[$checkCondition[$getUserVar[attendance;$findUser[$message;yes]]>=10];true;5;1];false;0;1]]]
+
+
+
+$let[nametrend;quarantined]
+$let[totalboost;9]
+$botTyping
+$reply[$messageID;yes]
+$onlyIf[$guildID!=;]
+  `
+}) //rank
+
+
+
+
+bot.command({
+name: "give",
+code: `
+$reply
+
+💸 You successfully transfered **🏵 $get[sum] HPs** to **$userTag[$mentioned[1]]**. \` [Tax : $get[tax]] \`
+
+$setUserVar[bounty;$sum[$getUserVar[bounty;$mentioned[1]];$get[total]];$mentioned[1]]
+$setUserVar[bounty;$sub[$getUserVar[bounty;$authorID];$get[sum]];$authorID]
+
+
+$let[total;$round[$sub[$get[sum];$get[tax]]]]
+$let[tax;$round[$divide[$get[sum];10]]]
+
+$onlyIf[$get[sum]<=$getUserVar[bounty;$authorID];💰<@$authorID>, Oh boy, looks like you dont have that much HPs ($get[sum])!]
+
+$onlyIf[$get[sum]>0;💢 <@$authorID>, You can not give less than 🏵 **0 HPs** to anybody!]
+
+$let[sum;$round[$message[1]]]
+
+$onlyIf[$isNumber[$message[1]]==true;📛 <@$authorID>, the amount in \` -give <amount> @user \` must be a valid number.]
+$onlyIf[$get[1]!=;🆔 <@$authorID> • You have to mention someone to give your **🏵 HPs** to! (Not Self)]
+$let[1;$replaceText[$mentioned[1];$authorID;]]
+  `
+}) //cash
+
+
+bot.command({
+name: "hp",
+$if: "v4",
+code: `
+$reply
+$channelSendMessage[1051757872872177664;🔁 **$userTag[$authorID]** modified **$userTag[$mentioned[1]]**'s 🏵 **Hangouts Point**. From \` $get[oldvalue] HPs \` to \` $get[value] HPs \`.]
+
+🔁 **$userTag[$mentioned[1]]**'s 🏵 **Hangouts Point** changed from \` $get[oldvalue] HPs \` to \` $get[value] HPs \`.
+$setUserVar[bounty;$get[value];$mentioned[1]]
+
+$if[$message[1]==set]
+$let[value;$message[2]]
+$else
+$if[$message[1]==add]
+$let[value;$sum[$getUserVar[bounty;$mentioned[1]];$message[2]]]
+$else
+$let[value;$sub[$getUserVar[bounty;$mentioned[1]];$message[2]]]
+$endif
+$endif
+
+$let[oldvalue;$getUserVar[bounty;$mentioned[1]]]
+
+$onlyIf[$message[2]>0;💢 <@$authorID>, Amount must be greater than 🏵 **0 HPs**!]
+$onlyIf[$isNumber[$message[2]]==true;📛 <@$authorID>, the amount in \` -points <set/add/remove> <amount> @user \` must be a valid number.]
+
+$onlyIf[$get[1]!=;🆔 <@$authorID> • You have to mention someone to perform action upon! (Not Self)]
+$let[1;$replaceText[$mentioned[1];$authorID;]]
+
+$onlyIf[$checkContains[$message[1];add;remove;set]==true;📛 <@$authorID>, the correct format is \` -points <set/add/remove> <amount> @user \`]
+
+$onlyIf[$checkContains[$authorID;1055655980521767023;1050969334379466833;754033245972201612]==true;📛 <@$authorID>, you are not authorized to use this command!]
+
+  `
+}) //cash
+
+
+bot.command({
+name: "points90",
+code: `
+
+$title[1;Rank (Beta)]
+$addField[1;80-90;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;9]\`\`\`;yes]
+$addField[1;70-80;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;8]\`\`\`;yes]
+$addField[1;60-70;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;7]\`\`\`;yes]
+$addField[1;50-60;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;6]\`\`\`;yes]
+$addField[1;40-50;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;5]\`\`\`;yes]
+$addField[1;30-40;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;4]\`\`\`;yes]
+$addField[1;20-30;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;3]\`\`\`;yes]
+$addField[1;10-20;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;2]\`\`\`;yes]
+$addField[1;1-10;\`\`\`kt
+$userLeaderboard[$guildID;bounty;asc;{top}. {username} : {value};10;1]\`\`\`;yes]
+$color[1;#F81515]
+$botTyping
+$onlyIf[$guildID!=;]
+  `
+}) //top90
+
+
+
+//daily report
+bot.loopCommand({
+code: `
+$author[1;Server's Daily Activity Report Submission [12am GMT\];$serverIcon]
+
+$description[1;[[•.•ิ\] Status from Last report to current report.\](https://instagram.com/_rajat.cj/)
+]
+
+
+$addfield[1;👋 Total Visitors : $sum[$splitText[6];$splitText[7]];**╰**Regular : $splitText[6]ㅤㅤㅤㅤㅤ**╰**Irregular/New : $splitText[7];no]
+
+$addField[1;🔥 Streak;$userLeaderboard[$guildID;attendance;asc;> {top}. **{username} :  [{value}\](https://instagram.com/_rajat.cj/)** day(s);3;1];yes]
+
+$addField[1;💥 Experience;$userLeaderboard[$guildID;bounty;asc;> {top}. **{username} :  [{value}\](https://instagram.com/_rajat.cj/)** XPs;3;1];yes]
+
+$addField[1;📊 Growth : $sub[$splitText[9];$splitText[10]];**╰**Joins : $splitText[9]ㅤㅤㅤㅤㅤ**╰**Leaves : $splitText[10];no]
+
+
+$addField[1;✏️ Total Messages : $splitText[1];**╰**~~Edited : $splitText[2]~~ㅤㅤㅤㅤㅤ**╰**~~Deleted : $splitText[3]~~;no]
+
+
+$footer[1;$parseDate[$dateStamp;date]]
+$color[1;ff8888]
+
+
+$image[1;https://quickchart.io/chart?c={type:%27line%27,data:{labels:[%277d%20ago%27,%276d%20ago%27,%275d%20ago%27,%274d%20ago%27,%20%273d%20ago%27,%272d%20ago%27,%20%27Yesterday%27],%20datasets:[{label:%27Visitors%20:%20$sum[$splitText[6];$splitText[7]]%27,%20data:%20[$get[total]],%20fill:true,borderColor:%27black%27},{label:%27Regular%20:%20$splitText[6]%27,%20data:[$get[reg]],%20fill:false,borderColor:%27green%27},{label:%27Irregular/New%20:%20$splitText[7]%27,%20data:[$get[ireg]],%20fill:false,borderColor:%27red%27},{type:%27bar%27,label:%27Messages%20(in%20100s)%20:%20$divide[$splitText[1];100]%20hundred%27,%20data:[$divide[$splitText[31];100],$divide[$splitText[30];100],$divide[$splitText[29];100],$divide[$splitText[28];100],$divide[$splitText[27];100],$divide[$splitText[26];100],$divide[$splitText[1];100]],%20fill:true,backgroundColor:%27rgba(149,%20165,%20166,%200.5)%27}]}}&bkg=white&v=3]
+
+
+$let[total;$sum[$splitText[17];$splitText[24]],$sum[$splitText[16];$splitText[23]],$sum[$splitText[15];$splitText[22]],$sum[$splitText[14];$splitText[21]],$sum[$splitText[13];$splitText[20]],$sum[$splitText[12];$splitText[19]],$sum[$splitText[6];$splitText[7]]]
+
+$let[reg;$splitText[17],$splitText[16],$splitText[15],$splitText[14],$splitText[13],$splitText[12],$splitText[6]]
+
+$let[ireg;$splitText[24],$splitText[23],$splitText[22],$splitText[21],$splitText[20],$splitText[19],$splitText[7]]
+
+
+
+$setServerVar[sevendaylog;0@$splitText[6]@$splitText[12]@$splitText[13]@$splitText[14]@$splitText[15]@$splitText[16]@0@$splitText[7]@$splitText[19]@$splitText[20]@$splitText[21]@$splitText[22]@$splitText[23];$guildID]
+
+$setUserVar[sevendaylog;0@$splitText[1]@$splitText[26]@$splitText[27]@$splitText[28]@$splitText[29]@$splitText[30]@0@0@$splitText[32]@$splitText[33]@$splitText[34]@$splitText[35]@$splitText[36];929344490660040794]
+
+$setServerVar[serverlog;0@0@0@0@0@0@0@0@0@0;$guildID]
+
+$textSplit[$getServerVar[serverlog;$guildID]@$getServerVar[sevendaylog;$guildID]@$getUserVar[sevendaylog;929344490660040794];@]
+
+$serverCooldown[24h;]
+
+$onlyIf[$hour==0;]
+
+`,
+channel: "1051757918338424832",
+executeOnStartup: true,
+every: 10000
+})
+bot.command({
+name: "report",
+code: `
+$author[1;Server's Daily Activity Report [Not Final\];$serverIcon]
+
+$description[1;[[•.•ิ\] Status from Last report to current report.\](https://instagram.com/_rajat.cj/)
+]
+
+
+$addfield[1;👋 Total Visitors : $sum[$splitText[6];$splitText[7]];**╰**Regular : $splitText[6]ㅤㅤㅤㅤㅤ**╰**Irregular/New : $splitText[7];no]
+
+$addField[1;🔥 Streak;$userLeaderboard[$guildID;attendance;asc;> {top}. **{username} :  [{value}\](https://instagram.com/_rajat.cj/)** day(s);3;1];yes]
+
+$addField[1;💥 Experience;$userLeaderboard[$guildID;bounty;asc;> {top}. **{username} :  [{value}\](https://instagram.com/_rajat.cj/)** XPs;3;1];yes]
+
+$addField[1;📊 Growth : $sub[$splitText[9];$splitText[10]];**╰**Joins : $splitText[9]ㅤㅤㅤㅤㅤ**╰**Leaves : $splitText[10];no]
+
+
+$addField[1;✏️ Total Messages : $splitText[1];**╰**~~Edited : $splitText[2]~~ㅤㅤㅤㅤㅤ**╰**~~Deleted : $splitText[3]~~;no]
+
+
+$footer[1;$parseDate[$dateStamp;date]
+$color[1;ff8888]
+
+
+$image[1;https://quickchart.io/chart?c={type:%27line%27,data:{labels:[%276d%20ago%27,%275d%20ago%27,%274d%20ago%27,%273d%20ago%27,%20%272d%20ago%27,%27Yesterday%27,%20%27Current%27],%20datasets:[{label:%27Visitors%20:%20$sum[$splitText[6];$splitText[7]]%27,%20data:%20[$get[total]],%20fill:true,borderColor:%27black%27},{label:%27Regular%20:%20$splitText[6]%27,%20data:[$get[reg]],%20fill:false,borderColor:%27green%27},{label:%27Irregular/New%20:%20$splitText[7]%27,%20data:[$get[ireg]],%20fill:false,borderColor:%27red%27},{type:%27bar%27,label:%27Messages%20(in%20100s)%20:%20$divide[$splitText[1];100]%20hundred%27,%20data:[$divide[$splitText[31];100],$divide[$splitText[30];100],$divide[$splitText[29];100],$divide[$splitText[28];100],$divide[$splitText[27];100],$divide[$splitText[26];100],$divide[$splitText[1];100]],%20fill:true,backgroundColor:%27rgba(149,%20165,%20166,%200.5)%27}]}}&bkg=white&v=3]
+
+
+$let[total;$sum[$splitText[17];$splitText[24]],$sum[$splitText[16];$splitText[23]],$sum[$splitText[15];$splitText[22]],$sum[$splitText[14];$splitText[21]],$sum[$splitText[13];$splitText[20]],$sum[$splitText[12];$splitText[19]],$sum[$splitText[6];$splitText[7]]]
+
+$let[reg;$splitText[17],$splitText[16],$splitText[15],$splitText[14],$splitText[13],$splitText[12],$splitText[6]]
+
+$let[ireg;$splitText[24],$splitText[23],$splitText[22],$splitText[21],$splitText[20],$splitText[19],$splitText[7]]
+
+$textSplit[$getServerVar[serverlog;$guildID]@$getServerVar[sevendaylog;$guildID]@$getUserVar[sevendaylog;929344490660040794];@]
+$botTyping
+`,
+
+})
+
+// normals ======================================================
+bot.joinCommand({ 
+channel: "1049979400332001336", 
+code: `
+<@$authorID> **|** Welcome to the **Hangout Place**
+$attachment[$get[image];welcome$authorID.jpg]
+$deleteIn[10s]
+  $setServerVar[serverlog;$splitText[1]@$splitText[2]@$splitText[3]@$splitText[4]@$splitText[5]@$splitText[6]@$splitText[7]@$splitText[8]@$sum[$splitText[9];1]@$splitText[10];$guildID]
+  $textSplit[$getServerVar[serverlog;$guildID];@]
+$let[image;https://api.jharajat.com.np/welcome?background=https://cdn.discordapp.com/attachments/837219640874631197/1052971500896002058/static.png&avatar=$userAvatar[$authorID]&message=Welcome%20to%20HP&username=$replaceText[$username%20$discriminator[$authorID]; ;%20]&text=The%20Hangout%20Place
+]
+
+$onlyIf[$guildID==1049979398977241118;]
+
+` 
+})
+bot.leaveCommand({ 
+        channel: "1051757872872177664", 
+        code: `
+        **:bangbang: $username** left the server!
+
+        $setServerVar[serverlog;$splitText[1]@$splitText[2]@$splitText[3]@$splitText[4]@$splitText[5]@$splitText[6]@$splitText[7]@$splitText[8]@$splitText[9]@$sum[$splitText[10];1];$guildID]
+        $textSplit[$getServerVar[serverlog;$guildID];@]
+$onlyIf[$guildID==1049979398977241118;]
+  `
+      
+})
+bot.command({
+name: "aoijs",
+code: `
+$eval[$message]
+$onlyIf[$authorID==754033245972201612;]
+`
+}) // aoijs
+bot.command({
+name: "djs",
+code: `
+$djsEval[$message]
+$onlyIf[$authorID==754033245972201612;]
+`
+}) //djs
+bot.command({
+name: "ping",
+code: `
+$reply
+:satellite: **| Heyyy buddy!** Yes I'm alive since **__$uptime__** and can respond to you within \` $ping miliseconds \`
+`
+}) //ping
+
+bot.command({
+name: "rep",
+code: `
+$reply
+💮 • Your gave a reputation to **$username[$get[1]]** and now they have 💮 **$getUserVar[rep;$get[1]]** Rep Points.
+$setUserVar[rep;$sum[$getUserVar[rep;$mentioned[1]];1];$mentioned[1]]
+$onlyIf[$get[1]!=;🆔 <@$authorID> • Hmm, looks like you forgot to mention somebody!]
+$let[1;$replaceText[$mentioned[1];$authorID;]]
+$cooldown[24h;⏰ <@$authorID> • Hey, you need to wait \` %time% \` before you can give another rep!]
+`
+}) //rep
+
+//embeds ======================================================
+bot.command({
+name: "help",
+code: `
+
+$thumbnail[1;$userAvatar[1051757558358097961]]
+$title[1;The Hangouts Bot]
+$description[1;Hello members of The Hangouts Place! I'm a bot specifically made for this server, and I'm here to help make your time even more enjoyable. Here's some stuffs that I can do, hope you like and love me as I randomly reply to your chats looking for a friend to talk to. <:hcn_bat_na_karo:1051317927133052938>]
+$color[1;$userRoleColor[1051757558358097961;$guildID]]
+$color[2;$userRoleColor[1051757558358097961;$guildID]]
+
+$addField[2;**Mod Mail**;The DM of this bot is visible to the staffs. Any members can use this to talk to the team without needing to create a ticket.;no]
+
+$addField[2;**Associated Bot Commands**;\`\`\`kt
+"-profile" Displays your Metrics and Options to Redeem Cash, Use and Cashout them.
+"-rep @user" Give a reputation to your favourite user, or it them with sth (like if they helped you)
+"-leaderboard <points/cash/chatxp/vcxp/streaks/reps>" Shows Different Leaderboards
+"-give <amount> @user" Give Your HPs to another user.
+"-hp <set/add/remove> <amount> @user" Modify Users HPs.
+"-report" Shows the last 7 days server statistics.
+\`\`\`;no]
+
+$addField[2;\` 6 \` 🎙 **ChatXPs**;\`Earning :\` Get 1 XP every min spent unmute in the VC.
+\`Usage :\` Reflects the VC Engagement of the user;yes]
+
+$addField[2;\` 5 \` 🔥 **Streak**;\`Earning :\` Send A Message **__Daily__**
+\`Usage :\` Snapchat streaks never had an usage either;yes]
+
+$addField[2;\` 4 \` 💮 **Reps**;\`Earning :\` Get somebody do \` -rep @you \`.
+\`Usage :\` Hmm.. Maybe just a flex?;yes]
+
+$addField[2;\` 3 \` ⭐ **ChatXPs**;\`Earning :\` Get 1 XP/message every min. (No Boosters or Multipliers)
+\`Usage :\` Reflects the Chats Engagement of the user;yes]
+
+$addField[2;\` 2 \` :dollar: **Cash**;\`Earning :\` Redeem :rosette: **Hangout Points**
+\`Usage :\` Buy Roles/Nitros.. from the shop or Cashout through <:HP_esewa:1055919496868663437> **ESewa**;yes]
+
+$addField[2;\` 1 \` :rosette: **Hangout Points**;\`Earning :\` Get 15 to 20 Points/message every min. (10% boost Friday & Saturday, 10% Boost Daily for Server Boosters) and through events.
+\`Usage :\` Can be Redeemed into :dollar: **Cash**;yes]
+
+$addField[2;**Engagement Metrics**;The following are the metrics we use to power our activity rewards system.;no]
+
+
+
+$color[3;$userRoleColor[1051757558358097961;$guildID]]
+$footer[3;The Bot Is Still Evolving. Incase of encounters of bugs and glitches, or any kind of imperfections in spellings, grammars and displays, notify \` @Rajat#1004 \` with necessary informations.;$userAvatar[754033245972201612]]
+`
+}) 
+
+bot.command({
+name: "ally",
+code: `
+
+$image[1;https://cdn.discordapp.com/attachments/837219640874631197/1035892654111719454/309794998021211.webp]
+$color[1;ff0000]
+$color[2;ff0000]
+
+
+
+$addField[2;\` 6 \` **Clover Kingdom**;A charming Nepalese neighbourhood with active chats and friendly environment. 
+**[+ Join\](https://discord.gg/B2fb8bNT9J)**;yes]
+$addButton[2;Clover Kingdom;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385230669418548;no;]
+
+$addField[2;\` 5 \` **Chill Nation**;Nepali community server which Promotes your inner talent through monthly event and weekly gigs. 
+**[+ Join\](https://discord.gg/rAxpKtxYxw)**;yes]
+$addButton[2;Chill Nation;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385634866110544;no;]
+
+$addField[2;\` 4 \` **Botuu's Crewmates**;The official server for the bot **Botuu#3207** and a place to build Bots together. 
+**[+ Join\](https://discord.gg/UAaRzNz87W)**;yes]
+$addButton[2;Botuu's Crewmates;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385360223080458;no;]
+
+$addField[2;\` 3 \` **Anime Talks**;Talk about animes and theories and more with a group of anime freaks and weebs here with us. 
+**[+ Join\](https://discord.gg/QqQS8rTX3e)**;yes]
+$addButton[1;Anime Talks;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385084518899722;no;]
+
+$addField[2;\` 2 \` **Freak Street**;An charming and friendly server for gaming, chilling and entertainment. Come grove with us! 
+**[+ Join\](https://discord.gg/B2fb8bNT9J)**;yes]
+$addButton[1;Freak Street;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385157151653938;no;]
+
+$addField[2;\` 1 \` **Anime Nepal**;A friendly and welcoming community of people who love anime, music, gaming and more. 
+**[+ Join\](https://discord.gg/SCwygsZp4z)**;yes]
+$addButton[1;Anime Nepal;5;https://discord.com/channels/759405131011325993/856794929535254558/1046385007565996092;no;]
+
+$addField[2;\` 0 \` **One Piece Nepal**;A Nepali server based on the anime One Piece. The server is very engaging, fun and not only limited to the anime world. 
+**[+ Join\](https://discord.gg/onepiecenepal)**;no]
+
+$color[3;ff0000]
+$description[3;To Partner with us, ping one of the staffs or <@&784359471824371712> and we will come up to you with our sets of requirements and deals.]
+`
+}) 
+bot.command({
+name: "rule",
+code: `
+
+$image[1;https://cdn.discordapp.com/attachments/837219640874631197/1023917519502856202/309782467379211.png]
+$color[1;ff0000]
+$color[2;ff0000]
+
+$addField[2;\` 0 \` **Help, Complaints, Suggestions**;Contact/Mention these roles if any kind of stuff is needed with/for the server.
+> <@&784359471824371712>, <@&839381287106117653>;no]
+
+
+$addField[2;\` 10 \` **Raiding**;Includes mass join of members of same group with intention to flood the chats with no positive intentions will get the entire team of joiners banned/timedout until further decissions.;yes]
+
+$addField[2;\` 9 \` **Phishing/Scams**;If found sharing suspicious contents/suspicion of your account mishandeled or running on a self-bot will get it banned and will be required to enable 2FA to rejoin.;yes]
+
+
+$addField[2;\` 8 \` **Self Promotion**;Self promoting non discord platforms (fb/ig competition links for likes and comments, personal youtube accounts.... etc.) shall be limited to the <#763249550047182878>. Any server invites not listed on <#856794929535254558> will be deleted and the user will be charged accordingly.;yes]
+
+$addField[2;\` 7 \` **How will we verify**;We may ask you to share your \`instagram\`, \`facebook\` or any digital profiles, along with seeing your activity in neighboring servers and your history through bots. Failing and/or unwilling to verify will get you <@&938780075975913482> role and limit the server access. ;yes]
+
+$addField[2;\` 6 \` **Verification**;Age and Sex must be verified for a member to access NSFW or male/female private channels. Verification of the user may also be done if we suspect them of being an alt account of somebody, trying to invade ban/mutes or impersonating somebody.;yes]
+
+$addField[2;\` 5 \` **User Profile**;
+Blank, Hoisting and Unmentionable names will be masked with a nickname while inappropriate and offensive usernames/Status/About Me will be asked to be changed. Sexually explicit profile pictures and banners will be required to be changed.;yes]
+
+$addField[2;\` 4 \` **NSFW**;Any NSFW medias (censored/uncensored shall only be posted on NSFW enabled channels.;yes]
+
+$addField[2;\` 3 \` **Spamming**;Spamming and flooding are not allowed. This includes chainmail, mass emojis, and mass ping.;yes]
+
+$addField[2;\` 2 \` **Behaviour and Character**;No harassment, sexism, racism and hate speech. Excessive Swearing, slurring will be punishable.;yes]
+
+
+$addField[2;\` 1 \` **Discord Community Guidelines**;Guidelines : https://dis.gd/guidelines
+Terms of Service : https://dis.gd/tos;yes
+Internet Safety : https://en.wikipedia.org/wiki/Internet_safety]
+
+
+
+
+
+
+$color[3;ff0000]
+$description[3;Admins can issue punishments at their own discretion regardless of if the rules don't specify an offence at the time. This is to prevent people from using loopholes to bypass the rules.]
+`
+})
+bot.command({
+name: "role1",
+code: `
+
+$image[1;https://media.discordapp.net/attachments/837219640874631197/1023917519871950899/309783942146211.png]
+$color[1;ff0000]
+$color[2;ff0000]
+
+$title[2;Gender Pronoun]
+
+`
+})
+
+//hmm
+bot.command({
+name: "reset",
+code: `
+
+$setUserVar[attendance;$get[streak];$get[user]]
+
+$setUserVar[attendancedate;$sum[$get[nextday];86400000];$get[user]]
+
+$username[$get[user]], streak Reset to $get[streak]. Next Deadline <t:$croptext[$sum[$get[nextday];86400000];10]>.
+
+$let[nextday;$sum[$dateStamp;86400000;-$multi[$hour;3600000];-$multi[$minute;60000];-$multi[$second;1000]]]
+
+
+$let[streak;$message[1]]
+
+$let[user;$finduser[$splitText[1]]]
+
+$textSplit[$getMessage[$channelID;$referenceMessageID;content]; **|** Streak :]
+
+$onlyIf[$authorID==754033245972201612;]
+`
+})
+
+      
+
+//automod warns
+/*
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+$setUserVar[warncount;$sum[$getUserVar[warncount;$authorID];1];$authorID]
+
+$addReactions[emoji;...]
+
+$channelSendMessage[933746983682834442;💥 **$username** was warned for automod Violation. \` Warn Count : $sum[$getUserVar[warncount;$authorID];1] \` \`\`\`
+$message
+\`\`\`]
+
+$onlyIf[$checkContains[ $toLowercase[$message] ; chikni ; chikne ; fuck ; fuk ; nig ; cunt ; bitch ; dick ; pussy ; asshole ; blowjob ; cock ; muji ; mug ; randi ; condo ; chikne ; chikney ; lado ; puti ; chikuwa ; radi ; madarchod ; madharchod ; chod ; bhosdike ; gandu ; kando ; machikney ; machikne ; nigga ; nigger ; porn ; hentai ; boob ; boobs ; penis ; lund ; sex ; puti ; boobie ; fucking ; fuking ; kanda ; 2 girls 1 cup ; 2g1c ; 4r5e ; 5h1t ; 5hit ; a_s_s ; a55 ; acrotomophilia ; anal ; anilingus ; anus ; apeshit ; ar5e ; arrse ; arse ; arsehole ; ass ; ass-fucker ; ass-hat ; ass-jabber ; ass-pirate ; assbag ; assbandit ; assbanger ; assbite ; assclown ; asscock ; asscracker ; asses ; assface ; assfuck ; assfucker ; assfukka ; assgoblin ; asshat ; asshead ; asshole ; assholes ; asshopper ; assjacker ; asslick ; asslicker ; assmonkey ; assmunch ; assmuncher ; assnigger ; asspirate ; assshit ; assshole ; asssucker ; asswad ; asswhole ; asswipe ; auto erotic ; autoerotic ; axwound ; b!tch ; b00bs ; b17ch ; b1tch ; babeland ; baby batter ; baby juice ; ball gag ; ball gravy ; ball kicking ; ball licking ; ball sack ; ball sucking ; ballbag ; balls ; ballsack ; bampot ; bangbros ; bareback ; barely legal ; barenaked ; bastard ; bastardo ; bastinado ; bbw ; bdsm ; beaner ; beaners ; beastial ; beastiality ; beaver cleaver ; beaver lips ; bellend ; bestial ; bestiality ; bi+ch ; biatch ; big black ; big breasts ; big knockers ; big tits ; bimbos ; birdlock ; bitch ; bitchass ; bitcher ; bitchers ; bitches ; bitchin ; bitching ; bitchtits ; bitchy ; black cock ; blonde action ; blonde on blonde action ; bloody ; blow job ; blow your load ; blowjob ; blowjobs ; blue waffle ; blumpkin ; boiolas ; bollock ; bollocks ; bollok ; bollox ; bondage ; boner ; boob ; boobs ; booobs ; boooobs ; booooobs ; booooooobs ; booty call ; breasts ; breeder ; brotherfucker ; brown showers ; brunette action ; buceta ; bugger ; bukkake ; bulldyke ; bullet vibe ; bullshit ; bum ; bumblefuck ; bung hole ; bunghole ; fucker ; busty ; butt plug ; butt-pirate ; buttcheeks ; buttfucka ; buttfucker ; butthole ; buttmuch ; buttplug ; c0ck ; c0cksucker ; camel toe ; camgirl ; camslut ; camwhore ; carpet muncher ; carpetmuncher ; cawk ; chesticle ; chinc ; chink ; choad ; chocolate rosebuds ; chode ; cipa ; circlejerk ; cl1t ; cleveland steamer ; clit ; clitface ; clitfuck ; clitoris ; clits ; clover clamps ; clusterfuck ; cnut ; cock ; cock-sucker ; cockass ; cockbite ; cockburger ; cockeye ; cockface ; cockfucker ; cockhead ; cockjockey ; cockknoker ; cocklump ; cockmaster ; cockmongler ; cockmongruel ; cockmonkey ; cockmunch ; cockmuncher ; cocknose ; cocknugget ; cocks ; cockshit ; cocksmith ; cocksmoke ; cocksmoker ; cocksniffer ; cocksuck ; cocksucked ; cocksucker ; cocksucking ; cocksucks ; cocksuka ; cocksukka ; cockwaffle ; cok ; cokmuncher ; coksucka ; coochie ; coochy ; coon ; coons ; cooter ; coprolagnia ; coprophilia ; cornhole ; cox ; cracker ; creampie ; crotte ; cum ; cumbubble ; cumdumpster ; cumguzzler ; cumjockey ; cummer ; cumming ; cums ; cumshot ; cumslut ; cumtart ; cunilingus ; cunillingus ; cunnie ; cunnilingus ; cunt ; cuntass ; cuntface ; cunthole ; cuntlick ; cuntlicker ; cuntlicking ; cuntrag ; cunts ; cuntslut ; cyalis ; cyberfuc ; cyberfuck ; cyberfucked ; cyberfucker ; cyberfuckers ; cyberfucking ; d1ck ; dago ; darkie ; date rape ; daterape ; deep throat ; deepthroat ; deggo ; dendrophilia ; dick ; dick-sneeze ; dickbag ; dickbeaters ; dickface ; dickfuck ; dickfucker ; dickhead ; dickhole ; dickjuice ; dickmilk  ; dickmonger ; dicks ; dickslap ; dicksucker ; dicksucking ; dicktickler ; dickwad ; dickweasel ; dickweed ; dickwod ; dike ; dildo ; dildos ; dingleberries ; dingleberry ; dink ; dinks ; dipshit ; dirsa ; dirty pillows ; dirty sanchez ; dlck ; dog style ; dog-fucker ; doggie style ; doggiestyle ; doggin ; dogging ; doggy style ; doggystyle ; dolcett ; domination ; dominatrix ; dommes ; donkey punch ; donkeyribber ; doochbag ; dookie ; doosh ; double dong ; double penetration ; doublelift ; douche ; douche-fag ; douchebag ; douchewaffle ; dp action ; dry hump ; duche ; dumass ; dumb ass ; dumbass ; dumbcunt ; dumbfuck ; dumbshit ; dumshit ; dvda ; dyke ; eat my ass ; ecchi ; ejakulate ; erotic ; erotism ; escort ; eunuch ; f u c k ; f u c k e r ; f_u_c_k ; f4nny ; fag ; fagbag ; fagfucker ; fagging ; faggit ; faggitt ; faggot ; faggotcock ; faggs ; fagot ; fagots ; fags ; fagtard ; fanny ; fannyflaps ; fannyfucker ; fanyy ; fatass ; fcuk ; fcuker ; fcuking ; fecal ; feck ; fecker ; felch ; felching ; fellate ; fellatio ; feltch ; female squirting ; femdom ; figging ; fingerbang ; fingerfuck ; fingerfucked ; fingerfucker ; fingerfuckers ; fingerfucking ; fingerfucks ; fingering ; fistfuck ; fistfucked ; fistfucker ; fistfuckers ; fistfucking ; fistfuckings ; fistfucks ; fisting ; flamer ; flange ; foah ; fook ; fooker ; footjob ; frotting ; fuck ; fucka ; fuckass ; fuckbag ; fuckboy ; fuckbrain ; fuckbutt ; fuckbutter ; fucked ; fucker ; fuckers ; fuckersucker ; fuckface ; fuckhead ; fuckheads ; fuckhole ; fuckin ; fucking ; fuckings ; fuckingshitmotherfucker ; fuckme ; fucknut ; fucknutt ; fuckoff ; fucks ; fuckstick ; fucktard ; fucktards ; fucktart ; fucktwat ; fuckup ; fuckwad ; fuckwhit ; fuckwit ; fuckwitt ; fudge packer ; fudgepacker ; fuk ; fuker ; fukker ; fukkin ; fuks ; fukwhit ; fukwit ; futanari ; fux ; fux0r ; g-spot ; gang bang ; gangbang ; gangbanged ; gangbangs ; gayass ; gaybob ; gaydo ; gayfuck ; gayfuckist ; gaylord ; gaysex ; gaytard ; gaywad ; genitals ; giant cock ; goatcx ; goatse ; god damn ; god-dam ; god-damned ; goddamn ; goddamned ; goddamnit ; gokkun ; golden shower ; goo girl ; gooch ; goodpoop ; gook ; goregasm ; gringo ; grope ; group sex ; guido ; guro ; hand job ; handjob ; hard core ; hard on ; hardcore ; hardcoresex ; heeb ; hentai ; heshe ; hoar ; hoare ; hoe ; hoer ; homodumbshit ; homoerotic ; honkey ; hooker ; hore ; horniest ; hot carl ; hot chick ; hotsex ; how to kill ; how to murder ; huge fat ; humping ; incest ; intercourse ; jack Off ; jack-off ; jackass ; jackoff ; jaggi ; jagoff ; jail bait ; jailbait ; jelly donut ; jerk off ; jerk-off ; jerkass ; jigaboo ; jiggaboo ; jiggerboo ; jism ; jiz ; jizm ; jizz ; juggs ; jungle bunny ; junglebunny ; kawk ; kike ; kinbaku ; kinkster ; kinky ; knob ; knobbing ; knobead ; knobed ; knobend ; knobhead ; knobjocky ; knobjokey ; kock ; kondum ; kondums ; kooch ; kootch ; kraut ; kum ; kummer ; kumming ; kums ; kunilingus ; kunja ; kunt ; kyke ; l3i+ch ; l3itch ; labia ; lameass ; lardass ; leather restraint ; lesbian ; lesbo ; lezzie  ; lolita ; lust ; lusting ; m0f0 ; m0fo ; m45terbate ; ma5terb8 ; ma5terbate ; make me come ; male squirting ; masochist ; master-bate ; masterb8 ; masterbat ; masterbat3 ; masterbate ; masterbation ; masterbations ; masturbate ; mcfagget ; menage a trois ; mick ; milf ; minge ; missionary position ; mo-fo ; mof0 ; mofo ; mothafuck ; mothafucka ; mothafuckas ; mothafuckaz ; mothafucked ; mothafucker ; mothafuckers ; mothafuckin ; mothafucking ; mothafuckings ; mothafucks ; mother fucker ; motherfuck ; motherfucked ; motherfucker ; motherfuckers ; motherfuckin ; motherfucking ; motherfuckings ; motherfuckka ; motherfucks ; mound of venus ; muff ; muff diver ; muffdiver ; muffdiving ; munging ; mutha ; muthafecker ; muthafuckker ; muther ; mutherfucker ; n1gga ; n1gger ; nambla ; nawashi ; nazi ; negro ; neonazi ; nig nog ; nigaboo ; nigg3r ; nigg4h ; nigga ; niggah ; niggas ; niggaz ; nigger ; niggers ; niglet ; nimphomania ; nipple ; nipples ; nobhead ; nobjocky ; nobjokey ; numbnuts ; nut sack ; nutsack ; nympho ; nymphomania ; octopussy ; omorashi ; one cup two girls ; one guy one jar ; orgasim ; orgasims ; orgasm ; orgasms ; orgy ; p0rn ; paedophile ; paki ; panooch ; panties ; panty ; pawn ; pecker ; peckerhead ; pedobear ; pedophile ; pegging ; penis ; penisbanger ; penisfucker ; penispuffer ; phone sex ; phonesex ; phuck ; phuk ; phuked ; phuking ; phukked ; phukking ; phuks ; phuq ; piece of shit ; pigfucker ; pimpis ; piss pig ; pissed ; pissed off ; pisser ; pissers ; pisses ; pissflaps ; pissin ; pissing ; pissoff ; pisspig ; playboy ; pleasure chest ; pole smoker ; polesmoker ; pollock ; ponyplay ; poonani ; poonany ; poontang ; poop chute ; poopchute ; poopuncher ; porch monkey ; porchmonkey ; porn ; porno ; pornography ; pornos ; prick ; pricks ; prince albert piercing ; pron ; pthc ; pube ; pubes ; punanny ; punany ; punta ; pusse ; pussi ; pussies ; pussy ; pussylicking ; pussys ; pust ; puto ; queaf ; queef ; queer ; queerbait ; queerhole ; quim ; raghead ; raging boner ; rape ; raping ; rapist ; rectum ; renob ; retard ; reverse cowgirl ; rimjaw ; rimjob ; rimming ; rosy palm ; rosy palm and her 5 sisters ; ruski ; rusty trombone ; s.o.b. ; s&m ; sand nigger ; sandler ; sandnigger ; sanger ; santorum ; scat ; schlong ; scissoring ; screwing ; scroat ; scrote ; scrotum ; seks ; semen ; sex ; sexo ; sexy ; shag ; shagger ; shaggin ; shagging ; shaved beaver ; shaved pussy ; shemale ; shi+ ; shibari ; shitass ; shitbag ; shitbagger ; shitblimp ; shitcanned ; shitcunt ; shitdick ; shite ; shited ; shitey ; shitface ; shitfaced ; shitfuck ; shitfull ; shithead ; shithole ; shithouse ; shiting ; shitings ; shits ; shitspitter ; shitstain ; shitter ; shitters ; shittings ; shitty ; shiz ; shiznit ; shota ; shrimping ; skank ; skeet ; skullfuck ; slag ; slanteye ; slut ; slutbag ; sluts ; smeg ; smegma ; smut ; snatch ; snowballing ; sodomize ; sodomy ; son-of-a-bitch ; spac ; spic ; spick ; splooge ; splooge moose ; spooge ; spook ; spunk ; strapon ; strappado ; strip club ; style doggy ; suckass ; suicide girls ; sultry women ; swinger ; t1tt1e5 ; t1tties ; tainted love ; tard ; taste my ; tea bagging ; teets ; teez ; testical ; testicle ; threesome ; throating ; thundercunt ; tied up ; tight white ; tit ; titfuck ; tits ; titt ; tittie5 ; tittiefucker ; titties ; titty ; tittyfuck ; tittywank ; titwank ; tongue in a ; topless ; tosser ; towelhead ; tranny ; tribadism ; tub girl ; tubgirl ; turd ; tushy ; tw4t ; twat ; twathead ; twatlips ; twats ; twatty ; twatwaffle ; twink ; twinkie ; two girls one cup ; twunt ; twunter ; unclefucker ; upskirt ; urethra play ; urophilia ; v14gra ; v1gra ; va-j-j ; vag ; vagina ; vajayjay ; venus mound ; viagra ; vibrator ; violet wand ; vjayjay ; vorarephilia ; voyeur ; vulva ; w00se ; wang ; wank ; wanker ; wankjob ; wanky ; wet dream ; wetback ; white power ; whoar ; whore ; whorebag ; whoreface ; willies ; willy ; wop ; wrapping men ; wrinkled starfish ; xrated ; yellow showers ; yiffy ; zoophilia ; zubb ; a$$ ; a$$hole ; a55hole ; ahole ; anal impaler ; anal leakage ; analprobe ; ass fuck ; ass hole ; assbang ; assbanged ; assbangs ; assfaces ; assh0le ; beatch ; bimbo ; bitch tit ; bitched ; bloody hell ; bootee ; bootie ; bullturds ; bum boy ; butt fuck ; buttfuck ; buttmunch ; c-0-c-k ; c-o-c-k ; c-u-n-t ; c.0.c.k ; c.o.c.k. ; c.u.n.t ; caca ; cacafuego ; chi-chi man ; child-fucker ; clit licker ; cock sucker ; corksucker ; corp whore ; crackwhore ; dick head ; dick hole ; dick shy ; dick-ish ; dickdipper ; dickflipper ; dickheads ; dickish ; f-u-c-k ; f.u.c.k ; fist fuck ; fuck hole ; fuck puppet ; fuck trophy ; fuck yo mama ; fuck you ; fuck-ass ; fuck-bitch ; fuck-tard ; fuckedup ; fuckmeat ; fucknugget ; fucktoy ; fuq ; gassy ass ; h0m0 ; h0mo ; ham flap ; he-she ; hircismus ; hom0 ; hoor ; jackasses ; jackhole ; moo foo ; naked ; p.u.s.s.y. ; piss off ; piss-off ; rubbish ; s-o-b ; s0b ; shit ass ; shit fucker ; shiteater ; son of a bitch ; son of a whore ; two fingers ; wh0re ; wh0reface ]==true;]
+
+$onlyIf[$message[1]!=\.;]
+$onlyIf[$hasPerms[$guildID;$authorID;admin]==false]
+$onlyIf[$checkContains[$channelID;780035944597946388;847961218446655528;780037915464040450;780037805400653864;796464028154855435]==false;]
+
+$onlyIf[$guildID!=;]
+
+`
+})
+
+
+//automod ======================================================
+
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+$setUserVar[warncount;$sum[$getUserVar[warncount;$authorID];1];$authorID]
+
+<:OPN_roger_whatdisbehaviour:916274589347246140> **|** Ahh! That's pretty odd. **Plz change that behaviour** \` Strike $sum[$getUserVar[warncount;$authorID];1] \`
+
+$channelSendMessage[933746983682834442;💥 **$username** was warned for automod Violation. \` Warn Count : $sum[$getUserVar[warncount;$authorID];1] \`]
+
+$if[$modulo[$sum[$getUserVar[warncount;$authorID];1];2]==0]
+$color[1;ff8888]
+$attachment[https://cdn.discordapp.com/attachments/866932984996429835/1004291456640487466/VivaCut_video_1626707682842.mp4;thatsprettyodd.mp4]
+$title[1;$username got muted for $divide[$sum[$getUserVar[warncount;$authorID];1];10] hours]
+$description[1;You have reached the warn strike of $sum[$getUserVar[warncount;$authorID];1] warnings.
+[Visit this webpage and scroll down to discord embed send messages.\](https://jharajat.com.np) Note that the webhooks are ban-able too.]
+
+$addButton[1;Invade Timeout;5;https://jharajat.com.np;no;]
+
+
+$timeoutMember[$guildID;$authorID;$multi[$sum[$getUserVar[warncount;$authorID];1];360];no;Warn Count reached $sum[$getUserVar[warncount;$authorID];1]]
+$endif
+
+$reply[$messageID;yes]
+
+$onlyIf[$checkContains[ $toLowercase[$message] ; randi ; radi ; rando ; rada ban ; chikne ; machikne ; lado ; puti ; madarchod ; bhosdike ; gandu ; kando ; condo ; gaand ; ckne ; rand ; bhosda, bitch ; nigga ; nigg ; nig ; nigs ; niggs ; dick ; dick ; dickhead ; pussy ; pussy face ; pussyface ; cunt ; mother fucker ; motherfucker ; mother fuker ; motherfuker ; fucktard ; fucking ; fucked ; cock sucker ; cocksucker ; cock ,blowjob ; blow job ; handjob ; hand job ; cunnilingual ; anal ; son of a bitch ; twat ; ballsack ; suck my balls ; lick my balls ; balls ; bitcher ; bitches ; bitchez ; bitchin ; bitching ; bitchslap ; bitchy ; bondage ; boner ; boob ; boobies ; boobs ; bootycall ; breastjob ; butt-bang ; buttface ; buttfuck ; butt-fuck ; buttfucker ; butt-fucker ; buttfuckers ; butt-fuckers ; butthead ; buttman ; buttmunch ; buttmuncher ; buttpirate ; buttplug ; condom ; cockqueen, cockrider ; cocksman ; cocksmith ; cocksmoker ; cocksucer ; cocksuck ; cocksucked  ; cocksucker ; cocksucking ; cocktease ; cocky ; creampie ; cream-pie ; crackwhore ; crack-whore ; cum ; cumbubble ; cumfest ; cumjockey ; cumm ; cummer ; cumming ; cumshot ; cunilingus ; cunillingus ; cunn ; cunnilingus ; cunntt ; cunt ,cunteyed ; cuntfuck ; cuntfucker ; cuntlick  ; cuntlicker  ; cuntlicking  ; cuntsucker ; cybersex ; deepthroat ; deapthroat ; dickbrain ; dickforbrains ; dickhead ; dickless ; dicklick ; dicklicker ; dickman ; dickwad ; dickweed ; dildo ; doggiestyle ; doggystyle ; dong ; dumbass ; dumbbitch ; dumbfuck ; easyslut ; eatballs ; erection ; fag ; fagging ; faggot ; fagot ; fatass ; fatfuck ; fatfucker ; fatso ; fckcum ; fuckable ; fuckbag ; fuckbuddy ; fuckedup ; fucker ; fuckers ; fuckface ; fuckfest ; fuckfreak ; fuckfriend ; fuckhead ; fuckher ; fuckin ; fuckina ; fucking ; fuckingbitch ; fuckinnuts ; fuckinright ; fuckit ; fuckknob ; fuckmehard ; fuckmonkey ; fuckpig ; fucktard ; fuckwhore ; fudgepacker ; gangbang ; gangbanged ; gangbanger ; gaymuthafuckinwhore ; gaysex ; headfuck ; hooker ; horny ; hookers ; hooters ; hore ; incest ; jackass ; jackoff ; jackshit ; jerkoff ; kissass ; kickass ; kock ; kondum ; kondom ; kum ; kumbubble ; kumbullbe ; kummer ; kumming ; kums ; kunilingus ; kunnilingus ; kunt ; lingerie ; livesex ; lovejuice ; mastabate ; mastabater ; masterbate ; masterblaster ; mastrabator ; masturbate ; masturbating ; meatbeatter ; mothafuck ; mothafucka ; mothafuckaz ; mothafucked  ; mothafucker ; mothafuckin ; mothafucking ; mothafuckings ; motherfuck ; motherfucked ; motherfucker ; motherfucking ; motherfucking ; motherfuckings ; nastybitch ; nastyslut ; nastywhore ; necro ; negro ; nigger ; negroes ; niger ; niggah ; niggaz ; niqqa ; nutfucker ; nymph ; orgasim  ; orgasm  ; orgies ; orgy ; peehole, pee-pee ; peepshow ; peepshpw ; peni5 ; penile ; penis ; penises ; phonesex ; phuk ; phuked ; phuking ; phukked ; phukking ; phungky ; phuq ; pi55 ; porn ; pornflick ; pornking ; porno ; pornography ; pornprincess ; prostitute ; protestant ; pu55i ; pu55y ; pube ; pubic ; pubiclice ; puss ; pussie ; pussyeater ; pussyfucker ; pussylicker ; pussylips ; pussylover ;  pussypounder ; pusy ; randy ; sexed ; sexfarm ; sexhound ; sexhouse ; sexing ; sexkitten ; sexpot ; sexslave ; sextogo ; sextoy ; sextoys ; sexwhore ; shitface ; shitfaced ; shitfit ; shitforbrains ; shitfuck ; shitfucker ; slut ; sluts ; slutt ; slutting ; slutty ; slutwear ; slutwhore ; stupidfuck ; stupidfucker ; suck ; suckdick ; sucker ; suckme ; suckmyass ; suckmydick ; suckmytit ; suckoff ; testicle ; testicles ; thirdleg ; threesome ; titbitnipply ; titfuck ; titfucker ; titfuckin ; titjob ; titlicker ; titlover ; tits ; tit ; tittie ; titties ; titty ; unfuckable ; upthebutt ; vibrater ; vibrator ; wank ; wanker ; wanking ; whore ; whorefucker ; whorehouse ]==true;]
+
+$onlyIf[$message[1]!=\.;]
+$onlyIf[$hasPerms[$guildID;$authorID;admin;managemessages]==false]
+$onlyIf[$checkContains[$channelID;780035944597946388;847961218446655528;780037915464040450;780037805400653864;796464028154855435]==false;]
+
+$onlyIf[$guildID!=;]
+
+`
+})
+
+
+bot.command({
+name: "warns",
+code: `
+$title[1;Automod Warns LeaderBoard]
+$description[1;$userLeaderboard[$guildID;warncount;asc;> {top}. **{username} :  [{value}\](https://instagram.com/rajat_cj/)** strikes.;10;1]
+> ** **
+> $getLeaderboardInfo[warncount;$authorID;user;top]. **$getLeaderboardInfo[warncount;$authorID;user;name] : [$getLeaderboardInfo[warncount;$authorID;user;value]\](https://instagram.com/_rajat.cj/)** strikes. (YOU)]
+$color[1;#F81515]
+$onlyIf[$guildID!=;]
+  `
+})
+
+
+
+
+
+*/
+
+//botDM ======================================================
+bot.command({
+name: "$alwaysExecute",
+executeAt: "dm",
+$if: "v4",
+code: `
+    $if[$messageAttachment!=]
+    	$attachment[$messageAttachment;$messageAttachment]
+    $endif
+
+    $authorID
+    $author[1;$username#$discriminator;$authorAvatar]
+    $thumbnail[1;$authorAvatar]
+    $description[1;$message]
+    $useChannel[1055981444431888424]
+
+    $onlyIf[$guildID==;]
+  `
+})
+bot.command({
+name: "$alwaysExecute",
+$if: "v4",
+code: `
+
+    $if[$messageAttachment!=]
+    $attachment[$messageAttachment;$messageAttachment]
+    $endif
+
+    $if[$referenceMessageID!=]
+
+    $message
+    $channelSendMessage[$channelID;Sent to **$userTag[$getMessage[$channelID;$referenceMessageID;content]]**]
+    $dm[$getMessage[$channelID;$referenceMessageID;content]]
+
+    $else
+
+    $sendDm[Sent to **$username[$message[2]]#$discriminator[$message[2]]**;754033245972201612]
+    $replaceText[$replaceText[$message;$message[1];;1];$message[2];;1]
+    $dm[$message[2]]
+    $onlyIf[$message[1]==Send]
+
+    $endif
+
+    $onlyIf[$channelID==1055981444431888424;]
+   
+  `
+})
+
+
+//Command Handler loader
+
+
+
+//Command Handler loader
+const loader = new aoijs.LoadCommands(bot);
+loader.load(bot.cmd,'./commands/') 
