@@ -10,7 +10,7 @@
     <meta name="keywords" content="Rajat, Rajat Jha, Rajat Chandra Jha, rajat_cj, Rajat Died Today">
     <link rel="icon" type="image/x-icon" href="https://api.lanyard.rest/754033245972201612.jpg">
       
-    <title>@rajat_cj</title>
+    <title id="title">@rajat_cj</title>
     <script src="../profile/assets/javascripts/lanyard.js" crossorigin="anonymous"></script>
     
     <!-- Media Meta Tags -->
@@ -143,6 +143,32 @@ document.getElementById('my-date').innerHTML = new Date().toLocaleDateString('en
 setInterval(updateTime, 1000);
 // Update the time when the page loads
 updateTime();
+  </script>
+
+  <script>
+    const initialTitles = ["@rajat_cj", "I", "I L", "I Lo", "I Lov", "I Love", "I Love Y", "I Love Yo", "I Love You", "I Love You 💖"];
+    const alternateTitles = ["@rajat_cj", "Babyy did you go?", "Pls come back", "I need to tell you sth", "Heyyy", "Aw Im sad now~", "Babyyyy", "come back 😭"];
+    let currentTitleIndex = 0;
+    let titles = initialTitles;
+
+    function updateTitle() {
+      document.querySelector("#title").textContent = titles[currentTitleIndex];
+      currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+    }
+
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        titles = alternateTitles;
+        currentTitleIndex = 0;
+      } else {
+        titles = initialTitles;
+        currentTitleIndex = 0;
+      }
+    }
+
+    setInterval(updateTitle, 2000);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
   </script>
 
 <script>
