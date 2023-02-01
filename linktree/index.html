@@ -8,9 +8,9 @@
     <meta name="author" content="Rajat Jha">
     <meta name="description" content="A portal to all my links, handles (rajat_cj) and projects.">
     <meta name="keywords" content="Rajat, Rajat Jha, Rajat Chandra Jha, rajat_cj, Rajat Died Today">
-    <link rel="icon" type="image/x-icon" href="https://api.lanyard.rest/754033245972201612.jpg">
+    <link rel="icon" id="iconofthepage" type="image/x-icon" href="https://api.lanyard.rest/754033245972201612.jpg">
       
-    <title id="title">@rajat_cj</title>
+    <title id="titleofthepage">@rajat_cj</title>
     <script src="../profile/assets/javascripts/lanyard.js" crossorigin="anonymous"></script>
     
     <!-- Media Meta Tags -->
@@ -146,28 +146,39 @@ updateTime();
   </script>
 
   <script>
-    const initialTitles = ["@rajat_cj", "I", "I L", "I Lo", "I Lov", "I Love", "I Love Y", "I Love Yo", "I Love You", "I Love You 💖"];
-    const alternateTitles = ["@rajat_cj", "Babyy did you go?", "Pls come back", "I need to tell you sth", "Heyyy", "Aw Im sad now~", "Babyyyy", "come back 😭"];
-    let currentTitleIndex = 0;
-    let titles = initialTitles;
+const focusedTitles = ["@rajat_cj", "@rajat_cj", "I", "I L", "I Lo", "I Lov", "I Love", "I Love Y", "I Love Yo", "I Love You", "I Love You 💖"];
+const focusedIcon = "https://api.lanyard.rest/754033245972201612.jpg";
+const notFocusedTitles = ["Babyy did you go?", "Pls come back", "I need to tell you sth", "Heyyy", "Aw Im sad now~", "Babyyyy", "come back 😭", "@rajat_cj", "@rajat_cj"];
+const notFocusedIcon = "https://cdn.discordapp.com/emojis/1062638551650549760.gif";
+let intervalId;
+let currentTitleIndex = 0;
+let titles = focusedTitles;
+let icon = focusedIcon;
 
-    function updateTitle() {
-      document.querySelector("#title").textContent = titles[currentTitleIndex];
-      currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-    }
+function updateTitle() {
+  document.querySelector("#titleofthepage").textContent = titles[currentTitleIndex];
+  currentTitleIndex = (currentTitleIndex + 1) % titles.length;
+  document.querySelector("#iconofthepage").setAttribute("href", icon);
+}
 
-    function handleVisibilityChange() {
-      if (document.hidden) {
-        titles = alternateTitles;
-        currentTitleIndex = 0;
-      } else {
-        titles = initialTitles;
-        currentTitleIndex = 0;
-      }
-    }
+function handleVisibilityChange() {
+  if (document.hidden) {
+    titles = notFocusedTitles;
+    icon = notFocusedIcon;
+    currentTitleIndex = 0;
+    clearInterval(intervalId);
+    intervalId = setInterval(updateTitle, 2500);
+  } else {
+    titles = focusedTitles;
+    icon = focusedIcon;
+    currentTitleIndex = 0;
+    clearInterval(intervalId);
+    intervalId = setInterval(updateTitle, 1000);
+  }
+}
 
-    setInterval(updateTitle, 2000);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+document.addEventListener("visibilitychange", handleVisibilityChange);
 
   </script>
 
