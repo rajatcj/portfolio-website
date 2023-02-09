@@ -123,13 +123,13 @@
   }
   
 #spotify-time {
-    -webkit-text-stroke: 0.3px black;
+    -webkit-text-stroke: 0px rgb(0, 0, 0);
     position: relative;
     left: 5px;
     margin-top: 0rem;
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 8px;
-    color: #ffffff;
+    color: #d9f7da;
 }
 
 #spotify-artist {
