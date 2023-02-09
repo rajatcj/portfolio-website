@@ -223,8 +223,6 @@ html {
 
 
 
-
-
 .card-body .profile-header .status-container {
   position: absolute;
   left: 90px;
@@ -298,7 +296,7 @@ html {
 
 .card-body .profile-body hr {
   border: none;
-  border-top: 0.5px solid #33353b;
+  border-top: 0.2px solid #91909077;
 }
 
 .card-body .profile-body .category-title {
