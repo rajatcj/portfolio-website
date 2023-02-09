@@ -53,22 +53,42 @@ html {
   border-top: 6px solid #18191c;
 }
 
+.btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background-color: #6d5cff;
+  background-color: #8d8d8d7e;
   padding: 10px;
+  margin: 4px;
   border-radius: 3px;
   color: #fff;
   font-size: 0.85rem;
   transition: 0.2s ease-in-out;
   margin-top: 12px;
+  height: 38px;
+  flex: 1;
+}
+
+.btn img {
+  height: 20px;
+  border-radius: 50%;
 }
 
 .btn:hover {
-  background-color: #4752c4;
+  background-color: #5e5e5e80;
+}
+
+.btn-small {
+  width: max-content;
+  flex: 0;
 }
 
 /* Card */
@@ -472,128 +492,4 @@ html {
   margin: -5px;
   border-radius: 12px;
   background: linear-gradient(0, #ff0000, #a58052);;
-}
-/* Elements below can be removed ( they are just for demo purposes ) */
-
-.modal-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  visibility: hidden;
-}
-
-.modal {
-  position: relative;
-  background: #18191c;
-  border-radius: 5px;
-  transform: scale(0);
-  transition: 0.1s ease-in-out all;
-  border: 1px solid #2d2d2d;
-  margin: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal .modal-header {
-  color: #eee;
-  padding: 15px;
-  background: #1f2024;
-  border-bottom: 1px solid #2d2d2d;
-}
-
-.modal .modal-header a {
-  text-decoration: none;
-  color: #d6d6d6;
-  transition-duration: 0.2s;
-  border-bottom: 1px dotted #d6d6d6;
-}
-
-.modal .modal-header a:hover {
-  color: #fff;
-  border-bottom: 1px solid #f87610;
-}
-
-.modal .modal-body {
-  padding: 15px;
-  width: 100%;
-}
-
-.modal .modal-body input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #2d2d2d;
-  border-radius: 3px;
-  background: #18191c;
-  outline: none;
-  color: #eee;
-  transition: 0.2s all;
-}
-
-.modal .modal-body input::placeholder {
-  color: #a1a1a1;
-}
-
-.modal .modal-body input:hover {
-  background: #141414;
-}
-
-.modal .modal-body input:focus {
-  background: #141414;
-}
-
-.modal .modal-body .feedback-state {
-  display: none;
-  color: #fff;
-  font-size: 0.8rem;
-  padding-top: 7px;
-  z-index: 100;
-  transition: 0.2s all;
-}
-
-.modal .modal-body .feedback-state.success {
-  display: block;
-  color: #50f750;
-}
-
-.modal .modal-body .feedback-state.error {
-  display: block;
-  color: #ee4c4c;
-}
-
-.active {
-  visibility: visible;
-}
-
-.active .modal {
-  transform: scale(1);
-}
-
-.help-btn {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px;
-  color: #ffffff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: 0.2s all;
-  background: #4a4b4d;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.help-btn:hover {
-  background: #f87610;
 }
