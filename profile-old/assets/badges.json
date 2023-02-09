@@ -1,0 +1,72 @@
+
+{   
+    "badges": [
+        {
+            "src": "./assets/img/badges/brilliance.png",
+            "tooltip": "HypeSquad Brilliance",
+            "flag": 128
+        },
+        {
+            "src": "./assets/img/badges/megabughunter.webp",
+            "tooltip": "HypeSquad Balance",
+            "flag": 256 
+        },
+        {
+            "src": "./assets/img/badges/activedev.png",
+            "tooltip": "Active Developer"
+        },
+        {
+            "src": "./assets/img/badges/nitro.webp",
+            "tooltip": "Nitro Subscriber"
+        },
+        {
+            "src": "./assets/img/badges/boost.webp",
+            "tooltip": "Boosting OPN"
+        },
+        {
+            "src": "./assets/img/badges/devbot.webp",
+            "tooltip": "Verified Bot Developer",
+            "flag": 131072 
+        },
+        {
+            "src": "./assets/img/badges/moderator.webp",
+            "tooltip": "Discord Moderator",
+            "flag": 262144  
+        },
+        {
+            "src": "./assets/img/badges/bravery.webp",
+            "tooltip": "HypeSquad Bravery",
+            "flag": 64  
+        },
+        {
+            "src": "./assets/img/badges/eventcreator.webp",
+            "tooltip": "HypeSquad Events",
+            "flag": 4 
+        },
+        {
+            "src": "./assets/img/badges/firsttimenitro.webp",
+            "tooltip": "Early Supporter",
+            "flag": 512 
+        },
+        {
+            "src": "./assets/img/badges/megabughunter.webp",
+            "tooltip": "Bug Hunter",
+            "flag": 8 
+        },
+        {
+            "src": "./assets/img/badges/megabughunter.webp",
+            "tooltip": "Bug Hunter Super Epik+",
+            "flag": 16384 
+        },
+        {
+            "src": "./assets/img/badges/partner.webp",
+            "tooltip": "Partnered Server Owner",
+            "flag": 2 
+        },
+        {
+            "src": "./assets/img/badges/team.webp",
+            "tooltip": "Discord Staff",
+            "flag": 1 
+        }
+    ]
+ }
