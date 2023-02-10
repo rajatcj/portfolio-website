@@ -46,6 +46,10 @@
         {
             "rolename": "<i class='fa-brands fa-bootstrap'></i> Bootstrap",
             "color": "#5B4282"
+        },
+        {
+            "rolename": "jQuery",
+            "color": "#0769ad"
         }
     ],
 
@@ -64,7 +68,7 @@
         },
         {
             "src": "./assets/img/badges/boost.webp",
-            "tooltip": "Boosting OPN"
+            "tooltip": "Boosting Since Oct 2022"
         }
     ], 
 

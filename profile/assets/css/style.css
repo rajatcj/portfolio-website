@@ -37,14 +37,15 @@ html {
 }
 
 .tooltip-up {
-  bottom: 42px;
+  right: -10px;
+  bottom: 32px;
 }
 
 .tooltip-up::before {
   content: "";
   position: absolute;
   bottom: -5px;
-  left: 50%;
+  right: 5%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
