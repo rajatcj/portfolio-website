@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #a58052;
+  --secondary: #ff0000;
+}
+
 ::-webkit-scrollbar {
   width: 0em;
 }
@@ -479,12 +484,12 @@ html {
   z-index: -1;
   margin: -4px;
   border-radius: 50%;
-  background-color: #a58052;
+  background-color: var(--primary);
 }
 
 .nitro-card {
   position: relative;
-  background: linear-gradient(0, #ff0000, #a58052);
+  background: linear-gradient(0, var(--secondary), var(--primary));
   background-blend-mode: multiply;
   background-color: #0000006c;
 }
@@ -499,5 +504,5 @@ html {
   z-index: -1;
   margin: -5px;
   border-radius: 12px;
-  background: linear-gradient(0, #ff0000, #a58052);;
+  background: linear-gradient(0, var(--secondary), var(--primary));;
 }
