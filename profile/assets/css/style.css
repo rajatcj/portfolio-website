@@ -105,6 +105,16 @@ html {
   background: #00000000;
 }
 
+
+#messagebox {
+  height:300px;
+  margin-top: -300px;
+  position:absolute;
+  display:none; 
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
 .card {
   background: #292b2f;
   width: 100%;
