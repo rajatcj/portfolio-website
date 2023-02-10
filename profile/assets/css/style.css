@@ -72,7 +72,6 @@ html {
   border-radius: 3px;
   color: #fff;
   font-size: 0.85rem;
-  transition: 0.2s ease-in-out;
   margin-top: 12px;
   height: 38px;
   flex: 1;
@@ -150,7 +149,7 @@ html {
   align-items: flex-end;
   justify-content: space-between;
   width: calc(100% - 30px);
-  top: -50px;
+  top: -48px;
 }
 
 .card-body .profile-header .profil-logo {

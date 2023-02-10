@@ -9,7 +9,7 @@
     grid-auto-flow: column;
     grid-column-gap: 10px;
     grid-template-columns: max-content;
-    width: 98%;
+    width: 100%;
     padding: 4px;
     color: white;
 }
@@ -24,8 +24,8 @@
 
 #activities {
     display: inline-block;
-    padding-left: 2%;
-    width: 96%;
+    padding-left: 0%;
+    width: 100%;
     height: fit-content;
     background: rgba(77, 31, 146, 0);
 }
