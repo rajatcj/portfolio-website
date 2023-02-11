@@ -10,6 +10,21 @@ function updatepresenceLoop() {
     let activities = json.activities;
     let currentdiv = document.getElementById("activities");
     var h = originalh;
+    let containsOtherTypes = false;
+    if (activities.length !== 0) {
+      for (let i = 0; i < activities.length; i++) {
+        if (activities[i].type !== 4) {
+          containsOtherTypes = true;
+          break;
+        }
+      }
+    }
+    if (!containsOtherTypes) {
+      document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + "</li></ul></div></div>";
+      currentdiv.style.height = "2rem";
+    } else {
+      document.getElementById("activities").innerHTML = '';
+    }
     activities.forEach(element => {
         // if not the status activity, continue
         if(element['type'] !== 4) {
