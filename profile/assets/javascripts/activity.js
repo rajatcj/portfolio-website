@@ -20,7 +20,8 @@ function updatepresenceLoop() {
       }
     }
     if (!containsOtherTypes) {
-      document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + "</li></ul></div></div>";
+      platform = [(json.active_on_discord_web === true ? "Web, " : ""), (json.active_on_discord_desktop === true ? "Desktop, " : ""), (json.active_on_discord_mobile === true ? "Phone, " : "")]
+      document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + (json.discord_status === "offline" ? "" : " on ") + platform.join("") + "</li></ul></div></div>";
       currentdiv.style.height = "2rem";
     } else {
       document.getElementById("activities").innerHTML = '';

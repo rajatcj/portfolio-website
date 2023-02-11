@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="./flashavatar.css">
     <link rel="stylesheet" href="../particle/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap">
-    <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='./assets/css/style.css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 
     <!--J query-->
@@ -51,7 +51,7 @@
 
     <a class='mediabtn' style="position:absolute; top:10px; right:10px; background: var(--primary-bgopp); color: var(--primary-bg);" id='themebutton' onclick="changeTheme()" href='#'><i class="fa-solid fa-sun"></i></a>
     <audio id="idAudio">
-        <source src="./rick.mp3" type="audio/ogg">
+        <source src="./assets/rick.mp3" type="audio/ogg">
     </audio>
     <div class='triangle' id="particles-js"></div>
     <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="discordprofile" id="discordprofile">
-        <iframe id="discordprofileinside" src="../profile/index.html" style="margin:20vh auto; display:block; width:100%; max-width: 400px; height: 80vh; border:0px;" title="Discord Status"></iframe>
+        <iframe id="discordprofileinside" src="../profile/index.html" style="margin:20vh auto; display:block; width:98%; max-width: 500px; height: 80vh; border:0px;" title="Discord Status"></iframe>
     </div>
 
     
@@ -134,250 +134,11 @@
 </html>
 
 
-
-<!-- chat id storer -->
-<script>
-    function updateTime() {
-// Update the time displays
-document.getElementById('my-time').innerHTML = new Date().toLocaleTimeString('en-US', {timeZone: 'Asia/Kathmandu', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true});
-
-document.getElementById('my-date').innerHTML = new Date().toLocaleDateString('en-US', {timeZone: 'Asia/Kathmandu', day: '2-digit', month: 'long', year: 'numeric'});
-}
-// Update the time every second
-setInterval(updateTime, 1000);
-// Update the time when the page loads
-updateTime();
-  </script>
-
-  <script>
-const focusedTitles = ["I", "I L", "I Lo", "I Lov", "I Love", "I Love Y", "I Love Yo", "I Love You", "I Love You 💖", "I Love You 💖", "@rajat_cj", "@rajat_cj"];
-const focusedIcon = "https://api.lanyard.rest/754033245972201612.jpg";
-const notFocusedTitles = ["Babyy did you go?", "Pls come back", "I need to tell you sth", "Heyyy", "Aw Im sad now~", "Babyyyy", "come back 😭", "@rajat_cj", "@rajat_cj"];
-const notFocusedIcon = "https://cdn.discordapp.com/emojis/1062638551650549760.gif";
-let intervalId;
-let currentTitleIndex = 0;
-let titles = focusedTitles;
-let icon = focusedIcon;
-
-function updateTitle() {
-  document.querySelector("#titleofthepage").textContent = titles[currentTitleIndex];
-  currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-  document.querySelector("#iconofthepage").setAttribute("href", icon);
-}
-
-function handleVisibilityChange() {
-  if (document.hidden) {
-    titles = notFocusedTitles;
-    icon = notFocusedIcon;
-    currentTitleIndex = 0;
-    clearInterval(intervalId);
-    intervalId = setInterval(updateTitle, 2500);
-  } else {
-    titles = focusedTitles;
-    icon = focusedIcon;
-    currentTitleIndex = 0;
-    clearInterval(intervalId);
-    intervalId = setInterval(updateTitle, 1000);
-  }
-}
-
-
-document.addEventListener("visibilitychange", handleVisibilityChange);
-
-  </script>
-
-<script>
- 
-
-    if(typeof(Storage) !== "undefined") {
-        if(localStorage.getItem("chatid") === null) {
-            localStorage.setItem("chatid", Date.now());
-            var chatid = localStorage.getItem("chatid");
-            $.getJSON("https://api.ipify.org?format=json", function(data) {
-                document.getElementById('timezone').value = data.ip;
-                
-        txt = "**🌐 • Registered From: **" + window.top.location.href + " /newline";
-	txt += "**💻 • Browser CodeName: **` " + navigator.appCodeName + " ` /newline";
-    txt+= "**💻 • Browser Name: **` " + navigator.appName + " ` /newline";
-    txt+= "**💻 • Browser Version: **` " + navigator.appVersion + " ` /newline";
-    txt+= "**🍪 • Cookies Enabled: **` " + navigator.cookieEnabled + " ` /newline";
-    txt+= "**🌍 • Platform: **` " + navigator.platform + " ` /newline";
-    txt+= "**🔏 • User-agent header: **` " + navigator.userAgent + " ` /newline";
-    
-      var OSName = "Unknown OS";
-      if (navigator.userAgent.indexOf("Win") != -1) OSName = "Windows";
-      if (navigator.userAgent.indexOf("Mac") != -1) OSName = "Macintosh";
-      if (navigator.userAgent.indexOf("Linux") != -1) OSName = "Linux";
-      if (navigator.userAgent.indexOf("Android") != -1) OSName = "Android";
-      if (navigator.userAgent.indexOf("like Mac") != -1) OSName = "iOS";
-      // Browser with version  Detection
-    navigator.sayswho= (function(){
-        var N= navigator.appName, ua= navigator.userAgent, tem;
-        var M= ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-        if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
-        M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
-        return M;
-    })();
-    
-    var browser_version = navigator.sayswho;
-    
-                $.getJSON("https://sendbotu.rajatcj.com.np/message?content=loading_site_info_fetch&guild=819109979046936577&username=Linktree&avatar_url=https://cdn.discordapp.com/emojis/892004694120103946.webp&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + data.ip + "&details=" + OSName + " " + browser_version  + "thisisabreak" + txt)
-            })
-        } else {
-            var chatid = localStorage.getItem("chatid");
-        }
-    } else {
-        var chatid = "NA";
-    }
-    document.getElementById('sessionid').value = chatid;
-	document.getElementById('url').value = window.top.location.href;
-    $.getJSON("https://api.ipify.org?format=json", function(data) {
-		document.getElementById('timezone').value = data.ip;
-	})
-    </script>
-
-
-<!-- chatbox message system -->
-<script>
-function sendLinkTreePrivMsg() {
-    if (document.getElementById('content').value != "") {
-    const snowflake = (chatid + Date.now());
-    $.getJSON("https://sendbotu.rajatcj.com.np/message?content=" + document.getElementById('content').value + "&guild=" + document.getElementById('guild').value + "&username=" + document.getElementById('username').value + "&avatar_url=" + document.getElementById('avatar_url').value + "&sessionid=" + document.getElementById('sessionid').value + "&timezone=" + document.getElementById('timezone').value + "&reid=" + sessionStorage.getItem('data-id') + "&reco=" + sessionStorage.getItem('data-co')  + "&siteurl=" + document.getElementById('url').value + "&sf=" + snowflake)
-    document.getElementById('content').value = "";
-    document.getElementById('content').readOnly = true;
-    document.getElementById('content').placeholder = "Wait 5 sec to send again";
-    sessionStorage.removeItem('data-id');
-          sessionStorage.removeItem('data-co');
-    setTimeout(function() {
-        document.getElementById('content').readOnly = false;
-        document.getElementById('content').placeholder = "Send anonymous message";
-        }, 5000);
-    }
-}
-</script>
-
-<!--spotify-np-->
-<script>
-
-// loadchatonupdate
-
-
-lanyard({
-    userId: "754033245972201612",
-    socket: true,
-    onPresenceUpdate: loopspoti
-})
-
-function loopspoti(data) {
-    console.log(data);
-            if(data.listening_to_spotify === false) {
-        document.getElementById('spotify-np').innerHTML = '<p id="spotify-iframe" src="hm"></p>'
-    } else if(document.getElementById('spotify-iframe').src != "https://open.spotify.com/embed/track/" + data.spotify.track_id) {
-        document.getElementById('spotify-np').innerHTML = '<br><br><table><tr><td><img class="spotifylink-image" width="45" height="45" src="./spotifylink.gif"></td><td><h2 style="color: #1cb853;">Listening Now...</h2></td></tr></table><iframe id="spotify-iframe" style="border-radius:12px;" src="https://open.spotify.com/embed/track/' + data.spotify.track_id + '" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>'
-    }
-        
-};
-
-
-</script>
-
-
-<!--For profile start-->
-<script>
-function openDisc() {
-    document.getElementById("discordprofile").style.height = "100%";
-}
-</script>
-<script>
-var body = document.getElementById('discordprofile');
-var except = document.getElementById('discordprofileinside');
-body.addEventListener("click", function() {
-    document.getElementById("discordprofile").style.height = "0%";
-}, false);
-except.addEventListener("click", function(ev) {
-    ev.stopPropagation();
-}, false);
-</script>
-
-
-<!--rickroll-->
-<script>
-var GFG = document.getElementById("idAudio");
-
-function play_Audio() {
-    GFG.volume = 1.0;
-    GFG.play();
-    document.getElementById('rickroll').innerHTML = "Never Gonna Give You Up";
-    document.getElementById('avatartext').innerHTML = "gotcha";
-    document.getElementById('avatar').innerHTML = "<img src='./rickroll.gif' alt='Discord Avatar' onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
-}
-
-function pause_Audio() {
-    GFG.pause();
-    document.getElementById('rickroll').innerHTML = "OnlyFans";
-    document.getElementById('avatartext').innerHTML = "Hi.";
-    document.getElementById('avatar').innerHTML = "<img src='https://api.lanyard.rest/754033245972201612.jpg' alt='Discord Avatar'  onclick='openDisc()' style='cursor: pointer;' class='header__icon'/>";
-}
-</script>
-
-<!-- Browser ID for chats 
-<script>
-	document.querySelector('#content').addEventListener('keypress', function (e) {
-	  setTimeout(function() { if (e.key === 'Enter') {
-		  document.getElementById('content').value = "";
-		  document.getElementById('content').placeholder = "✅ Message was sent";
-		}}, 1000);
-	});
-  </script>
-  -->
-<!-- theme switch -->
-
-<script>
-var currentTheme = localStorage.getItem('theme');
-if(currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if(currentTheme === 'dark') {
-        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
-    }
-};
-
-function changeTheme() {
-    if(localStorage.getItem('theme') === 'light') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-moon'></i>";
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        document.getElementById('themebutton').innerHTML = "<i class='fa-solid fa-sun'></i>";
-    }
-}
-</script>
-
-
-<script>
-// get the text field and div elements
-var textField = document.getElementById('content');
-
-// when the text field is focused, show the div
-textField.addEventListener('focusin', function() {
-    if (document.getElementById('messagepreview')) {
-  // iframe with id "messagepreview" exists
-} else {
-  // iframe with id "messagepreview" does not exist
-  document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="../chat/index.html" style="display:block; border:0px;" title="Discord Status"></iframe>';
-}
-  });
-
-// when the user clicks outside of the text field and iframe, hide the div
-document.addEventListener('mousedown', function(event) {
-  var iframe = document.getElementById('messagepreview');
-  if (!textField.contains(event.target) && !iframe.contains(event.target)) {
-    document.getElementById("messagebox").innerHTML = '';
-  }
-});
-
-  </script>
+<script src="./assets/javascript/titleanime.js"></script>
+<script src="./assets/javascript/chatid.js"></script>
+<script src="./assets/javascript/msgsend.js"></script>
+<script src="./assets/javascript/spotify.js"></script>
+<script src="./assets/javascript/linktree.js"></script>
   
        <!-- Add a script to handle the loading screen -->
        <script>
@@ -390,7 +151,7 @@ document.addEventListener('mousedown', function(event) {
 
 <!-- Particle.js -->
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="./particle.js"></script>
+<script src="./assets/javascript/particle.js"></script>
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
