@@ -111,10 +111,12 @@ html {
 }
 
 
+
 #messagebox {
   height:300px;
   margin-top: -300px;
-  position:absolute;
+  justify-content:center;
+  position:relative;
   display:none; 
   z-index: 1;
   transition: all 0.3s ease-in-out;
