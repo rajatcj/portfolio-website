@@ -204,6 +204,13 @@ body {
 /*--------------------
 Chat
 --------------------*/
+.timestamp {
+  position: absolute;
+  bottom: -13px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, .3);
+}
+
 .chat {
   border-radius: 10px;
   border: 2px solid var(--border);

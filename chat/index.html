@@ -71,9 +71,59 @@
 	</script>
 	<!-- webhook message -->
 	<script>
+		function getRelativeTime(timestamp) {
+  const currentTime = Math.floor(Date.now() / 1000);
+  const timeElapsed = currentTime - timestamp;
+  
+  if (timeElapsed < 60) {
+    return 'just now';
+  } else if (timeElapsed < 3600) {
+    const minutes = Math.floor(timeElapsed / 60);
+    return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+  } else if (timeElapsed < 86400) {
+    const hours = Math.floor(timeElapsed / 3600);
+    return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+  } else if (timeElapsed < 604800) {
+    const days = Math.floor(timeElapsed / 86400);
+    return `${days} day${days !== 1 ? 's' : ''} ago`;
+  } else if (timeElapsed < 2592000) {
+    const weeks = Math.floor(timeElapsed / 604800);
+    return `${weeks} week${weeks !== 1 ? 's' : ''} ago`;
+  } else if (timeElapsed < 31536000) {
+    const months = Math.floor(timeElapsed / 2592000);
+    return `${months} month${months !== 1 ? 's' : ''} ago`;
+  } else {
+    const years = Math.floor(timeElapsed / 31536000);
+    return `${years} year${years !== 1 ? 's' : ''} ago`;
+  }
+}
+
+function getFormattedTime(timestamp) {
+	if (isNaN(timestamp)) {
+    return "Invalid timestamp";
+  }
+  const messageDate = new Date(parseInt(timestamp));
+  const currentDate = new Date();
+
+
+  if (messageDate.toDateString() !== currentDate.toDateString()) {
+    // If the message was sent on a different date, return the date in the format "MM/DD/YYYY"
+    const month = (messageDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = messageDate.getDate().toString().padStart(2, '0');
+    const year = messageDate.getFullYear();
+    return `${month}/${day}/${year}`;
+  } else {
+    // If the message was sent on the same date, return the time in the format "HH:mm"
+    const hours = messageDate.getHours().toString().padStart(2, '0');
+    const minutes = messageDate.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+  }
+}
+
+
 	function sendLinkTreePrivMsg() {
 		if(document.getElementById('content').value != "") {
-			const snowflake = (chatid + Date.now());
+			const snowflake = Date.now();
 			const dataArray = [{
 				id: document.getElementById('sessionid').value,
 				sf: snowflake,
@@ -159,7 +209,7 @@
 					clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 				}
 			}
-			messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
+			messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "<div class='timestamp'>" + getFormattedTime(dataArray[i].sf) + "</div></div>" + links.join('');
 			msgbox.appendChild(messageElement);
 			const divElements = document.querySelectorAll('.message');
 			divElements.forEach(div => {
@@ -266,8 +316,8 @@
 			const dataArray = JSON.parse(data.data.kv.chatdata)
 			console.log[dataArray[0]]
 			const i = 49;
-			const msgsnowflake = document.getElementById('msgbox').lastChild.dataset.sf;
-			if(msgsnowflake != dataArray[i].sf) {
+			const msgsnowflake = document.getElementById('msgbox').lastChild.dataset.sf + document.getElementById('msgbox').lastChild.dataset.id;
+			if(msgsnowflake != dataArray[i].sf + dataArray[i].id) {
 				let messageElement;
 				if(dataArray[i].id === chatid) {
 					messageElement = document.createElement('div');
@@ -340,7 +390,7 @@
 						clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 					}
 				}
-				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
+				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "<div class='timestamp'>" + getFormattedTime(dataArray[i].sf) + "</div></div>" + links.join('');
 				msgbox.appendChild(messageElement);
 				const divElements = document.querySelectorAll('.message');
 				divElements.forEach(div => {
@@ -494,7 +544,7 @@
 						clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 					}
 				}
-				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "</div>" + links.join('');
+				messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "<div class='timestamp'>" + getFormattedTime(dataArray[i].sf) + "</div></div>" + links.join('');
 				msgbox.appendChild(messageElement);
 				const divElements = document.querySelectorAll('.message');
 				divElements.forEach(div => {
