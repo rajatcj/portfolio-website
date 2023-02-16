@@ -19,6 +19,7 @@ Mixins
   --textbox-bg: #c7c7c7;
   --textbox-bo: #43192d;
   --textbox-text: rgb(0, 0, 0);
+  --timestamp: rgb(99, 99, 99);
 }
 
 [data-theme="dark"] {
@@ -39,6 +40,7 @@ Mixins
   --textbox-bg: #313131;
   --textbox-bo: #ffad7d;
   --textbox-text: rgb(255, 255, 255);
+  --timestamp: rgba(255, 255, 255, .3);
 }
 
 [data-theme="discord"] {
@@ -59,6 +61,7 @@ Mixins
   --textbox-bg: #202225;
   --textbox-bo: #40444b;
   --textbox-text: #fff;
+  --timestamp: rgba(255, 255, 255, .3);
 }
 
 
@@ -208,7 +211,7 @@ Chat
   position: absolute;
   bottom: -13px;
   font-size: 9px;
-  color: rgba(255, 255, 255, .3);
+  color: var(--timestamp);
 }
 
 .chat {
