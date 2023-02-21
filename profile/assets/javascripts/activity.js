@@ -28,7 +28,8 @@ function updatepresenceLoop() {
     }
     activities.forEach(element => {
         // if not the status activity, continue
-        if(element['type'] !== 4) {
+        // if(element['type'] !== 4) {
+        if(element['type'] !== 4 && element['name'] !== "Spotify") {
             var activityname = element['name'].split(' ').join('').toLowerCase();
             var exists = true;
             if(document.getElementById(activityname) !== null)

@@ -56,8 +56,16 @@ fetch('config.json').then(function(response) {
     if (data.listening_to_spotify) {
       document.getElementById("discorduser.spotify").innerHTML = `<div class="status-item"><i style="font-size: 12px; color:#1ed760;" class="fa-brands fa-spotify"></i>
                 <div class="tooltip tooltip-up">Listening to Spotify</div></div>`;
+      document.getElementById("spotify-playback").innerHTML = `<div class="category-title">Listening to Spotify</div><iframe
+      src="https://linkcord.js.org/api/v3/widget/754033245972201612?type=spotify_large&background=00000000&theme=dark&logo=true"
+      width="100%"
+      height="100"
+      allowtransparency="true"
+      frameborder="0"
+  />`;    
     } else {
       document.getElementById("discorduser.spotify").innerHTML = ``;
+      document.getElementById("spotify-playback").innerHTML = ``;   
     }
     if (data.activities[0].id === `custom`) {
       document.getElementById("discorduser.status").innerHTML = (data.activities[0].state == undefined ? `` : data.activities[0].state) + `<br><br>`;
