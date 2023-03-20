@@ -115,7 +115,7 @@ html {
 
 .detailobjects {
   height: fit-content;
-  max-height: calc(100vh - 265px);
+  max-height: calc(100vh - 264px);
   overflow: auto;
 }
 
