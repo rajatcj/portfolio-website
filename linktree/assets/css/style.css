@@ -206,6 +206,7 @@ body {
   max-height: 13.2rem;
   background-color: var(--avatar-bg);
   margin-top: 2rem;
+  animation: pulseavatar 2s ease-out infinite;
 }
 
 .header__chat-box h1 {
@@ -428,6 +429,19 @@ body {
   top: -10%;
   left: -10%;
 }
+
+@keyframes pulseavatar {
+  0% {
+    box-shadow: 0 0 0 0 var(--avatar-bo);
+  }
+  25% {
+    box-shadow: 0 0 10px 5px var(--avatar-bo);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--avatar-bo);
+  }
+}
+
 
 @keyframes aaa {
   0% {

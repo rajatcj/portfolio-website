@@ -14,6 +14,8 @@
   --secondary: #ff0000;
 }
 
+
+
 ::-webkit-scrollbar {
   width: 0em;
 }
@@ -111,6 +113,24 @@ html {
 }
 
 
+.detailobjects {
+  height: fit-content;
+  max-height: calc(100vh - 265px);
+  overflow: auto;
+}
+
+.detailobjects::-webkit-scrollbar {
+  width: 3px;
+}
+
+.detailobjects::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+.detailobjects::-webkit-scrollbar-thumb {
+  background: #ffffff25;
+  border-radius: 5px;
+}
 
 #messagebox {
   height:300px;
@@ -125,8 +145,8 @@ html {
 .card {
   background: #292b2f;
   width: 100%;
-  height: 95%;
   height: max-content;
+  max-height: 100%;
   border-radius: 9px;
   box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0px 0px 16px 3px rgba(0, 0, 0, 0.2);

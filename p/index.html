@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>@rajat_cj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/style-c.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="landingpage">
+  <div class="navbar">
+    <a class="navlogo">Rajat CJ</a>
+    <button class="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    <div class="navlinkwrap">
+      <span class="navlink" onclick="location.href='https://jharajat.com.np';" style="cursor: pointer;">Home</span>
+      <span class="navlink" onclick="location.href='https://jharajat.com.np/old';" style="cursor: pointer;">Old Home</span>
+      <span class="navlink" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
+      <span class="navlink" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
+    </div>
+    <div class="buttonwrap">
+      <button class="createbtn selectedbtn" onclick="location.href='https://jharajat.com.np/linktree';" style="cursor: pointer;">Linktree</button>
+      <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
+    </div>
+  </div>
+
+
+  <div class="box wrapper" id="content">
+    <div class="infobox">
+      <p class="infobox-boldtext">
+        404 : Ouch That Hurts
+      </p>
+      <p class="infobox-slimtext">
+        This page is in another castle. It may have been deleted or never been in the universe.. Or maybe they gave you a funky link that goes nowhere 😔 Thats jazz baby
+      </p>
+      <div class="infobox-btnwrapper">
+        <button class="infobox-explorebtn selected" onclick="location.href='https://jharajat.com.np/';" style="cursor: pointer;">Portfolio</button>
+        <button class="infobox-createbtn" onclick="location.href='https://jharajat.com.np/linktree';" style="cursor: pointer;">Linktree</button>
+      </div>
+    </div>
+    <iframe src="../profile/index.html"  style="width:100%; max-width: 500px; height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
+    
+  </div>
+  
+
+
+  <div class="footer">
+    <div class="footer-main">
+      Made with HTML5, CSS3, JS, JQuery, Lanyard and 💖, Check out my Repo for inspiration but the layout and design is copyrighted.
+    </div>
+    <div class="footer-navigate">
+      <div class="nav">
+        <h5>Projects</h5>
+        <p onclick="location.href='https://adoreconstruction.com';" style="cursor: pointer;">1st Client Website</p>
+        <p onclick="location.href='https://jharajat.com.np/linktree';" style="cursor: pointer;">Linktree</p>
+        <p onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;">Snippets</p>
+        <p onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Discord Bot</p>
+      </div>
+      <div class="nav">
+        <h5>Discords</h5>
+        <p>Botu's Crewmates</p>
+        <p>Hangout Place</p>
+        <p>One Piece Nepal</p>
+        <p>Medicos</p>
+      </div>
+      <div class="nav">
+        <h5>Socials</h5>
+        <p onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;">Instagram</p>
+        <p>Snapchat</p>
+        <p>Twitter</p>
+        <p>Reddit</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer2">
+    <div></div>
+    <p>Copyright 2023 Rajat</p>
+  </div>
+  </div>
+
+<!-- partial -->
+  
+</body>
+
+<script>
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+
+// Get the first parameter from the query string
+const firstParam = params.keys().next().value;
+
+fetch('https://api.lanyard.rest/v1/users/754033245972201612')
+  .then(response => response.json())
+  .then(info => {
+    const contentStr = info.data.kv[firstParam];
+    const data = JSON.parse(contentStr);
+    console.log(data)
+    const infobox = `
+      <div class="infobox">
+        <p class="infobox-boldtext">${data.infobox.boldtext}</p>
+        <p class="infobox-slimtext">${data.infobox.slimtext}</p>
+        <div class="infobox-btnwrapper">
+          <button class="infobox-explorebtn selected" onclick="location.href='${data.infobox.explorebtn.link}'" style="cursor: pointer;">${data.infobox.explorebtn.text}</button>
+          <button class="infobox-createbtn" onclick="location.href='${data.infobox.createbtn.link}'" style="cursor: pointer;">${data.infobox.createbtn.text}</button>
+        </div>
+      </div>
+    `;
+    
+    const display = `
+      <div class="display">
+        <img class="display-nft" src="${data.display.nftimg}" alt="unsplash-OG44d93i-NJk" border="0">
+        <div class="infowrapper">
+          <div class="info">
+            <img class="info-img" src="${data.display.infowrapper.info.img}" alt="unsplash-OG44d93i-NJk" border="0">
+            <div>
+              <p>${data.display.infowrapper.info.name}</p>
+              <p>${data.display.infowrapper.info.price}</p>
+            </div>
+          </div>
+          <div class="info2">
+            <p>${data.display.infowrapper.info2.text}</p>
+            <div class="iconwrapper">
+              ${data.display.infowrapper.info2.icon}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.getElementById('content').innerHTML = infobox + display;
+  })
+  .catch(error => console.error(error));
+</script>
+</html>
