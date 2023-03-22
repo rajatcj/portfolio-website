@@ -1,10 +1,16 @@
 body {
   margin: 0;
-  background-color: #252954;
+  background-color: #371B1B;
 }
 
 
-
+canvas {
+  left:200px;
+  top: 0;
+  width: 40%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0);
+}
 
 /* SCROLL BAR */
 
@@ -20,7 +26,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   height: 200px;
-  background-color: #3f62a4;
+  background-color: #a15252;
   background-image:-webkit-linear-gradient(rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
   border-radius: 10px;
 }
@@ -39,7 +45,7 @@ body {
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #1F1D2B;
+  background-color: #371B1B;
 }
 
 .landingpage .navbar {
@@ -82,7 +88,7 @@ body {
 .navbar .hamburger {
   display: none;
   color: #D7D7D7;
-  background-color: #1F1D2B;
+  background-color: #371B1B;
   border: none;
   margin-right: 10px;
 }
@@ -104,7 +110,7 @@ body {
 }
 .navbar .navlogo {
   height: 100%;
-  background: linear-gradient(93.51deg, #9B51E0 2.84%, #3081ED 99.18%);
+  background: linear-gradient(93.51deg, #ffffff 2.84%, #ffffff 99.18%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Poppins";
@@ -193,7 +199,7 @@ body {
 }
 .box .infobox .selected {
   border: none;
-  background: linear-gradient(103.91deg, #9B51E0 21.01%, rgba(48, 129, 237, 0.8) 100%);
+  background: linear-gradient(103.91deg, #aa2f2f 21.01%, rgb(231, 79, 79) 100%);
 }
 .box .display {
   animation-name: rightslide;
