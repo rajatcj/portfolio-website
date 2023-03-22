@@ -37,7 +37,7 @@ body {
     height: 12px;
   }
 ::-webkit-scrollbar-track {
-    background-color: #a43f49;
+    background-color: #201010;
   }
 ::-webkit-scrollbar-thumb {
     height: 200px;
@@ -150,8 +150,8 @@ html {
 
 .main-nav li:hover a,
 .main-nav li.active a {
-    background: #fff;
-    color: #8c363e;
+    background: #5e272c;
+    color: #fff;
 }
 
 /* Sidebar Menu */
@@ -247,7 +247,7 @@ html {
 .menu {
   left: 10%;
   -webkit-overflow-scrolling: touch;
-  background-color: #a43f49;
+  background-color: #201010;
   box-sizing: border-box;
   height: 100vh;  
   max-height: 100vh !important;
@@ -265,7 +265,7 @@ html {
 }
 
 .menu-toggle {
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
   font-size: 25px;
   position: fixed;
@@ -358,7 +358,7 @@ html {
 .site-button a {
     display: inline-block;
     padding: 5px 16px;
-    background-color: #bb4e59;
+    background-color: #5e272c;
     color: #ffffff;
     width: 30%;
     font-size: 10px;
@@ -379,8 +379,8 @@ html {
 .ig-button a {
     display: inline-block;
     padding: 5px 16px;
-    background-color: #fff;
-    color: #a43f49;
+    background-color: #5e272c;
+    color: #fff;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -390,8 +390,8 @@ html {
 }
 
 .ig-button a:hover {
-    background-color: #c04a5680;
-    color: #fff;
+    background-color: #fff;
+    color: #5e272c;
 }
 
 .igred-button a {
