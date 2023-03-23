@@ -23,7 +23,7 @@ textField.addEventListener('focusin', function() {
   // iframe with id "messagepreview" exists
 } else {
   // iframe with id "messagepreview" does not exist
-  document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="../chat/index.html" style="display:block; border:0px;" title="Discord Status"></iframe>';
+  document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="./chat/?theme=dark" style="display:block; border:0px;" title="Discord Status"></iframe>';
 }
   });
 

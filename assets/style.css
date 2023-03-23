@@ -32,6 +32,29 @@ canvas {
 }
 
 
+input[type=text] {
+  width: 100%;
+  max-width: 40rem;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #371B1B;
+  padding: 20px;
+  color: #fff;
+}
+
+.messagebox {
+  height:250px;
+  margin-top: -320px;
+  position:absolute;
+  display:flex; 
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
 
 
 .hidden {
@@ -135,10 +158,11 @@ canvas {
   margin-right: 32px;
 }
 
+
 .box .infobox {
+  height:fit-content;
   animation-name: leftslide;
   animation-duration: 0.8s;
-  max-height: 500px;
   max-width: 55%;
   overflow: hidden;
 }
@@ -532,7 +556,7 @@ canvas {
     flex-direction: column;
   }
   .box .infobox {
-    max-height: 450px;
+    height: 100vh;
     max-width: none;
     margin-bottom: 50px;
   }
@@ -605,7 +629,7 @@ canvas {
     flex-direction: column;
   }
   .box .infobox {
-    max-height: none;
+    height:100vh;
     max-width: none;
     margin-bottom: 50px;
   }

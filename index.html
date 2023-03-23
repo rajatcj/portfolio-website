@@ -19,6 +19,8 @@
         <meta content="https://www.jharajat.com.np/" property="og:url" />
         <meta content="#371B1B" data-react-helmet="true" name="theme-color" />
 
+ <!--J query-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,8 +29,12 @@
 
 <link rel="stylesheet" href="./assets/style.css">
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+
+
 </head>
 <body>
+  
 <!-- partial:index.partial.html -->
 <div class="landingpage">
   <div class="navbar">
@@ -51,7 +57,7 @@
     </div>
   
   <div class="box">
-    <div class="infobox" style="height:100vh;">
+    <div class="infobox">
       <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
       
       <p class="infobox-boldtext">
@@ -64,6 +70,20 @@
         <button class="infobox-explorebtn selected" onclick="location.href='https://jharajat.com.np/portfolio';">Portfolio</button>
         <button class="infobox-createbtn" onclick="location.href='https://jharajat.com.np/linktree';">Linktree</button>
       </div>
+      <br>
+      <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
+          <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
+          <br> -->
+          <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
+          <div id='messagebox' class='messagebox'></div>
+          <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
+          <input name="username" id="username" type="hidden" value="Linktree" />
+          <input name="guild" id="guild" type="hidden" value="819109979046936577" />
+          <input name="sessionid" id="sessionid" type="hidden" value="" />
+          <input name="timezone" id="timezone" type="hidden" value="" />
+          <input name="url" id="url" type="hidden" value="" />
+          
+      </form>
   </div>
   <iframe src="./profile/index.html"  style="width:100%; max-width: 500px; height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
         
@@ -108,6 +128,8 @@
   
 </body>
 
-<script src="./assets/heartanime.js"></script>
 
+
+<script src="./assets/chatid.js"></script>
+<script src="./assets/msgsend.js"></script>
 </html>

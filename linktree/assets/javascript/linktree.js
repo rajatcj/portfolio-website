@@ -55,26 +55,7 @@ function changeTheme() {
     }
 }
 
-// get the text field and div elements
-var textField = document.getElementById('content');
 
-// when the text field is focused, show the div
-textField.addEventListener('focusin', function() {
-    if (document.getElementById('messagepreview')) {
-  // iframe with id "messagepreview" exists
-} else {
-  // iframe with id "messagepreview" does not exist
-  document.getElementById("messagebox").innerHTML = '<iframe id="messagepreview" src="../chat/index.html" style="display:block; border:0px;" title="Discord Status"></iframe>';
-}
-  });
-
-// when the user clicks outside of the text field and iframe, hide the div
-document.addEventListener('mousedown', function(event) {
-  var iframe = document.getElementById('messagepreview');
-  if (!textField.contains(event.target) && !iframe.contains(event.target)) {
-    document.getElementById("messagebox").innerHTML = '';
-  }
-});
 
 
 function updateTime() {
