@@ -122,31 +122,31 @@ fetch('https://api.lanyard.rest/v1/users/754033245972201612')
     const data = JSON.parse(contentStr);
     console.log(data)
     const infobox = `
-      <div class="infobox">
-        <p class="infobox-boldtext">${data.infobox.boldtext}</p>
-        <p class="infobox-slimtext">${data.infobox.slimtext}</p>
+      <div class="infobox" style="height:fit-content;">
+        <p class="infobox-boldtext">${data.main.title}</p>
+        <p class="infobox-slimtext">${data.main.detail}</p>
         <div class="infobox-btnwrapper">
-          <button class="infobox-explorebtn selected" onclick="location.href='${data.infobox.explorebtn.link}'" style="cursor: pointer;">${data.infobox.explorebtn.text}</button>
-          <button class="infobox-createbtn" onclick="location.href='${data.infobox.createbtn.link}'" style="cursor: pointer;">${data.infobox.createbtn.text}</button>
+          <button class="infobox-explorebtn selected" onclick="location.href='${data.main.pribtn.link}'" style="cursor: pointer;">${data.main.pribtn.text}</button>
+          <button class="infobox-createbtn" onclick="location.href='${data.main.secbtn.link}'" style="cursor: pointer;">${data.main.secbtn.text}</button>
         </div>
       </div>
     `;
     
     const display = `
       <div class="display">
-        <img class="display-nft" src="${data.display.nftimg}" alt="unsplash-OG44d93i-NJk" border="0">
+        <img class="display-nft" src="${data.card.img}" alt="unsplash-OG44d93i-NJk" border="0">
         <div class="infowrapper">
           <div class="info">
-            <img class="info-img" src="${data.display.infowrapper.info.img}" alt="unsplash-OG44d93i-NJk" border="0">
+            <img class="info-img" src="${data.card.detail.info1.img}" alt="unsplash-OG44d93i-NJk" border="0">
             <div>
-              <p>${data.display.infowrapper.info.name}</p>
-              <p>${data.display.infowrapper.info.price}</p>
+              <p>${data.card.detail.info1.name}</p>
+              <p>${data.card.detail.info1.price}</p>
             </div>
           </div>
           <div class="info2">
-            <p>${data.display.infowrapper.info2.text}</p>
+            <p>${data.card.detail.info2.text}</p>
             <div class="iconwrapper">
-              ${data.display.infowrapper.info2.icon}
+              ${data.card.detail.info2.icon}
             </div>
           </div>
         </div>

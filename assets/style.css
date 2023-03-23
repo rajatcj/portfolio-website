@@ -561,7 +561,7 @@ input[type=text] {
     margin-bottom: 50px;
   }
   .box .display {
-    display: none;
+    display: block;
     max-height: none;
     max-width: none;
   }
