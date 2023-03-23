@@ -120,7 +120,18 @@ fetch('https://api.lanyard.rest/v1/users/754033245972201612')
   .then(info => {
     const contentStr = info.data.kv[firstParam];
     const data = JSON.parse(contentStr);
-    console.log(data)
+    
+    // Select the meta elements by their property attribute
+const titleMeta = document.querySelector('meta[property="og:title"]');
+const descMeta = document.querySelector('meta[property="og:description"]');
+const imageMeta = document.querySelector('meta[property="og:image"]');
+const iconLink = document.querySelector('link[rel="shortcut icon"]');
+// Update the page title
+document.title = data.main.title;
+//iconLink.setAttribute('href', data.card.img);
+titleMeta.setAttribute('content', data.main.title);
+descMeta.setAttribute('content', data.main.detail);
+imageMeta.setAttribute('content', data.card.img);
     const infobox = `
       <div class="infobox" style="height:fit-content;">
         <p class="infobox-boldtext">${data.main.title}</p>
@@ -154,6 +165,8 @@ fetch('https://api.lanyard.rest/v1/users/754033245972201612')
     `;
     
     document.getElementById('content').innerHTML = infobox + display;
+
+
   })
   .catch(error => console.error(error));
 </script>
