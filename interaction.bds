@@ -1,0 +1,90 @@
+$nomention
+$onlyIf[$checkContains[$customID;@mematchcard@]==true;]
+
+$jsonParse[$getUserVar[memorymatchdata;$authorID]]
+$var[cards;$json[cards]]
+$var[selected;$json[selected]]
+$var[current;$json[current]]
+$var[start;$json[start]]
+$var[score;$json[score]]
+
+$if[$checkContains[$getEmbedData[$channelID;$messageID;1;footer];$username[$authorID]#$discriminator[$authorID]]==true]
+    $title[🧠 Memory Match]
+    $if[$var[selected]==0]
+        $textSplit[$customID;@]
+        $var[tot;$splitText[2]]
+        $var[car;$splitText[4]]
+        $textSplit[$json[cards];-]
+        $description[$splitText[$var[car]]❓]
+        $color[ff8888]
+        $footer[$username[$authorID]#$discriminator[$authorID]: 💥 $json[score]    ⏰ $sub[$getTimestamp;$json[start]] sec.]
+        $editButton[$customID;;primary;no;$splitText[$var[car]]]
+        $editButton[kkkkk-ThisIsJustAnIndicator;;secondary;yes;✅]
+        $jsonSet[selected;1]
+        $jsonSet[current;$splitText[$var[car]]]
+        $jsonSet[customid;$customID]
+
+    $elseif[$var[selected]==1]
+        $textSplit[$customID;@]
+        $var[tot;$splitText[2]]
+        $var[car;$splitText[4]]
+        $textSplit[$json[cards];-]
+        $var[currentcard;$json[current]]
+
+        $if[$var[currentcard]!=$splitText[$var[car]]]
+            $editButton[$customID;;danger;no;$splitText[$var[car]]]
+            $editButton[$json[customid];;danger;no;$var[currentcard]]
+            $description[$var[currentcard]  $splitText[$var[car]]]
+            $footer[Oopse that didnt match!]
+            $color[ff0000]
+            $jsonSet[selected;0]
+            $jsonSet[current;-]
+            $editButton[kkkkk-ThisIsJustAnIndicator;;secondary;yes;⏰]
+            $async[hsh]
+                $replyIn[2]
+                $editButton[$customID;;secondary;no;❔;$messageID]
+                $editButton[$json[customid];;secondary;no;❔;$messageID]
+            $endasync
+            
+            $async[hsyh]
+                $replyIn[3]
+                $editButton[kkkkk-ThisIsJustAnIndicator;;secondary;yes;✅;$messageID]
+                $editMessage[$channelID;$messageID;<@$authorID>;🧠 Memory Match;❓  ❓;ff8888;$username[$authorID]#$discriminator[$authorID]: 💥 $json[score]    ⏰ $sub[$getTimestamp;$json[start]] sec.]
+            $endasync
+
+
+        $else
+            $jsonSet[score;$sum[$json[score];1]]
+            $onlyIf[$customID!=$json[customid];]
+           
+
+            $if[$json[score]==12]
+                $footer[$username[$authorID]#$discriminator[$authorID]: 💥 $json[score]    ⏰ $sub[$getTimestamp;$json[start]]]
+                $color[#009900]
+                $description[Congratulations! You completed the memory match in **$sub[$getTimestamp;$json[start]] seconds**]
+                $editButton[$customID;;success;yes;$splitText[$var[car]]]
+                $editButton[$json[customid];;success;yes;$var[currentcard]]
+                $jsonSet[selected;0]
+
+            $else
+            
+                $footer[Wow thats a match! Awesome.]
+                $color[#009900]
+                $description[$var[currentcard]  $splitText[$var[car]]]
+                $editButton[$customID;;success;yes;$splitText[$var[car]]]
+                $editButton[$json[customid];;success;yes;$var[currentcard]]
+                $editButton[kkkkk-ThisIsJustAnIndicator;;secondary;yes;⏰]
+                $jsonSet[selected;0]
+
+                $async[hsh8]
+                    $replyIn[2]
+                    $editButton[kkkkk-ThisIsJustAnIndicator;;secondary;yes;✅;$messageID]
+                    $editMessage[$channelID;$messageID;<@$authorID>;🧠 Memory Match;❓  ❓;ff8888;$username[$authorID]#$discriminator[$authorID]: 💥 $json[score]    ⏰ $sub[$getTimestamp;$json[start]] sec.]
+                $endasync
+            $endif
+        $endif
+    $endif
+    $setUserVar[memorymatchdata;$jsonStringify]
+
+$endif
+
