@@ -17,7 +17,12 @@
 
   </head>
   <body>
-    <div class="card-container">
+    <div class="loader" id="loading-screen">
+      <div class="square-1 square"></div>
+      <div class="square-2 square"></div>
+    </div>
+
+    <div class="card-container" id="main-content" style="display:none;">
       <!-- First Card -->
       <div class="card nitro-card">
         <div class="card-header" id="discorduser.banner">
@@ -106,9 +111,22 @@
         </div>
         </div>
       </div>
+    </div>
   </body>
 	<script src="./assets/javascripts/profile.js"></script>
 	<script src="./assets/javascripts/webhookmsg.js"></script>
 	<script src="./assets/javascripts/chatid.js"></script>
 	<script src="./assets/javascripts/update.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      const loadingScreen = document.getElementById("loading-screen");
+      const mainContent = document.getElementById("main-content");
+
+      // simulate API fetch and loading time
+      setTimeout(function () {
+        loadingScreen.style.display = "none";
+        mainContent.style.display = "block";
+      }, 2000);
+    });
+  </script>
 </html>

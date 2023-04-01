@@ -26,6 +26,67 @@ html {
   width: 100%;
 }
 
+
+/* Discord loader made by: csozi | Website: www.csozi.hu*/
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 60px;
+  width: 60px;
+  box-sizing: content-box;
+  padding: 10px;
+}
+
+.square {
+  background-color: #7289DA;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+}
+
+.square-1 {
+  animation: load 2s infinite;
+}
+
+.square-2 {
+  animation: load 2s infinite;
+  animation-delay: 1s;
+}
+
+@keyframes load {
+  0% {
+    translate: 0px 0px;
+    scale: 1;
+    rotate: 0deg;
+  }
+
+  25% {
+    translate: 40px 0px;
+    scale: 0.5;
+    rotate: -90deg;
+  }
+
+  50% {
+    translate: 40px 40px;
+    scale: 1;
+    rotate: 180deg;
+  }
+
+  75% {
+    translate: 0px 40px;
+    scale: 0.5;
+    rotate: 90deg;
+  }
+}
+
+
+
+
+
+
 .tooltip {
   display: block;
   position: absolute;
@@ -115,7 +176,7 @@ html {
 
 .detailobjects {
   height: fit-content;
-  max-height: calc(100vh - 264px);
+  max-height: calc(100vh - 320px);
   overflow: auto;
 }
 
