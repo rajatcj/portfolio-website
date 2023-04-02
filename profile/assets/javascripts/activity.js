@@ -78,15 +78,32 @@ function updatepresenceLoop() {
                     return [hours, minutes, seconds].map(v => String(v).padStart(2,0)).join(':');
                 }
                 
-                var activityinfo = ["<li id='type'>" + (element['application_id'] === "920907514344779827" ? "ACTIVE ON..." : (element['type'] === 0 ? "PLAYING..." : (element['type'] === 1 ? "STREAMING..." : (element['type'] === 2 ? "LISTENING..." : (element['type'] === 3 ? "WATCHING..." : ""))))) + "</li><li id='name'>" + element['name'] + "</li>", (element['details'] === undefined ? "" : "<li id='details'>" +  element['details'] + "</li>"), (element['state'] === undefined ? "" : "<li id='state'>" + element['state'] + "</li>"), "<li id='time'>" + formatTime(diff) + " elapsed </li>"]
+
+                const regexPattern = /^mp:external\//;
+                let largeimagelink;
+                try {
+                  largeimagelink = regexPattern.test(element.assets?.large_image) 
+                    ? `https://${element.assets.large_image.split('/https/')[1]}` 
+                    : `https://cdn.discordapp.com/app-assets/${element.application_id}/${element.assets?.large_image}.png`;
+                } catch (error) {
+                  console.log(error);
+                  largeimagelink = './assets/img/unknown.png';
+                }
+                
+                try {
+                  smallimagelink = regexPattern.test(element.assets?.small_image) 
+                    ? `https://${element.assets.small_image.split('/https/')[1]}` 
+                    : `https://cdn.discordapp.com/app-assets/${element.application_id}/${element.assets?.small_image}.png`;
+                } catch (error) {
+                  console.log(error);
+                  smallimagelink = './assets/img/unknown.png';
+                }
+
+                var activityinfo = ["<li id='type'>" + (element['application_id'] === "920907514344779827" ? "ACTIVE ON..." : (element['type'] === 0 ? "PLAYING..." : (element['type'] === 1 ? "STREAMING..." : (element['type'] === 2 ? "LISTENING..." : (element['type'] === 3 ? "WATCHING..." : ""))))) + "</li><li id='name'>" + element['name'] + "</li>" + (element['details'] === undefined ? "" : "<li id='details'>" +  element['details'] + "</li>"), (element['state'] === undefined ? "" : "<li id='state'>" + element['state'] + "</li>"), "<li id='time'>" + formatTime(diff) + " elapsed </li>"]
                 if(element.assets !== undefined) {
-                    div.innerHTML = ('<div class="assets-images"><img  class="large-image" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="https://cdn.discordapp.com/app-assets/'+ element['application_id'] + '/' +
-                        element.assets['large_image'] + '.png">' + (element.assets['small_image'] === undefined ? "" : '<img class="small-image" width="25" height="25" src="https://cdn.discordapp.com/app-assets/'+ element['application_id'] + '/' +
-                        element.assets['small_image'] + '.png">') + '</div><div class="other">' +
-                        "<ul>" + activityinfo.join("") + "</ul>" + '</div>');
+                    div.innerHTML = (`<div class="assets-images"><img class="large-image" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="${largeimagelink}">${(element.assets['small_image'] === undefined ? "" : `<img class="small-image" width="25" height="25" src="${smallimagelink}">`)}</div><div class="other"><ul>${activityinfo.join("")}</ul>` + '</div>');
                 } else if(element.assets === undefined) {
-                    div.innerHTML = ('<img draggable="false" alt="" width="80" height="80" src="./assets/img/unknown.png"> <div class="other">' +
-                        "<ul>" + activityinfo.join("") + "</ul>" + '</div>');
+                    div.innerHTML = (`<img draggable="false" alt="" width="80" height="80" src="./assets/img/unknown.png"> <div class="other"><ul>${activityinfo.join("")}</ul></div>`);
                 }
             }
             h += addedh;
