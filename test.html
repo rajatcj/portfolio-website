@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Email Address</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        text-align: center;
+        margin-top: 100px;
+      }
+      
+      #email {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        cursor: help;
+      }
+      #email span {
+        cursor: pointer;
+      }
+      #email span.handle:hover {
+        color: #f00;
+        text-decoration: underline;
+      }
+      #email span.handle:before {
+        content: attr(data-username);
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 999;
+      }
+      #email span.handle:hover:before {
+        display: block;
+      }
+      #email span.website:hover {
+        color: #f00;
+        text-decoration: underline;
+      }
+      #email span.website:before {
+        content: "Website";
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 999;
+      }
+      #email span.website:hover:before {
+        display: block;
+      }
+      #email span.email:hover {
+        color: #f00;
+        text-decoration: underline;
+      }
+      #email span.email:before {
+        content: "Email";
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 999;
+      }
+      #email span.email:hover:before {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="email">
+      <span class="email" data-username="Email">hey@</span>
+      <span class="handle" data-username="rajat_cj">rajatcj</span>
+      <span class="website">.com.np</span>
+    </div>
+  </body>
+</html>

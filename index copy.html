@@ -31,6 +31,42 @@
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
 
+    <style>
+      #hoveremail {
+        cursor: help;
+      }
+      #hoveremail span {
+        cursor: pointer;
+      }
+      #hoveremail span.hoverhandle:before,
+      #hoveremail span.hoverwebsite:before,
+      #hoveremail span.hoveremail:before {
+        content: "";
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 999;
+      }
+      #hoveremail span.hoverhandle:before {
+        content: "My Social Handles";
+      }
+      #hoveremail span.hoverwebsite:before {
+        content: "My Website";
+      }
+      #hoveremail span.hoveremail:before {
+        content: "Email Address";
+      }
+      #hoveremail span:hover:before {
+        display: block;
+      }
+    </style>
 
 </head>
 <body>
@@ -61,7 +97,12 @@
       <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
       
       <p class="infobox-boldtext">
-        hey@rajatcj.com.np
+        <div id="hoveremail">
+          <span class="hoveremail infobox-boldtext" data-username="Email">hey</span>
+          <span class="hoverat infobox-boldtext" data-username="At">@</span>
+          <span class="hoverhandle infobox-boldtext" data-username="rajat_cj">rajatcj</span>
+          <span class="hoverwebsite infobox-boldtext">.com.np</span>
+        </div>
       </p>
       <p class="infobox-slimtext">
         A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.
@@ -85,7 +126,7 @@
           
       </form>
   </div>
-  <iframe src="./profile/index.html"  style="width:100%; max-width: calc(80vh / 1.5); height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
+  <iframe src="./profile/index.html"  style="width:100%; max-width: 500px; height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
         
   </div>
   
@@ -132,4 +173,85 @@
 
 <script src="./assets/chatid.js"></script>
 <script src="./assets/msgsend.js"></script>
+
+
+<script>
+  const emailSpan = document.querySelector(".hoveremail");
+  const handleSpan = document.querySelector(".hoverhandle");
+  const websiteSpan = document.querySelector(".hoverwebsite");
+  const atSpan = document.querySelector(".hoverat");
+  const color1 = "#fff";
+  const color2 = "#fff";
+  const color3 = "#fff";
+
+  emailSpan.addEventListener("mouseenter", function() {
+    emailSpan.style.color = color1;
+    handleSpan.style.color = color1;
+    websiteSpan.style.color = color1;
+    atSpan.style.color = color1;
+    emailSpan.style.textDecoration = "underline";
+    handleSpan.style.textDecoration = "underline";
+    websiteSpan.style.textDecoration = "underline";
+    atSpan.style.textDecoration = "underline";
+  });
+  emailSpan.addEventListener("mouseleave", function() {
+    emailSpan.style.color = color2;
+    handleSpan.style.color = color2;
+    websiteSpan.style.color = color2;
+    atSpan.style.color = color2;
+    emailSpan.style.textDecoration = "";
+    handleSpan.style.textDecoration = "";
+    websiteSpan.style.textDecoration = "";
+    atSpan.style.textDecoration = "";
+  });
+
+  atSpan.addEventListener("mouseenter", function() {
+    emailSpan.style.color = color1;
+    handleSpan.style.color = color1;
+    websiteSpan.style.color = color1;
+    atSpan.style.color = color1;
+    emailSpan.style.textDecoration = "underline";
+    handleSpan.style.textDecoration = "underline";
+    websiteSpan.style.textDecoration = "underline";
+    atSpan.style.textDecoration = "underline";
+  });
+  atSpan.addEventListener("mouseleave", function() {
+    emailSpan.style.color = color2;
+    handleSpan.style.color = color2;
+    websiteSpan.style.color = color2;
+    atSpan.style.color = color2;
+    emailSpan.style.textDecoration = "";
+    handleSpan.style.textDecoration = "";
+    websiteSpan.style.textDecoration = "";
+    atSpan.style.textDecoration = "";
+  });
+
+  handleSpan.addEventListener("mouseenter", function() {
+    emailSpan.style.opacity = "50%";
+    websiteSpan.style.opacity = "50%";
+    atSpan.style.color = color1;
+    handleSpan.style.color = color1;
+    handleSpan.innerHTML = "rajat_cj";
+  });
+  handleSpan.addEventListener("mouseleave", function() {
+    emailSpan.style.opacity = "100%";
+    websiteSpan.style.opacity = "100%";
+    atSpan.style.color = color2;
+    handleSpan.style.color = color2;
+    handleSpan.innerHTML = "rajatcj";
+  });
+
+  websiteSpan.addEventListener("mouseenter", function() {
+    emailSpan.style.opacity = "50%";
+    atSpan.style.opacity = "50%";
+    websiteSpan.style.color = color1;
+    handleSpan.style.color = color1;
+  });
+  websiteSpan.addEventListener("mouseleave", function() {
+    emailSpan.style.opacity = "100%";
+    atSpan.style.opacity = "100%";
+    websiteSpan.style.color = color2;
+    handleSpan.style.color = color2;
+  });
+</script>
 </html>

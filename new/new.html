@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<title>neksio.wtf</title>
+<link rel="icon" type="image/x-icon" href="avatar.png">
+<meta name="description" content="neksio" />
+<meta name="keywords" content="neksio" />
+<meta content="neksio.wtf" property="og:title" />
+<meta content="✨" property="og:description" />
+<meta content="http://neksio.wtf/" property="og:url" />
+<meta content="https://neksio.wtf/avatar.png" property="og:image">
+<meta content="#2b2d31" data-react-helmet="true" name="theme-color" />
+</head>
+<body>
+<div id="container">
+<div class="clockContainer">
+<div class="clockTimezone"></div>
+<div class="clock"></div>
+</div>
+<div class="center">
+<p class="nameMain">Hello, I'm <span id="nameNeksio" class="nameNeksio">Rajat</span> <span id="wave">👋</span></p>
+<p class="smallerMain">Hi my friend 👋🏻, Im a medical student and a self-taught discord bot and frontend developer from Nepal. I'm a part time Discord Bot and Website freelancer experienced in frontend development/designing and discord bot development.
+</p>
+<div class="panel discordPanel">
+<i class="discord fa-brands fa-discord"></i>
+<div class="statusCircle" id="statusCircle"></div>
+<a id="avatarLink" target="_blank" href=""><img class="discordAvatar" id="discordAvatar" src="transparent.png"></a>
+<p class="discordName" id="discordName"></p>
+<p class="discordMotd" id="discordMotd"></p>
+</div>
+<div class="gap"></div>
+<div class="panel spotifyPanel">
+<i class="spotify fa-brands fa-spotify"></i>
+<a id="trackLink" target="_blank" href=""><img class="trackImg" id="trackImg" src="musicDefault.png"></a>
+<p class="trackName" id="trackName">Nothing</p>
+<p class="trackArtist" id="trackArtist">I'm not currently listening anything</p>
+</div>
+<div class="gap"></div>
+<div id="rpcPanel" class="panel rpcPanel">
+<i class="game fa-solid fa-gamepad"></i>
+<img class="rpcSmallIcon" id="rpcSmallIcon" src="transparent.png">
+<img class="rpcIcon" id="rpcIcon" src="gameDefault.png">
+<p class="rpcName" id="rpcName">Nothing</p>
+<p class="rpcDetails" id="rpcDetails">I'm not currently playing anything</p>
+</div>
+</div>
+</div>
+<script src="websocket.js"></script>
+<script>
+      const gradients = ["#004ef7, #0084ff", "#ff8400, #ffc900", "#660acf, #ac00cf"]; /*"#00c2ff, #8400ff"*/
+      const chosenGradient = gradients[Math.floor(Math.random() * gradients.length)];
+      const nameNeksio = document.getElementById("nameNeksio");
+      nameNeksio.style.backgroundImage = `linear-gradient(to right, ${chosenGradient})`;
+   </script>
+</body>
+</html>

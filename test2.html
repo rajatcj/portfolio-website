@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Email Address</title>
+    <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        text-align: center;
+        margin-top: 100px;
+      }
+      #email {
+        font-size: 36px;
+        font-weight: bold;
+        color: #333;
+        cursor: help;
+      }
+      #email span {
+        cursor: pointer;
+      }
+      #email span.handle:before,
+      #email span.website:before,
+      #email span.email:before {
+        content: "";
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 999;
+      }
+      #email span.handle:before {
+        content: "My Social Handles";
+      }
+      #email span.website:before {
+        content: "My Website";
+      }
+      #email span.email:before {
+        content: "Email Address";
+      }
+      #email span:hover:before {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="email">
+      <span class="email" data-username="Email">hey</span>
+      <span class="at" data-username="At">@</span>
+      <span class="handle" data-username="rajat_cj">rajatcj</span>
+      <span class="website">.com.np</span>
+    </div>
+    <script>
+      const emailSpan = document.querySelector(".email");
+      const handleSpan = document.querySelector(".handle");
+      const websiteSpan = document.querySelector(".website");
+      const atSpan = document.querySelector(".at");
+
+      emailSpan.addEventListener("mouseenter", function() {
+        emailSpan.style.color = "#f00";
+        handleSpan.style.color = "#f00";
+        websiteSpan.style.color = "#f00";
+        atSpan.style.color = "#f00";
+      });
+      emailSpan.addEventListener("mouseleave", function() {
+        emailSpan.style.color = "#333";
+        handleSpan.style.color = "#333";
+        websiteSpan.style.color = "#333";
+        atSpan.style.color = "#333";
+      });
+
+      atSpan.addEventListener("mouseenter", function() {
+        emailSpan.style.color = "#f00";
+        handleSpan.style.color = "#f00";
+        websiteSpan.style.color = "#f00";
+        atSpan.style.color = "#f00";
+      });
+      atSpan.addEventListener("mouseleave", function() {
+        emailSpan.style.color = "#333";
+        handleSpan.style.color = "#333";
+        websiteSpan.style.color = "#333";
+        atSpan.style.color = "#333";
+      });
+
+      handleSpan.addEventListener("mouseenter", function() {
+        emailSpan.style.opacity = "50%";
+        websiteSpan.style.opacity = "50%";
+        atSpan.style.color = "#f00";
+        handleSpan.style.color = "#f00";
+        handleSpan.innerHTML = "rajat_cj";
+      });
+      handleSpan.addEventListener("mouseleave", function() {
+        emailSpan.style.opacity = "100%";
+        websiteSpan.style.opacity = "100%";
+        atSpan.style.color = "#333";
+        handleSpan.style.color = "#333";
+        handleSpan.innerHTML = "rajatcj";
+      });
+
+      websiteSpan.addEventListener("mouseenter", function() {
+        emailSpan.style.opacity = "50%";
+        atSpan.style.opacity = "50%";
+        websiteSpan.style.color = "#f00";
+        handleSpan.style.color = "#f00";
+      });
+      websiteSpan.addEventListener("mouseleave", function() {
+        emailSpan.style.opacity = "100%";
+        atSpan.style.opacity = "100%";
+        websiteSpan.style.color = "#333";
+        handleSpan.style.color = "#333";
+      });
+    </script>
+  </body>
+</html>
