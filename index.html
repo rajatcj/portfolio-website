@@ -60,17 +60,15 @@
     <div class="infobox">
       <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
       
-      <p class="infobox-boldtext">
+      <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600;">
         mail@rajatcj.com.np
       </p>
-      <p class="infobox-slimtext">
-        A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.
+      <p class="infobox-slimtext" style="font-size:x-large;">
+        Hello, I am Rajat, a <span class="whoami" style="color:#ee6464"></span>
       </p>
-      <div class="infobox-btnwrapper">
-        <button class="infobox-explorebtn selected" onclick="location.href='https://jharajat.com.np/portfolio';">Portfolio</button>
-        <button class="infobox-createbtn" onclick="location.href='https://jharajat.com.np/linktree';">Linktree</button>
-      </div>
-      <br>
+      <p class="infobox-slimtext" style="font-size:x-large;">
+        
+      </p>
       <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
           <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
           <br> -->
@@ -84,6 +82,10 @@
           <input name="url" id="url" type="hidden" value="" />
           
       </form>
+      <div class="infobox-btnwrapper">
+        <button class="infobox-explorebtn selected" onclick="location.href='https://jharajat.com.np/portfolio';">Portfolio</button>
+        <button class="infobox-createbtn" onclick="location.href='https://jharajat.com.np/linktree';">Linktree</button>
+      </div>
   </div>
   <iframe src="./profile/index.html"  style="width:100%; max-width: calc(80vh / 1.5); height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
         
@@ -132,4 +134,16 @@
 
 <script src="./assets/chatid.js"></script>
 <script src="./assets/msgsend.js"></script>
+
+
+
+<script src="./assets/whoami.js"></script>
+<script>
+    var Typed = new Typed(".whoami", {
+        strings:["Medical Student", "FrontEnd Developer","Discord Verified Bot Developer", "fulltime weeb"],
+        typeSpeed: 50,
+        backSpeed: 10,
+        loop: true
+    });
+</script>
 </html>
