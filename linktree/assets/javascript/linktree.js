@@ -68,3 +68,5 @@ function updateTime() {
     setInterval(updateTime, 1000);
     // Update the time when the page loads
     updateTime();
+    
+    document.getElementById("my-time-label").textContent = NepaliDate.now().format('DD MMMM YYYY (dd)');

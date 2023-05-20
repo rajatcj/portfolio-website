@@ -1,85 +1,84 @@
 <!DOCTYPE html>
 <html lang='en'>
+   <head>
+      <meta charset='UTF-8'>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="theme-color" content="#F9A762" data-react-helmet="true" />
+      <meta name="author" content="Rajat Jha">
+      <meta name="description" content="A portal to all my links, handles (rajat_cj) and projects.">
+      <meta name="keywords" content="Rajat, Rajat Jha, Rajat Chandra Jha, rajat_cj, Rajat Died Today">
+      <link rel="icon" id="iconofthepage" type="image/x-icon" href="https://api.lanyard.rest/754033245972201612.jpg">
+      <title id="titleofthepage">@rajat_cj</title>
+      <script src="../profile/assets/javascripts/lanyard.js" crossorigin="anonymous"></script>
 
-<head>
-    <meta charset='UTF-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#F9A762" data-react-helmet="true" />
-    <meta name="author" content="Rajat Jha">
-    <meta name="description" content="A portal to all my links, handles (rajat_cj) and projects.">
-    <meta name="keywords" content="Rajat, Rajat Jha, Rajat Chandra Jha, rajat_cj, Rajat Died Today">
-    <link rel="icon" id="iconofthepage" type="image/x-icon" href="https://api.lanyard.rest/754033245972201612.jpg">
-      
-    <title id="titleofthepage">@rajat_cj</title>
-    <script src="../profile/assets/javascripts/lanyard.js" crossorigin="anonymous"></script>
-    
-    <!-- Media Meta Tags -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="mail@rajatcj.com.np">
-    <meta property="og:title" content="Rajat • Linktree">
-    <meta property="og:description" content="A portal to all my links, sites, social handles and my live online presence">
-    <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
-    <meta property="og:url" content="https://www.jharajat.com.np/linktree"/>
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:title" content="Rajat • Linktree">
-    <meta name="twitter:description" content="A portal to all my links, handles and projects.">
-    <meta name="twitter:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <!-- Media Meta Tags -->
+      <meta property="og:locale" content="en_US">
+      <meta property="og:type" content="website">
+      <meta property="og:site_name" content="mail@rajatcj.com.np">
+      <meta property="og:title" content="Rajat • Linktree">
+      <meta property="og:description" content="A portal to all my links, sites, social handles and my live online presence">
+      <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <meta property="og:url" content="https://www.jharajat.com.np/linktree"/>
 
-    <!-- everything important in here -->
-    <link rel="stylesheet" href="./flashavatar.css">
-    <link rel="stylesheet" href="../particle/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap">
-    <link rel='stylesheet' href='./assets/css/style.css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+      <!-- Twitter Meta Tags -->
+      <meta name="twitter:title" content="Rajat • Linktree">
+      <meta name="twitter:description" content="A portal to all my links, handles and projects.">
+      <meta name="twitter:image" content="https://api.lanyard.rest/754033245972201612.jpg">
 
-    <!--J query-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+      <!-- everything important in here -->
+      <link rel="stylesheet" href="./flashavatar.css">
+      <link rel="stylesheet" href="../particle/style.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Josefin+Sans&display=swap">
+      <link rel='stylesheet' href='./assets/css/style.css'>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 
-    <!--preloads-->
-    <link rel="preload" href="./assets/css/bg.png" as="image">
-    <link rel="preload" href="./assets/css/bg2.png" as="image">
-    <link rel="preload" href="./assets/rickroll.gif" as="image">
-    <link rel="preload" href="./assets/rick.mp3" as="audio">
-</head>
+      <!--J query-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
-<body>
+      <!--nepali date-->
+      <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
 
-     <!-- Add the loading screen element 
-     <div class="loading-screen">
-        <div class="loading">
-            <div class="rotate">L</div>OADING
-          </div>
-      </div>-->
+      <!--preloads-->
+      <link rel="preload" href="./assets/css/bg.png" as="image">
+      <link rel="preload" href="./assets/css/bg2.png" as="image">
+      <link rel="preload" href="./assets/rickroll.gif" as="image">
+      <link rel="preload" href="./assets/rick.mp3" as="audio">
+   </head>
+   <body>
+      <!-- Add the loading screen element 
+         <div class="loading-screen">
+            <div class="loading">
+                <div class="rotate">L</div>OADING
+              </div>
+          </div>-->
 
+      <a class='mediabtn' style="position:absolute; top:10px; right:10px; background: var(--primary-bgopp); color: var(--primary-bg);" id='themebutton' onclick="changeTheme()" href='#'><i class="fa-solid fa-sun"></i></a>
 
+      <audio id="idAudio">
+         <source src="./assets/rick.mp3" type="audio/ogg">
+      </audio>
 
-    <a class='mediabtn' style="position:absolute; top:10px; right:10px; background: var(--primary-bgopp); color: var(--primary-bg);" id='themebutton' onclick="changeTheme()" href='#'><i class="fa-solid fa-sun"></i></a>
-    <audio id="idAudio">
-        <source src="./assets/rick.mp3" type="audio/ogg">
-    </audio>
-    <div class='triangle' id="particles-js"></div>
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-    <div class='container'>
-        <div class='space'></div>
-        <div class='header--box'>
+      <div class='triangle' id="particles-js"></div>
+
+      <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+
+      <div class='container'>
+         <div class='space'></div>
+         <div class='header--box'>
             <header class='header'>
-                <div class='header__chat-box'>
-                    <div class='header__chat-box--behind'>
-                        <div class='header__chat-box--front'>
-                            <h1 id="avatartext" onclick="openDisc()" style="cursor: pointer;"  style="font-size: 1.5rem;">click</h1>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class='header__icon-box' id="avatar">
-                    <img src='https://api.lanyard.rest/754033245972201612.jpg' onclick="openDisc()" style="cursor: pointer;" alt='Discord Avatar' class='header__icon' />
-                </div>
-            
+               <div class='header__chat-box'>
+                  <div class='header__chat-box--behind'>
+                     <div class='header__chat-box--front'>
+                        <h1 id="avatartext" onclick="openDisc()" style="cursor: pointer;"  style="font-size: 1.5rem;">click</h1>
+                     </div>
+                  </div>
+               </div>
+               <div class='header__icon-box' id="avatar">
+                  <img src='https://api.lanyard.rest/754033245972201612.jpg' onclick="openDisc()" style="cursor: pointer;" alt='Discord Avatar' class='header__icon' />
+               </div>
             </header>
-        </div>
-        <div class='links-container'>
+         </div>
+         <div class='links-container'>
             <li class='right'><a class='link' href='https://jharajat.com.np/'>Home Page</a>
             </li>
             <li class='left'><a class='link' href='https://jharajat.com.np/portfolio'>Portfolio</a>
@@ -90,76 +89,72 @@
             </li>
             <li class='right'><a onclick="play_Audio()" class='link' id="rickroll" href='#'>OnlyFans</a>
             </li>
-
-        </div>
-        <div class='user-info-box'>
+         </div>
+         <div class='user-info-box'>
             <div class='user-info'>
-                <h2>@rajat_cj</h2>
+               <h2>@rajat_cj</h2>
             </div>
             <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-                <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
-                <br> -->
-                <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
-                <div id='messagebox' class='messagebox'></div>
-                <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
-                <input name="username" id="username" type="hidden" value="Linktree" />
-                <input name="guild" id="guild" type="hidden" value="819109979046936577" />
-                <input name="sessionid" id="sessionid" type="hidden" value="" />
-                <input name="timezone" id="timezone" type="hidden" value="" />
-                <input name="url" id="url" type="hidden" value="" />
-                
+               <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
+                  <br> -->
+               <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
+               <div id='messagebox' class='messagebox'></div>
+               <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
+               <input name="username" id="username" type="hidden" value="Linktree" />
+               <input name="guild" id="guild" type="hidden" value="819109979046936577" />
+               <input name="sessionid" id="sessionid" type="hidden" value="" />
+               <input name="timezone" id="timezone" type="hidden" value="" />
+               <input name="url" id="url" type="hidden" value="" />
             </form>
             <div class="mediabuttons">
-                <a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
-                <a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
-                <a class='mediabtn' href='https://twitter.com/rajat_cj'><i class="fa-brands fa-twitter"></i></a>
-                <a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
+               <a class='mediabtn' href='https://discord.gg/onepiecenepal'><i class="fa-brands fa-discord"></i></a>
+               <a class='mediabtn' href='https://www.reddit.com/user/rajat_cj'><i class="fa-brands fa-reddit-alien"></i></a>
+               <a class='mediabtn' href='https://twitter.com/rajat_cj'><i class="fa-brands fa-twitter"></i></a>
+               <a class='mediabtn' href='https://open.spotify.com/user/j88py5l9vrn8yyhwl2h1ktrbt'><i class="fa-brands fa-spotify"></i></a>
             </div>
             <div class="spotify-np" id="spotify-np">
-                <p id="spotify-iframe" src="hm"></p>
+               <p id="spotify-iframe" src="hm"></p>
             </div>
             <div id="timedate">
-                <div id="my-time-label">My Time:</div>
-                <div id="my-time" title=""></div>
-                <div id="my-date"></div>
+               <div id="my-time" title=""></div>
+               <div id="my-date"></div>
+               <div id="my-time-label">Loading Time...</div>
             </div>
-            
-        </div>
-    </div>
-    <div class="discordprofile" id="discordprofile">
-        <iframe id="discordprofileinside" src="../profile/index.html" style="margin:15vh auto; display:block; width:98%; max-width: 450px; height: 80vh; border:0px; border-radius: 5px;" title="Discord Status"></iframe>
-    </div>
-
-    
-</body>
-<footer>
-    <div class="copyrighttext">
-    <i class="fa-regular fa-copyright"></i> Copyright 2022. All rights reserved.
-  </div>
- </footer>
+         </div>
+      </div>
+      <div class="discordprofile" id="discordprofile">
+         <iframe id="discordprofileinside" src="../profile/index.html" style="margin:15vh auto; display:block; width:98%; max-width: 450px; height: 80vh; border:0px; border-radius: 5px;" title="Discord Status"></iframe>
+      </div>
+   </body>
+   <footer>
+      <div class="copyrighttext">
+         <i class="fa-regular fa-copyright"></i> Copyright 2022. All rights reserved.
+      </div>
+   </footer>
 </html>
 
-
+<!-- Files -->
 <script src="./assets/javascript/titleanime.js"></script>
 <script src="./assets/javascript/chatid.js"></script>
 <script src="./assets/javascript/msgsend.js"></script>
 <script src="./assets/javascript/spotify.js"></script>
 <script src="./assets/javascript/linktree.js"></script>
-  
-       <!-- Add a script to handle the loading screen -->
-       <script>
-        // Add an event listener to the window's "load" event
-        window.addEventListener("load", function() {
-          // Hide the loading screen element
-          //document.querySelector(".loading-screen").style.display = "none";
-        });
-      </script>
+
+<!-- Add a script to handle the loading screen-->
+<script>
+   // Add an event listener to the window's "load" event
+   window.addEventListener("load", function() {
+     // Hide the loading screen element
+     //document.querySelector(".loading-screen").style.display = "none";
+   });
+</script>
 
 <!-- Particle.js -->
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="./assets/javascript/particle.js"></script>
+
 <!-- fontawesome -->
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-   <!--No dev tools-->
-   <script disable-devtool-auto src="./assets/javascript/disabledevtools.js"></script>
 
+<!--No dev tools-->
+<script disable-devtool-auto src="./assets/javascript/disabledevtools.js"></script>
