@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="My friend's birthdays!" />
+  <meta name="author" content="" />
+
+  <link rel="icon" type="image/x-icon" href="../assets/images/author-image.png">
+  <title>Rajat Jha</title>
+
+        <!--embed-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="mail@rajatcj.com.np">
+        <meta property="og:title" content="Birthday List">
+        <meta property="og:description" content="My friends Birthdays.">
+        <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+        <meta content="https://jharajat.com.np/" property="og:url" />
+        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+
+ <!--J query-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/style.css">
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+<style>
+    /* CSS Styles for the Calendar */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .calendar-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .month {
+      width: calc(100% / 4);
+      padding: 2%;
+      margin: 2%;
+      background-color: #45473f;
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .month-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .day {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% / 9);
+      height: 30px;
+      border: 0.5px solid #c1f87850;
+      margin: 1%;
+      font-size: 14px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .friend-count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+      height: 18px;
+      background-color: #f44336;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .friend-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right:0;
+      width: 100px;
+      padding: 10px;
+      background-color: #cca975;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      display: none;
+      z-index: 1;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+      transform-origin: top center;
+    }
+
+    .day:hover .friend-list {
+      display: block;
+      transform: scale(1);
+    }
+
+    .friend-name {
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ffffff;
+    display: inline-block;  /* Added this line */
+    }
+
+    .friend-name:hover {
+    position: relative;  /* Added this line */
+    }
+
+    .friend-name:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Added this line */
+    height: 100%;  /* Added this line */
+    background-color: rgba(255, 255, 255, 0.8);  /* Added this line */
+    z-index: -1;  /* Added this line */
+    }
+
+    .friend-type {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .family { background-color: #2196f3; }
+    .school { background-color: #4caf50; }
+    .highschool { background-color: #ff9800; }
+    .discord { background-color: #9c27b0; }
+    .mbbs { background-color: #e91e63; }
+
+    @media screen and (max-width: 960px) {
+      .month {
+        width: calc(100% / 2.5);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .month {
+        width: calc(100% / 1);
+      }
+    }
+  </style>
+
+</head>
+<body>
+  
+<!-- partial:index.partial.html -->
+<div class="landingpage">
+  <div class="navbar">
+    <a class="navlogo">Rajat CJ</a>
+    <button class="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+      <div class="navlinkwrap">
+        <span class="navlink links" onclick="location.href='https://jharajat.com.np';" style="cursor: pointer;">Home</span>
+        <span class="navlink links" onclick="location.href='https://jharajat.com.np/portfolio';" style="cursor: pointer;">Portfolio</span>
+        <span class="navlink links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
+        <span class="navlink links" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
+      </div>
+      <div class="buttonwrap">
+        <button class="createbtn selectedbtn" onclick="location.href='https://jharajat.com.np/linktree';" style="cursor: pointer;">Linktree</button>
+        <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
+      </div>
+    </div>
+  
+  <div class="box"> 
+    <div class="infobox">
+      
+      <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600;">
+        Friend Birthdays
+      </p>
+      <p class="infobox-slimtext" style="font-size:x-large; line-height: 1;">
+        To get your birthday on this list, hmu on my instagram.
+      </p>
+      <div class="infobox-btnwrapper">
+        <button class="infobox-explorebtn selected" onclick="location.href='https://jharajat.com.np';">Home</button>
+        <button class="infobox-createbtn" onclick="location.href='https://jharajat.com.np/linktree';">Linktree</button>
+      </div>
+  </div>
+  </div>
+  
+  <div class="box"> 
+    
+    <div class="calendar-container" id="calendar-container"></div>
+    </div>
+
+  <div class="footer">
+    <div class="footer-main">
+      Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023
+    </div>
+    <div class="footer-navigate">
+      <div class="nav">
+        <h5>Socials</h5>
+        <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
+        <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
+        <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
+        <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
+      </div>
+      <div class="nav">
+        <h5>Other Sites</h5>
+        <p class="links" onclick="location.href='https://jharajat.com.np/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
+        <p class="links" onclick="location.href='https://jharajat.com.np/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
+        <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
+        <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
+      </div>
+      <div class="nav">
+        <h5>Discords</h5>
+        <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
+        <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Hangout Place</p>
+        <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
+        <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer2">
+    <div></div>
+    <p>Copyright 2023 RajatCJ</p>
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+
+
+
+<script src="../assets/chatid.js"></script>
+<script src="../assets/msgsend.js"></script>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+      // JSON data
+      var jsonData = [
+        {
+          "name": "Friend 1",
+          "dob": "1990-01-01",
+          "type": "family"
+        },{
+          "name": "Friend Gay",
+          "dob": "1990-01-01",
+          "type": "family"
+        },
+        {
+          "name": "Friend 2",
+          "dob": "1992-05-15",
+          "type": "school"
+        },
+        {
+          "name": "Friend 3",
+          "dob": "1994-09-20",
+          "type": "discord"
+        },
+        {
+          "name": "Friend 4",
+          "dob": "1996-07-10",
+          "type": "mbbs"
+        }
+        // Add more friends' data here
+      ];
+
+      // Generate calendar
+      var calendarContainer = document.getElementById('calendar-container');
+      var currentDate = new Date();
+      var currentYear = currentDate.getFullYear();
+
+      for (var month = 0; month < 12; month++) {
+        var monthContainer = document.createElement('div');
+        monthContainer.classList.add('month');
+
+        var monthName = document.createElement('h2');
+        monthName.classList.add('month-name');
+        monthName.textContent = getMonthName(month);
+        monthContainer.appendChild(monthName);
+
+        var daysContainer = document.createElement('div');
+        daysContainer.classList.add('days-container');
+
+        for (var day = 1; day <= 31; day++) {
+          var date = new Date(currentYear, month, day);
+
+          if (date.getMonth() !== month)
+            break;
+
+          var dayContainer = document.createElement('div');
+          dayContainer.classList.add('day');
+          dayContainer.textContent = day;
+
+          var friendCount = 0;
+          var friendList = document.createElement('div');
+          friendList.classList.add('friend-list');
+
+          jsonData.forEach(function(friend) {
+            var friendDOB = new Date(friend.dob);
+            if (
+              friendDOB.getDate() === day &&
+              friendDOB.getMonth() === month &&
+              friendDOB.getFullYear() !== currentYear
+            ) {
+              var friendName = document.createElement('div');
+              friendName.classList.add('friend-name', friend.type);
+              friendName.textContent = friend.name;
+
+              var friendType = document.createElement('span');
+              friendType.classList.add('friend-type');
+              friendType.textContent = '(' + friend.type + ')';
+
+              friendName.appendChild(friendType);
+              friendList.appendChild(friendName);
+              friendCount++;
+            }
+          });
+
+          if (friendCount > 0) {
+            var friendCountElement = document.createElement('div');
+            friendCountElement.classList.add('friend-count');
+            friendCountElement.textContent = friendCount;
+            dayContainer.appendChild(friendCountElement);
+          }
+
+          dayContainer.appendChild(friendList);
+          daysContainer.appendChild(dayContainer);
+        }
+
+        monthContainer.appendChild(daysContainer);
+        calendarContainer.appendChild(monthContainer);
+      }
+    });
+
+    function getMonthName(month) {
+      var months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July',
+        'August', 'September', 'October', 'November', 'December'
+      ];
+      return months[month];
+    }
+  </script>
+</html>

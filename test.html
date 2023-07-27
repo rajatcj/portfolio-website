@@ -1,16 +1,245 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Display Current Nepali Date</title>
-  <script src="https://cdn.jsdelivr.net/npm/nepali-date-converter/dist/nepali-date-converter.umd.js"></script>
+  <title>Friends' Birthday Calendar</title>
+  <style>
+    /* CSS Styles for the Calendar */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .calendar-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .month {
+      width: calc(100% / 4);
+      padding: 2%;
+      margin: 2%;
+      background-color: #f7f7f7;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .month-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .day {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% / 9);
+      height: 30px;
+      border: 1px solid #ccc;
+      margin: 1%;
+      font-size: 14px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .friend-count {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+      height: 18px;
+      background-color: #f44336;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .friend-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      display: none;
+      z-index: 1;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+      transform-origin: top center;
+    }
+
+    .day:hover .friend-list {
+      display: block;
+      transform: scale(1);
+    }
+
+    .friend-name {
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #ffffff;
+    display: inline-block;  /* Added this line */
+    }
+
+    .friend-name:hover {
+    position: relative;  /* Added this line */
+    }
+
+    .friend-name:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Added this line */
+    height: 100%;  /* Added this line */
+    background-color: rgba(255, 255, 255, 0.8);  /* Added this line */
+    z-index: -1;  /* Added this line */
+    }
+
+    .friend-type {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .family { background-color: #2196f3; }
+    .school { background-color: #4caf50; }
+    .highschool { background-color: #ff9800; }
+    .discord { background-color: #9c27b0; }
+    .mbbs { background-color: #e91e63; }
+
+    @media screen and (max-width: 960px) {
+      .month {
+        width: calc(100% / 2.5);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .month {
+        width: calc(100% / 1);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Current Nepali Date:</h1>
-  <span id="nepaliDate"></span>
+  <div class="calendar-container" id="calendar-container"></div>
 
   <script>
-    // Display the Nepali date on the website
-    document.getElementById("nepaliDate").textContent = NepaliDate.now().format('DD MMMM YYYY');
+    window.addEventListener('DOMContentLoaded', function() {
+      // JSON data
+      var jsonData = [
+        {
+          "name": "Friend 1",
+          "dob": "1990-01-01",
+          "type": "family"
+        },{
+          "name": "Friend Gay",
+          "dob": "1990-01-01",
+          "type": "family"
+        },
+        {
+          "name": "Friend 2",
+          "dob": "1992-05-15",
+          "type": "school"
+        },
+        {
+          "name": "Friend 3",
+          "dob": "1994-09-20",
+          "type": "discord"
+        },
+        {
+          "name": "Friend 4",
+          "dob": "1996-07-10",
+          "type": "mbbs"
+        }
+        // Add more friends' data here
+      ];
+
+      // Generate calendar
+      var calendarContainer = document.getElementById('calendar-container');
+      var currentDate = new Date();
+      var currentYear = currentDate.getFullYear();
+
+      for (var month = 0; month < 12; month++) {
+        var monthContainer = document.createElement('div');
+        monthContainer.classList.add('month');
+
+        var monthName = document.createElement('h2');
+        monthName.classList.add('month-name');
+        monthName.textContent = getMonthName(month);
+        monthContainer.appendChild(monthName);
+
+        var daysContainer = document.createElement('div');
+        daysContainer.classList.add('days-container');
+
+        for (var day = 1; day <= 31; day++) {
+          var date = new Date(currentYear, month, day);
+
+          if (date.getMonth() !== month)
+            break;
+
+          var dayContainer = document.createElement('div');
+          dayContainer.classList.add('day');
+          dayContainer.textContent = day;
+
+          var friendCount = 0;
+          var friendList = document.createElement('div');
+          friendList.classList.add('friend-list');
+
+          jsonData.forEach(function(friend) {
+            var friendDOB = new Date(friend.dob);
+            if (
+              friendDOB.getDate() === day &&
+              friendDOB.getMonth() === month &&
+              friendDOB.getFullYear() !== currentYear
+            ) {
+              var friendName = document.createElement('div');
+              friendName.classList.add('friend-name', friend.type);
+              friendName.textContent = friend.name;
+
+              var friendType = document.createElement('span');
+              friendType.classList.add('friend-type');
+              friendType.textContent = '(' + friend.type + ')';
+
+              friendName.appendChild(friendType);
+              friendList.appendChild(friendName);
+              friendCount++;
+            }
+          });
+
+          if (friendCount > 0) {
+            var friendCountElement = document.createElement('div');
+            friendCountElement.classList.add('friend-count');
+            friendCountElement.textContent = friendCount;
+            dayContainer.appendChild(friendCountElement);
+          }
+
+          dayContainer.appendChild(friendList);
+          daysContainer.appendChild(dayContainer);
+        }
+
+        monthContainer.appendChild(daysContainer);
+        calendarContainer.appendChild(monthContainer);
+      }
+    });
+
+    function getMonthName(month) {
+      var months = [
+        'January', 'February', 'March', 'April', 'May', 'June', 'July',
+        'August', 'September', 'October', 'November', 'December'
+      ];
+      return months[month];
+    }
   </script>
 </body>
 </html>
