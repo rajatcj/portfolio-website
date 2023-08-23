@@ -369,9 +369,19 @@ html {
 
 .card-body .profile-body .username {
   color: #eeeeee;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
   font-weight: 600;
   font-size: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-body .profile-body .handle {
+  color: #c5c2c2;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: .9rem;
   display: flex;
   flex-direction: row;
   align-items: center;

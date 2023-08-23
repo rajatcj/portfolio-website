@@ -30,7 +30,8 @@ fetch('config.json').then(function(response) {
 
   function updateprofile(data) {
     sessionStorage.setItem("activityData", JSON.stringify(data));
-    document.getElementById("discorduser.name").innerHTML = `${data.discord_user.username}<span>#${data.discord_user.discriminator}</span>`;
+    document.getElementById("discorduser.name").innerHTML = `${data.discord_user.display_name}`;
+    document.getElementById("discorduser.handle").innerHTML = `${data.discord_user.username}`;
     if (data.active_on_discord_desktop) {
       document.getElementById("discorduser.desktop").innerHTML = `<div class="status-item"><i style="color:` + (data.discord_status === `online` ? `#3ba55d` : (data.discord_status === `idle` ? `#faa81a` : `#ED4245`)) + `;" class="fa-solid fa-display"></i>
                 <div class="tooltip tooltip-up">` + (data.discord_status === `online` ? `Online` : (data.discord_status === `idle` ? `Idle` : `DND`)) + ` on Desktop</div></div>`;
