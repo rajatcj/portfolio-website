@@ -155,7 +155,7 @@ function getFormattedTime(timestamp) {
 				const avatarElement = document.createElement('figure');
 				avatarElement.classList.add('avatar');
 				const avatarImg = document.createElement('img');
-				avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%23` + dataArray[i].id.toString().slice(-6);
+				avatarImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].id}` + dataArray[i].id.toString().slice(-6);
 				avatarElement.appendChild(avatarImg);
 				messageElement.appendChild(avatarElement);
 			}
@@ -167,7 +167,7 @@ function getFormattedTime(timestamp) {
 				}
 				const repliedToImg = document.createElement('img');
 				repliedToImg.classList.add('repliedtoavatar');
-				repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
+				repliedToImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].reid}` + dataArray[i].reid.toString().slice(-6);
 				repliedToElement.appendChild(repliedToImg);
 				let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
 					switch (char) {
@@ -235,7 +235,7 @@ function getFormattedTime(timestamp) {
 						document.getElementById('content').focus();
 					}
 					// Set inner HTML of new div element
-					document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
+					document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + value1 + '' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 					var chatroom = document.getElementById('messages-content');
 					$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
 						scrollInertia: 1000,
@@ -336,7 +336,7 @@ function getFormattedTime(timestamp) {
 					const avatarElement = document.createElement('figure');
 					avatarElement.classList.add('avatar');
 					const avatarImg = document.createElement('img');
-					avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%23` + dataArray[i].id.toString().slice(-6);
+					avatarImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].id}` + dataArray[i].id.toString().slice(-6);
 					avatarElement.appendChild(avatarImg);
 					messageElement.appendChild(avatarElement);
 				}
@@ -348,7 +348,7 @@ function getFormattedTime(timestamp) {
 					}
 					const repliedToImg = document.createElement('img');
 					repliedToImg.classList.add('repliedtoavatar');
-					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
+					repliedToImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].reid}` + dataArray[i].reid.toString().slice(-6);
 					repliedToElement.appendChild(repliedToImg);
 					let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
 						switch (char) {
@@ -416,7 +416,7 @@ function getFormattedTime(timestamp) {
 							document.getElementById('content').focus();
 						}
 						// Set inner HTML of new div element
-						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
+						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + value1 + '' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
 						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
 							scrollInertia: 1000,
@@ -426,7 +426,7 @@ function getFormattedTime(timestamp) {
 				});
 			}
 			if(sessionStorage.getItem('data-id') != null) {
-				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
+				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + sessionStorage.getItem('data-id') + '' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
 					switch (char) {
 						case '<':
 							return '{';
@@ -444,10 +444,10 @@ function getFormattedTime(timestamp) {
 			} else {
 				document.querySelector("#mebox2").innerHTML = '';
 			}
-			document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%23' + chatid.toString().slice(-6) + '"></figure></div>';
+			document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + chatid + '' + chatid.toString().slice(-6) + '"></figure></div>';
 			const imagetochange = document.querySelectorAll('img');
 			for(let i = 0; i < imagetochange.length; i++) {
-				imagetochange[i].src = imagetochange[i].src.replace('https://avatars.dicebear.com/api/avataaars/Rajat.png?b=%23Rajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
+				imagetochange[i].src = imagetochange[i].src.replace('https://api.dicebear.com/7.x/avataaars/svg?seed=RajatRajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
 			}
 			var chatroom = document.getElementById('messages-content');
 			if(chatroom.scrollTop < chatroom.scrollHeight - chatroom.clientHeight) {
@@ -490,7 +490,7 @@ function getFormattedTime(timestamp) {
 					const avatarElement = document.createElement('figure');
 					avatarElement.classList.add('avatar');
 					const avatarImg = document.createElement('img');
-					avatarImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].id}.png?b=%23` + dataArray[i].id.toString().slice(-6);
+					avatarImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].id}` + dataArray[i].id.toString().slice(-6);
 					avatarElement.appendChild(avatarImg);
 					messageElement.appendChild(avatarElement);
 				}
@@ -502,7 +502,7 @@ function getFormattedTime(timestamp) {
 					}
 					const repliedToImg = document.createElement('img');
 					repliedToImg.classList.add('repliedtoavatar');
-					repliedToImg.src = `https://avatars.dicebear.com/api/avataaars/${dataArray[i].reid}.png?b=%23` + dataArray[i].reid.toString().slice(-6);
+					repliedToImg.src = `https://api.dicebear.com/7.x/avataaars/svg?seed=${dataArray[i].reid}` + dataArray[i].reid.toString().slice(-6);
 					repliedToElement.appendChild(repliedToImg);
 					let clickablebutreply = dataArray[i].reco.replace(/[<>&'"/\\]/g, function(char) {
 						switch (char) {
@@ -570,7 +570,7 @@ function getFormattedTime(timestamp) {
 							document.getElementById('content').focus();
 						}
 						// Set inner HTML of new div element
-						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + value1 + '.png?b=%23' + value1.toString().slice(-6) + '">' + value2 + '</div>';
+						document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + value1 + '' + value1.toString().slice(-6) + '">' + value2 + '</div>';
 						var chatroom = document.getElementById('messages-content');
 						$messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
 							scrollInertia: 1000,
@@ -580,7 +580,7 @@ function getFormattedTime(timestamp) {
 				});
 			};
 			if(sessionStorage.getItem('data-id') != null) {
-				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://avatars.dicebear.com/api/avataaars/' + sessionStorage.getItem('data-id') + '.png?b=%23' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
+				document.querySelector("#mebox2").innerHTML = '<div class="repliedtomsg" onclick="clearBoxAndSessionStorage()" style="margin-left:0%; margin-bottom:0%; width:100%; color:#fff;"><img class="repliedtoavatar" src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + sessionStorage.getItem('data-id') + '' + sessionStorage.getItem('data-id').toString().slice(-6) + '">' + sessionStorage.getItem('data-co').replace(/[<>&'"/\\]/g, function(char) {
 					switch (char) {
 						case '<':
 							return '{';
@@ -598,10 +598,10 @@ function getFormattedTime(timestamp) {
 			} else {
 				document.querySelector("#mebox2").innerHTML = '';
 			}
-			document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://avatars.dicebear.com/api/avataaars/' + chatid + '.png?b=%23' + chatid.toString().slice(-6) + '"></figure></div>';
+			document.querySelector("#mebox").innerHTML = '<div class="message message-personal" style="background: var(--replyingtobg); padding: 6px 0px 7px;"><figure class="avatar"><img src="https://api.dicebear.com/7.x/avataaars/svg?seed=' + chatid + '' + chatid.toString().slice(-6) + '"></figure></div>';
 			const imagetochange = document.querySelectorAll('img');
 			for(let i = 0; i < imagetochange.length; i++) {
-				imagetochange[i].src = imagetochange[i].src.replace('https://avatars.dicebear.com/api/avataaars/Rajat.png?b=%23Rajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
+				imagetochange[i].src = imagetochange[i].src.replace('https://api.dicebear.com/7.x/avataaars/svg?seed=RajatRajat', 'https://dcdn.dstn.to/avatars/754033245972201612');
 			}
 			var chatroom = document.getElementById('messages-content');
 			setTimeout(() => {
