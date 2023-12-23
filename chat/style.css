@@ -307,6 +307,42 @@ Chat Title
   height: 50%;
   float:right;
 }
+
+/* <main-style> ============================ */
+
+
+#openinfullscreen2 {
+  color: #fff;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 2;
+  position: absolute;
+  padding-right: 4px;
+  padding-left: 4px;
+  right:15px;
+  bottom:1px;
+}
+
+
+#openinfullscreen2::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-top: solid 2px #fff;
+  border-right: solid 2px #fff;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) rotate(45deg);
+  transition: transform .4s;
+}
+
+#openinfullscreen2:hover::before {
+  transform: translateX(4px) translateY(-50%) rotate(45deg);
+}
+
+
 .chat-title #fullscreenbutton {
   font-weight:bolder;
   font-size: 20px;
