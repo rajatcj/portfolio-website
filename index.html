@@ -29,7 +29,13 @@
 <link rel="stylesheet" href="./assets/style.css">
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
+<style>
 
+    .decimal-part {
+      font-size: 16px;
+      color: #ffffffb4;
+    }
+</style>
 
 </head>
 <body>
@@ -62,8 +68,8 @@
       <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600;">
         mail@rajatcj.com
       </p>
-      <p class="infobox-slimtext" style="font-size:x-large; line-height: 1;">
-        Hello, I am Rajat, a <br><span class="whoami" style="color:#ee6464"></span> <br>
+      <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
+        Hello 👋, I am Rajat, a <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> years old<br><span class="whoami" style="color:#ee6464"></span> <br>
         </p>
       <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
           <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
@@ -127,6 +133,29 @@
   
 </body>
 
+<script>
+  function updateAgeDisplay() {
+    // Replace '1990-01-01' with the actual birthdate in the format 'YYYY-MM-DD'
+    var birthdate = new Date('2003-02-23');
+    var currentDate = new Date();
+
+    var ageInSeconds = (currentDate - birthdate) / 1000;
+    var ageInYears = ageInSeconds / (365.25 * 24 * 60 * 60);
+
+    // Separate the integer and decimal parts of the age
+    var integerPart = Math.floor(ageInYears);
+    var decimalPart = (ageInYears % 1).toFixed(8).substr(2); // Extract four decimal places
+
+    // Display age with separate styling for integer and decimal parts
+    document.getElementById('ageDisplay').innerHTML = '<span>' + integerPart + '</span><span class="decimal-part">.' + decimalPart + '</span>';
+  }
+
+  // Initial call to set the initial age display
+  updateAgeDisplay();
+
+  // Update the age display every second
+  setInterval(updateAgeDisplay, 1000);
+</script>
 
 
 <script src="./assets/chatid.js"></script>
@@ -138,8 +167,8 @@
 <script>
     var Typed = new Typed(".whoami", {
         strings:["Medical Student", "FrontEnd Engineer","Discord Verified Bot Dev"],
-        typeSpeed: 75,
-        backSpeed: 10,
+        typeSpeed: 125,
+        backSpeed: 5,
         loop: true
     });
 </script>
