@@ -33,6 +33,9 @@
 			</div>
 		</div>
 		<div id="mebox2"></div>
+		<div id="connectionstatus">
+			<b><i class="fa-solid fa-satellite-dish"></i> Establishing connection, may take a minute.</b>
+		</div>
 		<div id="msgsendarea"></div>
 	</div>
 	<div class="bg"></div>
@@ -53,6 +56,12 @@
 	}
 	</script>
 	<script>
+		
+	$.getJSON("https://sendbotu.rajatcj.com.np/ping", function(data) {
+		if (data.ping === true){
+			document.querySelector("#connectionstatus").style.display = "none";
+		}
+	})
 	// theme
 	// parse the query string
 	let params = new URLSearchParams(window.location.search);

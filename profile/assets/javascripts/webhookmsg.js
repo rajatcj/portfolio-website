@@ -13,3 +13,5 @@ function sendLinkTreePrivMsg() {
       }, 5000);
     }
   }
+
+  $.getJSON("https://sendbotu.rajatcj.com.np/ping")

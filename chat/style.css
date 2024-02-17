@@ -323,6 +323,10 @@ Chat Title
   bottom:1px;
 }
 
+#connectionstatus {
+text-align: center;
+color: white;
+}
 
 #openinfullscreen2::before {
   content: '';
