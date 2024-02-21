@@ -328,6 +328,16 @@ text-align: center;
 color: white;
 }
 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+  animation: spin 2s linear infinite;
+}
+
 #openinfullscreen2::before {
   content: '';
   width: 6px;

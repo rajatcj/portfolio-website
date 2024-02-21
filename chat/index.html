@@ -218,7 +218,7 @@ function getFormattedTime(timestamp) {
 					clickable = clickable.replace(link, '<a href="' + link + '" target="_blank">{link}</a>');
 				}
 			}
-			messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "<div class='timestamp'>" + getFormattedTime(dataArray[i].sf) + "</div></div>" + links.join('');
+			messageElement.innerHTML += "<div class='messagecontent'>" + clickable + "<div class='timestamp'>" + getFormattedTime(dataArray[i].sf) + " <i class='fa-solid fa-spinner'></i></div></div>" + links.join('');
 			msgbox.appendChild(messageElement);
 			const divElements = document.querySelectorAll('.message');
 			divElements.forEach(div => {
@@ -260,6 +260,23 @@ function getFormattedTime(timestamp) {
 						scrollInertia: 500,
 						timeout: 100
 					});
+
+					
+					// Make a GET request to the API
+fetch('https://sendbotu.rajatcj.com.np/ping')
+  .then(response => response.json())
+  .then(data => {
+    // Check if the response is { ping: "true" }
+    if (data.ping === true) {
+      // Replace all instances of "apple" with "banana" on the webpage
+      setTimeout(() => {  
+		  document.querySelectorAll('.fa-spinner').forEach(element => {
+            element.style.display = 'none';
+          });
+        }, 500);
+    }
+  })
+
 	}
 	</script>
 	<script>
