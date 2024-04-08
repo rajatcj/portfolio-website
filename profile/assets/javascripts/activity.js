@@ -4,8 +4,7 @@ var addedh = 5;
 
 function lastfm() {
 const username = 'rajatcj';
-const API_KEY = 'ae77155b734605f6a7e6cc404e176542';
-const recentTracksUrl = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${API_KEY}&format=json&limit=1`;
+const recentTracksUrl = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=ae77155b734605f6a7e6cc404e176542&format=json&limit=1`;
 
 fetch(recentTracksUrl)
   .then(response => response.json())
