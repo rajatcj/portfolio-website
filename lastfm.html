@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Now Playing</title>
+<!-- Link to your prebuilt CSS file -->
+<link rel="stylesheet" type="text/css" href="your-prebuilt-css-file.css">
+<style>
+  /* Additional inline styles if needed */
+</style>
+</head>
+<body>
+<div id="container" class="container">
+  <!-- Content will be dynamically inserted here -->
+</div>
+
+<script>
+  // Function to fetch Last.fm data
+  function getSongInfo() {
+    const username = 'rajatcj';
+    const API_KEY = 'ae77155b734605f6a7e6cc404e176542';
+    const recentTracksUrl = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${API_KEY}&format=json&limit=1`;
+
+    fetch(recentTracksUrl)
+      .then(response => response.json())
+      .then(data => {
+        const track = data.recenttracks.track[0];
+        const nowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+        
+        if (nowPlaying) {
+          const songName = track.name;
+          const albumName = track.album['#text'];
+          const artistName = track.artist['#text'];
+          const songBanner = track.image[2]['#text']; // You can choose a different size if needed
+
+          // Fill the container with the provided HTML snippet
+          document.getElementById('container').innerHTML = `
+          <div class="assets-images">
+            <img class="spotify-thumbnail" onerror="this.src='./assets/img/unknown.png'" width="80" height="80" src="${songBanner}">
+            <a href="https://open.spotify.com/track/${track.mbid}" target="_blank">
+              <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif">
+            </a>
+          </div>
+          <ul>
+            <li id="spotify-ing">Now Playing: ${songName} by ${artistName}</li>
+            <li>Album: ${albumName}</li>
+          </ul>`;
+        } else {
+          // Display status (not playing)
+          document.getElementById('container').innerHTML = '<div id="spotify-ing">Not Playing Right Now</div>';
+        }
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }
+
+  // Fetch song info on page load
+  getSongInfo();
+
+  // Fetch song info every 30 seconds
+  setInterval(getSongInfo, 30000);
+</script>
+</body>
+</html>

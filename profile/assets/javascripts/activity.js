@@ -2,6 +2,21 @@
 var originalh = -0.2;
 var addedh = 5;
 
+function lastfm() {
+const username = 'rajatcj';
+const API_KEY = 'ae77155b734605f6a7e6cc404e176542';
+const recentTracksUrl = `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${API_KEY}&format=json&limit=1`;
+
+fetch(recentTracksUrl)
+  .then(response => response.json())
+  .then(data => {
+    sessionStorage.setItem("lastfm", JSON.stringify(data))
+  })
+  .catch(error => console.error('Error fetching data:', error));
+}
+
+setInterval(lastfm, 10000);
+
 
 
 function updatepresenceLoop() {
@@ -20,9 +35,48 @@ function updatepresenceLoop() {
       }
     }
     if (!containsOtherTypes) {
+      
+
+
+
+// Fetch data from session storage
+const storedData = sessionStorage.getItem("lastfm");
+if (storedData) {
+  // Parse the stored JSON data
+ data = JSON.parse(storedData);
+
+  // Perform actions based on the fetched data
+ track = data.recenttracks.track[0];
+ nowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+  
+  //if (lastPlayedSong !== track.name) {
+    if (nowPlaying) {
+     songName = track.name;
+     albumName = track.album['#text'];
+     artistName = track.artist['#text'];
+     songBanner = track.image[2]['#text']; // You can choose a different size if needed
+      // Fill the container with the provided HTML snippet
+      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="${songBanner}"> <a href="https://open.spotify.com/}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a></div><ul><li id="spotify-ing">LISTENING TO SPOTIFY...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li></li></ul></div>`;
+
+    } else {
+      // Display status (not playing)
       platform = [(json.active_on_discord_web === true ? "Web, " : ""), (json.active_on_discord_desktop === true ? "Desktop, " : ""), (json.active_on_discord_mobile === true ? "Phone, " : "")]
-      document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + (json.discord_status === "offline" ? "" : " on ") + platform.join("") + "</li></ul></div></div>";
-      currentdiv.style.height = "2rem";
+  document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + (json.discord_status === "offline" ? "" : " on ") + platform.join("") + "</li></ul></div></div>";
+  currentdiv.style.height = "2rem";
+    }
+}
+
+
+
+        
+         
+      
+
+
+
+          
+
+
     } else {
       document.getElementById("activities").innerHTML = '';
     }
