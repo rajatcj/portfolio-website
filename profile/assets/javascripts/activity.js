@@ -13,7 +13,7 @@ fetch(recentTracksUrl)
   })
   .catch(error => console.error('Error fetching data:', error));
 }
-
+lastfm()
 setInterval(lastfm, 10000);
 
 
@@ -55,7 +55,7 @@ if (storedData) {
      artistName = track.artist['#text'];
      songBanner = track.image[2]['#text']; // You can choose a different size if needed
       // Fill the container with the provided HTML snippet
-      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="${songBanner}"> <a href="https://open.spotify.com/}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a></div><ul><li id="spotify-ing">LISTENING TO SPOTIFY...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li></li></ul></div>`;
+      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="${songBanner}"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a></div><ul><li id="spotify-ing">LISTENING TO SPOTIFY...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li id="spotify-lastfm">Scrobbling by last.fm</li></ul></div>`;
 
     } else {
       // Display status (not playing)
@@ -114,7 +114,7 @@ if (storedData) {
 
                 percent = (now/end)*100;
                 
-                var songinfo = ["<li id='spotify-songname'>" + json.spotify['song'] + "</li>", "<li id='spotify-bar'><div class='progress-bar'><div class='fill' style='width: " + percent + "%;'></div><p id='spotify-time'>" + playTime(now) + "/" + playTime(end) + "</p></div></li>", "<li id='spotify-artist'>" + "by " + json.spotify['artist'].split('; ').join(', ') + "</li>", "<li id='spotify-album'>" + "on " + json.spotify['album'] + "</li>"]
+                var songinfo = ["<li id='spotify-songname'>" + json.spotify['song'] + "</li>", "<li id='spotify-artist'>" + "by " + json.spotify['artist'].split('; ').join(', ') + "</li>", "<li id='spotify-album'>" + "on " + json.spotify['album'] + "</li>", "<li id='spotify-bar'><div class='progress-bar'><div class='fill' style='width: " + percent + "%;'></div><p id='spotify-time'>" + playTime(now) + "/" + playTime(end) + "</p></div></li>"]
                 
                 div.innerHTML = '<div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="' + 
                 json.spotify['album_art_url'] + '">' + '<a href="https://open.spotify.com/track/' + json.spotify['track_id'] + '" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a>' + '</div>' + '<ul><li id="spotify-ing">' + 'LISTENING TO SPOTIFY...' + "</li>" +

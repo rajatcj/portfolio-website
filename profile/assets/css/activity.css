@@ -125,6 +125,7 @@
 }
 
 .progress-bar {
+    margin-top: 5px;
     height: 4px;
     width: 100%;
     max-width: 300px;
@@ -150,7 +151,6 @@
 }
 
 #spotify-artist {
-    margin-top: 10px;
     font-size: 12px;
     color: rgba(255, 127, 80, 0.781);
 }
@@ -160,7 +160,10 @@
     color: #cccccc;
 }
 
-
+#spotify-lastfm {
+    font-size: 6px;
+    color: #aaa8a8;
+}
 
 
 
