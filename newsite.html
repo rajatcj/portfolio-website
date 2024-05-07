@@ -30,7 +30,9 @@
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
 <style>
-  input, select {
+  
+  
+  input, select, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -42,6 +44,15 @@
   }
   
   button {
+    background-color: #7c583a;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .buttons {
     width: 100%;
     background-color: #e08663;
     color: white;
@@ -52,7 +63,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .buttons:hover {
     background-color: #cf7450;
   }
 
@@ -60,6 +71,79 @@
     color: #ccc;
     font-size: medium;
   }
+
+  
+/* Form container with a grid layout */
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px; /* Space between elements */
+}
+
+/* Group elements in a row */
+.row {
+  display: flex; /* Use flex for alignment */
+  flex-direction: row;
+  justify-content: space-between; /* Space between labels and inputs */
+  align-items: center; /* Align items to the center */
+}
+
+/* Column layout for sub-groups */
+.column {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  gap: 10px; /* Space between elements in a column */
+  width: 49%;
+}
+
+/* Full width for textarea */
+#main_detail {
+  grid-column: span 2; /* Occupy both columns */
+}
+
+/* Centered submit button */
+.buttons {
+  text-align: center;
+  background-color: #c48d4f; /* Green button */
+  color: white; /* White text */
+  border: none;
+  cursor: pointer; /* Cursor changes on hover */
+  padding: 10px; /* Padding around the button */
+}
+
+/* Responsive design for small screens */
+/* Responsive design for small screens */
+@media (max-width: 600px) {
+  .form-container {
+    display: flex; /* Use flexbox for better alignment */
+    flex-direction: column; /* Arrange elements vertically */
+    gap: 10px; /* Space between elements */
+  }
+
+  .column {
+    flex-direction: column; /* Ensure elements stack vertically */
+  }
+
+  #main_detail {
+    grid-column: span 1; /* Ensure it spans the full width */
+  }
+
+  /* Align labels and inputs in individual rows */
+  .form-container label,
+  .form-container input,
+  .form-container textarea,
+  .form-container button {
+    width: 100%; /* Ensure elements take full width */
+    text-align: left; /* Align text to the left */
+  }
+
+  .form-container button {
+    text-align: center; /* Center-align button text */
+    padding: 10px; /* Provide padding for the button */
+  }
+}
+
+
 
   </style>
 
@@ -89,69 +173,143 @@
   
   
     
-  <div class="box">
-    <div class="infobox">
 
-    <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600;">
+    <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600; font-size: xx-large;">
       Add A Site
     </p>
-  <form id="lanyardForm">
-    <label for="user_id">User ID:</label><br>
-    <input id="user_id" name="user_id" value="754033245972201612" required><br><br>
 
-    <label for="key">https://rajatcj.com/p?</label>
-    <input id="key" name="key" value="" required><br><br>
-
-    <!-- Main JSON Data -->
-    <label for="main_title">Title:</label>
-    <input id="main_title" name="main_title" value="" required><br><br>
-
-    <label for="main_detail">Detail:</label>
-    <input id="main_detail" name="main_detail" value="" required><br><br>
-
-    <label for="main_pribtn_text">Primary Button Text:</label>
-    <input id="main_pribtn_text" name="main_pribtn_text" value="Home" required><br><br>
-
-    <label for="main_pribtn_link">Primary Button Link:</label>
-    <input type="url" id="main_pribtn_link" name="main_pribtn_link" value="https://rajatcj.com/" required><br><br>
-
-    <label for="main_secbtn_text">Secondary Button Text:</label>
-    <input id="main_secbtn_text" name="main_secbtn_text" value="Discord" required><br><br>
-
-    <label for="main_secbtn_link">Secondary Button Link:</label>
-    <input type="url" id="main_secbtn_link" name="main_secbtn_link" value="https://discord.gg/nepal" required><br><br>
-
-    <!-- Card JSON Data -->
-    <label for="card_img">Card Image:</label>
-    <input type="url" id="card_img" name="card_img" value="https://dcdn.dstn.to/avatars/754033245972201612" required><br><br>
-
-    <label for="card_info1_img">Card Info 1 Image:</label>
-    <input type="url" id="card_info1_img" name="card_info1_img" value="https://dcdn.dstn.to/avatars/754033245972201612" required><br><br>
-
-    <label for="card_info1_name">Card Info 1 Text:</label>
-    <input id="card_info1_name" name="card_info1_name" value="Author" required><br><br>
-
-    <label for="card_info1_price">Card Info 1 Subtext:</label>
-    <input id="card_info1_price" name="card_info1_price" value="Rajat" required><br><br>
-
-    <label for="card_info2_text">Card Info 2 Text:</label>
-    <input id="card_info2_text" name="card_info2_text" value="Join" required><br><br>
-
-    <label for="card_info2_icon">Card Info 2 Subtext:</label>
-    <input id="card_info2_icon" name="card_info2_icon" value="discord.gg/nepal" required><br><br>
-
-    
-    <label for="user_id">Pass</label><br>
-    <input type="pass" id="api_key" name="api_key" required><br><br>
-
-    <button type="button" onclick="updateLanyardKV()">Update Lanyard KV</button>
+  <form id="lanyardForm2">
+    <label for="user_id_load">User ID:</label><br>
+    <input id="user_id_load" name="user_id" value="754033245972201612" required><br><br>
+    <button type="button" class="buttons" onclick="getLanyardKV()">Load Available Webpages</button>
   </form>
+  <hr>
+<div id="buttonContainer"></div>
+<hr>
+  <form id="lanyardForm">
+      <div class="row"> <!-- To group related elements -->
+        <label for="key">https://rajatcj.com/p?</label>
+        <input id="key" name="key" value="" required>
+      </div>
+    
+      <div class="row"> <!-- Side-by-side layout -->
+        <input id="main_title" placeholder="Title" name="main_title" value="" required>
+      </div>
+    
+      <div class="row"> <!-- Full width -->
+        <textarea id="main_detail" placeholder="Content" name="main_detail" rows="3" required></textarea> <!-- Textarea for detail -->
+      </div>
+    <hr>
+      <div class="row"> <!-- Side-by-side layout -->
+        <div class="column"> <!-- Left side -->
+          <label for="main_pribtn_text">Primary Button:</label>
+          <input id="main_pribtn_text" name="main_pribtn_text" placeholder="Button Name" value="Home" required>
+          <input type="url" id="main_pribtn_link" name="main_pribtn_link" placeholder="Button URL" value="https://rajatcj.com/" required>
+        </div>
+    
+        <div class="column"> <!-- Right side -->
+          <label for="main_secbtn_text">Secondary Button Text:</label>
+          <input id="main_secbtn_text" name="main_secbtn_text" value="Discord" placeholder="Button Name" required>
+          <input type="url" id="main_secbtn_link" name="main_secbtn_link" placeholder="Button URL"  value="https://discord.gg/nepal" required>
+        </div>
+      </div>
+      <hr>
+      <div class="row"> <!-- Full width -->
+        <input type="url" placeholder="Card Image" id="card_img" name="card_img" value="https://image.pollinations.ai/prompt/apple?width=960&height=720&nologo=true" required>
+      </div>
+      <div class="row"> <!-- Left and Right layout -->
+        <div class="column"> <!-- Left side -->
+          <label for="card_info1_img">Caption Left</label>
+          <input type="url" id="card_info1_img" placeholder="Avatar" name="card_info1_img" value="https://dcdn.dstn.to/avatars/754033245972201612" required>
+          <input id="card_info1_name" name="card_info1_name" placeholder="Column 1" value="Rajat CJ" required>
+          <input id="card_info1_price" name="card_info1_price" placeholder="Column 2" value="@rajat_cj" required>
+        </div>
+    
+        <div class="column"> <!-- Right side -->
+          <label for="card_info2_text">Caption Right</label>
+          <input id="card_info2_text" name="card_info2_text" placeholder="Column 1" value="Join" required>
+          <input id="card_info2_icon" name="card_info2_icon" placeholder="Column 2" value="discord.gg/nepal" required>
+        </div>
+      </div>
+      <hr>
+      <div class="row"> <!-- Full width -->
+        <input type="password" placeholder="Password" id="api_key" name="api_key" required>
+      </div>
+    
+      <div class="row"> <!-- Submit button -->
+        <button type="button" class="buttons" onclick="updateLanyardKV()">Update Lanyard KV</button>
+      </div>
+    </form>
 
-  </div>
-  </div>
   <script>
+ function getLanyardKV() {
+  const userIdLoad = document.getElementById("user_id_load").value;
+
+  // Fetch data from the given API endpoint
+  fetch(`https://api.lanyard.rest/v1/users/${userIdLoad}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not okay');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const kv = data.data.kv;
+      const buttonContainer = document.getElementById("buttonContainer"); // A div where we add the buttons
+      buttonContainer.innerHTML = ""; // Clear existing buttons
+
+      for (const key in kv) {
+        if (kv[key]) {
+          let kvData;
+          try {
+            kvData = JSON.parse(kv[key]); // Convert the data to a JSON object
+          } catch (e) {
+            console.error(`Failed to parse data for key ${key}:`, e);
+            continue;
+          }
+
+          // Check if the kv data has a "main" key with a "title"
+          if (kvData.main && kvData.main.title) {
+            const button = document.createElement("button");
+            button.class = "websitebutton"
+            button.textContent = kvData.main.title; // Button text is the "title"
+            button.onclick = () => {
+              // When clicked, fill in the form with the data
+              fillForm(kvData, key);
+            };
+            buttonContainer.appendChild(button); // Add the button to the container
+          }
+        }
+      }
+    })
+    .catch((error) => {
+      console.error('An error occurred while fetching data:', error.message);
+    });
+}
+
+// Function to fill the form with the extracted data
+function fillForm(extractedData, key) {
+  document.getElementById('main_title').value = extractedData.main?.title || '';
+  document.getElementById('key').value = key || '';
+  document.getElementById('main_detail').value = extractedData.main?.detail || '';
+  document.getElementById('main_pribtn_text').value = extractedData.main?.pribtn?.text || '';
+  document.getElementById('main_pribtn_link').value = extractedData.main?.pribtn?.link || '';
+  document.getElementById('main_secbtn_text').value = extractedData.main?.secbtn?.text || '';
+  document.getElementById('main_secbtn_link').value = extractedData.main?.secbtn?.link || '';
+
+  document.getElementById('card_img').value = extractedData.card.img || '';
+  document.getElementById('card_info1_img').value = extractedData.card.detail.info1.img || '';
+  document.getElementById('card_info1_name').value = extractedData.card.detail.info1?.name || '';
+  document.getElementById('card_info1_price').value = extractedData.card.detail.info1?.price || '';
+  document.getElementById('card_info2_text').value = extractedData.card.detail.info2?.text || '';
+  document.getElementById('card_info2_icon').value = extractedData.card.detail.info2?.icon || '';
+}
+
+
+
+
     function updateLanyardKV() {
-      const userId = document.getElementById("user_id").value;
+      const userId = document.getElementById("user_id_load").value;
       const key = document.getElementById("key").value;
       const apikey = document.getElementById("api_key").value;
 
@@ -172,6 +330,7 @@
       // Card JSON Data
       const cardData = {
         img: document.getElementById("card_img").value,
+        detail: {
         info1: {
           img: document.getElementById("card_info1_img").value,
           name: document.getElementById("card_info1_name").value,
@@ -181,6 +340,7 @@
           text: document.getElementById("card_info2_text").value,
           icon: document.getElementById("card_info2_icon").value
         }
+      }
       };
 
       const jsonData = {
