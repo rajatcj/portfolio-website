@@ -20,7 +20,8 @@
 
  <!--J query-->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +31,46 @@
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
 <style>
-  
+/* Overlay to cover the whole screen and create a blur effect */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  backdrop-filter: blur(5px);     /* Blurs everything behind the overlay */
+  z-index: 999;
+  display: none; /* Hidden by default */
+}
+
+/* Modal to be centered in the middle of the screen */
+.modal {
+  position: fixed;
+  top: 50%;  /* Position at the middle of the screen vertically */
+  left: 50%; /* Position at the middle of the screen horizontally */
+  transform: translate(-50%, -50%); /* Center the modal */
+  padding: 20px;
+  background-color: white; /* White background for the modal */
+  border: 1px solid #ccc; /* Border around the modal */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+  z-index: 1000; /* Ensures the modal is above the overlay */
+  display: none; /* Hidden by default */
+}
+
+/* Optional: Modal content style */
+#modal-content {
+  text-align: center; /* Center the content inside the modal */
+}
+
+/* Close button style */
+.modal button {
+  margin: 5px; /* Adds space between buttons */
+}
+
+
+
+
   
   input, select, textarea {
     width: 100%;
@@ -241,6 +281,15 @@
       </div>
     </form>
 
+ <!-- Modal for Success/Error Messages -->
+ <div class="modal-overlay" id="modal-overlay"></div>
+ <div class="modal" id="modal">
+   <div id="modal-content">
+     <!-- Content will be inserted here -->
+   </div>
+ </div>
+
+
   <script>
  function getLanyardKV() {
   const userIdLoad = document.getElementById("user_id_load").value;
@@ -308,7 +357,7 @@ function fillForm(extractedData, key) {
 
 
 
-    function updateLanyardKV() {
+function updateLanyardKV() {
       const userId = document.getElementById("user_id_load").value;
       const key = document.getElementById("key").value;
       const apikey = document.getElementById("api_key").value;
@@ -331,16 +380,16 @@ function fillForm(extractedData, key) {
       const cardData = {
         img: document.getElementById("card_img").value,
         detail: {
-        info1: {
-          img: document.getElementById("card_info1_img").value,
-          name: document.getElementById("card_info1_name").value,
-          price: document.getElementById("card_info1_price").value
-        },
-        info2: {
-          text: document.getElementById("card_info2_text").value,
-          icon: document.getElementById("card_info2_icon").value
+          info1: {
+            img: document.getElementById("card_info1_img").value,
+            name: document.getElementById("card_info1_name").value,
+            price: document.getElementById("card_info1_price").value
+          },
+          info2: {
+            text: document.getElementById("card_info2_text").value,
+            icon: document.getElementById("card_info2_icon").value
+          }
         }
-      }
       };
 
       const jsonData = {
@@ -357,11 +406,72 @@ function fillForm(extractedData, key) {
           "Authorization": `${apikey}`
         },
       })
-      window.open(`https://rajatcj.com/p?${key}`, "_blank");
-
+      .then(response => {
+        if (response.ok) {
+          displayModal("Lanyard KV Updated", `The site '${document.getElementById("main_title").value}' has been added successfully.`, key);
+        } else {
+          response.json().then(errorData => {
+            displayModal("Error", `Failed to update: ${errorData.reason}`);
+          });
+        }
+      })
+      .catch(error => {
+        displayModal("Error", `An error occurred: ${error.message}`);
+      });
     }
-    
 
+    function displayModal(title, message, key = null) {
+      const modalOverlay = document.getElementById("modal-overlay");
+      const modal = document.getElementById("modal");
+      const modalContent = document.getElementById("modal-content");
+
+      // Clear any existing content
+      modalContent.innerHTML = "";
+
+      // Create content for the modal
+      const titleElement = document.createElement("h3");
+      titleElement.textContent = title;
+
+      const messageElement = document.createElement("p");
+      messageElement.textContent = message;
+
+      const closeButton = document.createElement("button");
+      closeButton.textContent = "Close";
+      closeButton.onclick = closeModal;
+
+      modalContent.appendChild(titleElement);
+      modalContent.appendChild(messageElement);
+      modalContent.appendChild(closeButton);
+
+      if (key) {
+        const copyLinkButton = document.createElement("button");
+        copyLinkButton.textContent = "Copy Link";
+        copyLinkButton.onclick = () => {
+          navigator.clipboard.writeText(`https://rajatcj.com/p?${key}`);
+        };
+
+        const openSiteButton = document.createElement("button");
+        openSiteButton.textContent = "Open New Site";
+        openSiteButton.onclick = () => {
+          window.open(`https://rajatcj.com/p?${key}`, "_blank");
+        };
+
+        modalContent.appendChild(copyLinkButton);
+        modalContent.appendChild(openSiteButton);
+      }
+
+      // Show the modal and overlay
+      modalOverlay.style.display = "block";
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      const modalOverlay = document.getElementById("modal-overlay");
+      const modal = document.getElementById("modal");
+
+      modalOverlay.style.display = "none";
+      modal.style.display = "none";
+    }
 
         </script>
  
