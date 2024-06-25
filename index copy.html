@@ -1,257 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content="Hmmm a lil about me i guess" />
-  <meta name="author" content="" />
-
-  <link rel="icon" type="image/x-icon" href="https://dcdn.dstn.to/avatars/754033245972201612">
-  <link rel="stylesheet" media="screen" href="css/style.css">
-  <title>Rajat Jha</title>
-
-        <!--embed-->
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="mail@rajatcj.com">
-        <meta property="og:title" content="Rajat CJ">
-        <meta property="og:description" content="A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.">
-        <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
-        <meta content="https://rajatcj.com/" property="og:url" />
-        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
-
- <!--J query-->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="./assets/style.css">
-<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-
-
-    <style>
-      #hoveremail {
-        cursor: help;
-      }
-      #hoveremail span {
-        cursor: pointer;
-      }
-      #hoveremail span.hoverhandle:before,
-      #hoveremail span.hoverwebsite:before,
-      #hoveremail span.hoveremail:before {
-        content: "";
-        display: none;
-        position: absolute;
-        top: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #333;
-        color: #fff;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        z-index: 999;
-      }
-      #hoveremail span.hoverhandle:before {
-        content: "My Social Handles";
-      }
-      #hoveremail span.hoverwebsite:before {
-        content: "My Website";
-      }
-      #hoveremail span.hoveremail:before {
-        content: "Email Address";
-      }
-      #hoveremail span:hover:before {
-        display: block;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>CodePen - CSS scroll-driven scroll-snapping animations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..400;1,9..144,100..400&family=Noto+Sans+Display:wght@200..700&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://codepen.io/giana/pen/rNRzgRj.css'><link rel="stylesheet" href="./style.css">
+  
+<link rel="stylesheet" href="mainstyle.css">
+<link rel="stylesheet" href="snapscroll.css">
+<link rel="stylesheet" href="templatemo-style.css" />
 
 </head>
 <body>
-  
-<!-- partial:index.partial.html -->
-<div class="landingpage">
-  <div class="navbar">
-    <a class="navlogo">Rajat CJ</a>
-    <button class="hamburger">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-          <path d="M3 12h18M3 6h18M3 18h18"/>
-        </svg>
-      </button>
-      <div class="navlinkwrap">
-        <span class="navlink links" onclick="location.href='https://rajatcj.com';" style="cursor: pointer;">Home</span>
-        <span class="navlink links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;">Portfolio</span>
-        <span class="navlink links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
-        <span class="navlink links" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
-      </div>
-      <div class="buttonwrap">
-        <button class="createbtn selectedbtn" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;">Linktree</button>
-        <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
-      </div>
-    </div>
-  
-  <div class="box">
-    <div class="infobox">
-      <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
-      
-      <p class="infobox-boldtext">
-        <div id="hoveremail">
-          <span class="hoveremail infobox-boldtext" data-username="Email">hey</span>
-          <span class="hoverat infobox-boldtext" data-username="At">@</span>
-          <span class="hoverhandle infobox-boldtext" data-username="rajat_cj">rajatcj</span>
-          <span class="hoverwebsite infobox-boldtext">.com.np</span>
-        </div>
-      </p>
-      <p class="infobox-slimtext">
-        A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.
-      </p>
-      <div class="infobox-btnwrapper">
-        <button class="infobox-explorebtn selected" onclick="location.href='https://rajatcj.com/portfolio';">Portfolio</button>
-        <button class="infobox-createbtn" onclick="location.href='https://rajatcj.com/linktree';">Linktree</button>
-      </div>
-      <br>
-      <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-          <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
-          <br> -->
-          <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
-          <div id='messagebox' class='messagebox'></div>
-          <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
-          <input name="username" id="username" type="hidden" value="Linktree" />
-          <input name="guild" id="guild" type="hidden" value="819109979046936577" />
-          <input name="sessionid" id="sessionid" type="hidden" value="" />
-          <input name="timezone" id="timezone" type="hidden" value="" />
-          <input name="url" id="url" type="hidden" value="" />
+  <div class="responsive-nav">
+    <i class="fa fa-bars" id="menu-toggle"></i>
+    <div id="menu" class="menu">
+       <!-- <div id="particles-js"> -->
+       <div class="container" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+         <i class="fa fa-times" id="menu-close"></i>
+         
+                 <iframe src="./profile/index.html" style="width: 100%; max-width: calc(80vh / 1.5); height: 100vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
+               
           
-      </form>
-  </div>
-  <iframe src="./profile/index.html"  style="width:100%; max-width: 500px; height: 80vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
+
+
+          
+       </div>
+       
+       <!-- </div> -->
+    </div>
+    
+ </div>
+<!-- partial:index.partial.html -->
+<header class="site-header">
+    <h1 class="sr-only">Scrollnapping animations</h1>
+
+    <!-- Because Chrome crashes if an overflow is set on the fieldset while a named timeline is on a child element -->
+    <!-- ¯\_(ツ)_/¯ -->
+  
+    <div class="fieldset-wrapper">
+      <fieldset>
+        <legend class="sr-only">Effects</legend>
+
+        <!-- radio buttons for each of the @keyframes above -->
+        <input type="radio" id="blink-effect" name="effect" value="blink" checked class="sr-only">
+        <label for="blink-effect">Blink</label>
+
+        <input type="radio" id="horizontal-scroll-effect" name="effect" value="horizontal-scroll" class="sr-only">
+        <label for="horizontal-scroll-effect">Horizontal scroll</label>
+
+        <input type="radio" id="backwards-scroll-effect" name="effect" value="backwards-scroll" class="sr-only">
+        <label for="backwards-scroll-effect">Backwards scroll</label>
+
+        <input type="radio" id="zoom-scroll-effect" name="effect" value="zoom-scroll" class="sr-only">
+        <label for="zoom-scroll-effect">Zoom scroll</label>
+      </fieldset>
+    </div>
+
+    <nav>
+      <ul class="indicator">
+        <li><a href="#snapping"><span class="sr-only">Snapping</span></a></li>
+        <li><a href="#scrolling"><span class="sr-only">Scrolling</span></a></li>
+        <li><a href="#layout"><span class="sr-only">Layout</span></a></li>
+        <li><a href="#transition"><span class="sr-only">Transition</span></a></li>
+        <li><a href="#caveats"><span class="sr-only">Caveats</span></a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="snapping" class="section">
+      <div class="content">
         
-  </div>
-  
+        <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600;">
+          mail@rajatcj.com
+        </p>
+        <h2><strong>Next</strong>, we set up the <em>scrolling</em> animation</h2>
 
+        <div class="text">
+          <img src="https://assets.codepen.io/197359/flower-yellow.png" alt="">
+          <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
+            Hello 👋, I am Rajat, a <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> years old<br><span class="whoami" style="color:#ee6464"></span> <br>
+            </p>
 
-  <div class="footer">
-    <div class="footer-main">
-      Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023
-    </div>
-    <div class="footer-navigate">
-      <div class="nav">
-        <h5>Socials</h5>
-        <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
-        <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
-        <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
-        <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
+          <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
+              <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
+              <br> -->
+              <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
+              <div id='messagebox' class='messagebox'></div>
+              <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
+              <input name="username" id="username" type="hidden" value="Linktree" />
+              <input name="guild" id="guild" type="hidden" value="819109979046936577" />
+              <input name="sessionid" id="sessionid" type="hidden" value="" />
+              <input name="timezone" id="timezone" type="hidden" value="" />
+              <input name="url" id="url" type="hidden" value="" />
+          </form>
+          <br>
+          <div class="infobox-btnwrapper">
+            <button class="infobox-explorebtn selected" onclick="location.href='https://rajatcj.com/portfolio';">Portfolio</button>
+            <button class="infobox-createbtn" onclick="location.href='https://rajatcj.com/linktree';">Linktree</button>
+          </div>
+        </div>
       </div>
-      <div class="nav">
-        <h5>Other Sites</h5>
-        <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
-        <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
-        <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
-        <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
+    </section>
+
+    <section id="scrolling" class="section">
+      <div class="container">
+      <div class="content">
+        <h2><strong>Next</strong>, we set up the <em>scrolling</em> animation</h2>
+
+        <div class="text">
+          <img src="https://assets.codepen.io/197359/flower-yellow.png" alt="">
+          <p>We track the <code class="property">view()</code> position of the <code class="selector">section</code> elements using the named timeline <code class="property">view-timeline: --section;</code>. We had previously set the <code class="property">timeline-scope: --section</code> up in our <code class="selector">HTML</code> element, so we can access it from anywhere in the document.</p>
+
+          <p>We animate the <code class="selector">.content</code> children using <code class="property">animation-timeline: --section;</code>. The <code class="selector">.content</code> element will now animate based on its parent <code class="selector">section</code>'s position. This is important due to how we're handling the layout in the next section.</p>
+        </div>
       </div>
-      <div class="nav">
-        <h5>Discords</h5>
-        <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
-        <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Hangout Place</p>
-        <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
-        <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
       </div>
-    </div>
-  </div>
-  <div class="footer2">
-    <div></div>
-    <p>Copyright 2023 RajatCJ</p>
-  </div>
-</div>
+    </section>
+    <section id="layout" class="section">
+      <div class="content">
+        <h2><strong>Then</strong>, we position a <em>fixed</em> layout</h2>
+
+        <div class="text">
+          <img src="https://assets.codepen.io/197359/flower-blue.png" alt="">
+          <p>We set the <code class="selector">.content</code> elements to <code class="property">position: fixed</code>, so they're removed from the normal document flow and stack on top of each other, giving them a solid background, so only one is visible at a time.</p>
+
+          <p>Their parent <code class="selector">section</code>s are positioned as normal in the layer below, taking up space, scroll-snapping, and powering the <code class="property">animation-timeline</code>.</p>
+        </div>
+      </div>
+    </section>
+    <section id="transition" class="section">
+      <div class="content">
+        <h2><strong>Finally</strong>, we create the <em>transition</em> effects</h2>
+
+        <div class="text">
+          <img src="https://assets.codepen.io/197359/flower-red.png" alt="">
+          <p>By setting the <code class="selector">.content</code> elements to <code class="property">position: fixed</code>, we can now transition between them without a visible scrolling movement.</p>
+
+          <p>We create a normal <code class="selector">@keyframe</code> animation to our liking to transition between them. Check the navigation menu to see different effects.</p>
+        </div>
+      </div>
+    </section>
+    <section id="caveats" class="section">
+      <div class="content">
+        <h2><strong>Caveats</strong></h2>
+
+        <div class="text">
+          <img src="https://assets.codepen.io/197359/flower-purple.png" alt="">
+          <ul>
+            <li>Scrolling animations are not currently available in Firefox. This demo is using a polyfill.</li>
+            <li>This layout is fragile due to the use of <code class="property">position: fixed</code>. You need to carefully manage stacking contexts.</li>
+            <li>Snapping points have their own caveats, such as content taller than the viewport becoming inaccessible, along with the general annoyance of scrolljacking.</li>
+            <li>The <code class="selector">blink</code> effect uses the <code class="property">contrast()</code> filter, which modifies the colors of the entire section. Thus, the background is set to black (or white), ensuring that it appears unchanged during transitions due to already being at maximum contrast.</li>
+            </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>That's it <span class="emoji">🌸</span></p>
+  </footer>
 <!-- partial -->
-  
+  <script src='https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js'></script>
 </body>
-
-
-
-<script src="./assets/chatid.js"></script>
-<script src="./assets/msgsend.js"></script>
-
-
-<script>
-  const emailSpan = document.querySelector(".hoveremail");
-  const handleSpan = document.querySelector(".hoverhandle");
-  const websiteSpan = document.querySelector(".hoverwebsite");
-  const atSpan = document.querySelector(".hoverat");
-  const color1 = "#fff";
-  const color2 = "#fff";
-  const color3 = "#fff";
-
-  emailSpan.addEventListener("mouseenter", function() {
-    emailSpan.style.color = color1;
-    handleSpan.style.color = color1;
-    websiteSpan.style.color = color1;
-    atSpan.style.color = color1;
-    emailSpan.style.textDecoration = "underline";
-    handleSpan.style.textDecoration = "underline";
-    websiteSpan.style.textDecoration = "underline";
-    atSpan.style.textDecoration = "underline";
-  });
-  emailSpan.addEventListener("mouseleave", function() {
-    emailSpan.style.color = color2;
-    handleSpan.style.color = color2;
-    websiteSpan.style.color = color2;
-    atSpan.style.color = color2;
-    emailSpan.style.textDecoration = "";
-    handleSpan.style.textDecoration = "";
-    websiteSpan.style.textDecoration = "";
-    atSpan.style.textDecoration = "";
-  });
-
-  atSpan.addEventListener("mouseenter", function() {
-    emailSpan.style.color = color1;
-    handleSpan.style.color = color1;
-    websiteSpan.style.color = color1;
-    atSpan.style.color = color1;
-    emailSpan.style.textDecoration = "underline";
-    handleSpan.style.textDecoration = "underline";
-    websiteSpan.style.textDecoration = "underline";
-    atSpan.style.textDecoration = "underline";
-  });
-  atSpan.addEventListener("mouseleave", function() {
-    emailSpan.style.color = color2;
-    handleSpan.style.color = color2;
-    websiteSpan.style.color = color2;
-    atSpan.style.color = color2;
-    emailSpan.style.textDecoration = "";
-    handleSpan.style.textDecoration = "";
-    websiteSpan.style.textDecoration = "";
-    atSpan.style.textDecoration = "";
-  });
-
-  handleSpan.addEventListener("mouseenter", function() {
-    emailSpan.style.opacity = "50%";
-    websiteSpan.style.opacity = "50%";
-    atSpan.style.color = color1;
-    handleSpan.style.color = color1;
-    handleSpan.innerHTML = "rajat_cj";
-  });
-  handleSpan.addEventListener("mouseleave", function() {
-    emailSpan.style.opacity = "100%";
-    websiteSpan.style.opacity = "100%";
-    atSpan.style.color = color2;
-    handleSpan.style.color = color2;
-    handleSpan.innerHTML = "rajatcj";
-  });
-
-  websiteSpan.addEventListener("mouseenter", function() {
-    emailSpan.style.opacity = "50%";
-    atSpan.style.opacity = "50%";
-    websiteSpan.style.color = color1;
-    handleSpan.style.color = color1;
-  });
-  websiteSpan.addEventListener("mouseleave", function() {
-    emailSpan.style.opacity = "100%";
-    atSpan.style.opacity = "100%";
-    websiteSpan.style.color = color2;
-    handleSpan.style.color = color2;
-  });
-</script>
 </html>

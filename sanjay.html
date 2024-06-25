@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="Hmmm a lil about me i guess" />
+  <meta name="author" content="" />
+
+  <link rel="icon" type="image/x-icon" href="./assets/sanjay/sanjay1png.png">
+  <title>Sanju 💗</title>
+
+        <!--embed-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="mail@rajatcj.com">
+        <meta property="og:title" content="Sanju 💗">
+        <meta property="og:description" content="....">
+        <meta property="og:image" content="./assets/sanjay/sanjay1png.png">
+        <meta content="https://rajatcj.com/" property="og:url" />
+        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+
+ <!--J query-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./assets/style.css">
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+<style>
+
+    .decimal-part {
+      font-size: 16px;
+      color: #ffffffb4;
+    }
+</style>
+
+</head>
+<body>
+  
+<!-- partial:index.partial.html -->
+<div class="landingpage">
+  <div class="navbar">
+    <a class="navlogo">Sanju 💗</a>
+    <button class="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  
+  <div class="box">
+    <div class="infobox">
+      <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
+      
+      <p id="lyrics" class="infobox-boldtext" style="font-family: 'Fira Code', monospace; color:#ffffff50; font-size: large; align-items: center;">
+        
+      </p>
+      <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
+        All the best Sanju 😉 Its been <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> days since you left! When do we meet again?
+      </p>
+      
+      <br>
+      <div class="infobox-btnwrapper">
+        <button class="infobox-explorebtn selected"  id="musiccontrol">Pause Song</button>
+        <button class="infobox-createbtn" onclick="location.href='https://wa.me/9779803470982?text=Hello%20Rajat,%20k%20xa%20hal%20khabar'">Drop a Message</button>
+      </div>
+  </div>      <div class="display">
+    <img class="display-nft" id="imageDisplay" src="./assets/sanjay/sanjay2png.png" alt="unsplash-OG44d93i-NJk" border="0">
+    <div class="infowrapper">
+      <div class="info">
+        <img class="info-img" src="./assets/sanjay/sanjay1png.png" alt="unsplash-OG44d93i-NJk" border="0">
+        <div>
+          <p>Sanju</p>
+          <p></p>
+        </div>
+      </div>
+      <div class="info2">
+        <p>From</p>
+        <div class="iconwrapper">
+          Mamaghar
+        </div>
+      </div>
+    </div>
+  </div>
+        
+  </div>
+  
+
+
+
+  <audio id="background-music" autoplay loop>
+    <source src="./assets/sanjay/timropratiksa.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+<!-- partial -->
+  
+</body>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const images = [
+    './assets/sanjay/sanjay1png.png',
+    './assets/sanjay/sanjay2png.png',
+    './assets/sanjay/sanjay3png.png'
+    // Add more image paths as needed
+  ];
+
+  const imageElement = document.getElementById('imageDisplay');
+  let currentImageIndex = 0;
+
+  function changeImage() {
+    imageElement.src = images[currentImageIndex];
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  }
+
+  // Initial image display
+  changeImage();
+
+  // Change image every 3 seconds
+  setInterval(changeImage, 3000);
+});
+
+</script>
+
+
+<script>
+  function updateAgeDisplay() {
+    // Replace '2003-02-23' with the actual birthdate in the format 'YYYY-MM-DD'
+    var birthdate = new Date('2024-06-25');
+    var currentDate = new Date();
+
+    var ageInMilliseconds = currentDate - birthdate;
+    var ageInDays = ageInMilliseconds / (1000 * 60 * 60 * 24);
+
+    // Separate the integer and decimal parts of the age
+    var integerPart = Math.floor(ageInDays);
+    var decimalPart = (ageInDays % 1).toFixed(5).substr(2); // Extract eight decimal places
+
+    // Display age with separate styling for integer and decimal parts
+    document.getElementById('ageDisplay').innerHTML = '<span>' + integerPart + '</span><span class="decimal-part">.' + decimalPart + '</span>';
+  }
+
+  // Call the function to update the display
+  updateAgeDisplay();
+  
+  // Update the age display every second
+  setInterval(updateAgeDisplay, 1000);
+</script>
+
+
+<script>
+ 
+ var lyrics = [
+            { time: 0, text: "Timro Pratiksa ma..." },
+            { time: 7, text: "Hmmmm..." },
+            { time: 29, text: "हेर पर्खेर बसेछु नि म" },
+            { time: 34, text: "सुन्नलाई तिम्रो त्यो बोली" },
+            { time: 38, text: "सुन मेरा यी भावनाहरू" },
+            { time: 44, text: "किन लाग्छ यो माया नै हो कि!" },
+            { time: 49, text: "मेरो सारा माया तिमीलाई नै छ" },
+            { time: 53, text: "तिम्रो मुस्कानमा हराइ सकेँ" },
+            { time: 58, text: "खुसी छु तिम्रो साथ पाएर" },
+            { time: 63, text: "नछोड्नु है यो हात कहिले" },
+            { time: 69, text: "भुलिदिउँला यो संसार तिमी नै भए" },
+            { time: 73, text: "तिमी मुस्कुराउँदा मन मेरो अतालिनु पर्ने" },
+            { time: 79, text: "कसरी व्यक्त गरूँ तिमीलाई माया छ भनी" },
+            { time: 88, text: "तिमी हाँसी दिनु है मेरो छेउ आउँदै" },
+            { time: 93, text: "बसिरहनेछु सधैँ तिम्रै प्रतीक्षामा नै" },
+            { time: 98, text: "तिमी हाँसी दिनु है मेरो छेउ आउँदै" },
+            { time: 103, text: "बसिरहनेछु सधैँ तिम्रै प्रतीक्षामा नै.. माया" },
+            { time: 128, text: "तिम्रै लागि माया छ नि तर भन्नै गाह्रो भो" },
+            { time: 133, text: "आजभोलि गीत कोर्दै तिम्रै लागि गाउँछु म" },
+            { time: 138, text: "तिमीले हेर्दा मुस्कुराउने तिम्रो बानीले आज" },
+            { time: 143, text: "मन चोरी लगिसक्यो हो.. हो.. हो...." },
+            { time: 148, text: "सबै दुख मेरो सुनाउन तिमीलाई" },
+            { time: 153, text: "अङ्‌गालोमा बाँधी हामी साँझ भुलाइ" },
+            { time: 158, text: "बिहान ब्युँझिएर पाएँ तिमीलाई नै साथमा" },
+            { time: 163, text: "रात-दिन बिताइरहनेछु म तिम्रै काखमा" },
+            { time: 171, text: "तिम्रै प्रतीक्षामा……" }
+        ];
+  var audio = document.getElementById('background-music');
+  var button = document.getElementById('musiccontrol');
+  var lyricsDiv = document.getElementById('lyrics');
+  var currentLyricIndex = 0;
+
+  button.addEventListener('click', function() {
+      if (audio.paused) {
+          audio.play();
+          button.textContent = 'Pause Song';
+      } else {
+          audio.pause();
+          button.textContent = 'Resume Song';
+      }
+  });
+
+  audio.addEventListener('timeupdate', function() {
+      if (currentLyricIndex < lyrics.length && audio.currentTime >= lyrics[currentLyricIndex].time) {
+          lyricsDiv.textContent = lyrics[currentLyricIndex].text;
+          currentLyricIndex++;
+      }
+  });
+
+  audio.addEventListener('play', function() {
+      if (audio.paused) {
+          // Re-sync lyrics if audio is resumed
+          var currentTime = audio.currentTime;
+          for (var i = 0; i < lyrics.length; i++) {
+              if (currentTime >= lyrics[i].time) {
+                  lyricsDiv.textContent = lyrics[i].text;
+                  currentLyricIndex = i + 1;
+              }
+          }
+      }
+  });
+
+  audio.addEventListener('seeked', function() {
+      // Re-sync lyrics when the user seeks to a different time
+      var currentTime = audio.currentTime;
+      for (var i = 0; i < lyrics.length; i++) {
+          if (currentTime < lyrics[i].time) {
+              lyricsDiv.textContent = i > 0 ? lyrics[i - 1].text : lyrics[0].text;
+              currentLyricIndex = i;
+              break;
+          }
+      }
+  });
+</script>
+
+
+
+
+</html>
