@@ -35,6 +35,34 @@
       font-size: 16px;
       color: #ffffffb4;
     }
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.popup-content button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
 </style>
 
 </head>
@@ -48,25 +76,7 @@
   
   <div class="box">
     <div class="infobox">
-      <div class="display">
-        <img class="display-nft" id="imageDisplay" src="./assets/sanjay/sanjay2png.png" style="align-items: center;" alt="unsplash-OG44d93i-NJk" border="0">
-        <div class="infowrapper">
-          <div class="info">
-            <img class="info-img" src="./assets/sanjay/sanjay1png.png" alt="unsplash-OG44d93i-NJk" border="0">
-            <div>
-              <p>Sanju</p>
-              <p></p>
-            </div>
-          </div>
-          <div class="info2">
-            <p>From</p>
-            <div class="iconwrapper">
-              Mamaghar
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
       
       <p id="lyrics" class="infobox-boldtext" style="font-family: 'Fira Code', monospace; color:#ffffff50; font-size: large; align-items: center;">
         
@@ -82,35 +92,30 @@
       </div>
   </div>      
   
+  <div class="display">
+    <img class="display-nft" id="imageDisplay" src="./assets/sanjay/sanjay2png.png" alt="unsplash-OG44d93i-NJk" border="0">
+    <div class="infowrapper">
+      <div class="info">
+        <img class="info-img" src="./assets/sanjay/sanjay1png.png" alt="unsplash-OG44d93i-NJk" border="0">
+        <div>
+          <p>Sanju</p>
+          <p></p>
+        </div>
+      </div>
+      <div class="info2">
+        <p>From</p>
+        <div class="iconwrapper">
+          Mamaghar
+        </div>
+      </div>
+    </div>
+  </div>
         
   </div>
   
   <div class="footer">
     <div class="footer-main">
-      rajatcj.com
-    </div>
-    <div class="footer-navigate">
-      <div class="nav">
-        <h5>Socials</h5>
-        <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
-        <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
-        <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
-        <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
-      </div>
-      <div class="nav">
-        <h5>Other Sites</h5>
-        <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
-        <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
-        <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
-        <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
-      </div>
-      <div class="nav">
-        <h5>Discords</h5>
-        <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
-        <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> The Namaste Nepal</p>
-        <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
-        <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
-      </div>
+      - RajatCJ
     </div>
   </div>
   <div class="footer2">
@@ -119,6 +124,12 @@
   </div>
 </div>
 
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p>This website will play a music. Click OK to confirm and play.</p>
+    <button onclick="confirmPlayAudio()">OK</button>
+  </div>
+</div>
 
   <audio id="background-music" autoplay loop>
     <source src="./assets/sanjay/timropratiksa.mp3" type="audio/mpeg">
@@ -155,7 +166,34 @@
 
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var popup = document.getElementById('popup');
+  var content = document.getElementById('content');
 
+  // Show the popup and blur the background when the page loads
+  popup.style.display = 'flex';
+  content.style.filter = 'blur(5px)';
+});
+
+function confirmPlayAudio() {
+  var audio = document.getElementById('background-music');
+  var popup = document.getElementById('popup');
+  var content = document.getElementById('content');
+
+  audio.play().then(() => {
+    console.log('Audio is playing.');
+  }).catch(error => {
+    console.error('Failed to play audio:', error);
+  });
+
+  // Hide the popup and remove the blur effect
+  popup.style.display = 'none';
+  content.style.filter = 'blur(0)';
+}
+
+
+</script>
 <script>
   function updateAgeDisplay() {
     // Replace '2003-02-23' with the actual birthdate in the format 'YYYY-MM-DD'
