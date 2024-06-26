@@ -63,11 +63,20 @@
   padding: 10px 20px;
   margin-top: 10px;
 }
+
+.sticky-container {
+  position: relative;
+}
+
+#lyrics {
+  font-size: large;
+  padding: 10px 0;
+  border-bottom: 1px solid #ffffff50;
+}
 </style>
 
 </head>
 <body>
-  
 <!-- partial:index.partial.html -->
 <div class="landingpage">
   <div class="navbar">
@@ -78,11 +87,13 @@
     <div class="infobox">
       <iframe src="./assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
       
+      <div class="sticky-container">
+
       <p id="lyrics" class="infobox-boldtext" style="font-family: 'Fira Code', monospace; color:#ffffff50; font-size: large; align-items: center;">
-        
       </p>
+      </div>
       <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
-        All the best Sanju 😉 Its been <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> days since you left! When do we meet again and sit together?
+        Hello Sanju 😉 it's been <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> days since you left, and even longer since we heard this song you used to hum around the hostel! When will we meet again and sit together? 
       </p>
       
       <br>
@@ -145,7 +156,9 @@
   const images = [
     './assets/sanjay/sanjay1png.png',
     './assets/sanjay/sanjay2png.png',
-    './assets/sanjay/sanjay3png.png'
+    './assets/sanjay/sanjay3png.png',
+    './assets/sanjay/mamaghar.jpg',
+    './assets/sanjay/sanjaycall.jpg'
     // Add more image paths as needed
   ];
 
@@ -197,7 +210,7 @@ function confirmPlayAudio() {
 <script>
   function updateAgeDisplay() {
     // Replace '2003-02-23' with the actual birthdate in the format 'YYYY-MM-DD'
-    var birthdate = new Date('2024-06-25');
+    var birthdate = new Date('2024-06-26');
     var currentDate = new Date();
 
     var ageInMilliseconds = currentDate - birthdate;
@@ -217,6 +230,7 @@ function confirmPlayAudio() {
   // Update the age display every second
   setInterval(updateAgeDisplay, 1000);
 </script>
+
 
 
 <script>
