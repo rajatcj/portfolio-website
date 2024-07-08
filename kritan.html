@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="Hmmm a lil about me i guess" />
+  <meta name="author" content="" />
+
+  <link rel="icon" type="image/x-icon" href="./assets/sanjay/sanjay1png.png">
+  <title>💗 Sanju </title>
+
+        <!--embed-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="mail@rajatcj.com">
+        <meta property="og:title" content="💗 Sanju">
+        <meta property="og:description" content="....">
+        <meta property="og:image" content="./assets/sanjay/sanjay1png.png">
+        <meta content="https://rajatcj.com/" property="og:url" />
+        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+
+ <!--J query-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./assets/style.css">
+<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+<style>
+
+    .decimal-part {
+      font-size: 16px;
+      color: #ffffffb4;
+    }
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.popup-content button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.sticky-container {
+  position: relative;
+}
+
+#lyrics {
+  font-size: large;
+  padding: 10px 0;
+  border-bottom: 1px solid #ffffff50;
+}
+</style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="landingpage">
+  <div class="navbar">
+    <a class="navlogo">💗 Sanju</a>
+    </div>
+  
+  <div class="box">
+    <div class="infobox">
+      <img src="https://www.icegif.com/wp-content/uploads/2022/10/icegif-615.gif" style="display: block; margin: 0 auto; max-height: 30vh; border: 0; width: auto;">
+
+      <div class="sticky-container">
+
+        <p id="lyrics" class="infobox-boldtext" style="font-family: 'Fira Code', monospace; color:#ffffff50; font-size: large; text-align: center;">
+        </p>
+      </div>
+      <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
+        Hello Sanju 😉 it's been <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> days since you left, and even longer since we heard this song you used to hum around the hostel! When will we meet again and sit together? 
+      </p>
+      
+      <br>
+      <div class="infobox-btnwrapper">
+        <button class="infobox-explorebtn selected"  id="musiccontrol">Pause Song</button>
+        <button class="infobox-createbtn" onclick="location.href='https://wa.me/9779803470982?text=Hello%20Rajat,%20k%20xa%20hal%20khabar'">Drop a Message</button>
+      </div>
+  </div>      
+  
+  <div class="display">
+    <img class="display-nft" id="imageDisplay" src="./assets/sanjay/sanjay2png.png" alt="unsplash-OG44d93i-NJk" border="0">
+    <div class="infowrapper">
+      <div class="info">
+        <img class="info-img" src="./assets/sanjay/sanjay1png.png" alt="unsplash-OG44d93i-NJk" border="0">
+        <div>
+          <p>Sanju</p>
+          <p></p>
+        </div>
+      </div>
+      <div class="info2">
+        <p>From</p>
+        <div class="iconwrapper">
+          Mamaghar
+        </div>
+      </div>
+    </div>
+  </div>
+        
+  </div>
+  
+  <div class="footer">
+    <div class="footer-main">
+      - RajatCJ
+    </div>
+  </div>
+  <div class="footer2">
+    <div></div>
+    <p>Copyright 2023 RajatCJ</p>
+  </div>
+</div>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p>This website will play a music. Click OK to confirm and play.</p>
+    <button onclick="confirmPlayAudio()">OK</button>
+  </div>
+</div>
+
+  <audio id="background-music" autoplay loop>
+    <source src="./assets/sanjay/putali.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+<!-- partial -->
+  
+</body>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const images = [
+    './assets/sanjay/sanjay1png.png',
+    './assets/sanjay/sanjay2png.png',
+    './assets/sanjay/sanjay3png.png',
+    './assets/sanjay/mamaghar.jpg',
+    './assets/sanjay/sanjaycall.jpg'
+    // Add more image paths as needed
+  ];
+
+  const imageElement = document.getElementById('imageDisplay');
+  let currentImageIndex = 0;
+
+  function changeImage() {
+    imageElement.src = images[currentImageIndex];
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  }
+
+  // Initial image display
+  changeImage();
+
+  // Change image every 3 seconds
+  setInterval(changeImage, 3000);
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var popup = document.getElementById('popup');
+  var content = document.getElementById('content');
+
+  // Show the popup and blur the background when the page loads
+  popup.style.display = 'flex';
+  content.style.filter = 'blur(5px)';
+});
+
+function confirmPlayAudio() {
+  var audio = document.getElementById('background-music');
+  var popup = document.getElementById('popup');
+  var content = document.getElementById('content');
+
+  audio.play().then(() => {
+    console.log('Audio is playing.');
+  }).catch(error => {
+    console.error('Failed to play audio:', error);
+  });
+
+  // Hide the popup and remove the blur effect
+  popup.style.display = 'none';
+  content.style.filter = 'blur(0)';
+}
+
+
+</script>
+<script>
+  function updateAgeDisplay() {
+    // Replace '2003-02-23' with the actual birthdate in the format 'YYYY-MM-DD'
+    var birthdate = new Date('2024-06-26');
+    var currentDate = new Date();
+
+    var ageInMilliseconds = currentDate - birthdate;
+    var ageInDays = ageInMilliseconds / (1000 * 60 * 60 * 24);
+
+    // Separate the integer and decimal parts of the age
+    var integerPart = Math.floor(ageInDays);
+    var decimalPart = (ageInDays % 1).toFixed(5).substr(2); // Extract eight decimal places
+
+    // Display age with separate styling for integer and decimal parts
+    document.getElementById('ageDisplay').innerHTML = '<span>' + integerPart + '</span><span class="decimal-part">.' + decimalPart + '</span>';
+  }
+
+  // Call the function to update the display
+  updateAgeDisplay();
+  
+  // Update the age display every second
+  setInterval(updateAgeDisplay, 1000);
+</script>
+
+
+
+<script>
+ 
+ var lyrics = [
+    { time: 0, text: "भीडै माझमा" },
+    { time: 13, text: "तिमी एक्लै किन?" },
+    { time: 26, text: "फूलैको बगैँचामा" },
+    { time: 39, text: "तिमी काँडासँग डराउँछाै किन?" },
+    { time: 51, text: "🎶🎶🎶" },
+    { time: 77, text: "भीडै माझमा" },
+    { time: 89, text: "तिमी एक्लै किन?" },
+    { time: 102, text: "फूलैको बगैँचामा" },
+    { time: 114, text: "तिमी काँडासँग डराउँछाै किन?" },
+    { time: 126, text: "कता खोजिरहेछाै" },
+    { time: 134, text: "नहराएको मन?" },
+    { time: 140, text: "कता खोजिरहेछाै" },
+    { time: 147, text: "हराएको मन?" },
+    { time: 153, text: "भए जति त्यागिदिउँला" },
+    { time: 156, text: "हामी आफ्नै धुनमै बाँचिदिउँला" },
+    { time: 160, text: "संसारको त डरै छैन" },
+    { time: 162, text: "धड्कनसँगै चल्दै जाऊँ न" },
+    { time: 166, text: "हावा, हुरी, बतास आउला" },
+    { time: 170, text: "सपनाको घर बनाऊँ न" },
+    { time: 172, text: "जहाँ केही दुःखै छैन" },
+    { time: 175, text: "पुतलीझैँ उडिबसौँला" },
+    { time: 180, text: "🎶🎶🎶" },
+    { time: 198, text: "भए जति त्यागिदिउँला" },
+    { time: 200, text: "हामी आफ्नै धुनमै बाँचिदिउँला" },
+    { time: 204, text: "संसारको त डरै छैन" },
+    { time: 207, text: "धड्कनसँगै चल्दै" },
+    { time: 210, text: "भए जति त्यागिदिउँला" },
+    { time: 213, text: "हामी आफ्नै धुनमै बाँचिदिउँला" },
+    { time: 217, text: "संसारको त डरै छैन" },
+    { time: 220, text: "धड्कनसँगै चल्दै" },
+    { time: 223, text: "हावा, हुरी, बतास आउला" },
+    { time: 225, text: "सपनाको घर बनाऊँ न" },
+    { time: 228, text: "जहाँ केही दुःखै छैन" },
+    { time: 232, text: "पुतलीझैँ उडिबसौँला....." },
+    { time: 240, text: "...." }
+];
+
+  var audio = document.getElementById('background-music');
+  var button = document.getElementById('musiccontrol');
+  var lyricsDiv = document.getElementById('lyrics');
+  var currentLyricIndex = 0;
+
+  button.addEventListener('click', function() {
+      if (audio.paused) {
+          audio.play();
+          button.textContent = 'Pause Song';
+      } else {
+          audio.pause();
+          button.textContent = 'Resume Song';
+      }
+  });
+
+  audio.addEventListener('timeupdate', function() {
+      if (currentLyricIndex < lyrics.length && audio.currentTime >= lyrics[currentLyricIndex].time) {
+          lyricsDiv.textContent = lyrics[currentLyricIndex].text;
+          currentLyricIndex++;
+      }
+  });
+
+  audio.addEventListener('play', function() {
+      if (audio.paused) {
+          // Re-sync lyrics if audio is resumed
+          var currentTime = audio.currentTime;
+          for (var i = 0; i < lyrics.length; i++) {
+              if (currentTime >= lyrics[i].time) {
+                  lyricsDiv.textContent = lyrics[i].text;
+                  currentLyricIndex = i + 1;
+              }
+          }
+      }
+  });
+
+  audio.addEventListener('seeked', function() {
+      // Re-sync lyrics when the user seeks to a different time
+      var currentTime = audio.currentTime;
+      for (var i = 0; i < lyrics.length; i++) {
+          if (currentTime < lyrics[i].time) {
+              lyricsDiv.textContent = i > 0 ? lyrics[i - 1].text : lyrics[0].text;
+              currentLyricIndex = i;
+              break;
+          }
+      }
+  });
+</script>
+
+
+
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Preview on Hover</title>
+    <style>
+        #songs-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .song {
+            width: 150px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .song:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="songs-container"></div>
+
+    <script>
+        const accessToken = 'YOUR_SPOTIFY_ACCESS_TOKEN';
+
+        async function fetchSongs() {
+            try {
+                const response = await fetch('https://api.spotify.com/v1/playlists/7Itbhbi757V7BGYhtxpj6x/tracks', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+                const data = await response.json();
+                displaySongs(data.items);
+            } catch (error) {
+                console.error('Error fetching songs:', error);
+            }
+        }
+
+        function displaySongs(songs) {
+            const container = document.getElementById('songs-container');
+            songs.forEach(item => {
+                const track = item.track;
+                if (track.preview_url) {
+                    const songDiv = document.createElement('div');
+                    songDiv.classList.add('song');
+                    songDiv.textContent = track.name;
+                    songDiv.setAttribute('data-preview-url', track.preview_url);
+                    songDiv.addEventListener('mouseenter', handleMouseEnter);
+                    songDiv.addEventListener('mouseleave', handleMouseLeave);
+                    container.appendChild(songDiv);
+                }
+            });
+        }
+
+        function handleMouseEnter(event) {
+            const url = event.currentTarget.getAttribute('data-preview-url');
+            if (url) {
+                const audio = new Audio(url);
+                audio.play();
+                event.currentTarget.audio = audio;
+            }
+        }
+
+        function handleMouseLeave(event) {
+            const audio = event.currentTarget.audio;
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+
+        fetchSongs();
+    </script>
+</body>
+</html>
