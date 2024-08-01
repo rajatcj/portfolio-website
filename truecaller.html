@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" >
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <meta name="description" content="Hmmm a lil about me i guess" />
+      <meta name="author" content="" />
+      <link rel="icon" type="image/x-icon" href="https://dcdn.dstn.to/avatars/754033245972201612">
+      <title>Rajat Jha</title>
+      <!--embed-->
+      <meta property="og:type" content="website">
+      <meta property="og:site_name" content="mail@rajatcj.com">
+      <meta property="og:title" content="Rajat CJ">
+      <meta property="og:description" content="A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.">
+      <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <meta content="https://rajatcj.com/" property="og:url" />
+      <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+      <!--J query-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="./assets/style.css">
+      <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+      <style>
+         /* Overlay to cover the whole screen and create a blur effect */
+         .modal-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+         backdrop-filter: blur(5px);     /* Blurs everything behind the overlay */
+         z-index: 999;
+         display: none; /* Hidden by default */
+         }
+         /* Modal to be centered in the middle of the screen */
+         .modal {
+         position: fixed;
+         top: 50%;  /* Position at the middle of the screen vertically */
+         left: 50%; /* Position at the middle of the screen horizontally */
+         transform: translate(-50%, -50%); /* Center the modal */
+         padding: 20px;
+         background-color: white; /* White background for the modal */
+         border: 1px solid #ccc; /* Border around the modal */
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+         z-index: 1000; /* Ensures the modal is above the overlay */
+         display: none; /* Hidden by default */
+         }
+         /* Optional: Modal content style */
+         #modal-content {
+         text-align: center; /* Center the content inside the modal */
+         }
+         /* Close button style */
+         .modal button {
+         margin: 5px; /* Adds space between buttons */
+         }
+         input, select, textarea {
+         width: 100%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         display: inline-block;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         box-sizing: border-box;
+         background-color: #e7c4b6;
+         }
+         button {
+         background-color: #7c583a;
+         color: white;
+         padding: 14px 20px;
+         margin: 8px 8px;
+         border-radius: 4px;
+         cursor: pointer;
+         }
+         .buttons {
+         width: 100%;
+         background-color: #e08663;
+         color: white;
+         padding: 14px 20px;
+         margin: 8px 0;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         }
+         .buttons:hover {
+         background-color: #cf7450;
+         }
+         label {
+         color: #ccc;
+         font-size: medium;
+         }
+         /* Form container with a grid layout */
+         .form-container {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr); /* Two columns */
+         gap: 10px; /* Space between elements */
+         }
+         /* Group elements in a row */
+         .row {
+         display: flex; /* Use flex for alignment */
+         flex-direction: row;
+         justify-content: space-between; /* Space between labels and inputs */
+         align-items: center; /* Align items to the center */
+         }
+         /* Column layout for sub-groups */
+         .column {
+         display: flex;
+         flex-direction: column; /* Stack elements vertically */
+         gap: 10px; /* Space between elements in a column */
+         width: 49%;
+         }
+         /* Full width for textarea */
+         #main_detail {
+         grid-column: span 2; /* Occupy both columns */
+         }
+         /* Centered submit button */
+         .buttons {
+         text-align: center;
+         background-color: #c48d4f; /* Green button */
+         color: white; /* White text */
+         border: none;
+         cursor: pointer; /* Cursor changes on hover */
+         padding: 10px; /* Padding around the button */
+         }
+         /* Responsive design for small screens */
+         /* Responsive design for small screens */
+         @media (max-width: 600px) {
+         .form-container {
+         display: flex; /* Use flexbox for better alignment */
+         flex-direction: column; /* Arrange elements vertically */
+         gap: 10px; /* Space between elements */
+         }
+         .column {
+         flex-direction: column; /* Ensure elements stack vertically */
+         }
+         #main_detail {
+         grid-column: span 1; /* Ensure it spans the full width */
+         }
+         /* Align labels and inputs in individual rows */
+         .form-container label,
+         .form-container input,
+         .form-container textarea,
+         .form-container button {
+         width: 100%; /* Ensure elements take full width */
+         text-align: left; /* Align text to the left */
+         }
+         .form-container button {
+         text-align: center; /* Center-align button text */
+         padding: 10px; /* Provide padding for the button */
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <!-- partial:index.partial.html -->
+      <div class="landingpage">
+         <div class="navbar">
+            <a class="navlogo">Rajat CJ</a>
+            <button class="hamburger">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                  <path d="M3 12h18M3 6h18M3 18h18"/>
+               </svg>
+            </button>
+            <div class="navlinkwrap">
+               <span class="navlink links" onclick="location.href='https://rajatcj.com';" style="cursor: pointer;">Home</span>
+               <span class="navlink links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;">Portfolio</span>
+               <span class="navlink links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
+               <span class="navlink links" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
+            </div>
+            <div class="buttonwrap">
+               <button class="createbtn selectedbtn" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;">Linktree</button>
+               <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
+            </div>
+         </div>
+         <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600; font-size: xx-large;">
+            Lookup Truecaller
+         </p>
+
+         <div id="content">
+            
+            <form id="phoneForm">
+                
+                <input type="text" id="phoneInput" placeholder="Enter phone number" required>
+                
+            </form>
+            <br>
+            <button id="clipboardButton" disabled>Nothing found in clipboard</button>
+        </div>
+        <div class="footer">
+            <div class="footer-main">
+              Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023
+            </div>
+            <div class="footer-navigate">
+              <div class="nav">
+                <h5>Socials</h5>
+                <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
+                <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
+                <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
+                <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
+              </div>
+              <div class="nav">
+                <h5>Other Sites</h5>
+                <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
+                <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
+                <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
+                <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
+              </div>
+              <div class="nav">
+                <h5>Discords</h5>
+                <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
+                <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> The Namaste Nepal</p>
+                <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
+                <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer2">
+            <div></div>
+            <p>Copyright 2023 RajatCJ</p>
+          </div>
+
+        </body>
+
+        
+<script>
+    async function getClipboardText() {
+        try {
+            return await navigator.clipboard.readText();
+        } catch (err) {
+            console.error('Failed to read clipboard contents: ', err);
+            return '';
+        }
+    }
+
+    function extractPhoneNumber(text) {
+        const cleanedText = text.replace(/[^0-9+]/g, '');
+        const match = cleanedText.match(/(?:\+?\d{1,3})?(\d{10})/);
+        return match ? match[1] : null;
+    }
+
+    function updateButtons(phoneNumber) {
+        const clipboardButton = document.getElementById('clipboardButton');
+        if (phoneNumber) {
+            clipboardButton.textContent = `Grabbed from clipboard (${phoneNumber})`;
+            clipboardButton.disabled = false;
+            clipboardButton.onclick = () => {
+                window.location.href = `https://www.truecaller.com/search/np/${phoneNumber}`;
+            };
+        } else {
+            clipboardButton.textContent = 'Nothing found in clipboard';
+            clipboardButton.disabled = true;
+            clipboardButton.onclick = null;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const clipboardText = await getClipboardText();
+        const phoneNumber = extractPhoneNumber(clipboardText);
+
+        updateButtons(phoneNumber);
+
+        const phoneInput = document.getElementById('phoneInput');
+        const searchButton = document.getElementById('searchButton');
+        
+        phoneInput.addEventListener('input', () => {
+            searchButton.disabled = phoneInput.value.replace(/[^0-9]/g, '').length !== 10;
+        });
+
+        const phoneForm = document.getElementById('phoneForm');
+        phoneForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const phoneNumber = phoneInput.value.replace(/[^0-9]/g, '');
+            if (phoneNumber.length === 10) {
+                window.location.href = `https://www.truecaller.com/search/np/${phoneNumber}`;
+            }
+        });
+    });
+</script>
+</html>
