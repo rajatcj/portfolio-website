@@ -1,534 +1,489 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content="Hmmm a lil about me i guess" />
-  <meta name="author" content="" />
-
-  <link rel="icon" type="image/x-icon" href="https://dcdn.dstn.to/avatars/754033245972201612">
-  <title>Rajat Jha</title>
-
-        <!--embed-->
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="mail@rajatcj.com">
-        <meta property="og:title" content="Rajat CJ">
-        <meta property="og:description" content="A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.">
-        <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
-        <meta content="https://rajatcj.com/" property="og:url" />
-        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
-
- <!--J query-->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- 
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="./assets/style.css">
-<script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
-
-<style>
-/* Overlay to cover the whole screen and create a blur effect */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  backdrop-filter: blur(5px);     /* Blurs everything behind the overlay */
-  z-index: 999;
-  display: none; /* Hidden by default */
-}
-
-/* Modal to be centered in the middle of the screen */
-.modal {
-  position: fixed;
-  top: 50%;  /* Position at the middle of the screen vertically */
-  left: 50%; /* Position at the middle of the screen horizontally */
-  transform: translate(-50%, -50%); /* Center the modal */
-  padding: 20px;
-  background-color: white; /* White background for the modal */
-  border: 1px solid #ccc; /* Border around the modal */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
-  z-index: 1000; /* Ensures the modal is above the overlay */
-  display: none; /* Hidden by default */
-}
-
-/* Optional: Modal content style */
-#modal-content {
-  text-align: center; /* Center the content inside the modal */
-}
-
-/* Close button style */
-.modal button {
-  margin: 5px; /* Adds space between buttons */
-}
-
-
-
-
-  
-  input, select, textarea {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #e7c4b6;
-  }
-  
-  button {
-    background-color: #7c583a;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .buttons {
-    width: 100%;
-    background-color: #e08663;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .buttons:hover {
-    background-color: #cf7450;
-  }
-
-  label {
-    color: #ccc;
-    font-size: medium;
-  }
-
-  
-/* Form container with a grid layout */
-.form-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
-  gap: 10px; /* Space between elements */
-}
-
-/* Group elements in a row */
-.row {
-  display: flex; /* Use flex for alignment */
-  flex-direction: row;
-  justify-content: space-between; /* Space between labels and inputs */
-  align-items: center; /* Align items to the center */
-}
-
-/* Column layout for sub-groups */
-.column {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  gap: 10px; /* Space between elements in a column */
-  width: 49%;
-}
-
-/* Full width for textarea */
-#main_detail {
-  grid-column: span 2; /* Occupy both columns */
-}
-
-/* Centered submit button */
-.buttons {
-  text-align: center;
-  background-color: #c48d4f; /* Green button */
-  color: white; /* White text */
-  border: none;
-  cursor: pointer; /* Cursor changes on hover */
-  padding: 10px; /* Padding around the button */
-}
-
-/* Responsive design for small screens */
-/* Responsive design for small screens */
-@media (max-width: 600px) {
-  .form-container {
-    display: flex; /* Use flexbox for better alignment */
-    flex-direction: column; /* Arrange elements vertically */
-    gap: 10px; /* Space between elements */
-  }
-
-  .column {
-    flex-direction: column; /* Ensure elements stack vertically */
-  }
-
-  #main_detail {
-    grid-column: span 1; /* Ensure it spans the full width */
-  }
-
-  /* Align labels and inputs in individual rows */
-  .form-container label,
-  .form-container input,
-  .form-container textarea,
-  .form-container button {
-    width: 100%; /* Ensure elements take full width */
-    text-align: left; /* Align text to the left */
-  }
-
-  .form-container button {
-    text-align: center; /* Center-align button text */
-    padding: 10px; /* Provide padding for the button */
-  }
-}
-
-
-
-  </style>
-
-</head>
-<body>
-  
-<!-- partial:index.partial.html -->
-<div class="landingpage">
-  <div class="navbar">
-    <a class="navlogo">Rajat CJ</a>
-    <button class="hamburger">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-          <path d="M3 12h18M3 6h18M3 18h18"/>
-        </svg>
-      </button>
-      <div class="navlinkwrap">
-        <span class="navlink links" onclick="location.href='https://rajatcj.com';" style="cursor: pointer;">Home</span>
-        <span class="navlink links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;">Portfolio</span>
-        <span class="navlink links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
-        <span class="navlink links" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <meta name="description" content="Hmmm a lil about me i guess" />
+      <meta name="author" content="" />
+      <link rel="icon" type="image/x-icon" href="https://dcdn.dstn.to/avatars/754033245972201612">
+      <title>Rajat Jha</title>
+      <!--embed-->
+      <meta property="og:type" content="website">
+      <meta property="og:site_name" content="mail@rajatcj.com">
+      <meta property="og:title" content="Rajat CJ">
+      <meta property="og:description" content="A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.">
+      <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+      <meta content="https://rajatcj.com/" property="og:url" />
+      <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+      <!--J query-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="./assets/style.css">
+      <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+      <style>
+         /* Overlay to cover the whole screen and create a blur effect */
+         .modal-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+         backdrop-filter: blur(5px);     /* Blurs everything behind the overlay */
+         z-index: 999;
+         display: none; /* Hidden by default */
+         }
+         /* Modal to be centered in the middle of the screen */
+         .modal {
+         position: fixed;
+         top: 50%;  /* Position at the middle of the screen vertically */
+         left: 50%; /* Position at the middle of the screen horizontally */
+         transform: translate(-50%, -50%); /* Center the modal */
+         padding: 20px;
+         background-color: white; /* White background for the modal */
+         border: 1px solid #ccc; /* Border around the modal */
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+         z-index: 1000; /* Ensures the modal is above the overlay */
+         display: none; /* Hidden by default */
+         }
+         /* Optional: Modal content style */
+         #modal-content {
+         text-align: center; /* Center the content inside the modal */
+         }
+         /* Close button style */
+         .modal button {
+         margin: 5px; /* Adds space between buttons */
+         }
+         input, select, textarea {
+         width: 100%;
+         padding: 12px 20px;
+         margin: 8px 0;
+         display: inline-block;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         box-sizing: border-box;
+         background-color: #e7c4b6;
+         }
+         button {
+         background-color: #7c583a;
+         color: white;
+         padding: 14px 20px;
+         margin: 8px 8px;
+         border-radius: 4px;
+         cursor: pointer;
+         }
+         .buttons {
+         width: 100%;
+         background-color: #e08663;
+         color: white;
+         padding: 14px 20px;
+         margin: 8px 0;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         }
+         .buttons:hover {
+         background-color: #cf7450;
+         }
+         label {
+         color: #ccc;
+         font-size: medium;
+         }
+         /* Form container with a grid layout */
+         .form-container {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr); /* Two columns */
+         gap: 10px; /* Space between elements */
+         }
+         /* Group elements in a row */
+         .row {
+         display: flex; /* Use flex for alignment */
+         flex-direction: row;
+         justify-content: space-between; /* Space between labels and inputs */
+         align-items: center; /* Align items to the center */
+         }
+         /* Column layout for sub-groups */
+         .column {
+         display: flex;
+         flex-direction: column; /* Stack elements vertically */
+         gap: 10px; /* Space between elements in a column */
+         width: 49%;
+         }
+         /* Full width for textarea */
+         #main_detail {
+         grid-column: span 2; /* Occupy both columns */
+         }
+         /* Centered submit button */
+         .buttons {
+         text-align: center;
+         background-color: #c48d4f; /* Green button */
+         color: white; /* White text */
+         border: none;
+         cursor: pointer; /* Cursor changes on hover */
+         padding: 10px; /* Padding around the button */
+         }
+         /* Responsive design for small screens */
+         /* Responsive design for small screens */
+         @media (max-width: 600px) {
+         .form-container {
+         display: flex; /* Use flexbox for better alignment */
+         flex-direction: column; /* Arrange elements vertically */
+         gap: 10px; /* Space between elements */
+         }
+         .column {
+         flex-direction: column; /* Ensure elements stack vertically */
+         }
+         #main_detail {
+         grid-column: span 1; /* Ensure it spans the full width */
+         }
+         /* Align labels and inputs in individual rows */
+         .form-container label,
+         .form-container input,
+         .form-container textarea,
+         .form-container button {
+         width: 100%; /* Ensure elements take full width */
+         text-align: left; /* Align text to the left */
+         }
+         .form-container button {
+         text-align: center; /* Center-align button text */
+         padding: 10px; /* Provide padding for the button */
+         }
+         }
+      </style>
+   </head>
+   <body>
+      <!-- partial:index.partial.html -->
+      <div class="landingpage">
+         <div class="navbar">
+            <a class="navlogo">Rajat CJ</a>
+            <button class="hamburger">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                  <path d="M3 12h18M3 6h18M3 18h18"/>
+               </svg>
+            </button>
+            <div class="navlinkwrap">
+               <span class="navlink links" onclick="location.href='https://rajatcj.com';" style="cursor: pointer;">Home</span>
+               <span class="navlink links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;">Portfolio</span>
+               <span class="navlink links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;">Botuu</span>
+               <span class="navlink links" onclick="location.href='https://snippets.jharajat.com.np';" style="cursor: pointer;">Snippets</span>
+            </div>
+            <div class="buttonwrap">
+               <button class="createbtn selectedbtn" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;">Linktree</button>
+               <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
+            </div>
+         </div>
+         <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600; font-size: xx-large;">
+            Add A Site
+         </p>
+         <form id="lanyardForm2">
+            <label for="user_id_load">User ID:</label><br>
+            <input id="user_id_load" name="user_id" value="754033245972201612" required><br><br>
+            <button type="button" class="buttons" onclick="getLanyardKV()">Load Available Webpages</button>
+         </form>
+         <hr>
+         <div id="buttonContainer"></div>
+         <hr>
+         <form id="lanyardForm">
+            <div class="row">
+               <!-- To group related elements -->
+               <label for="key">https://rajatcj.com/p?</label>
+               <input id="key" name="key" value="" required>
+            </div>
+            <div class="row">
+               <!-- Side-by-side layout -->
+               <input id="main_title" placeholder="Title" name="main_title" value="" required>
+            </div>
+            <div class="row">
+               <!-- Full width -->
+               <textarea id="main_detail" placeholder="Content" name="main_detail" rows="6" required></textarea>
+               <!-- Textarea for detail -->
+            </div>
+            <hr>
+            <div class="row">
+               <!-- Side-by-side layout -->
+               <div class="column">
+                  <!-- Left side -->
+                  <label for="main_pribtn_text">Primary Button:</label>
+                  <input id="main_pribtn_text" name="main_pribtn_text" placeholder="Button Name" value="Home" required>
+                  <input type="url" id="main_pribtn_link" name="main_pribtn_link" placeholder="Button URL" value="https://rajatcj.com/" required>
+               </div>
+               <div class="column">
+                  <!-- Right side -->
+                  <label for="main_secbtn_text">Secondary Button Text:</label>
+                  <input id="main_secbtn_text" name="main_secbtn_text" value="Discord" placeholder="Button Name" required>
+                  <input type="url" id="main_secbtn_link" name="main_secbtn_link" placeholder="Button URL"  value="https://discord.gg/nepal" required>
+               </div>
+            </div>
+            <hr>
+            <div class="row">
+               <!-- Full width -->
+               <input type="url" placeholder="Card Image" id="card_img" name="card_img" value="https://image.pollinations.ai/prompt/apple?width=960&height=720&nologo=true" required>
+            </div>
+            <div class="row">
+               <!-- Left and Right layout -->
+               <div class="column">
+                  <!-- Left side -->
+                  <label for="card_info1_img">Caption Left</label>
+                  <input type="url" id="card_info1_img" placeholder="Avatar" name="card_info1_img" value="https://dcdn.dstn.to/avatars/754033245972201612" required>
+                  <input id="card_info1_name" name="card_info1_name" placeholder="Column 1" value="Rajat CJ" required>
+                  <input id="card_info1_price" name="card_info1_price" placeholder="Column 2" value="@rajat_cj" required>
+               </div>
+               <div class="column">
+                  <!-- Right side -->
+                  <label for="card_info2_text">Caption Right</label>
+                  <input id="card_info2_text" name="card_info2_text" placeholder="Column 1" value="Join" required>
+                  <input id="card_info2_icon" name="card_info2_icon" placeholder="Column 2" value="discord.gg/nepal" required>
+               </div>
+            </div>
+            <hr>
+            <div class="row">
+               <!-- Full width -->
+               <input type="password" placeholder="Password" id="api_key" name="api_key" required>
+            </div>
+            <div class="row">
+               <!-- Submit button -->
+               <button type="button" class="buttons" onclick="updateLanyardKV()">Update Lanyard KV</button>
+            </div>
+         </form>
+         <!-- Modal for Success/Error Messages -->
+         <div class="modal-overlay" id="modal-overlay"></div>
+         <div class="modal" id="modal">
+            <div id="modal-content">
+               <!-- Content will be inserted here -->
+            </div>
+         </div>
+         <script>
+            function getLanyardKV() {
+             const userIdLoad = document.getElementById("user_id_load").value;
+            
+             // Fetch data from the given API endpoint
+             fetch(`https://api.lanyard.rest/v1/users/${userIdLoad}`)
+               .then((response) => {
+                 if (!response.ok) {
+                   throw new Error('Network response was not okay');
+                 }
+                 return response.json();
+               })
+               .then((data) => {
+                 const kv = data.data.kv;
+                 const buttonContainer = document.getElementById("buttonContainer"); // A div where we add the buttons
+                 buttonContainer.innerHTML = ""; // Clear existing buttons
+            
+                 for (const key in kv) {
+                   if (kv[key]) {
+                     let kvData;
+                     try {
+                       kvData = JSON.parse(kv[key]); // Convert the data to a JSON object
+                     } catch (e) {
+                       console.error(`Failed to parse data for key ${key}:`, e);
+                       continue;
+                     }
+            
+                     // Check if the kv data has a "main" key with a "title"
+                     if (kvData.main && kvData.main.title) {
+                       const button = document.createElement("button");
+                       button.class = "websitebutton"
+                       button.textContent = kvData.main.title; // Button text is the "title"
+                       button.onclick = () => {
+                         // When clicked, fill in the form with the data
+                         fillForm(kvData, key);
+                       };
+                       buttonContainer.appendChild(button); // Add the button to the container
+                     }
+                   }
+                 }
+               })
+               .catch((error) => {
+                 console.error('An error occurred while fetching data:', error.message);
+               });
+            }
+            
+            // Function to fill the form with the extracted data
+            function fillForm(extractedData, key) {
+             document.getElementById('main_title').value = extractedData.main?.title || '';
+             document.getElementById('key').value = key || '';
+             document.getElementById('main_detail').value = extractedData.main?.detail || '';
+             document.getElementById('main_pribtn_text').value = extractedData.main?.pribtn?.text || '';
+             document.getElementById('main_pribtn_link').value = extractedData.main?.pribtn?.link || '';
+             document.getElementById('main_secbtn_text').value = extractedData.main?.secbtn?.text || '';
+             document.getElementById('main_secbtn_link').value = extractedData.main?.secbtn?.link || '';
+            
+             document.getElementById('card_img').value = extractedData.card.img || '';
+             document.getElementById('card_info1_img').value = extractedData.card.detail.info1.img || '';
+             document.getElementById('card_info1_name').value = extractedData.card.detail.info1?.name || '';
+             document.getElementById('card_info1_price').value = extractedData.card.detail.info1?.price || '';
+             document.getElementById('card_info2_text').value = extractedData.card.detail.info2?.text || '';
+             document.getElementById('card_info2_icon').value = extractedData.card.detail.info2?.icon || '';
+            }
+            
+            
+            
+            
+            function updateLanyardKV() {
+                 const userId = document.getElementById("user_id_load").value;
+                 const key = document.getElementById("key").value;
+                 const apikey = document.getElementById("api_key").value;
+            
+                 // Main JSON Data
+                 const mainData = {
+                   title: document.getElementById("main_title").value,
+                   detail: document.getElementById("main_detail").value,
+                   pribtn: {
+                     text: document.getElementById("main_pribtn_text").value,
+                     link: document.getElementById("main_pribtn_link").value
+                   },
+                   secbtn: {
+                     text: document.getElementById("main_secbtn_text").value,
+                     link: document.getElementById("main_secbtn_link").value
+                   }
+                 };
+            
+                 // Card JSON Data
+                 const cardData = {
+                   img: document.getElementById("card_img").value,
+                   detail: {
+                     info1: {
+                       img: document.getElementById("card_info1_img").value,
+                       name: document.getElementById("card_info1_name").value,
+                       price: document.getElementById("card_info1_price").value
+                     },
+                     info2: {
+                       text: document.getElementById("card_info2_text").value,
+                       icon: document.getElementById("card_info2_icon").value
+                     }
+                   }
+                 };
+            
+                 const jsonData = {
+                   main: mainData,
+                   card: cardData
+                 };
+            
+                 const apiUrl = `https://api.lanyard.rest/v1/users/${userId}/kv/${key}`;
+            
+                 fetch(apiUrl, {
+                   method: "PUT",
+                   body: JSON.stringify(jsonData),
+                   headers: {
+                     "Authorization": `${apikey}`
+                   },
+                 })
+                 .then(response => {
+                   if (response.ok) {
+                     displayModal("Lanyard KV Updated", `The site '${document.getElementById("main_title").value}' has been added successfully.`, key);
+                   } else {
+                     response.json().then(errorData => {
+                       displayModal("Error", `Failed to update: ${errorData.reason}`);
+                     });
+                   }
+                 })
+                 .catch(error => {
+                   displayModal("Error", `An error occurred: ${error.message}`);
+                 });
+               }
+            
+               function displayModal(title, message, key = null) {
+                 const modalOverlay = document.getElementById("modal-overlay");
+                 const modal = document.getElementById("modal");
+                 const modalContent = document.getElementById("modal-content");
+            
+                 // Clear any existing content
+                 modalContent.innerHTML = "";
+            
+                 // Create content for the modal
+                 const titleElement = document.createElement("h3");
+                 titleElement.textContent = title;
+            
+                 const messageElement = document.createElement("p");
+                 messageElement.textContent = message;
+            
+                 const closeButton = document.createElement("button");
+                 closeButton.textContent = "Close";
+                 closeButton.onclick = closeModal;
+            
+                 modalContent.appendChild(titleElement);
+                 modalContent.appendChild(messageElement);
+                 modalContent.appendChild(closeButton);
+            
+                 if (key) {
+                   const copyLinkButton = document.createElement("button");
+                   copyLinkButton.textContent = "Copy Link";
+                   copyLinkButton.onclick = () => {
+                     navigator.clipboard.writeText(`https://rajatcj.com/p?${key}`);
+                   };
+            
+                   const openSiteButton = document.createElement("button");
+                   openSiteButton.textContent = "Open New Site";
+                   openSiteButton.onclick = () => {
+                     window.open(`https://rajatcj.com/p?${key}`, "_blank");
+                   };
+            
+                   modalContent.appendChild(copyLinkButton);
+                   modalContent.appendChild(openSiteButton);
+                 }
+            
+                 // Show the modal and overlay
+                 modalOverlay.style.display = "block";
+                 modal.style.display = "block";
+               }
+            
+               function closeModal() {
+                 const modalOverlay = document.getElementById("modal-overlay");
+                 const modal = document.getElementById("modal");
+            
+                 modalOverlay.style.display = "none";
+                 modal.style.display = "none";
+               }
+            
+                   
+         </script>
+         <div class="footer">
+            <div class="footer-main">
+               Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023
+            </div>
+            <div class="footer-navigate">
+               <div class="nav">
+                  <h5>Socials</h5>
+                  <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
+                  <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
+                  <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
+                  <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
+               </div>
+               <div class="nav">
+                  <h5>Other Sites</h5>
+                  <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
+                  <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
+                  <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
+                  <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
+               </div>
+               <div class="nav">
+                  <h5>Discords</h5>
+                  <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
+                  <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Hangout Place</p>
+                  <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
+                  <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
+               </div>
+            </div>
+         </div>
+         <div class="footer2">
+            <div></div>
+            <p>Copyright 2023 RajatCJ</p>
+         </div>
       </div>
-      <div class="buttonwrap">
-        <button class="createbtn selectedbtn" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;">Linktree</button>
-        <button class="createbtn" onclick="location.href='https://discord.gg/VD8bMuzB';" style="cursor: pointer;">Discord</button>
-      </div>
-    </div>
-  
-  
-    
-
-    <p class="infobox-boldtext" style="color:#ffffff50; font-weight:600; font-size: xx-large;">
-      Add A Site
-    </p>
-
-  <form id="lanyardForm2">
-    <label for="user_id_load">User ID:</label><br>
-    <input id="user_id_load" name="user_id" value="754033245972201612" required><br><br>
-    <button type="button" class="buttons" onclick="getLanyardKV()">Load Available Webpages</button>
-  </form>
-  <hr>
-<div id="buttonContainer"></div>
-<hr>
-  <form id="lanyardForm">
-      <div class="row"> <!-- To group related elements -->
-        <label for="key">https://rajatcj.com/p?</label>
-        <input id="key" name="key" value="" required>
-      </div>
-    
-      <div class="row"> <!-- Side-by-side layout -->
-        <input id="main_title" placeholder="Title" name="main_title" value="" required>
-      </div>
-    
-      <div class="row"> <!-- Full width -->
-        <textarea id="main_detail" placeholder="Content" name="main_detail" rows="6" required></textarea> <!-- Textarea for detail -->
-      </div>
-    <hr>
-      <div class="row"> <!-- Side-by-side layout -->
-        <div class="column"> <!-- Left side -->
-          <label for="main_pribtn_text">Primary Button:</label>
-          <input id="main_pribtn_text" name="main_pribtn_text" placeholder="Button Name" value="Home" required>
-          <input type="url" id="main_pribtn_link" name="main_pribtn_link" placeholder="Button URL" value="https://rajatcj.com/" required>
-        </div>
-    
-        <div class="column"> <!-- Right side -->
-          <label for="main_secbtn_text">Secondary Button Text:</label>
-          <input id="main_secbtn_text" name="main_secbtn_text" value="Discord" placeholder="Button Name" required>
-          <input type="url" id="main_secbtn_link" name="main_secbtn_link" placeholder="Button URL"  value="https://discord.gg/nepal" required>
-        </div>
-      </div>
-      <hr>
-      <div class="row"> <!-- Full width -->
-        <input type="url" placeholder="Card Image" id="card_img" name="card_img" value="https://image.pollinations.ai/prompt/apple?width=960&height=720&nologo=true" required>
-      </div>
-      <div class="row"> <!-- Left and Right layout -->
-        <div class="column"> <!-- Left side -->
-          <label for="card_info1_img">Caption Left</label>
-          <input type="url" id="card_info1_img" placeholder="Avatar" name="card_info1_img" value="https://dcdn.dstn.to/avatars/754033245972201612" required>
-          <input id="card_info1_name" name="card_info1_name" placeholder="Column 1" value="Rajat CJ" required>
-          <input id="card_info1_price" name="card_info1_price" placeholder="Column 2" value="@rajat_cj" required>
-        </div>
-    
-        <div class="column"> <!-- Right side -->
-          <label for="card_info2_text">Caption Right</label>
-          <input id="card_info2_text" name="card_info2_text" placeholder="Column 1" value="Join" required>
-          <input id="card_info2_icon" name="card_info2_icon" placeholder="Column 2" value="discord.gg/nepal" required>
-        </div>
-      </div>
-      <hr>
-      <div class="row"> <!-- Full width -->
-        <input type="password" placeholder="Password" id="api_key" name="api_key" required>
-      </div>
-    
-      <div class="row"> <!-- Submit button -->
-        <button type="button" class="buttons" onclick="updateLanyardKV()">Update Lanyard KV</button>
-      </div>
-    </form>
-
- <!-- Modal for Success/Error Messages -->
- <div class="modal-overlay" id="modal-overlay"></div>
- <div class="modal" id="modal">
-   <div id="modal-content">
-     <!-- Content will be inserted here -->
-   </div>
- </div>
-
-
-  <script>
- function getLanyardKV() {
-  const userIdLoad = document.getElementById("user_id_load").value;
-
-  // Fetch data from the given API endpoint
-  fetch(`https://api.lanyard.rest/v1/users/${userIdLoad}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not okay');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const kv = data.data.kv;
-      const buttonContainer = document.getElementById("buttonContainer"); // A div where we add the buttons
-      buttonContainer.innerHTML = ""; // Clear existing buttons
-
-      for (const key in kv) {
-        if (kv[key]) {
-          let kvData;
-          try {
-            kvData = JSON.parse(kv[key]); // Convert the data to a JSON object
-          } catch (e) {
-            console.error(`Failed to parse data for key ${key}:`, e);
-            continue;
-          }
-
-          // Check if the kv data has a "main" key with a "title"
-          if (kvData.main && kvData.main.title) {
-            const button = document.createElement("button");
-            button.class = "websitebutton"
-            button.textContent = kvData.main.title; // Button text is the "title"
-            button.onclick = () => {
-              // When clicked, fill in the form with the data
-              fillForm(kvData, key);
-            };
-            buttonContainer.appendChild(button); // Add the button to the container
-          }
-        }
-      }
-    })
-    .catch((error) => {
-      console.error('An error occurred while fetching data:', error.message);
-    });
-}
-
-// Function to fill the form with the extracted data
-function fillForm(extractedData, key) {
-  document.getElementById('main_title').value = extractedData.main?.title || '';
-  document.getElementById('key').value = key || '';
-  document.getElementById('main_detail').value = extractedData.main?.detail || '';
-  document.getElementById('main_pribtn_text').value = extractedData.main?.pribtn?.text || '';
-  document.getElementById('main_pribtn_link').value = extractedData.main?.pribtn?.link || '';
-  document.getElementById('main_secbtn_text').value = extractedData.main?.secbtn?.text || '';
-  document.getElementById('main_secbtn_link').value = extractedData.main?.secbtn?.link || '';
-
-  document.getElementById('card_img').value = extractedData.card.img || '';
-  document.getElementById('card_info1_img').value = extractedData.card.detail.info1.img || '';
-  document.getElementById('card_info1_name').value = extractedData.card.detail.info1?.name || '';
-  document.getElementById('card_info1_price').value = extractedData.card.detail.info1?.price || '';
-  document.getElementById('card_info2_text').value = extractedData.card.detail.info2?.text || '';
-  document.getElementById('card_info2_icon').value = extractedData.card.detail.info2?.icon || '';
-}
-
-
-
-
-function updateLanyardKV() {
-      const userId = document.getElementById("user_id_load").value;
-      const key = document.getElementById("key").value;
-      const apikey = document.getElementById("api_key").value;
-
-      // Main JSON Data
-      const mainData = {
-        title: document.getElementById("main_title").value,
-        detail: document.getElementById("main_detail").value,
-        pribtn: {
-          text: document.getElementById("main_pribtn_text").value,
-          link: document.getElementById("main_pribtn_link").value
-        },
-        secbtn: {
-          text: document.getElementById("main_secbtn_text").value,
-          link: document.getElementById("main_secbtn_link").value
-        }
-      };
-
-      // Card JSON Data
-      const cardData = {
-        img: document.getElementById("card_img").value,
-        detail: {
-          info1: {
-            img: document.getElementById("card_info1_img").value,
-            name: document.getElementById("card_info1_name").value,
-            price: document.getElementById("card_info1_price").value
-          },
-          info2: {
-            text: document.getElementById("card_info2_text").value,
-            icon: document.getElementById("card_info2_icon").value
-          }
-        }
-      };
-
-      const jsonData = {
-        main: mainData,
-        card: cardData
-      };
-
-      const apiUrl = `https://api.lanyard.rest/v1/users/${userId}/kv/${key}`;
-
-      fetch(apiUrl, {
-        method: "PUT",
-        body: JSON.stringify(jsonData),
-        headers: {
-          "Authorization": `${apikey}`
-        },
-      })
-      .then(response => {
-        if (response.ok) {
-          displayModal("Lanyard KV Updated", `The site '${document.getElementById("main_title").value}' has been added successfully.`, key);
-        } else {
-          response.json().then(errorData => {
-            displayModal("Error", `Failed to update: ${errorData.reason}`);
-          });
-        }
-      })
-      .catch(error => {
-        displayModal("Error", `An error occurred: ${error.message}`);
+      <!-- partial -->
+   </body>
+   <script src="./assets/chatid.js"></script>
+   <script src="./assets/msgsend.js"></script>
+   <script src="./assets/whoami.js"></script>
+   <script>
+      var Typed = new Typed(".whoami", {
+          strings:["Medical Student", "FrontEnd Engineer","Discord Verified Bot Dev"],
+          typeSpeed: 75,
+          backSpeed: 10,
+          loop: true
       });
-    }
-
-    function displayModal(title, message, key = null) {
-      const modalOverlay = document.getElementById("modal-overlay");
-      const modal = document.getElementById("modal");
-      const modalContent = document.getElementById("modal-content");
-
-      // Clear any existing content
-      modalContent.innerHTML = "";
-
-      // Create content for the modal
-      const titleElement = document.createElement("h3");
-      titleElement.textContent = title;
-
-      const messageElement = document.createElement("p");
-      messageElement.textContent = message;
-
-      const closeButton = document.createElement("button");
-      closeButton.textContent = "Close";
-      closeButton.onclick = closeModal;
-
-      modalContent.appendChild(titleElement);
-      modalContent.appendChild(messageElement);
-      modalContent.appendChild(closeButton);
-
-      if (key) {
-        const copyLinkButton = document.createElement("button");
-        copyLinkButton.textContent = "Copy Link";
-        copyLinkButton.onclick = () => {
-          navigator.clipboard.writeText(`https://rajatcj.com/p?${key}`);
-        };
-
-        const openSiteButton = document.createElement("button");
-        openSiteButton.textContent = "Open New Site";
-        openSiteButton.onclick = () => {
-          window.open(`https://rajatcj.com/p?${key}`, "_blank");
-        };
-
-        modalContent.appendChild(copyLinkButton);
-        modalContent.appendChild(openSiteButton);
-      }
-
-      // Show the modal and overlay
-      modalOverlay.style.display = "block";
-      modal.style.display = "block";
-    }
-
-    function closeModal() {
-      const modalOverlay = document.getElementById("modal-overlay");
-      const modal = document.getElementById("modal");
-
-      modalOverlay.style.display = "none";
-      modal.style.display = "none";
-    }
-
-        </script>
- 
-  
-
-
-  <div class="footer">
-    <div class="footer-main">
-      Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023
-    </div>
-    <div class="footer-navigate">
-      <div class="nav">
-        <h5>Socials</h5>
-        <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
-        <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
-        <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
-        <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
-      </div>
-      <div class="nav">
-        <h5>Other Sites</h5>
-        <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
-        <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
-        <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
-        <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
-      </div>
-      <div class="nav">
-        <h5>Discords</h5>
-        <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
-        <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Hangout Place</p>
-        <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
-        <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
-      </div>
-    </div>
-  </div>
-  <div class="footer2">
-    <div></div>
-    <p>Copyright 2023 RajatCJ</p>
-  </div>
-</div>
-<!-- partial -->
-  
-</body>
-
-
-
-<script src="./assets/chatid.js"></script>
-<script src="./assets/msgsend.js"></script>
-
-
-
-<script src="./assets/whoami.js"></script>
-<script>
-    var Typed = new Typed(".whoami", {
-        strings:["Medical Student", "FrontEnd Engineer","Discord Verified Bot Dev"],
-        typeSpeed: 75,
-        backSpeed: 10,
-        loop: true
-    });
-</script>
+   </script>
 </html>

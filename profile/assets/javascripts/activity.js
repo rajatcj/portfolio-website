@@ -55,7 +55,7 @@ if (storedData) {
      artistName = track.artist['#text'];
      songBanner = track.image[2]['#text']; // You can choose a different size if needed
       // Fill the container with the provided HTML snippet
-      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/unknown.png" width="80" height="80" src="${songBanner}"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a></div><ul><li id="spotify-ing">LISTENING TO SPOTIFY...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li id="spotify-lastfm">Scrobbling by last.fm</li></ul></div>`;
+      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/mediaplaying2.png" width="80" height="80" src="${songBanner}"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/linkpng.png"></a></div><ul><li id="media-ing">PLAYING ON PHONE...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li id="spotify-lastfm">Scrobbling phone media (music & youtube) by last.fm</li><li id="spotify-lastfm">I choose when to allow the website to broadcast my phone media</li></ul></div>`;
 
     } else {
       // Display status (not playing)
