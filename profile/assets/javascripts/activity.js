@@ -37,14 +37,10 @@ function updatepresenceLoop() {
       
 
 
-
-// Fetch data from session storage
 const storedData = sessionStorage.getItem("lastfm");
 if (storedData) {
-  // Parse the stored JSON data
  data = JSON.parse(storedData);
 
-  // Perform actions based on the fetched data
  track = data.recenttracks.track[0];
  nowPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
   
@@ -53,12 +49,14 @@ if (storedData) {
      songName = track.name;
      albumName = track.album['#text'];
      artistName = track.artist['#text'];
-     songBanner = track.image[2]['#text']; // You can choose a different size if needed
-      // Fill the container with the provided HTML snippet
-      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" onerror=this.src="./assets/img/mediaplaying2.png" width="80" height="80" src="${songBanner}"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/linkpng.png"></a></div><ul><li id="media-ing">PLAYING ON PHONE...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li id="spotify-lastfm">Scrobbling phone media (music & youtube) by last.fm</li><li id="spotify-lastfm">I choose when to allow the website to broadcast my phone media</li></ul></div>`;
-
+     songBanner = track.image[2]['#text']; 
+      if (songBanner === "") {
+      document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" width="80" height="80" src="./assets/img/mediaplaying2.png"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/linkpng.png"></a></div><ul><li id="media-ing">PLAYING ON PHONE...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id="spotify-lastfm">Scrobbling phone media (music & youtube) by last.fm</li><li id="spotify-lastfm">For privacy I choose when to let the website broadcast my youtube playback</li></ul></div>`;
+      } else {
+        document.getElementById("activities").innerHTML = `<div id="spotify" class="lastfmactivity"><div class="assets-images"><img  class="spotify-thumbnail" width="80" height="80" src="${songBanner}"> <a href="${track.url}" target="_blank"> <img class="spotifylink-image" width="45" height="45" src="./assets/img/spotifylink.gif"></a></div><ul><li id="spotify-ing">LISTENING TO SPOTIFY...</li> <li id='spotify-songname'>${songName}</li> <li id='spotify-artist'>by ${artistName}</li><li id='spotify-album'>on ${albumName}</li><li id="spotify-lastfm">Scrobbling spotify by last.fm</li></ul></div>`;
+      
+      }
     } else {
-      // Display status (not playing)
       platform = [(json.active_on_discord_web === true ? "Web, " : ""), (json.active_on_discord_desktop === true ? "Desktop, " : ""), (json.active_on_discord_mobile === true ? "Phone, " : "")]
   document.getElementById("activities").innerHTML = '<div class="activity"><div class="other"><ul>' + "<li id='type'>No Activities</li><li id='details'>Status: " + json.discord_status.toUpperCase() + (json.discord_status === "offline" ? "" : " on ") + platform.join("") + "</li></ul></div></div>";
   currentdiv.style.height = "2rem";
