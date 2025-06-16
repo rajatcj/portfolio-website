@@ -206,10 +206,18 @@
             <div class="section-heading">
                <h2>Timeline</h2>
                <div class="line-dec"></div>
-               soon
+
+
+               <iframe 
+               id="timelineFrame" 
+               src="./timeline.html" 
+               style="width: 100%; border: none;"
+  scrolling="no"></iframe>
+
             </div>
          </div>
       </section>
+      
 
 
       <section class="section my-services" data-section="section3">
@@ -692,6 +700,21 @@
         checkSection();
       });
    </script>
+   <script>
+      const iframe = document.getElementById('timelineFrame');
+  
+      iframe.onload = function () {
+        // Wait a bit to ensure content is fully loaded
+        setTimeout(() => {
+          try {
+            // Access and set the height from iframe content
+            iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+          } catch (err) {
+            console.error("Failed to resize iframe:", err);
+          }
+        }, 100); // slight delay ensures layout is calculated
+      };
+    </script>
    </body>
 </html>
 

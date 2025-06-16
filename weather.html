@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .weather-widget {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px; /* You can change this max width to fit your preference */
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .location-info {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .location-info h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .location-info p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .temp {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .real-temp {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .feels-like {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .weather-condition {
+            text-align: center;
+        }
+
+        .weather-condition img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .weather-condition p {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .other-info {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-box {
+            text-align: center;
+            flex: 1; /* Makes each info-box take equal space */
+        }
+
+        .info-box p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .info-box:not(:last-child) {
+            margin-right: 10px; /* Adds space between info-boxes */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="weather-widget">
+        <div class="location-info">
+            <h2 id="location">Pokhara</h2>
+            <p id="localtime">Monday • 16:54</p>
+        </div>
+
+        <div class="weather-info">
+            <div class="temp">
+                <p class="real-temp"><span id="temp_c">24°C</span> / <span id="temp_f">75.2°F</span></p>
+                <p class="feels-like">Feels like <span id="feelslike_c">25.9°C</span></p>
+            </div>
+            <div class="weather-condition">
+                <img id="condition-icon" src="//cdn.weatherapi.com/weather/64x64/day/176.png" alt="Weather icon">
+                <p id="condition-text">Patchy rain nearby</p>
+            </div>
+        </div>
+
+        <div class="other-info">
+            <div class="info-box">
+                <p><strong>Max/Min:</strong> 28°C / 18°C</p>
+            </div>
+            <div class="info-box">
+                <p><strong>Pressure:</strong> <span id="pressure">1013 mb</span></p>
+                <p><strong>Humidity:</strong> <span id="humidity">80%</span></p>
+            </div>
+            <div class="info-box">
+                <p><strong>AQI:</strong> <span id="aqi">54</span></p>
+                <p><strong>UV:</strong> <span id="uv">5</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Replace with the actual data from your API response
+        const weatherData = {
+            location: {
+                name: "Pokhara",
+                localtime: "2024-10-07 16:54",
+            },
+            current: {
+                temp_c: 24.0,
+                temp_f: 75.2,
+                feelslike_c: 25.9,
+                condition: {
+                    text: "Patchy rain nearby",
+                    icon: "//cdn.weatherapi.com/weather/64x64/day/176.png",
+                },
+                pressure_mb: 1013,
+                humidity: 80,
+                uv: 5,
+            }
+        };
+
+        // Updating the HTML with the weather data
+        document.getElementById('location').textContent = weatherData.location.name;
+        document.getElementById('localtime').textContent = weatherData.location.localtime.split(' ')[1];
+        document.getElementById('temp_c').textContent = `${weatherData.current.temp_c}°C`;
+        document.getElementById('temp_f').textContent = `${weatherData.current.temp_f}°F`;
+        document.getElementById('feelslike_c').textContent = `${weatherData.current.feelslike_c}°C`;
+        document.getElementById('condition-text').textContent = weatherData.current.condition.text;
+        document.getElementById('condition-icon').src = weatherData.current.condition.icon;
+        document.getElementById('pressure').textContent = `${weatherData.current.pressure_mb} mb`;
+        document.getElementById('humidity').textContent = `${weatherData.current.humidity}%`;
+        document.getElementById('uv').textContent = `${weatherData.current.uv}`;
+    </script>
+
+</body>
+</html>
