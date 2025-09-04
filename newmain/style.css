@@ -449,7 +449,7 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
     .about-data { text-align: center; }
     .about-info { justify-content: center; }
     .about-box { padding: 0.75rem .5rem; }
-    .about-description { padding: 0 4rem; text-align: center; }
+    .about-description { padding: 0 4rem; }
 
     .qualification-container { grid-template-columns: repeat(2, 290px); }
     .skills-container { grid-template-columns: 340px 300px; }

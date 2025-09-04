@@ -38,8 +38,14 @@ html, body {
 /* Responsive: stack cards on smaller screens */
 @media (max-width: 900px) {
   .containerx {
-    grid-template-columns: repeat(1, 1fr); /* 2 columns on smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
   }
+  .card {
+    grid-column: span 2; /* spans 2 rows */
+  }
+  .gomini {
+  grid-column: span 1; /* spans 2 rows */
+}
 }
 
 /* ---------- Labels ---------- */
