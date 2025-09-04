@@ -27,6 +27,8 @@
  <!--J query-->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/activitycard.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +36,7 @@
 
 <link rel="stylesheet" href="./assets/style.css">
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
 
 <style>
 
@@ -96,11 +99,94 @@
         <button class="infobox-createbtn" onclick="location.href='https://rajatcj.com/linktree';">Linktree</button>
       </div>
   </div>
+
+
+
+  
   <iframe src="./profile/indexneo.html"  style="width:100%; max-width: calc(100vh / 1.5); height: 100vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
-        
+     
   </div>
   
+    <div class="container">
+    <div class="card" id="weather">
+      <div class="label">At my place</div>
+      <div class="row">
+        <div class="temp" id="temp">--°C</div>
+        <div class="cond" id="cond">Loading…</div>
+      </div>
+      <div class="small" id="wx-extra"></div>
+    </div>
 
+    <div class="card" id="time-card">
+      <div class="label">Currently</div>
+      <div class="big" id="time">--:--:--</div>
+      <div class="small" id="date">—</div>
+    </div>
+
+    <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="row">
+        <span class="dot gray" id="status-dot"></span>
+        <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
+        <div class="big" id="status-text">idle</div>
+      </div>
+      <div class="small" id="device-text"></div>
+    </div>
+<!--
+    <div class="card spotify-card" id="spotify-card" style="display:none;">
+      <div class="row" style="gap:16px; width:100%;">
+        <img id="spotify-art" src="" alt="Album Art">
+        <div style="flex:1; text-align:left;">
+          <div class="label" style="color:#1db954">Listening to Spotify</div>
+          <div class="big" id="spotify-song">--</div>
+          <div class="small" id="spotify-artist">--</div>
+          <div class="small" id="spotify-album">--</div>
+          <div class="progress-container">
+            <div class="progress-bar" id="spotify-progress"></div>
+          </div>
+          <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <div id="activity-container"></div>
+    <!-- Now Playing (via Lanyard) -->
+<div id="spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#1db954;">Listening to Spotify</div>
+      <div class="big" id="spotify-song">--</div>
+      <div class="small" id="spotify-artist">--</div>
+      <div class="small" id="spotify-album">--</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="spotify-progress-bar"></div>
+      </div>
+      <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+    </div>
+    <img id="spotify-icon" src="profile/assets/img/spotifylink.gif" class="small-top-right" alt="Spotify Icon">
+  </div>
+</div>
+
+<!-- Last Played (via Last.fm) -->
+<div id="last-spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="last-spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#9ca3af;">Not Listening</div>
+      <div class="big" id="last-spotify-song">--</div>
+      <div class="small" id="last-spotify-time">Played -- ago</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
+
+
+  
 
   <div class="footer">
     <div class="footer-main">
@@ -178,4 +264,6 @@
         loop: true
     });
 </script>
+
+<script src="./assets/activitycard.js"></script>
 </html>

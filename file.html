@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minimal Weather • Nepal Time • Status • Activities • Spotify</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/activitycard.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card" id="weather">
+      <div class="label">Weather</div>
+      <div class="row">
+        <div class="temp" id="temp">--°C</div>
+        <div class="cond" id="cond">Loading…</div>
+      </div>
+      <div class="small" id="wx-extra"></div>
+    </div>
+
+    <div class="card" id="time-card">
+      <div class="label">Nepal Standard Time</div>
+      <div class="big" id="time">--:--:--</div>
+      <div class="small" id="date">—</div>
+    </div>
+
+    <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="row">
+        <span class="dot gray" id="status-dot"></span>
+        <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
+        <div class="big" id="status-text">idle</div>
+      </div>
+      <div class="small" id="device-text"></div>
+    </div>
+
+    <div class="card spotify-card" id="spotify-card" style="display:none;">
+      <img class="icon small-top-right" src="profile\assets\img\spotifylink.gif">
+      <div class="row" style="gap:16px; width:100%;">
+        <img id="spotify-art" src="" alt="Album Art">
+        <div style="flex:1; text-align:left;">
+          <div class="label" style="color:#1db954; ">Playing on Spotify</div>
+          <div class="big" id="spotify-song">--</div>
+          <div class="small" id="spotify-artist">--</div>
+          <div class="small" id="spotify-album">--</div>
+          <div class="progress-container">
+            <div class="progress-bar" id="spotify-progress"></div>
+          </div>
+          <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  
+<script src="./assets/activitycard.js"></script>
+</body>
+</html>

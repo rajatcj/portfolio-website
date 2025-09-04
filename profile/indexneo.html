@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet" /> -->
+    <title>Discord Profile Card</title>
+    <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./assets/css/activity.css">
+	<script src="./assets/javascripts/lanyard.js"></script>
+	<script src="./assets/javascripts/activity.js"></script>
+	<!--J query-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+<style>
+  .status-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  max-width: 150px;
+}
+
+.status-container .status-item {
+  position: relative;
+  margin-left: 6px;
+  width: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.status-container .status-item i {
+  height: 100%;
+}
+
+.status-container .status-item img {
+  width: 1px;
+}
+
+.status-container .status-item:hover > .tooltip {
+  transform: scale(1);
+}
+</style>
+  </head>
+  <body>
+
+            
+        <div class="detailobjects">
+          <br>
+        
+            
+            <!--<div class="roles">
+              <iframe id="discordprofileinside" src="https://spotify-fetcher.secretrajatrepl.repl.co" style="width:100%; height:120px; border:0px;" title="Spotify"></iframe>
+    
+              </div>-->
+            <div class="roles">
+              <div class="category-title" style="color: white; font-weight: bold;">My Live Activity</div>
+              <div class="status-container">
+                 <p class="handle" id="discorduser.handle"></p> <p id="discorduser.desktop"></p>
+                 <p id="discorduser.mobile"></p>
+                 <p id="discorduser.web"></p>
+                 <p id="discorduser.spotify"></p>
+              </div>
+              <div id="activitycard">
+                <div id="activities" width="100%"></div>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    </div>
+  </body>
+	<script src="./assets/javascripts/profile.js"></script>
+	<script src="./assets/javascripts/webhookmsg.js"></script>
+	<script src="./assets/javascripts/chatid.js"></script>
+	<script src="./assets/javascripts/update.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      const loadingScreen = document.getElementById("loading-screen");
+      const mainContent = document.getElementById("main-content");
+
+      // simulate API fetch and loading time
+      setTimeout(function () {
+        loadingScreen.style.display = "none";
+        mainContent.style.display = "block";
+      }, 2000);
+    });
+  </script>
+</html>
