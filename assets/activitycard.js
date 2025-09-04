@@ -30,10 +30,10 @@ function startClock() {
 
 // ------------------- STATUS -------------------
 const STATUS_MAP = {
-  online: { icon: 'fa-solid fa-circle', color: 'green', label: 'online' },
-  idle: { icon: 'fa-regular fa-moon', color: 'yellow', label: 'idle' },
-  dnd: { icon: 'fa-solid fa-minus-circle', color: 'red', label: 'do not disturb' },
-  offline: { icon: 'fa-regular fa-circle', color: 'gray', label: 'offline' }
+  online: { icon: 'fa-solid fa-circle', color: '#23a65a', label: 'online' },
+  idle: { icon: 'fa-regular fa-moon', color: '#efb133', label: 'idle' },
+  dnd: { icon: 'fa-solid fa-minus-circle', color: '#f23f43', label: 'do not disturb' },
+  offline: { icon: 'fa-regular fa-circle', color: '#9597a2', label: 'offline' }
 };
 
 function devicesText(d) {
@@ -53,10 +53,10 @@ function updatePageWithLanyardData(d) {
   const meta = STATUS_MAP[statusKey] || STATUS_MAP.offline;
 
   document.getElementById('status-icon').className = meta.icon;
+  document.getElementById('status-icon').style.color = meta.color;
   document.getElementById('status-icon').title = meta.label;
-  document.getElementById('status-dot').className = 'dot ' + meta.color;
   document.getElementById('status-text').textContent = meta.label;
-  document.getElementById('device-text').textContent = devicesText(d);
+  document.getElementById('device-text').textContent = "On " + devicesText(d);
 
   // Spotify from Lanyard
   if (d.listening_to_spotify && d.spotify) {
