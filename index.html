@@ -27,6 +27,8 @@
  <!--J query-->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/activitycard.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +37,10 @@
 <link rel="stylesheet" href="./assets/style.css">
 <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
 
+
 <style>
+    
+
 
     .decimal-part {
       font-size: 16px;
@@ -77,9 +82,9 @@
       <p class="infobox-slimtext" style="font-size:x-large; line-height: 1.5;">
         Hello 👋, I am Rajat, a <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> years old<br><span class="whoami" style="color:#ee6464"></span> <br>
         </p>
+        <!--
       <form class="send-message" onsubmit="sendLinkTreePrivMsg();return false">
-          <!-- <input type="text" style="width: 15rem; padding: 3px 5px; margin: 4px 0; font-size:xx-small;" autocomplete="off" name="usersnowflake" id="usersnowflake" placeholder="An anonymous friend" />
-          <br> -->
+          
           <input class="messageinput" type="text" maxlength="269" autocomplete="off" name="content" id="content" placeholder="Send anonymous message" />
           <div id='messagebox' class='messagebox'></div>
           <input name="avatar_url" id="avatar_url" type="hidden" value="https://cdn.discordapp.com/emojis/1002286257428246710.webp" />
@@ -90,16 +95,103 @@
           <input name="url" id="url" type="hidden" value="" />
           
       </form>
+      -->
       <br>
       <div class="infobox-btnwrapper">
         <button class="infobox-explorebtn selected" onclick="location.href='https://rajatcj.com/portfolio';">Portfolio</button>
         <button class="infobox-createbtn" onclick="location.href='https://rajatcj.com/linktree';">Linktree</button>
       </div>
   </div>
-  <iframe src="./profile/indexneo.html"  style="width:100%; max-width: calc(100vh / 1.5); height: 100vh; border: 0px; border-radius: 5px;" title="Discord Status"></iframe>
-        
+
+</div>
   </div>
-  
+
+<div class="landingpage">
+
+    <div class="container">
+
+
+    <div class="card" id="weather">
+      <div class="label">Currently</div>
+      <div class="row">
+        <div class="temp" id="temp">--°C</div>
+        <div class="cond" id="cond">Loading…</div>
+      </div>
+      <div class="small" id="wx-extra"></div>
+    </div>
+
+    <div class="card" id="time-card">
+      <div class="label">Nepal Time</div>
+      <div class="big" id="time">--:--:--</div>
+      <div class="small" id="date">—</div>
+    </div>
+
+       <div class="card card-tall" id="weather" style="padding:0px">
+      <iframe src="./chat/indexneo.html?theme=trans" style="width:100%; height:100%; border:none; border-radius:14px; display:block;"></iframe>
+    </div>
+
+    <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="row">
+        <span class="dot gray" id="status-dot"></span>
+        <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
+        <div class="big" id="status-text">idle</div>
+      </div>
+      <div class="small" id="device-text"></div>
+    </div>
+<!--
+    <div class="card spotify-card" id="spotify-card" style="display:none;">
+      <div class="row" style="gap:16px; width:100%;">
+        <img id="spotify-art" src="" alt="Album Art">
+        <div style="flex:1; text-align:left;">
+          <div class="label" style="color:#1db954">Listening to Spotify</div>
+          <div class="big" id="spotify-song">--</div>
+          <div class="small" id="spotify-artist">--</div>
+          <div class="small" id="spotify-album">--</div>
+          <div class="progress-container">
+            <div class="progress-bar" id="spotify-progress"></div>
+          </div>
+          <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <!-- Now Playing (via Lanyard) -->
+<div id="spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#1db954;">Listening to Spotify</div>
+      <div class="big" id="spotify-song">--</div>
+      <div class="small" id="spotify-artist">--</div>
+      <div class="small" id="spotify-album">--</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="spotify-progress-bar"></div>
+      </div>
+      <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+    </div>
+    <img id="spotify-icon" src="profile/assets/img/spotifylink.gif" class="small-top-right" alt="Spotify Icon">
+  </div>
+</div>
+
+<!-- Last Played (via Last.fm) -->
+<div id="last-spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="last-spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#1db954; display:none;" id="last-spotify-np">Listening to Spotify</div>
+      <div class="label" style="color:#9ca3af;" id="last-spotify-time">Not Listening</div>
+      <div class="big" id="last-spotify-song">--</div>
+      <div class="small" id="last-spotify-artist">--</div>
+      <div class="small" id="last-spotify-album">--</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+
 
 
   <div class="footer">
@@ -178,4 +270,6 @@
         loop: true
     });
 </script>
+
+<script src="./assets/activitycard.js"></script>
 </html>

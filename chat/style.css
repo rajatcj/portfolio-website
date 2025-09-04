@@ -43,6 +43,27 @@ Mixins
   --timestamp: rgba(255, 255, 255, .3);
 }
 
+[data-theme="trans"] {
+  --border: #ffad7d00;
+  --title : #000000;
+  --title-text : #fff;
+  --bg : rgba(63, 47, 39, 0);
+  --msg-text : #fff;
+  --chatbubble : #454545be;
+  --scrollbar : #ffffff7c;
+  --avatar-border : rgba(255, 255, 255, 0.24);
+  --my-message : linear-gradient(60deg, #77584cbe, #ff2424);
+  --repliedtomsg : rgb(112, 112, 112);
+  --linkcolor : #c6a7f8;
+  --loadingrotatebg: #000000;
+  --loadingtext: #ffad7d;
+  --replyingtobg: linear-gradient(120deg, rgb(97, 97, 97), #257287);
+  --textbox-bg: #313131;
+  --textbox-bo: #ffad7d;
+  --textbox-text: rgb(255, 255, 255);
+  --timestamp: rgba(255, 255, 255, .3);
+}
+
 [data-theme="discord"] {
   --border: #202225;
   --title : #2f3136;
