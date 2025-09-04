@@ -77,7 +77,7 @@ function cleanImageUrl(url, appId) {
 }
 function renderActivities(activities) {
   // Use the same container as your other cards
-  const container = document.querySelector('.container');
+  const container = document.querySelector('.containerx');
   
   // Remove previously rendered activity cards
   document.querySelectorAll('.activity-card').forEach(el => el.remove());
@@ -216,6 +216,7 @@ function renderSpotify() {
     document.getElementById("spotify-song").textContent = data.song;
     document.getElementById("spotify-artist").textContent = data.artist;
     document.getElementById("spotify-album").textContent = data.album;
+    document.getElementById("spotifyquick").innerHTML = `<i class="fa-brands fa-spotify" style="color:#1DB954; animation: spinicon 2s linear infinite"></i> Currently listening to <u>${data.song}</u> by <u>${data.artist}</u>`;
 
     const total = data.timestamps.end - data.timestamps.start;
     const elapsed = Date.now() - data.timestamps.start;
@@ -235,6 +236,7 @@ function renderSpotify() {
       document.getElementById("spotify-song").textContent = data.name;
       document.getElementById("spotify-artist").textContent = data.artist['#text'] || "";
       document.getElementById("spotify-album").textContent = data.album?.['#text'] || "";
+    document.getElementById("spotifyquick").innerHTML = `<i class="fa-brands fa-spotify" style="color:#1DB954; animation: spinicon 2s linear infinite"></i> Currently listening to <u>${data.song}</u> by <u>${data.artist['#text']}</u>`;
 
 
       progressBar.style.width = "0%";
@@ -250,6 +252,7 @@ function renderSpotify() {
       document.getElementById("last-spotify-song").textContent = `${data.name}`;
       document.getElementById("last-spotify-artist").textContent = `${data.artist['#text']}`;
       document.getElementById("last-spotify-album").textContent = `${data.album['#text']}`;
+      document.getElementById("spotifyquick").textContent = ``;
       
       const playedMs = parseInt(data.date.uts, 10) * 1000;
       const diffMs = Date.now() - playedMs;

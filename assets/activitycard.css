@@ -4,7 +4,7 @@ html, body {
 }
 
 /* ---------- Container Grid ---------- */
-.container {
+.containerx {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns like your previous flex layout */
   grid-auto-rows: 160px; /* default row height */
@@ -37,7 +37,7 @@ html, body {
 
 /* Responsive: stack cards on smaller screens */
 @media (max-width: 900px) {
-  .container {
+  .containerx {
     grid-template-columns: repeat(1, 1fr); /* 2 columns on smaller screens */
   }
 }

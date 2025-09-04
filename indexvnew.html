@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>@rajat_cj</title>
+
+  
+        <!--embed-->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="mail@rajatcj.com">
+        <meta property="og:title" content="Rajat CJ">
+        <meta property="og:description" content="A self-taught frontend developer, Discord Verified Bot Developer and a Medical student from Nepal.">
+        <meta property="og:image" content="https://api.lanyard.rest/754033245972201612.jpg">
+        <meta content="https://rajatcj.com/" property="og:url" />
+        <meta content="#5e272c" data-react-helmet="true" name="theme-color" />
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <link rel="stylesheet" href="./newmain/style.css">
+  
+ <link rel="stylesheet" href="./assets/activitycard.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/19746ffdef.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        @keyframes spinicon {
+            from {transform:rotate(0deg);}
+            to {transform: rotate(360deg);}
+            
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <nav class="nav">
+            <div class="nav-logo">
+                <a href="#" class="nav-logo-text">R</a>
+            </div>
+
+            <div class="nav-menu">
+                <div class="menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link active-link">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#dash" class="nav-link">Dashboard</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-share">
+                <i class="uil uil-share-alt social-share"></i>
+            </div>
+
+            <div class="nav-close" id="nav-close">
+                <i class="uil uil-times"></i>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <section class="home" id="home">
+            <div class="home-container container grid">
+                <div class="home-social">
+                    <span class="home-social-follow">RajatCJ</span> 
+                    <a class="home-social-link" href="https:/rajatcj.com/"><i class="uil uil-user button-icon"></i></a>
+                </div>
+
+<iframe class="home-img" src="../assets/heartanime.html" style="width:100%; border:0px;height:30vh; overflow: hidden;"></iframe>
+      
+
+
+                       <div class="about-container container grid">
+     
+                <div class="about-data">
+                    <h1>Rajat Chandra Jha</h1>
+                    <h3><span class="whoami" style="color:#ee6464"></span></h3>
+                    <p class="about-description">Hello 👋, I am Rajat, a <span style="font-family: 'Fira Code', monospace;" id="ageDisplay"></span> years old medicine student from Nepal who loves to write codes. I'm a self-taught front-end engineer and a Discord Verified Bot Developer. I'm currently learning Japanese and figuring out a way to linkup my programming skills to medicine.</p>
+                    <p class="about-description" id="spotifyquick"></p>
+                    
+                    <a href="../portfolio/" class="button"><i class="uil uil-user button-icon"></i>More About me!</a>
+                    <a href="#contact" class="button"><i class="uil uil-navigator button-icon"></i>Linktree</a>
+                
+
+                </div>
+                <iframe src="../assets/heartanime.html" style="width:100%; border:0px;height:90vh; overflow: hidden;" class="about-img"></iframe>
+ 
+            </div>
+
+            <div class="my-info">
+                <div class="info-item">
+                    <i class="uil uil-instagram info-icon"></i>
+
+                    <div>
+                        <h3 class="info-title">Instagram</h3>
+                        <span class="info-subtitle">@rajat_cj</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="uil uil-github info-icon"></i>
+
+                    <div>
+                        <h3 class="info-title">Github</h3>
+                        <span class="info-subtitle">@rajatcj</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="uil uil-envelope-edit info-icon"></i>
+
+                    <div>
+                        <h3 class="info-title">Email</h3>
+                        <span class="info-subtitle">mail@rajatcj.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+        </section>
+
+
+        <section class="about section" id="dash">
+            <h2 class="section-title" data-heading="Live activity"></h2>
+
+
+                                    <div class="containerx">
+
+
+    <div class="card" id="weather">
+      <div class="label">Currently</div>
+      <div class="row">
+        <div class="temp" id="temp">--°C</div>
+        <div class="cond" id="cond">Loading…</div>
+      </div>
+      <div class="small" id="wx-extra"></div>
+    </div>
+
+    <div class="card" id="time-card">
+      <div class="label">Nepal Time</div>
+      <div class="big" id="time">--:--:--</div>
+      <div class="small" id="date">—</div>
+    </div>
+
+       <div class="card card-tall" id="weather" style="padding:0px">
+      <iframe src="./chat/indexneo.html?theme=trans" style="width:100%; height:100%; border:none; border-radius:14px; display:block;"></iframe>
+    </div>
+
+    <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="row">
+        <span class="dot gray" id="status-dot"></span>
+        <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
+        <div class="big" id="status-text">idle</div>
+      </div>
+      <div class="small" id="device-text"></div>
+    </div>
+<!--
+    <div class="card spotify-card" id="spotify-card" style="display:none;">
+      <div class="row" style="gap:16px; width:100%;">
+        <img id="spotify-art" src="" alt="Album Art">
+        <div style="flex:1; text-align:left;">
+          <div class="label" style="color:#1db954">Listening to Spotify</div>
+          <div class="big" id="spotify-song">--</div>
+          <div class="small" id="spotify-artist">--</div>
+          <div class="small" id="spotify-album">--</div>
+          <div class="progress-container">
+            <div class="progress-bar" id="spotify-progress"></div>
+          </div>
+          <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+        </div>
+      </div>
+    </div>
+    -->
+
+    <!-- Now Playing (via Lanyard) -->
+<div id="spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#1db954;">Listening to Spotify</div>
+      <div class="big" id="spotify-song">--</div>
+      <div class="small" id="spotify-artist">--</div>
+      <div class="small" id="spotify-album">--</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="spotify-progress-bar"></div>
+      </div>
+      <div class="spotify-time"><span id="spotify-elapsed">0:00</span><span id="spotify-duration">0:00</span></div>
+    </div>
+    <img id="spotify-icon" src="profile/assets/img/spotifylink.gif" class="small-top-right" alt="Spotify Icon">
+  </div>
+</div>
+
+<!-- Last Played (via Last.fm) -->
+<div id="last-spotify-card" class="card spotify-card" style="display:none;">
+  <div class="row" style="gap:16px; width:100%;">
+    <img id="last-spotify-art" src="" alt="Album Art" style="width:80px;height:80px;border-radius:8px;">
+    <div style="flex:1; text-align:left;">
+      <div class="label" style="color:#1db954; display:none;" id="last-spotify-np">Listening to Spotify</div>
+      <div class="label" style="color:#9ca3af;" id="last-spotify-time">Not Listening</div>
+      <div class="big" id="last-spotify-song">--</div>
+      <div class="small" id="last-spotify-artist">--</div>
+      <div class="small" id="last-spotify-album">--</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+        </section>
+
+        <!--
+                <section class="about section" id="aboutme">
+            <h2 class="section-title" data-heading="A little more">About Me</h2>
+
+            <div class="about-container container grid">
+     
+                <div class="about-data">
+                    <h3 class="about-heading">Hi, I'm Mariam Wallas, based in Canada</h3>
+                    <p class="about-description">I'm a web developer, with extensive knowledge and years of experience, working with quality work in web technologies, UI and UX design</p>
+
+
+
+
+                    </div>
+                
+                    <div class="about-info">
+                        <div class="about-box">
+                            <i class="uil uil-award about-icon"></i>
+                            <h3 class="about-title">Experience</h3>
+                            <span class="about-subtitle">10 + Years</span>
+                        </div>
+
+                        <div class="about-box">
+                            <i class="uil uil-suitcase-alt about-icon"></i>
+                            <h3 class="about-title">Completed</h3>
+                            <span class="about-subtitle">60 + Projects</span>
+                        </div>
+
+                        <div class="about-box">
+                            <i class="uil uil-headphones-alt about-icon"></i>
+                            <h3 class="about-title">Support</h3>
+                            <span class="about-subtitle">Online 24/7</span>
+                        </div>
+                    </div>
+            </div>
+
+        </section>
+-->
+
+        <footer class="footer">
+            <div class="footer-bg">
+                <div class="footer-container container grid">
+                    
+
+                    <div>
+                        <h1 class="footer-title">Rajat Chandra Jha</h1>
+                        <span class="footer-subtitle">mail@rajatcj.com</span>
+                    </div>
+
+    <div class="footer-navigate">
+      <div class="nav">
+        <h5>Socials</h5>
+        <p class="links" onclick="location.href='https://instagram.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-instagram"></i> Instagram</p>
+        <p class="links" onclick="location.href='https://www.snapchat.com/add/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-snapchat"></i> Snapchat</p>
+        <p class="links" onclick="location.href='https://twitter.com/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-twitter"></i> Twitter</p>
+        <p class="links" onclick="location.href='https://www.reddit.com/u/rajat_cj';" style="cursor: pointer;"><i class="fa-brands fa-reddit"></i> Reddit</p>
+      </div>
+      <div class="nav">
+        <h5>Other Sites</h5>
+        <p class="links" onclick="location.href='https://rajatcj.com/portfolio';" style="cursor: pointer;"><i class="fa-solid fa-globe"></i> Portfolio</p>
+        <p class="links" onclick="location.href='https://rajatcj.com/linktree';" style="cursor: pointer;"><i class="fa-solid fa-link"></i> Linktree</p>
+        <p class="links" onclick="location.href='https://snippets.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-code"></i> Snippets</p>
+        <p class="links" onclick="location.href='https://botuu.jharajat.com.np/';" style="cursor: pointer;"><i class="fa-solid fa-face-smile"></i> Discord Bot</p>
+      </div>
+      <div class="nav">
+        <h5>Discords</h5>
+        <p class="links" onclick="location.href='https://discord.gg/UAaRzNz87W';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Botu's Crewmates</p>
+        <p class="links" onclick="location.href='https://discord.gg/nepal';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> The Namaste Nepal</p>
+        <p class="links" onclick="location.href='https://discord.gg/theopn';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> One Piece Nepal</p>
+        <p class="links" onclick="location.href='https://discord.gg/Vy9RgnjSVC';" style="cursor: pointer;"><i class="fa-brands fa-discord"></i> Medicos</p>
+      </div>
+    </div>
+                </div>
+
+                <p class="footer-copy">&#169; <a href="https://rajatcj.com/">RajatCJ</a>. 2025, all rights reserved</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./newmain/script.js"></script>
+
+  <script>
+  function updateAgeDisplay() {
+    // Replace '1990-01-01' with the actual birthdate in the format 'YYYY-MM-DD'
+    var birthdate = new Date('2003-02-23');
+    var currentDate = new Date();
+
+    var ageInSeconds = (currentDate - birthdate) / 1000;
+    var ageInYears = ageInSeconds / (365.25 * 24 * 60 * 60);
+
+    // Separate the integer and decimal parts of the age
+    var integerPart = Math.floor(ageInYears);
+    var decimalPart = (ageInYears % 1).toFixed(8).substr(2); // Extract four decimal places
+
+    // Display age with separate styling for integer and decimal parts
+    document.getElementById('ageDisplay').innerHTML = '<span>' + integerPart + '</span><span class="decimal-part">.' + decimalPart + '</span>';
+  }
+
+  // Initial call to set the initial age display
+  updateAgeDisplay();
+
+  // Update the age display every second
+  setInterval(updateAgeDisplay, 333);
+</script>
+
+<script src="./assets/whoami.js"></script>
+<script>
+    var Typed = new Typed(".whoami", {
+        strings:["Medicine Student", "Full Stack Developer","Discord Verified Bot Dev"],
+        typeSpeed: 100,
+        backSpeed: 5,
+        loop: true
+    });
+</script>
+
+
+<script src="./assets/activitycard.js"></script>
+</body>
+
+
+</html>

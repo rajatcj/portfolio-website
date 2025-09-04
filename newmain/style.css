@@ -377,9 +377,34 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
                 .input-container.focus span::before, .input-container.focus span::after  { width: 50%; opacity: 1; }
 
 /* Footer */
+.links {
+  font-size: 18px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.links:focus,
+.links:hover {
+  color: #BCBCBC;
+}
+
+.links:focus:after,
+.links:hover:after {
+  width: 100%;
+  left: 0%;
+}
 
 .footer { padding-top: 2rem; }
-.footer-container { grid-template-columns: repeat(3, 1fr); column-gap: 1.6rem; }
+.footer-container { grid-template-columns: repeat(2, 1fr); column-gap: 1.6rem; }
 .footer-bg { background-color: var(--box-color); padding: 3rem 0 3.5rem; }
 .footer-title { font-size: var(--h1-font-size); margin-bottom: var(--mb025); }    
 .footer-subtitle { font-size: var(--small-font-size); }
@@ -503,4 +528,50 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
     .work-filters { column-gap: .25rem; }
     .services-container { grid-template-columns: max-content; }
     .services-content { padding-right: 3.5rem; }
+}
+
+
+
+
+.footer-main {
+  max-width: 40%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 40px;
+  color: #ffffff83;
+}
+.footer-navigate {
+  display: flex;
+}
+.footer-navigate .nav {
+  margin-left: 60px;
+}
+.footer-navigate .nav h5 {
+  margin: 0;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+.footer-navigate .nav p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  color: #D7D7D7;
+}
+
+.footer2 p {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 36px;
+  color: #828282;
 }
