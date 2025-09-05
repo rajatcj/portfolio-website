@@ -43,7 +43,7 @@
     <aside class="sidebar" id="sidebar">
         <nav class="nav">
             <div class="nav-logo">
-                <a href="#" class="nav-logo-text">R</a>
+                <a href="#" class="nav-logo-text"><img src="https://dcdn.dstn.to/avatars/754033245972201612" style="border-radius: 50%;"></a>
             </div>
 
             <div class="nav-menu">
@@ -137,10 +137,24 @@
 
 
         <section class="about section" id="dash">
-            <h2 class="section-title" data-heading="Live activity"></h2>
+            <h2 class="section-title" data-heading=".... .- .-. . / -.- .-. .. ... .... -. .-"></h2>
 
 
                                     <div class="containerx">
+
+                                      <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="row">
+        <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
+        <div class="temp" id="status-text" style="font-size: 20px;"></div>
+        <div class="cond" id="device-text">Loading...</div>
+      </div>
+      <div class="row">
+        <div class="small" id="time">--:--:--</div>
+        <div class="small" id="date">—</div>
+      </div>
+    </div>
+
    <!-- Now Playing (via Lanyard) -->
 <div id="spotify-card" class="card spotify-card" style="display:none;">
   <div class="row" style="gap:16px; width:100%;">
@@ -173,7 +187,16 @@
   </div>
 </div>
 
-    <div class="card" id="weather">
+
+    
+
+
+       <div class="card card-tall" id="weather" style="padding:0px">
+      <iframe src="./chat/indexneo.html?theme=trans" style="width:100%; height:100%; border:none; border-radius:14px; display:block;"></iframe>
+    </div>
+
+    
+<div class="card" id="weather">
       <div class="label">Currently in Pokhara</div>
       <div class="row">
         <div class="temp" id="temp">--°C</div>
@@ -182,13 +205,26 @@
       <div class="small" id="wx-extra"></div>
     </div>
 
-
-       <div class="card card-tall" id="weather" style="padding:0px">
-      <iframe src="./chat/indexneo.html?theme=trans" style="width:100%; height:100%; border:none; border-radius:14px; display:block;"></iframe>
+    
+        <div class="card" id="github-card">
+      <div class="label">Last Github Activity</div>
+      <div class="big" id="github-activity">Loading..</div>
+      <div class="small" id="github-date">—</div>
     </div>
 
     
-    <div class="card gomini" id="time-card">
+
+    <!--
+
+ 
+   <div class="card" id="status-card">
+      <div class="label">Status</div>
+      <div class="big" id="status-text">offline</div><p class="small" id="device-text"></p>
+      <p class="small" id="time">--:--:--</p><p class="small" id="date">—</p>
+      </div>
+
+
+        <div class="card gomini" id="time-card">
       <div class="label">Nepal Time</div>
       <div class="big" id="time">--:--:--</div>
       <div class="small" id="date">—</div>
@@ -198,11 +234,18 @@
       <div class="label">Status</div>
       <div class="row">
         <i id="status-icon" class="fa-regular fa-circle" title="Status"></i>
-        <div class="big" id="status-text">offline</div>
+        <div class="big" id="status-texte">offline</div>
       </div>
-      <div class="small" id="device-text"></div>
+      <div class="small" id="device-texte"></div>
     </div>
 
+    <div class="card" id="github-card">
+      <div class="label">Github @rajatcj</div>
+      <div class="row">
+        <img src="https://ghchart.rshah.org/rajatcj" alt="GitHub Contribution Graph" class="w-full rounded-lg">
+      </div>
+    </div>
+-->
 
 <!--
     <div class="card spotify-card" id="spotify-card" style="display:none;">
@@ -272,8 +315,8 @@
                     
 
                     <div>
-                        <h1 class="footer-title">Rajat Chandra Jha</h1>
-                        <span class="footer-subtitle">mail@rajatcj.com</span>
+                        <h1 onclick="window.location='mailto:mail@rajatcj.com'" class="footer-title">mail@rajatcj.com</h1>
+                        <span class="footer-subtitle">Made with <i class="fa-brands fa-html5"></i> HTML5, <i class="fa-brands fa-css3-alt"></i> CSS3, <i class="fa-brands fa-square-js"></i> JS, <i class="fa-brands fa-bootstrap"></i> Bootstrap, <i class="fa-solid fa-q"></i> JQuery, <i class="fa-brands fa-node"></i> node.js, <i class="fa-solid fa-font-awesome"></i> Fontawesome and <i class="fa-solid fa-tag"></i> Lanyard by <b><i class="fa-solid fa-at"></i>rajat_cj</b> on 20th March, 2023</span>
                     </div>
 
     <div class="footer-navigate">
@@ -301,7 +344,7 @@
     </div>
                 </div>
 
-                <p class="footer-copy">&#169; <a href="https://rajatcj.com/">RajatCJ</a>. 2025, all rights reserved</p>
+                <p class="footer-copy">&#169; <a href="https://rajatcj.com/">RajatCJ</a>, 2025. All rights reserved</p>
             </div>
         </footer>
     </main>
@@ -350,7 +393,56 @@
 
 
 <script src="./assets/activitycard.js"></script>
+
+
+<script>
+const USERNAME = "rajatcj"; // your GitHub username
+
+
+fetch(`https://api.github.com/users/${USERNAME}/events/public?per_page=1`)
+  .then(res => res.json())
+  .then(events => {
+    if (!events.length) {
+      document.getElementById("github-activity").textContent = "No recent activity found.";
+      document.getElementById("github-date").textContent = "—";
+      return;
+    }
+      
+    const e = events[0];
+    let text = "Did something cool on GitHub 😎";
+
+    switch (e.type) {
+      case "PushEvent":
+        const commit = e.payload.commits[0];
+        text = `📝 Pushed a commit "${commit.message}"`;
+        break;
+      case "PullRequestEvent":
+        text = `🔀 ${e.payload.action} pull request in ${e.repo.name}`;
+        break;
+      case "IssuesEvent":
+        text = `🐛 ${e.payload.action} issue in ${e.repo.name}`;
+        break;
+      case "WatchEvent":
+        text = `⭐ Starred ${e.repo.name}`;
+        break;
+      case "ForkEvent":
+        text = `🍴 Forked ${e.repo.name}`;
+        break;
+      default:
+        text = `📌 ${e.type} in ${e.repo.name}`;
+    }
+
+    const date = new Date(e.created_at).toLocaleString();
+    document.getElementById("github-activity").textContent = text;
+    document.getElementById("github-date").textContent = date;
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("github-activity").textContent = "Error loading activity.";
+    document.getElementById("github-date").textContent = "—";
+  });
+</script>
+
+
 </body>
-
-
 </html>

@@ -31,8 +31,8 @@ function startClock() {
 // ------------------- STATUS -------------------
 const STATUS_MAP = {
   online: { icon: 'fa-solid fa-circle', color: '#23a65a', label: 'online' },
-  idle: { icon: 'fa-regular fa-moon', color: '#efb133', label: 'idle' },
-  dnd: { icon: 'fa-solid fa-minus-circle', color: '#f23f43', label: 'do not disturb' },
+  idle: { icon: 'fa-regular fa-moon', color: '#efb133', label: 'online (idle)' },
+  dnd: { icon: 'fa-solid fa-minus-circle', color: '#f23f43', label: 'online (dnd)' },
   offline: { icon: 'fa-regular fa-circle', color: '#9597a2', label: 'offline' }
 };
 
@@ -56,7 +56,7 @@ function updatePageWithLanyardData(d) {
   document.getElementById('status-icon').style.color = meta.color;
   document.getElementById('status-icon').title = meta.label;
   document.getElementById('status-text').textContent = meta.label;
-  document.getElementById('device-text').textContent = "On " + devicesText(d);
+  document.getElementById('device-text').textContent = devicesText(d);
 
   // Spotify from Lanyard
   if (d.listening_to_spotify && d.spotify) {
@@ -109,6 +109,14 @@ function renderActivities(activities) {
     textWrapper.className = 'activity-text';
     textWrapper.style.flex = '1';
     textWrapper.style.textAlign = 'left';
+
+    
+    const activitytype = document.createElement('div');
+    activitytype.className = 'label';
+    activitytype.style.fontSize = 'x-small';
+    activitytype.textContent = 'Current Activity';
+    textWrapper.appendChild(activitytype);
+
 
     const label = document.createElement('div');
     label.className = 'label';
@@ -236,7 +244,7 @@ function renderSpotify() {
       document.getElementById("spotify-song").textContent = data.name;
       document.getElementById("spotify-artist").textContent = data.artist['#text'] || "";
       document.getElementById("spotify-album").textContent = data.album?.['#text'] || "";
-    document.getElementById("spotifyquick").innerHTML = `<i class="fa-brands fa-spotify" style="color:#1DB954; animation: spinicon 2s linear infinite"></i> Currently listening to <u>${data.song}</u> by <u>${data.artist['#text']}</u>`;
+    document.getElementById("spotifyquick").innerHTML = `<i class="fa-brands fa-spotify" style="color:#1DB954; animation: spinicon 2s linear infinite"></i> Currently listening to <u>${data.name}</u> by <u>${data.artist['#text']}</u>`;
 
 
       progressBar.style.width = "0%";

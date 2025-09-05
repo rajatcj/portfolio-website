@@ -3,7 +3,7 @@
 :root {
     --hue-color: 242;
 
-    --skin-color: hsl(342, 92%, 46%);
+    --skin-color: #ee6464;
     --mirage-color: hsl(210, 10%, 23%);
     --title-color: hsl(var(--hue-color), 8%, 95%);
     --text-color: hsl(var(--hue-color), 8%, 85%);
@@ -407,7 +407,7 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
 .footer-container { grid-template-columns: repeat(2, 1fr); column-gap: 1.6rem; }
 .footer-bg { background-color: var(--box-color); padding: 3rem 0 3.5rem; }
 .footer-title { font-size: var(--h1-font-size); margin-bottom: var(--mb025); }    
-.footer-subtitle { font-size: var(--small-font-size); }
+.footer-subtitle { color:#c0c0c0; font-size: var(--small-font-size); }
 .footer-links { display: flex; justify-self: center; column-gap: 2rem; }
     .footer-links:hover { color: var(--skin-color); }
 .footer-socials { justify-self: flex-end; }
@@ -416,7 +416,7 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
 .footer-copy { font-size: var(--smaller-font-size); text-align: center; margin-top: 4.5rem; }
     .footer-copy a { font-family: var(--signature-font); } 
         .footer-copy a:hover { color: var(--skin-color); }
-    .footer-title, .footer-subtitle, .footer-links, .footer-social, .footer-copy a { color: var(--title-color); }
+    .footer-title, .footer-links, .footer-social, .footer-copy a { color: var(--title-color); }
 
 /* Media Queries */
 
@@ -574,4 +574,46 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
   font-size: 12px;
   line-height: 36px;
   color: #828282;
+}
+
+
+
+.links {
+  font-size: 18px;
+  color: #e1e1e1;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.links:focus,
+.links:hover {
+  color: #BCBCBC;
+}
+
+.links:focus:after,
+.links:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.links:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: #BCBCBC;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
 }
