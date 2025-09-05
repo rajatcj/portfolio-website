@@ -431,6 +431,9 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
 }
 
 @media screen and (max-width: 1024px) {
+    .about-img { display: none; }
+    .home-img { display: block; width: 400px; justify-self: center; }
+
     .container { margin-left: var(--mb15); margin-right: var(--mb15); }
     .sidebar { width: 100%; z-index: 999; transform: translateX(-100%); }
     .show-sidebar { transform: translateX(0); }
@@ -576,6 +579,20 @@ textarea.input { padding: 0.8rem 1.2rem; min-height: 140px; border-radius: .5rem
   color: #828282;
 }
 
+
+
+/* On smaller screens, switch to 3-column grid */
+@media (max-width: 768px) {
+  .footer-navigate {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 20px; /* space between columns */
+  }
+
+  .footer-navigate .nav {
+    margin-left: 0; /* remove left margin from flex layout */
+  }
+}
 
 
 .links {
