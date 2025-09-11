@@ -215,6 +215,7 @@ function renderSpotify() {
   const elapsedEl = document.getElementById("spotify-elapsed");
   const durEl = document.getElementById("spotify-duration");
 
+  
   if (source === "lanyard" && data) {
     // Lanyard live song
     spotifyCard.style.display = "flex";
