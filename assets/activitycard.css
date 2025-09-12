@@ -155,3 +155,104 @@ html, body {
   margin-bottom: 8px;
   letter-spacing: 0.8px;
 }
+
+@keyframes spinicon {
+            from {transform:rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+
+        
+
+
+
+        /* ---------- Email Card ---------- */
+.email-card {
+  box-sizing: border-box;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 0px;
+
+  display: flex;
+  flex-direction: column;
+  background: #141417; /* same as other cards */
+  padding: 5px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  color: #eaeaf0;
+  height: 100%; /* make it stretch to grid row height */
+}
+
+/* Title of the card */
+.email-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 5px;
+  letter-spacing: 0.8px;
+}
+
+/* Message textarea on top, takes max available space */
+.email-message {
+  width: 100%;
+  flex: 1; /* expand to fill available space */
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1a1a1f;
+  color: #eaeaf0;
+  resize: none;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Bottom row for inputs and send button */
+.email-input-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+  gap: 8px;
+  width: 100%; /* full width */
+  align-items: center;
+}
+
+/* Name input spans 3 columns */
+.email-name {
+  grid-column: span 3;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1a1a1f;
+  color: #eaeaf0;
+  font-size: 14px;
+}
+
+/* Email input spans 3 columns */
+.email-email {
+  grid-column: span 3;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1a1a1f;
+  color: #eaeaf0;
+  font-size: 14px;
+}
+
+/* Send button spans 1 column */
+.email-send-btn {
+  grid-column: span 1;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: #ee6464;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.email-send-btn:hover {
+  background: #dc3d3d;
+}

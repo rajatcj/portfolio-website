@@ -30,13 +30,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-    <style>
-        @keyframes spinicon {
-            from {transform:rotate(0deg);}
-            to {transform: rotate(360deg);}
-            
-        }
-    </style>
+  
 </head>
 <body>
 
@@ -174,13 +168,13 @@
 </div>
 
 <!-- Last Played (via Last.fm) -->
-<div id="last-spotify-card" class="card spotify-card" style="display:none;">
+<div id="last-spotify-card" class="card spotify-card">
   <div class="row" style="gap:16px; width:100%;">
     <img id="last-spotify-art" src="" alt="Album Art" style="width:100px;height:100px;border-radius:8px;">
     <div style="flex:1; text-align:left;">
-      <div class="labelspot" style="color:#1db954; display:none;" id="last-spotify-np">Listening to Spotify</div>
-      <div class="labelspot" style="color:#9ca3af;" id="last-spotify-time">Not Listening</div>
-      <div class="bigspot" id="last-spotify-song">--</div>
+      <div class="labelspot" style="color:#1db954; display:none;" id="last-spotify-np">Spotify</div>
+      <div class="labelspot" style="color:#9ca3af;" id="last-spotify-time">Spotify</div>
+      <div class="bigspot" id="last-spotify-song">Loading..</div>
       <div class="smallspot" id="last-spotify-artist">--</div>
       <div class="smallspot" id="last-spotify-album">--</div>
     </div>
@@ -191,7 +185,7 @@
     
 
 
-       <div class="card card-tall" id="weather" style="padding:0px">
+    <div class="card card-tall" id="weather" style="padding:0px;">
       <iframe src="./chat/indexneo.html?theme=trans" style="width:100%; height:100%; border:none; border-radius:14px; display:block;"></iframe>
     </div>
 
@@ -211,6 +205,9 @@
       <div class="big" id="github-activity">Loading..</div>
       <div class="small" id="github-date">—</div>
     </div>
+
+
+    
 
     
 

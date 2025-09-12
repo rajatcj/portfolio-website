@@ -76,14 +76,19 @@ function cleanImageUrl(url, appId) {
   return `https://cdn.discordapp.com/app-assets/${appId}/${url}.png`;
 }
 function renderActivities(activities) {
-  // Use the same container as your other cards
   const container = document.querySelector('.containerx');
-  
+
   // Remove previously rendered activity cards
   document.querySelectorAll('.activity-card').forEach(el => el.remove());
 
+  // Remove previously rendered email card if exists
+  const existingEmail = document.querySelector('.email-card');
+  if (existingEmail) existingEmail.remove();
+
+  // Loop through activities
   activities.forEach(act => {
-    if (act.type !== 0) return; // Only render custom activities (type 0)
+    // Skip type 2 and 4
+    if (act.type === 2 || act.type === 4) return;
 
     const card = document.createElement('div');
     card.className = 'card activity-card';
@@ -96,7 +101,7 @@ function renderActivities(activities) {
     row.style.alignItems = 'center';
     row.style.position = 'relative';
 
-    // Left large image (if available)
+    // Left large image
     if (act.assets && act.assets.large_image) {
       const largeImg = document.createElement('img');
       largeImg.src = cleanImageUrl(act.assets.large_image, act.application_id, 'large');
@@ -110,13 +115,11 @@ function renderActivities(activities) {
     textWrapper.style.flex = '1';
     textWrapper.style.textAlign = 'left';
 
-    
     const activitytype = document.createElement('div');
     activitytype.className = 'label';
     activitytype.style.fontSize = 'x-small';
     activitytype.textContent = 'Current Activity';
     textWrapper.appendChild(activitytype);
-
 
     const label = document.createElement('div');
     label.className = 'label';
@@ -151,7 +154,7 @@ function renderActivities(activities) {
 
     row.appendChild(textWrapper);
 
-    // Small top-right image (if available)
+    // Small top-right image
     if (act.assets && act.assets.small_image) {
       const smallIcon = document.createElement('img');
       smallIcon.src = cleanImageUrl(act.assets.small_image, act.application_id, 'small');
@@ -169,7 +172,115 @@ function renderActivities(activities) {
     card.appendChild(row);
     container.appendChild(card);
   });
+
+  // ----- Add Email Card dynamically -----
+// ----- Add Email Card dynamically -----
+const emailCard = document.createElement('div');
+emailCard.className = 'card email-card';
+
+// Count how many activity cards were rendered
+const n = document.querySelectorAll('.activity-card').length;
+
+// Set grid-column span based on number of activities
+if (window.innerWidth > 900) {
+  if (n === 0) emailCard.style.gridColumn = "span 2";
+  else if (n === 1) emailCard.style.gridColumn = "span 1";
+  else if (n === 2) emailCard.style.gridColumn = "span 3";
+  else if (n === 4) emailCard.style.gridColumn = "span 2";
+  else if (n === 5) emailCard.style.gridColumn = "span 1";
+  else emailCard.style.gridColumn = "span 1"; // default
+} 
+// ---- Build the contact form inside the email card ----
+// Create form instead of plain card
+const emailForm = document.createElement('form');
+emailForm.action = "https://api.web3forms.com/submit";
+emailForm.method = "POST";
+emailForm.className = "email-form";
+emailForm.id = "contact-form";
+
+// Hidden Web3Forms Access Key
+const accessKey = document.createElement('input');
+accessKey.type = "hidden";
+accessKey.name = "access_key";
+accessKey.value = "7710c7c9-0e9c-43f4-a83d-6f2efcee5cc9";
+emailForm.appendChild(accessKey);
+
+
+// redirect
+const redirectform = document.createElement('input');
+redirectform.type = "hidden";
+redirectform.name = "redirect";
+redirectform.value = "https://rajatcj.com/";
+emailForm.appendChild(redirectform);
+
+
+// formname
+const formname = document.createElement('input');
+formname.type = "hidden";
+formname.name = "from_name";
+formname.value = "Website Message";
+emailForm.appendChild(formname);
+
+// Honeypot (spam protection)
+const botCheck = document.createElement('input');
+botCheck.type = "checkbox";
+botCheck.name = "botcheck";
+botCheck.style.display = "none";
+emailForm.appendChild(botCheck);
+
+
+
+// Title
+const title = document.createElement('div');
+title.textContent = "Send Me a Message";
+title.className = "email-title";
+emailForm.appendChild(title);
+
+// Message textarea (top, fills available space)
+const messageTextarea = document.createElement('textarea');
+messageTextarea.placeholder = "Message...";
+messageTextarea.name = "message";  // <-- important for Web3Forms
+messageTextarea.className = "email-message";
+messageTextarea.required = true;
+emailForm.appendChild(messageTextarea);
+
+// Bottom row for name, email, send button
+const inputRow = document.createElement('div');
+inputRow.className = "email-input-row";
+
+// Name input (3 columns)
+const nameInput = document.createElement('input');
+nameInput.type = "text";
+nameInput.placeholder = "Name";
+nameInput.name = "name";   // <-- Web3Forms field
+nameInput.className = "email-name";
+nameInput.required = true;
+inputRow.appendChild(nameInput);
+
+// Email input (3 columns)
+const emailInput = document.createElement('input');
+emailInput.type = "email";
+emailInput.placeholder = "Email";
+emailInput.name = "email"; // <-- Web3Forms field
+emailInput.className = "email-email";
+emailInput.required = true;
+inputRow.appendChild(emailInput);
+
+// Send button (1 column)
+const sendBtn = document.createElement('button');
+sendBtn.type = "submit";  // <-- make it submit the form
+sendBtn.textContent = "Send";
+sendBtn.className = "email-send-btn";
+inputRow.appendChild(sendBtn);
+
+emailForm.appendChild(inputRow);
+emailCard.appendChild(emailForm);
+
+// Append email card to container
+container.appendChild(emailCard);
+
 }
+
 
 
 // ------------------- SPOTIFY -------------------
@@ -215,7 +326,7 @@ function renderSpotify() {
   const elapsedEl = document.getElementById("spotify-elapsed");
   const durEl = document.getElementById("spotify-duration");
 
-  
+
   if (source === "lanyard" && data) {
     // Lanyard live song
     spotifyCard.style.display = "flex";
