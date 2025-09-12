@@ -176,7 +176,7 @@ function renderActivities(activities) {
   // ----- Add Email Card dynamically -----
 // ----- Add Email Card dynamically -----
 const emailCard = document.createElement('div');
-emailCard.className = 'card email-card';
+emailCard.className = 'email-card';
 
 // Count how many activity cards were rendered
 const n = document.querySelectorAll('.activity-card').length;
@@ -186,8 +186,8 @@ if (window.innerWidth > 900) {
   if (n === 0) emailCard.style.gridColumn = "span 2";
   else if (n === 1) emailCard.style.gridColumn = "span 1";
   else if (n === 2) emailCard.style.gridColumn = "span 3";
-  else if (n === 4) emailCard.style.gridColumn = "span 2";
-  else if (n === 5) emailCard.style.gridColumn = "span 1";
+  else if (n === 3) emailCard.style.gridColumn = "span 2";
+  else if (n === 4) emailCard.style.gridColumn = "span 1";
   else emailCard.style.gridColumn = "span 1"; // default
 } 
 // ---- Build the contact form inside the email card ----
@@ -197,6 +197,9 @@ emailForm.action = "https://api.web3forms.com/submit";
 emailForm.method = "POST";
 emailForm.className = "email-form";
 emailForm.id = "contact-form";
+if (n > 1) {
+  emailForm.style.maxWidth = "750px";
+}
 
 // Hidden Web3Forms Access Key
 const accessKey = document.createElement('input');
@@ -210,7 +213,7 @@ emailForm.appendChild(accessKey);
 const redirectform = document.createElement('input');
 redirectform.type = "hidden";
 redirectform.name = "redirect";
-redirectform.value = "https://rajatcj.com/";
+redirectform.value = "https://rajatcj.com/#contact-form";
 emailForm.appendChild(redirectform);
 
 
